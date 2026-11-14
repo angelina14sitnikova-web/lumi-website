@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания — Луми</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        Луми<span>☾✦</span>
+    </a>
+
+    <nav class="navigation">
+        <a href="index.html">Главная</a>
+        <a href="tasks.html" class="active">Задания</a>
+        <a href="index.html#adventures">Приключения</a>
+        <a href="index.html#benefits">Для родителей</a>
+    </nav>
+
+    <div class="header-icons">
+        <button aria-label="Поиск">⌕</button>
+        <button aria-label="Профиль">♙</button>
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="tasks-hero">
+
+    <div class="tasks-hero-text">
+
+        <span class="tasks-small-title">
+            ✦ Мир знаний Луми
+        </span>
+
+        <h1>
+            Что будем изучать сегодня?
+        </h1>
+
+        <p>
+            Выбирай направление и отправляйся
+            в маленькое образовательное приключение.
+        </p>
+
+    </div>
+
+    <div class="age-selector">
+
+        <p>Выбери возраст:</p>
+
+        <div class="age-buttons">
+            <button class="selected">3–4 года</button>
+            <button>4–5 лет</button>
+            <button>5–6 лет</button>
+            <button>6–7 лет</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="free-adventure">
+
+    <div class="free-text">
+
+        <span class="free-label">
+            ✦ Бесплатное приключение
+        </span>
+
+        <h2>
+            Начни путешествие вместе с Луми
+        </h2>
+
+        <p>
+            Попробуй несколько заданий бесплатно
+            и познакомься с миром Луми.
+        </p>
+
+        <a href="#" class="free-button">
+            Попробовать бесплатно →
+        </a>
+
+    </div>
+
+    <div class="free-lumi">
+        <img src="images/lumi-new.png" alt="Луми">
+    </div>
+
+</section>
+
+
+<section class="learning-section">
+
+    <h2>
+        Выбери направление ✦
+    </h2>
+
+    <div class="learning-grid">
+
+        <article class="learning-card math">
+
+            <div class="learning-icon">
+                123
+            </div>
+
+            <h3>
+                Счёт и математика
+            </h3>
+
+            <p>
+                Учимся считать, сравнивать,
+                находить закономерности
+                и решать первые задачи.
+            </p>
+
+            <a href="math.html" class="math-start">
+                Начать →
+            </a>
+
+        </article>
+
+
+        <article class="learning-card speech">
+
+            <div class="learning-icon">
+                АБВ
+            </div>
+
+            <h3>
+                Речь и слова
+            </h3>
+
+            <p>
+                Расширяем словарный запас,
+                развиваем связную речь
+                и знакомимся со звуками.
+            </p>
+
+            <a href="#">
+                Начать →
+            </a>
+
+        </article>
+
+
+        <article class="learning-card logic">
+
+            <div class="learning-icon">
+                ◇
+            </div>
+
+            <h3>
+                Логика и мышление
+            </h3>
+
+            <p>
+                Сравниваем, группируем,
+                ищем лишнее
+                и учимся рассуждать.
+            </p>
+
+            <a href="#">
+                Начать →
+            </a>
+
+        </article>
+
+
+        <article class="learning-card attention">
+
+            <div class="learning-icon">
+                ✦
+            </div>
+
+            <h3>
+                Внимание и память
+            </h3>
+
+            <p>
+                Тренируем концентрацию,
+                наблюдательность
+                и зрительную память.
+            </p>
+
+            <a href="#">
+                Начать →
+            </a>
+
+        </article>
+
+
+        <article class="learning-card writing">
+
+            <div class="learning-icon">
+                ✎
+            </div>
+
+            <h3>
+                Подготовка руки
+            </h3>
+
+            <p>
+                Развиваем мелкую моторику,
+                координацию
+                и готовимся к письму.
+            </p>
+
+            <a href="#">
+                Начать →
+            </a>
+
+        </article>
+
+
+        <article class="learning-card world">
+
+            <div class="learning-icon">
+                ♧
+            </div>
+
+            <h3>
+                Окружающий мир
+            </h3>
+
+            <p>
+                Изучаем природу,
+                животных, космос
+                и всё интересное вокруг нас.
+            </p>
+
+            <a href="#">
+                Начать →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    <p>
+        Луми — мир маленьких открытий ✦
+    </p>
+</footer>
+<script>
+const ageButtons = document.querySelectorAll(".age-buttons button");
+const cards = document.querySelectorAll(".learning-card");
+const mathStart = document.querySelector(".math-start");
+
+const ageTexts = {
+
+    "3–4 года": {
+        math: "Считаем до 5, сравниваем большие и маленькие группы.",
+        speech: "Учим новые слова, называем предметы и признаки.",
+        logic: "Ищем одинаковое, лишнее и простые закономерности.",
+        attention: "Тренируем внимание через короткие игровые задания.",
+        writing: "Проводим линии, дорожки и простые графические элементы.",
+        world: "Знакомимся с животными, растениями и окружающим миром."
+    },
+
+    "4–5 лет": {
+        math: "Считаем до 10, сравниваем числа и решаем простые задачи.",
+        speech: "Расширяем словарный запас и учимся составлять предложения.",
+        logic: "Ищем закономерности, сравниваем и учимся рассуждать.",
+        attention: "Тренируем концентрацию, память и наблюдательность.",
+        writing: "Рисуем более сложные линии, узоры и элементы.",
+        world: "Исследуем природу, животных и окружающий мир."
+    },
+
+    "5–6 лет": {
+        math: "Считаем дальше 10, решаем примеры и задачи.",
+        speech: "Работаем со звуками, словами и предложениями.",
+        logic: "Решаем последовательности и логические задачи.",
+        attention: "Развиваем память и устойчивость внимания.",
+        writing: "Тренируем элементы букв и графомоторные навыки.",
+        world: "Узнаём больше о природе, человеке и космосе."
+    },
+
+    "6–7 лет": {
+        math: "Готовимся к школе: состав числа, примеры и задачи.",
+        speech: "Готовимся к чтению и письму.",
+        logic: "Решаем более сложные головоломки.",
+        attention: "Тренируем память, внимание и скорость мышления.",
+        writing: "Готовим руку к письму букв и цифр.",
+        world: "Закрепляем знания об окружающем мире."
+    }
+};
+
+
+function updateAge(age) {
+
+    const texts = ageTexts[age];
+
+    cards.forEach(card => {
+
+        const paragraph = card.querySelector("p");
+
+        if (card.classList.contains("math")) {
+            paragraph.textContent = texts.math;
+        }
+
+        if (card.classList.contains("speech")) {
+            paragraph.textContent = texts.speech;
+        }
+
+        if (card.classList.contains("logic")) {
+            paragraph.textContent = texts.logic;
+        }
+
+        if (card.classList.contains("attention")) {
+            paragraph.textContent = texts.attention;
+        }
+
+        if (card.classList.contains("writing")) {
+            paragraph.textContent = texts.writing;
+        }
+
+        if (card.classList.contains("world")) {
+            paragraph.textContent = texts.world;
+        }
+
+    });
+
+
+    /* Пока готова математика только для 3–4 лет */
+
+    if (age === "3–4 года") {
+
+        mathStart.href = "math.html";
+        mathStart.textContent = "Начать →";
+        mathStart.classList.remove("coming-soon");
+
+    } else {
+
+        mathStart.href = "#";
+        mathStart.textContent = "Скоро ✦";
+        mathStart.classList.add("coming-soon");
+
+    }
+
+}
+
+
+ageButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        ageButtons.forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        const age = button.textContent.trim();
+
+        updateAge(age);
+
+    });
+
+});
+
+
+/* Начальное состояние */
+updateAge("3–4 года");
+</script>
+</body>
+</html>

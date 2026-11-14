@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Найди необычный кристалл — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=7"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-1.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            2 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="current"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title task2-title">
+
+        <span>
+            Второе испытание
+        </span>
+
+        <h1>
+            Найди кристалл, который отличается ✦
+        </h1>
+
+        <p>
+            Посмотри внимательно.
+            У одного кристалла есть маленькое отличие.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВОЕ ПОЛЕ -->
+
+    <section class="task2-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="task2-lumi">
+
+            <img
+                src="images/lumi-crystal.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- КРИСТАЛЛЫ -->
+
+        <div class="task2-stage">
+
+            <div
+                class="task2-options"
+                id="task2Options"
+            >
+
+
+                <!-- Обычный -->
+
+                <button
+                    class="task2-crystal normal"
+                    data-correct="false"
+                    aria-label="Кристалл"
+                >
+
+                    <img
+                        class="main-crystal"
+                        src="images/crystal-normal-new1.png"
+                        alt=""
+                    >
+                </button>
+
+
+
+                <!-- Обычный -->
+
+                <button
+                    class="task2-crystal normal"
+                    data-correct="false"
+                    aria-label="Кристалл"
+                >
+
+                    <img
+                        class="main-crystal"
+                        src="images/crystal-normal-new1.png"
+                        alt=""
+                    >
+
+                
+
+                </button>
+
+
+
+                <!-- Отличающийся -->
+
+                <button
+                    class="task2-crystal odd"
+                    data-correct="true"
+                    aria-label="Отличающийся кристалл"
+                >
+
+                    <img
+                        class="main-crystal"
+                        src="images/crystal-odd.png"
+                        alt=""
+                    >
+
+                </button>
+
+
+
+                <!-- Обычный -->
+
+                <button
+                    class="task2-crystal normal"
+                    data-correct="false"
+                    aria-label="Кристалл"
+                >
+
+                    <img
+                        class="main-crystal"
+                        src="images/crystal-normal-new1.png"
+                        alt=""
+                    >
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ПОДСКАЗКА -->
+
+    <div
+        class="task2-hint"
+        id="task2Hint"
+    >
+        Посмотри ещё внимательнее ✦
+    </div>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="task2Success"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Нашёл!
+                </strong>
+
+                <p>
+                    У этого кристалла нет второго маленького осколка.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="nextTask"
+        >
+            Дальше →
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const options =
+    document.querySelectorAll(".task2-crystal");
+
+const optionsContainer =
+    document.getElementById("task2Options");
+
+const hint =
+    document.getElementById("task2Hint");
+
+const success =
+    document.getElementById("task2Success");
+
+const nextTask =
+    document.getElementById("nextTask");
+
+const progressCurrent =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+let taskFinished = false;
+
+
+
+/* ПЕРЕМЕШИВАЕМ КРИСТАЛЛЫ */
+
+const shuffled =
+    Array.from(options);
+
+shuffled
+    .sort(() => Math.random() - 0.5)
+    .forEach(option => {
+
+        optionsContainer.appendChild(option);
+
+    });
+
+
+
+/* ПРОВЕРЯЕМ ОТВЕТ */
+
+options.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        if (taskFinished) {
+            return;
+        }
+
+
+        const isCorrect =
+            option.dataset.correct === "true";
+
+
+        /* НЕПРАВИЛЬНО */
+
+        if (!isCorrect) {
+
+            option.classList.remove("wrong");
+
+            void option.offsetWidth;
+
+            option.classList.add("wrong");
+
+
+            hint.classList.add("show");
+
+
+            setTimeout(() => {
+
+                hint.classList.remove("show");
+
+            }, 1200);
+
+
+            return;
+        }
+
+
+
+        /* ПРАВИЛЬНО */
+
+        taskFinished = true;
+
+        option.classList.add("correct");
+
+
+        options.forEach(item => {
+
+            item.classList.add("finished");
+
+        });
+
+
+        progressCurrent.classList.remove("current");
+
+        progressCurrent.classList.add("completed");
+
+
+        setTimeout(() => {
+
+            success.classList.add("show");
+
+        }, 500);
+
+    });
+
+});
+
+
+
+/* ПОКА ТРЕТЬЕ ЗАДАНИЕ НЕ СОЗДАНО */
+
+nextTask.addEventListener("click", () => {
+
+    window.location.href =
+        "crystal-trail-3.html";
+
+}); 
+</script>
+
+
+</body>
+
+</html>

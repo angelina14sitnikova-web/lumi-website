@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Угости светлячка — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=10"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen firefly-page-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-3.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            4 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+
+            <span class="current"></span>
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title firefly-title">
+
+        <span>
+            Четвёртое испытание
+        </span>
+
+        <h1>
+            Угости светлячка ✦
+        </h1>
+
+        <p>
+            Посчитай огоньки и выбери столько же ягод.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВАЯ ОБЛАСТЬ -->
+
+    <section class="firefly-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="firefly-lumi">
+
+            <img
+                src="images/lumi-counting.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- ЗАДАНИЕ -->
+
+        <div class="firefly-stage">
+
+
+            <!-- СВЕТЛЯЧОК -->
+
+            <div class="firefly-character">
+
+                <img
+                    src="images/firefly.png"
+                    alt="Светлячок"
+                    id="fireflyImage"
+                >
+
+
+                <!-- ЧЕТЫРЕ ОГОНЬКА -->
+
+                <div class="magic-lights">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ТЕКСТ -->
+
+            <div class="firefly-instruction">
+
+                <strong>
+                    Сколько огоньков сияет рядом?
+                </strong>
+
+                <p>
+                    Выбери столько же ягод.
+                </p>
+
+            </div>
+
+
+
+            <!-- ВЫБРАННЫЕ ЯГОДЫ -->
+
+            <div
+                class="chosen-berries"
+                id="chosenBerries"
+            >
+            </div>
+
+
+
+            <!-- ШЕСТЬ ЯГОД -->
+
+            <div class="berry-options">
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+                <button class="berry-option">
+                    <img src="images/berry.png" alt="Ягода">
+                </button>
+
+            </div>
+
+
+
+            <!-- КНОПКА -->
+
+            <button
+                class="firefly-check-button"
+                id="fireflyCheckButton"
+            >
+                Далее →
+            </button>
+
+
+
+            <!-- ОШИБКА -->
+
+            <div
+                class="firefly-answer-message"
+                id="fireflyAnswerMessage"
+            >
+                Попробуй ещё ✦
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="fireflySuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Правильно!
+                </strong>
+
+                <p>
+                    Четыре огонька — четыре ягодки.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const berries =
+    document.querySelectorAll(".berry-option");
+
+const chosenBerries =
+    document.getElementById("chosenBerries");
+
+const checkButton =
+    document.getElementById("fireflyCheckButton");
+
+const answerMessage =
+    document.getElementById("fireflyAnswerMessage");
+
+const firefly =
+    document.getElementById("fireflyImage");
+
+const success =
+    document.getElementById("fireflySuccess");
+
+const progress =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+
+let selectedBerries = [];
+
+
+
+/* ============================
+   ПОКАЗЫВАЕМ ВЫБРАННЫЕ ЯГОДЫ
+============================ */
+
+function updateChosenBerries() {
+
+    chosenBerries.innerHTML = "";
+
+
+    selectedBerries.forEach(() => {
+
+        const img =
+            document.createElement("img");
+
+        img.src =
+            "images/berry.png";
+
+        img.alt = "";
+
+        chosenBerries.appendChild(img);
+
+    });
+
+
+    /* Кнопка появляется после первого выбора */
+
+    if (selectedBerries.length > 0) {
+
+        checkButton.classList.add("show");
+
+    }
+
+    else {
+
+        checkButton.classList.remove("show");
+
+    }
+
+}
+
+
+
+/* ============================
+   ВЫБОР ЯГОД
+============================ */
+
+berries.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+
+        /* УБИРАЕМ ЯГОДУ */
+
+        if (button.classList.contains("selected")) {
+
+            button.classList.remove("selected");
+
+
+            selectedBerries =
+                selectedBerries.filter(
+                    berry => berry !== button
+                );
+
+
+            updateChosenBerries();
+
+            return;
+        }
+
+
+
+        /* ДОБАВЛЯЕМ ЯГОДУ */
+
+        button.classList.add("selected");
+
+        selectedBerries.push(button);
+
+        updateChosenBerries();
+
+
+
+        /* Убираем старую ошибку */
+
+        answerMessage.classList.remove("show");
+
+    });
+
+});
+
+
+
+/* ============================
+   КНОПКА ДАЛЕЕ
+============================ */
+
+checkButton.addEventListener("click", () => {
+
+
+    /* ПРАВИЛЬНО */
+
+    if (selectedBerries.length === 4) {
+
+    window.location.href =
+        "crystal-trail-5.html";
+
+    return;
+
+}
+   
+
+
+
+    /* НЕПРАВИЛЬНО */
+
+    answerMessage.classList.remove("show");
+
+
+    void answerMessage.offsetWidth;
+
+
+    answerMessage.classList.add("show");
+
+
+    checkButton.classList.remove("wrong");
+
+
+    void checkButton.offsetWidth;
+
+
+    checkButton.classList.add("wrong");
+
+});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Почини мост — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=8"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen bridge-page-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-2.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            3 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="current"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title bridge-title">
+
+        <span>
+            Третье испытание
+        </span>
+
+        <h1>
+            Почини волшебный мост ✦
+        </h1>
+
+        <p>
+            Посмотри на пустое место и найди кусочек,
+            который подходит по форме.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВОЕ ПОЛЕ -->
+
+    <section class="bridge-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="bridge-lumi">
+
+            <img
+                src="images/lumi-thinking.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- МОСТ -->
+
+        <div class="bridge-scene">
+
+            <div class="bridge-wrapper">
+
+                <img
+                    class="broken-bridge"
+                    src="images/bridge-broken.png"
+                    alt="Сломанный волшебный мост"
+                >
+
+
+                <!-- Правильный камень появится здесь -->
+
+                <img
+                    class="bridge-fixed-piece"
+                    id="bridgeFixedPiece"
+                    src="images/bridge-piece-correct.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- ВАРИАНТЫ -->
+
+            <div
+                class="bridge-options"
+                id="bridgeOptions"
+            >
+
+
+                <button
+                    class="bridge-option"
+                    data-correct="false"
+                    aria-label="Кусочек моста"
+                >
+
+                    <img
+                        src="images/bridge-piece-wrong1.png"
+                        alt=""
+                    >
+
+                </button>
+
+
+
+                <button
+                    class="bridge-option"
+                    data-correct="true"
+                    aria-label="Подходящий кусочек моста"
+                >
+
+                    <img
+                        src="images/bridge-piece-correct.png"
+                        alt=""
+                    >
+
+                </button>
+
+
+
+                <button
+                    class="bridge-option"
+                    data-correct="false"
+                    aria-label="Кусочек моста"
+                >
+
+                    <img
+                        src="images/bridge-piece-wrong2.png"
+                        alt=""
+                    >
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ПОДСКАЗКА -->
+
+    <div
+        class="bridge-hint"
+        id="bridgeHint"
+    >
+        Этот кусочек не подходит. Попробуй другой ✦
+    </div>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="bridgeSuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Мост починен!
+                </strong>
+
+                <p>
+                    Теперь Луми может продолжить путь.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="nextTask"
+        >
+            Дальше →
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const bridgeOptions =
+    document.querySelectorAll(".bridge-option");
+
+const optionsContainer =
+    document.getElementById("bridgeOptions");
+
+const fixedPiece =
+    document.getElementById("bridgeFixedPiece");
+
+const hint =
+    document.getElementById("bridgeHint");
+
+const success =
+    document.getElementById("bridgeSuccess");
+
+const nextTask =
+    document.getElementById("nextTask");
+
+const currentProgress =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+let taskFinished = false;
+
+
+
+/* ПЕРЕМЕШИВАЕМ ТРИ ВАРИАНТА */
+
+const shuffledOptions =
+    Array.from(bridgeOptions);
+
+shuffledOptions
+    .sort(() => Math.random() - 0.5)
+    .forEach(option => {
+
+        optionsContainer.appendChild(option);
+
+    });
+
+
+
+/* ПРОВЕРКА ОТВЕТА */
+
+bridgeOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        if (taskFinished) {
+            return;
+        }
+
+
+        const correct =
+            option.dataset.correct === "true";
+
+
+        /* НЕПРАВИЛЬНЫЙ КУСОЧЕК */
+
+        if (!correct) {
+
+            option.classList.remove("wrong");
+
+            void option.offsetWidth;
+
+            option.classList.add("wrong");
+
+
+            hint.classList.add("show");
+
+
+            setTimeout(() => {
+
+                hint.classList.remove("show");
+
+            }, 1300);
+
+
+            return;
+        }
+
+
+
+        /* ПРАВИЛЬНЫЙ */
+
+        taskFinished = true;
+
+
+        option.classList.add("correct");
+
+
+        bridgeOptions.forEach(item => {
+
+            item.classList.add("finished");
+
+        });
+
+
+        /* Вставляем камень в мост */
+
+        setTimeout(() => {
+
+            fixedPiece.classList.add("show");
+
+        }, 250);
+
+
+
+        /* Заполняем прогресс */
+
+        currentProgress.classList.remove("current");
+
+        currentProgress.classList.add("completed");
+
+
+
+        /* Показываем поздравление */
+
+        setTimeout(() => {
+
+            success.classList.add("show");
+
+        }, 900);
+
+    });
+
+});
+
+
+
+/* Следующее задание сделаем потом */
+
+nextTask.addEventListener("click", () => {
+
+    window.location.href =
+        "crystal-trail-4.html";
+
+});
+
+</script>
+
+
+</body>
+
+</html>

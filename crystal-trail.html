@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Секрет Кристальной тропы — Луми</title>
+
+<link rel="stylesheet" href="style.css?v=4">
+</head>
+
+<body class="quest-page">
+
+<main class="quest-intro">
+
+    <div class="quest-intro-top">
+
+        <a href="crystal-world.html" class="quest-home">
+            ← Назад
+        </a>
+
+        <div class="quest-world-name">
+            ✦ Кристальный мир · 3–4 года
+        </div>
+
+        <div class="quest-progress">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="quest-intro-content">
+
+        <div class="quest-story">
+
+            <span class="quest-story-label">
+                Первое приключение
+            </span>
+
+            <h1>
+                Секрет<br>
+                Кристальной тропы
+                <span>✦</span>
+            </h1>
+
+            <p>
+                Вместе с Луми пройди волшебную тропу,
+                выполни семь испытаний и открой
+                древнюю кристальную дверь.
+            </p>
+
+            <button class="quest-start-button" id="startQuest">
+                Начать приключение →
+            </button>
+
+        </div>
+
+
+        <div class="quest-lumi">
+            <img src="images/lumi-crystal.png" alt="Луми">
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+const startQuest = document.getElementById("startQuest");
+
+startQuest.addEventListener("click", () => {
+    window.location.href = "crystal-trail-1.html";
+});
+</script>
+
+</body>
+</html>

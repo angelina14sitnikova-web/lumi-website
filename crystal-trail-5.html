@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Разложи кристаллы — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=11"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen sorting-page-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-4.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            5 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+
+            <span class="current"></span>
+
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title sorting-title">
+
+        <span>
+            Пятое испытание
+        </span>
+
+        <h1>
+            Разложи кристаллы ✦
+        </h1>
+
+        <p>
+            Посмотри внимательно на форму и размер.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВАЯ ОБЛАСТЬ -->
+
+    <section class="sorting-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="sorting-lumi">
+
+            <img
+                src="images/lumi-sorting.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- ПАНЕЛЬ ЗАДАНИЯ -->
+
+        <div class="sorting-stage">
+
+
+            <!-- КОРЗИНКИ -->
+
+            <div class="sorting-baskets">
+
+
+                <!-- КРУГЛЫЕ -->
+
+                <button
+                    class="sorting-basket"
+                    id="roundBasket"
+                    data-type="round"
+                    aria-label="Корзинка для круглых кристаллов"
+                >
+
+                    <img
+                        src="images/basket-round.png"
+                        alt="Круглые"
+                    >
+
+                    <div
+                        class="basket-items"
+                        id="roundBasketItems"
+                    ></div>
+
+                </button>
+
+
+
+                <!-- БОЛЬШИЕ -->
+
+                <button
+                    class="sorting-basket"
+                    id="bigBasket"
+                    data-type="big"
+                    aria-label="Корзинка для больших кристаллов"
+                >
+
+                    <img
+                        src="images/basket-big.png"
+                        alt="Большие"
+                    >
+
+                    <div
+                        class="basket-items"
+                        id="bigBasketItems"
+                    ></div>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ПОДСКАЗКА -->
+
+            <div
+                class="sorting-message"
+                id="sortingMessage"
+            >
+                Выбери кристалл ✦
+            </div>
+
+
+
+            <!-- КРИСТАЛЛЫ -->
+
+            <div
+                class="sorting-crystals"
+                id="sortingCrystals"
+            >
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="round"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-round-1.png"
+                        alt="Круглый кристалл"
+                    >
+                </button>
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="big"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-big-1.png"
+                        alt="Большой кристалл"
+                    >
+                </button>
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="round"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-round-2.png"
+                        alt="Круглый кристалл"
+                    >
+                </button>
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="big"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-big-2.png"
+                        alt="Большой кристалл"
+                    >
+                </button>
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="round"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-round-3.png"
+                        alt="Круглый кристалл"
+                    >
+                </button>
+
+
+                <button
+                    class="sorting-crystal"
+                    data-type="big"
+                    draggable="true"
+                >
+                    <img
+                        src="images/crystal-big-3.png"
+                        alt="Большой кристалл"
+                    >
+                </button>
+
+
+            </div>
+
+
+            <p class="sorting-instruction">
+                Перетаскивай кристаллы в подходящие корзинки.
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="sortingSuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Всё правильно!
+                </strong>
+
+                <p>
+                    Кристаллы разложены по своим местам.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="nextTask"
+        >
+            Дальше →
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const crystals =
+    document.querySelectorAll(".sorting-crystal");
+
+const baskets =
+    document.querySelectorAll(".sorting-basket");
+
+const message =
+    document.getElementById("sortingMessage");
+
+const success =
+    document.getElementById("sortingSuccess");
+
+const nextTask =
+    document.getElementById("nextTask");
+
+const progressCurrent =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+
+let selectedCrystal = null;
+
+let draggedCrystal = null;
+
+let sortedCount = 0;
+
+
+
+/* ==========================================
+   ПЕРЕМЕШИВАЕМ КРИСТАЛЛЫ
+========================================== */
+
+const crystalContainer =
+    document.getElementById("sortingCrystals");
+
+const crystalArray =
+    Array.from(crystals);
+
+crystalArray
+    .sort(() => Math.random() - 0.5)
+    .forEach(crystal => {
+
+        crystalContainer.appendChild(crystal);
+
+    });
+
+
+
+/* ==========================================
+   ВЫБОР НАЖАТИЕМ
+========================================== */
+
+crystals.forEach(crystal => {
+
+    crystal.addEventListener("click", () => {
+
+
+        if (
+            crystal.classList.contains("sorted")
+        ) {
+            return;
+        }
+
+
+        crystals.forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+
+        crystal.classList.add("selected");
+
+        selectedCrystal = crystal;
+
+
+        message.textContent =
+            "Теперь выбери подходящую корзинку ✦";
+
+        message.classList.add("show");
+
+    });
+
+});
+
+
+
+/* ==========================================
+   НАЖАТИЕ НА КОРЗИНКУ
+========================================== */
+
+baskets.forEach(basket => {
+
+    basket.addEventListener("click", () => {
+
+        if (!selectedCrystal) {
+            return;
+        }
+
+
+        trySortCrystal(
+            selectedCrystal,
+            basket
+        );
+
+    });
+
+});
+
+
+
+/* ==========================================
+   ПЕРЕТАСКИВАНИЕ НА КОМПЬЮТЕРЕ
+========================================== */
+
+crystals.forEach(crystal => {
+
+
+    crystal.addEventListener(
+        "dragstart",
+        event => {
+
+            draggedCrystal = crystal;
+
+            crystal.classList.add(
+                "dragging"
+            );
+
+            event.dataTransfer.effectAllowed =
+                "move";
+
+        }
+    );
+
+
+    crystal.addEventListener(
+        "dragend",
+        () => {
+
+            crystal.classList.remove(
+                "dragging"
+            );
+
+            draggedCrystal = null;
+
+        }
+    );
+
+});
+
+
+
+baskets.forEach(basket => {
+
+
+    basket.addEventListener(
+        "dragover",
+        event => {
+
+            event.preventDefault();
+
+            basket.classList.add(
+                "drag-over"
+            );
+
+        }
+    );
+
+
+    basket.addEventListener(
+        "dragleave",
+        () => {
+
+            basket.classList.remove(
+                "drag-over"
+            );
+
+        }
+    );
+
+
+    basket.addEventListener(
+        "drop",
+        event => {
+
+            event.preventDefault();
+
+            basket.classList.remove(
+                "drag-over"
+            );
+
+
+            if (!draggedCrystal) {
+                return;
+            }
+
+
+            trySortCrystal(
+                draggedCrystal,
+                basket
+            );
+
+        }
+    );
+
+});
+
+
+
+/* ==========================================
+   ПРОВЕРКА
+========================================== */
+
+function trySortCrystal(
+    crystal,
+    basket
+) {
+
+    const crystalType =
+        crystal.dataset.type;
+
+    const basketType =
+        basket.dataset.type;
+
+
+
+    /* ПРАВИЛЬНО */
+
+    if (crystalType === basketType) {
+
+
+        basket.classList.remove(
+            "wrong"
+        );
+
+
+        basket.classList.add(
+            "correct"
+        );
+
+
+        setTimeout(() => {
+
+            basket.classList.remove(
+                "correct"
+            );
+
+        }, 450);
+
+
+
+        /* Копируем картинку в корзинку */
+
+        const img =
+            document.createElement("img");
+
+        img.src =
+            crystal.querySelector("img").src;
+
+        img.alt = "";
+
+
+
+        if (basketType === "round") {
+
+            document
+                .getElementById(
+                    "roundBasketItems"
+                )
+                .appendChild(img);
+
+        }
+
+        else {
+
+            document
+                .getElementById(
+                    "bigBasketItems"
+                )
+                .appendChild(img);
+
+        }
+
+
+
+        crystal.classList.add(
+            "sorted"
+        );
+
+
+        crystal.classList.remove(
+            "selected"
+        );
+
+
+        crystal.disabled = true;
+
+
+        selectedCrystal = null;
+
+        sortedCount++;
+
+
+        message.textContent =
+            "Правильно! ✦";
+
+        message.classList.add("show");
+
+
+
+        checkFinished();
+
+        return;
+
+    }
+
+
+
+    /* НЕПРАВИЛЬНО */
+
+    basket.classList.remove("wrong");
+
+    void basket.offsetWidth;
+
+    basket.classList.add("wrong");
+
+
+    message.textContent =
+        "Попробуй другую корзинку ✦";
+
+    message.classList.add("show");
+
+}
+
+
+
+/* ==========================================
+   ВСЁ ВЫПОЛНЕНО
+========================================== */
+
+function checkFinished() {
+
+    if (sortedCount !== 6) {
+        return;
+    }
+
+
+    message.textContent =
+        "Все кристаллы на своих местах! ✦";
+
+
+    progressCurrent.classList.remove(
+        "current"
+    );
+
+    progressCurrent.classList.add(
+        "completed"
+    );
+
+
+    setTimeout(() => {
+
+        success.classList.add("show");
+
+    }, 500);
+
+}
+
+
+
+/* ==========================================
+   ЗАДАНИЕ №6
+========================================== */
+
+nextTask.addEventListener(
+    "click",
+    () => {
+
+        /*
+        После создания задания №6
+        здесь будет:
+
+        window.location.href =
+            "crystal-trail-6.html";
+        */
+
+        alert(
+            "Пятое испытание пройдено ✦"
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

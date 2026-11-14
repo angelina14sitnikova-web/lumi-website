@@ -1,0 +1,6114 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #34265f;
+  background: linear-gradient(
+    180deg,
+    #e8e5ff 0%,
+    #f9efff 55%,
+    #fff6eb 100%
+  );
+}
+
+.header {
+  max-width: 1280px;
+  margin: 18px auto 0;
+  padding: 14px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid white;
+  border-radius: 40px;
+  box-shadow: 0 8px 25px #7660a52b;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  font-size: 38px;
+  font-weight: 900;
+  color: #67449d;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #f1b92d;
+  font-size: 23px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navigation a {
+  padding: 12px 18px;
+  text-decoration: none;
+  color: #34265f;
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+.navigation a:hover,
+.navigation .active {
+  background: #e9d9ff;
+  color: #67449d;
+}
+
+.header-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-icons button {
+  border: none;
+  background: #e9d9ff;
+  color: #67449d;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.hero {
+  max-width: 1280px;
+  min-height: 460px;
+  margin: 0 auto;
+  padding: 65px 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 80%, #d7e5c4 0%, transparent 35%),
+    radial-gradient(ellipse at 30% 95%, #fff3d8 0%, transparent 45%),
+    linear-gradient(135deg, #f9f0ff, #dcdfff);
+}
+
+.hero-text {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 4.5vw, 65px);
+  line-height: 1.12;
+  color: #67449d;
+  margin: 0 0 20px;
+}
+
+.hero h1 span {
+  color: #e9ae1f;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.hero-slogan {
+  display: inline-block;
+  background: #ead8ff;
+  color: #67449d;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-button {
+  display: table;
+  margin-top: 25px;
+  padding: 18px 30px;
+  border-radius: 40px;
+  color: white;
+  background: linear-gradient(135deg, #a06cd1, #65409b);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: bold;
+  box-shadow: 0 10px 22px #67449d40;
+  transition: transform .2s;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image img {
+  width: min(100%, 380px);
+  height: auto;
+  filter: drop-shadow(0 16px 12px #6c5d9230);
+}
+
+.hero-decoration {
+  position: absolute;
+  color: #eabf41;
+  font-size: 50px;
+}
+
+.decoration-one { top: 40px; right: 40px; }
+.decoration-two { bottom: 40px; left: 35px; }
+.decoration-three { bottom: 25px; right: 70px; }
+
+.benefits {
+  max-width: 1200px;
+  margin: -5px auto 50px;
+  padding: 25px;
+  background: #ffffffdb;
+  border-radius: 35px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  box-shadow: 0 8px 25px #7660a526;
+  position: relative;
+}
+
+.benefits div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.benefits span {
+  font-size: 42px;
+  color: #9e76d2;
+}
+
+.adventures {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 75px;
+}
+
+.adventures h2 {
+  text-align: center;
+  color: #67449d;
+  font-size: clamp(27px, 3.5vw, 42px);
+  margin-bottom: 35px;
+}
+
+.adventure-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.world-card {
+  overflow: hidden;
+  border-radius: 30px;
+  background: #fff8ff;
+  box-shadow: 0 10px 25px #7660a52b;
+  transition: transform .2s;
+}
+
+.world-card:hover {
+  transform: translateY(-5px);
+}
+
+.world-art {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 90px;
+}
+
+.crystal .world-art {
+  background: linear-gradient(135deg, #8b6ad4, #d2aafa);
+}
+
+.forest .world-art {
+    background: linear-gradient(135deg, #a6d1a3, #d9f0d9);
+}
+/* Сказочный фон главного экрана */
+
+.hero {
+    background-image: url("images/lumi-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* Смягчаем сказочный фон */
+
+.hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(255, 248, 255, 0.75) 0%,
+            rgba(255, 248, 255, 0.40) 45%,
+            rgba(255, 248, 255, 0.12) 100%
+        ),
+        url("images/lumi-background.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* Расположение Луми */
+
+.hero {
+    align-items: flex-end;
+}
+
+.hero-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.hero-image img {
+    width: min(115%, 460px);
+    max-width: none;
+    object-fit: contain;
+   transform: translate(-45px,45px);
+}
+
+@media (max-width: 750px) {
+    .hero {
+        align-items: center;
+    }
+
+    .hero-image {
+        align-self: center;
+    }
+
+    .hero-image img {
+        width: 260px;
+        transform: none;
+    }
+}
+/* Иллюстрации трёх миров */
+
+.world-art {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    font-size: 0;
+}
+
+.crystal .world-art {
+    background-image: url("images/crystal-world.png");
+}
+
+.forest .world-art {
+    background-image: url("images/forest-world.png");
+}
+
+.stars .world-art {
+    background-image: url("images/stars-world.png");
+}
+/* Красивые карточки приключений */
+
+.adventure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.world-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(91, 66, 140, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.world-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 38px rgba(91, 66, 140, 0.22);
+}
+
+.world-art {
+    height: 220px;
+}
+
+.world-content {
+    min-height: 150px;
+    padding: 22px 24px 24px;
+    position: relative;
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.97),
+        rgba(251,244,255,0.97)
+    );
+}
+
+.world-content h3 {
+    margin: 0 45px 9px 0;
+    color: #4f3484;
+    font-size: 24px;
+    line-height: 1.15;
+}
+
+.world-content p {
+    margin: 0;
+    padding-right: 48px;
+    color: #4b4162;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.world-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 22px;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #ead8ff;
+    color: #6844a5;
+
+    font-size: 27px;
+    font-weight: bold;
+}
+
+@media (max-width: 750px) {
+    .adventure-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .world-art {
+        height: 200px;
+    }
+}
+/* Нижний пейзаж с плавным исчезновением вверх */
+
+.adventures {
+    position: relative;
+    padding-bottom: 300px;
+    z-index: 1;
+}
+
+.adventures::before {
+    display: none;
+}
+
+.adventures::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+
+    width: 100vw;
+    height: 320px;
+
+    background-image: url("images/bottom-landscape.png");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+
+    /* Главное — картинка плавно исчезает сверху */
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 12%,
+        rgba(0, 0, 0, 0.55) 28%,
+        black 48%,
+        black 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 12%,
+        rgba(0, 0, 0, 0.55) 28%,
+        black 48%,
+        black 100%
+    );
+
+    z-index: -1;
+    pointer-events: none;
+}
+/* ===== ФИНАЛЬНАЯ ШЛИФОВКА ГЛАВНОЙ ===== */
+
+/* Больше воздуха перед приключениями */
+.adventures {
+    padding-top: 20px;
+}
+
+/* Карточки одинаковой высоты */
+.world-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.world-content {
+    flex: 1;
+}
+
+/* Заголовки карточек */
+.world-content h3 {
+    letter-spacing: -0.3px;
+}
+
+/* Более аккуратная стрелка */
+.world-arrow {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.world-card:hover .world-arrow {
+    transform: translateX(3px);
+    background: #dfc7ff;
+}
+
+/* Футер */
+footer {
+    position: relative;
+    z-index: 3;
+
+    margin: 0;
+    padding: 24px 20px 28px;
+
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.75);
+
+    color: #725b98;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+/* Последние мелкие правки главной */
+
+.adventures {
+    padding-top: 5px;
+}
+
+footer {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 18px 20px 22px;
+}
+@media (max-width: 750px) {
+
+    /* Шапка */
+    .header {
+        margin: 10px;
+        padding: 12px 16px;
+        border-radius: 28px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .header-icons {
+        display: none;
+    }
+
+    .navigation {
+        width: 100%;
+        order: 3;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .navigation a {
+        text-align: center;
+        font-size: 13px;
+        padding: 9px 6px;
+    }
+
+    /* Первый экран */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 18px 25px;
+        min-height: auto;
+        gap: 10px;
+        background-position: center;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        line-height: 1.05;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-slogan {
+        font-size: 15px;
+        padding: 10px 16px;
+    }
+
+    .main-button {
+        margin: 18px auto 0;
+        font-size: 16px;
+        padding: 15px 22px;
+    }
+
+    .hero-image {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 230px;
+        max-width: 100%;
+        transform: none;
+    }
+
+    /* Преимущества */
+    .benefits {
+        margin: 15px;
+        padding: 18px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 10px;
+        border-radius: 28px;
+    }
+
+    .benefits div {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .benefits span {
+        font-size: 30px;
+    }
+
+    /* Приключения */
+    .adventures {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .adventures h2 {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+
+    .adventure-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .world-art {
+        height: 190px;
+    }
+
+    .world-content h3 {
+        font-size: 21px;
+    }
+
+    .world-content p {
+        font-size: 14px;
+    }
+}
+@media (max-width: 750px) {
+
+    .header {
+        padding: 10px 14px 12px;
+        gap: 4px;
+    }
+
+    .navigation {
+        gap: 3px 6px;
+    }
+
+    .navigation a {
+        padding: 7px 5px;
+    }
+}
+/* =====================================
+   СТРАНИЦА ЗАДАНИЙ
+===================================== */
+
+
+/* Первый блок */
+
+.tasks-hero {
+    max-width: 1200px;
+    margin: 35px auto 30px;
+    padding: 55px 60px;
+
+    border-radius: 40px;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(222, 202, 255, 0.85),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #fff9ff,
+            #eee7ff
+        );
+
+    box-shadow:
+        0 14px 35px rgba(91, 66, 140, 0.12);
+}
+
+
+.tasks-small-title {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #8a68c0;
+
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+.tasks-hero h1 {
+    margin: 0;
+
+    max-width: 700px;
+
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.08;
+
+    color: #5b3e8d;
+}
+
+
+.tasks-hero-text p {
+    max-width: 650px;
+
+    margin-top: 20px;
+
+    font-size: 18px;
+    line-height: 1.6;
+
+    color: #534866;
+}
+
+
+/* Возраст */
+
+.age-selector {
+    margin-top: 35px;
+}
+
+
+.age-selector p {
+    margin-bottom: 12px;
+
+    font-weight: bold;
+
+    color: #5c477e;
+}
+
+
+.age-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.age-buttons button {
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #654a91;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 15px rgba(91, 66, 140, 0.1);
+}
+
+
+.age-buttons button:hover,
+.age-buttons .selected {
+    background: #d9c3fa;
+
+    color: #533481;
+}
+
+
+/* Бесплатный блок */
+
+.free-adventure {
+    max-width: 1200px;
+
+    margin: 30px auto 60px;
+
+    padding: 45px 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border-radius: 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7b55b8,
+            #a978dd
+        );
+
+    color: white;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 16px 35px rgba(92, 62, 145, 0.24);
+}
+
+
+.free-text {
+    max-width: 650px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.free-label {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    opacity: 0.9;
+}
+
+
+.free-text h2 {
+    margin: 12px 0;
+
+    font-size: 38px;
+
+    line-height: 1.15;
+}
+
+
+.free-text p {
+    margin-bottom: 24px;
+
+    line-height: 1.6;
+
+    font-size: 17px;
+}
+
+
+.free-button {
+    display: inline-block;
+
+    padding: 14px 23px;
+
+    background: white;
+
+    color: #68429e;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: transform 0.2s ease;
+}
+
+
+.free-button:hover {
+    transform: translateY(-3px);
+}
+
+
+.free-lumi img {
+    width: 230px;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 12px 14px
+            rgba(48, 26, 85, 0.22)
+        );
+}
+
+
+/* Категории */
+
+.learning-section {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 20px 80px;
+}
+
+
+.learning-section > h2 {
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    color: #5b3e8d;
+
+    font-size: 38px;
+}
+
+
+.learning-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+.learning-card {
+    min-height: 300px;
+
+    padding: 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    box-shadow:
+        0 12px 28px
+        rgba(91, 66, 140, 0.12);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.learning-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 38px
+        rgba(91, 66, 140, 0.18);
+}
+
+
+.learning-icon {
+    width: 70px;
+    height: 70px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 24px;
+
+    margin-bottom: 20px;
+
+    font-weight: 900;
+
+    font-size: 22px;
+
+    color: #65449b;
+}
+
+
+.learning-card h3 {
+    margin: 0 0 10px;
+
+    color: #4f357d;
+
+    font-size: 23px;
+}
+
+
+.learning-card p {
+    margin: 0 0 25px;
+
+    line-height: 1.55;
+
+    color: #514861;
+}
+
+
+.learning-card a {
+    margin-top: auto;
+
+    text-decoration: none;
+
+    color: #744aa8;
+
+    font-weight: bold;
+}
+
+
+/* Разные оттенки категорий */
+
+.math .learning-icon {
+    background: #eadbff;
+}
+
+.speech .learning-icon {
+    background: #ffe3db;
+}
+
+.logic .learning-icon {
+    background: #e1ecff;
+}
+
+.attention .learning-icon {
+    background: #fff1c9;
+}
+
+.writing .learning-icon {
+    background: #dff3df;
+}
+
+.world .learning-icon {
+    background: #dff3ee;
+}
+
+
+/* Мобильная версия */
+
+@media (max-width: 750px) {
+
+    .tasks-hero {
+        margin: 15px;
+
+        padding: 35px 22px;
+
+        border-radius: 30px;
+    }
+
+
+    .tasks-hero h1 {
+        font-size: 38px;
+    }
+
+
+    .tasks-hero-text p {
+        font-size: 16px;
+    }
+
+
+    .age-buttons {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .age-buttons button {
+        padding: 11px 8px;
+
+        font-size: 13px;
+    }
+
+
+    .free-adventure {
+        margin: 20px 15px 45px;
+
+        padding:
+            32px 22px 0;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        border-radius: 30px;
+    }
+
+
+    .free-text h2 {
+        font-size: 30px;
+    }
+
+
+    .free-lumi img {
+        width: 190px;
+    }
+
+
+    .learning-section {
+        padding:
+            0 15px 60px;
+    }
+
+
+    .learning-section > h2 {
+        font-size: 30px;
+    }
+
+
+    .learning-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .learning-card {
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+}
+/* ===== ДОРАБОТКА СТРАНИЦЫ ЗАДАНИЙ ===== */
+
+/* Верхний блок — немного живее */
+.tasks-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.tasks-hero::after {
+    content: "✦  ✧  ☾";
+    position: absolute;
+    right: 70px;
+    top: 70px;
+
+    font-size: 38px;
+    letter-spacing: 18px;
+
+    color: rgba(126, 91, 181, 0.18);
+
+    transform: rotate(-8deg);
+}
+
+/* Луми в бесплатном блоке */
+.free-lumi {
+    align-self: flex-end;
+}
+
+.free-lumi img {
+    width: 260px;
+    transform: translateY(15px);
+}
+
+/* Карточки направлений */
+.learning-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(120, 90, 170, 0.08);
+}
+
+/* Цветная полоска сверху */
+.learning-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 7px;
+
+    border-radius: 30px 30px 0 0;
+}
+
+/* Цвет для каждой категории */
+
+.math::before {
+    background: #c9a9f4;
+}
+
+.speech::before {
+    background: #f2b7a7;
+}
+
+.logic::before {
+    background: #abc8ea;
+}
+
+.attention::before {
+    background: #f0d27c;
+}
+
+.writing::before {
+    background: #aed7ad;
+}
+
+.world::before {
+    background: #98d5c7;
+}
+
+/* Иконки чуть крупнее */
+.learning-icon {
+    width: 76px;
+    height: 76px;
+
+    font-size: 24px;
+
+    box-shadow: 0 5px 14px rgba(90, 70, 130, 0.08);
+}
+
+/* Кнопка "Начать" более заметная */
+.learning-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 15px;
+}
+
+/* Мобильная версия */
+@media (max-width: 750px) {
+
+    .tasks-hero::after {
+        right: 20px;
+        top: 25px;
+        font-size: 24px;
+        opacity: 0.6;
+    }
+
+    .free-lumi img {
+        width: 210px;
+        transform: translateY(10px);
+    }
+}
+/* =====================================
+   МАТЕМАТИКА
+===================================== */
+
+.subject-hero {
+    max-width: 1100px;
+    margin: 35px auto 25px;
+    padding: 45px 55px;
+
+    border-radius: 38px;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(208, 181, 255, 0.75),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaff,
+            #eee7ff
+        );
+
+    box-shadow:
+        0 12px 30px rgba(91, 66, 140, 0.11);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 22px;
+
+    color: #7a5ba9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.subject-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #8a68c0;
+    font-weight: bold;
+}
+
+.subject-hero h1 {
+    margin: 0 0 15px;
+
+    max-width: 750px;
+
+    color: #58398c;
+
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.08;
+}
+
+.subject-hero p {
+    margin: 0;
+
+    color: #554b63;
+
+    font-size: 18px;
+}
+
+
+/* Само задание */
+
+.game-card {
+    max-width: 850px;
+
+    margin: 30px auto;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 36px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 15px 35px rgba(91, 66, 140, 0.14);
+}
+
+.game-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.game-number,
+.game-age {
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    background: #efe3ff;
+
+    color: #67449d;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.game-card h2 {
+    margin: 0 0 10px;
+
+    color: #50347e;
+
+    font-size: 34px;
+}
+
+.game-instruction {
+    margin-bottom: 30px;
+
+    color: #655b70;
+}
+
+
+/* Звёздочки */
+
+.stars-task {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    margin: 30px 0 35px;
+}
+
+.stars-task span {
+    font-size: 64px;
+
+    color: #e7b83c;
+
+    filter:
+        drop-shadow(
+            0 5px 5px
+            rgba(157, 117, 23, 0.16)
+        );
+}
+
+
+/* Ответы */
+
+.answer-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.answer-buttons button {
+    width: 72px;
+    height: 72px;
+
+    border: none;
+
+    border-radius: 24px;
+
+    background: #eadbff;
+
+    color: #603e95;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.answer-buttons button:hover {
+    transform: translateY(-4px);
+}
+
+.answer-buttons .correct-answer {
+    background: #ccebc8;
+
+    color: #3f7441;
+}
+
+.answer-buttons .wrong-answer {
+    background: #f7d8d4;
+
+    color: #a04b4b;
+}
+
+
+/* Результат */
+
+.game-result {
+    min-height: 30px;
+
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.game-result.success {
+    color: #4c8750;
+}
+
+.game-result.try-again {
+    color: #956781;
+}
+
+
+/* Следующие задания */
+
+.coming-tasks {
+    max-width: 1100px;
+
+    margin: 60px auto;
+
+    padding: 0 20px;
+}
+
+.coming-tasks > h2 {
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    color: #5b3e8d;
+
+    font-size: 34px;
+}
+
+.coming-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.coming-grid article {
+    padding: 27px;
+
+    border-radius: 28px;
+
+    background: white;
+
+    box-shadow:
+        0 10px 25px
+        rgba(91, 66, 140, 0.1);
+}
+
+.coming-grid article span {
+    color: #a481cf;
+
+    font-weight: bold;
+}
+
+.coming-grid article h3 {
+    margin: 12px 0 8px;
+
+    color: #51377e;
+}
+
+.coming-grid article p {
+    margin: 0;
+
+    color: #62596c;
+}
+
+
+/* Телефон */
+
+@media (max-width: 750px) {
+
+    .subject-hero {
+        margin: 15px;
+
+        padding: 30px 22px;
+    }
+
+    .subject-hero h1 {
+        font-size: 38px;
+    }
+
+    .game-card {
+        margin: 20px 15px;
+
+        padding: 28px 20px;
+    }
+
+    .game-card h2 {
+        font-size: 28px;
+    }
+
+    .stars-task {
+        gap: 10px;
+    }
+
+    .stars-task span {
+        font-size: 47px;
+    }
+
+    .answer-buttons button {
+        width: 64px;
+        height: 64px;
+
+        font-size: 23px;
+    }
+
+    .coming-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.learning-card a.coming-soon {
+    opacity: 0.55;
+    cursor: default;
+}
+/* =====================================
+   КРИСТАЛЬНЫЙ МИР
+===================================== */
+
+.crystal-page-hero {
+    max-width: 1200px;
+    min-height: 430px;
+
+    margin: 30px auto 25px;
+    padding: 45px 60px;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 40px;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(42, 26, 85, 0.76) 0%,
+            rgba(68, 43, 116, 0.55) 40%,
+            rgba(68, 43, 116, 0.08) 78%
+        ),
+        url("images/crystal-world.png");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow:
+        0 16px 38px rgba(67, 44, 112, 0.2);
+
+    color: white;
+}
+
+
+.crystal-back {
+    position: relative;
+    z-index: 2;
+
+    display: inline-block;
+
+    margin-bottom: 60px;
+
+    padding: 10px 17px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,0.88);
+
+    color: #604092;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.crystal-hero-text {
+    position: relative;
+    z-index: 2;
+
+    max-width: 620px;
+}
+
+
+.crystal-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #eee1ff;
+
+    font-weight: bold;
+}
+
+
+.crystal-page-hero h1 {
+    margin: 0 0 15px;
+
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1;
+
+    color: white;
+}
+
+
+.crystal-page-hero p {
+    max-width: 570px;
+
+    margin: 0;
+
+    font-size: 19px;
+    line-height: 1.55;
+
+    color: rgba(255,255,255,0.92);
+}
+
+
+/* Возраст */
+
+.crystal-age-section {
+    max-width: 900px;
+
+    margin: 45px auto 55px;
+
+    text-align: center;
+
+    padding: 0 20px;
+}
+
+
+.crystal-age-title {
+    margin-bottom: 18px;
+
+    color: #583d82;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.crystal-age-buttons {
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.crystal-age-buttons button {
+    padding: 13px 23px;
+
+    border: none;
+    border-radius: 28px;
+
+    background: white;
+
+    color: #684a94;
+
+    font-weight: bold;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(84, 57, 132, 0.1);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.crystal-age-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+
+.crystal-age-buttons .active-age {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a77ade,
+            #7147ad
+        );
+}
+
+
+/* Приключения */
+
+.crystal-adventures {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 20px 80px;
+}
+
+
+.age-adventures {
+    display: none;
+}
+
+
+.age-adventures.active-adventures {
+    display: block;
+}
+
+
+.crystal-section-heading {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.crystal-section-heading > span {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    margin-bottom: 10px;
+
+    border-radius: 20px;
+
+    background: #eadcff;
+
+    color: #68449c;
+
+    font-weight: bold;
+}
+
+
+.crystal-section-heading h2 {
+    margin: 5px 0 10px;
+
+    color: #583a89;
+
+    font-size: 38px;
+}
+
+
+.crystal-section-heading p {
+    margin: 0;
+
+    color: #675d72;
+}
+
+
+/* Карточки приключений */
+
+.crystal-adventure-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+.crystal-quest {
+    min-height: 360px;
+
+    padding: 27px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.97),
+            rgba(248,242,255,0.97)
+        );
+
+    border:
+        1px solid rgba(124, 91, 176, 0.1);
+
+    box-shadow:
+        0 12px 30px
+        rgba(76, 50, 122, 0.12);
+}
+
+
+.featured-quest {
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(194, 158, 242, 0.55),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4eaff
+        );
+
+    border:
+        2px solid rgba(152, 111, 207, 0.3);
+}
+
+
+.quest-number {
+    margin-bottom: 25px;
+
+    color: #a17ac9;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+
+.quest-content {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.quest-type {
+    margin-bottom: 9px;
+
+    color: #9870c5;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.quest-content h3 {
+    margin: 0 0 12px;
+
+    color: #503279;
+
+    font-size: 25px;
+    line-height: 1.15;
+}
+
+
+.quest-content p {
+    margin: 0 0 22px;
+
+    color: #5f5667;
+
+    line-height: 1.5;
+}
+
+
+.quest-skills {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+
+.quest-skills span {
+    padding: 7px 11px;
+
+    border-radius: 18px;
+
+    background: #eee2ff;
+
+    color: #6a4b95;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.quest-button {
+    margin-top: auto;
+
+    display: inline-block;
+
+    padding: 14px 20px;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a06bd3,
+            #69419e
+        );
+
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 20px
+        rgba(100, 64, 155, 0.2);
+}
+
+
+.quest-soon {
+    margin-top: auto;
+
+    color: #a28caf;
+
+    font-weight: bold;
+}
+
+
+/* Телефон */
+
+@media (max-width: 750px) {
+
+    .crystal-page-hero {
+        margin: 15px;
+
+        min-height: 390px;
+
+        padding: 28px 22px;
+
+        border-radius: 30px;
+
+        background-position: 60% center;
+    }
+
+
+    .crystal-back {
+        margin-bottom: 55px;
+    }
+
+
+    .crystal-page-hero h1 {
+        font-size: 45px;
+    }
+
+
+    .crystal-page-hero p {
+        font-size: 16px;
+    }
+
+
+    .crystal-age-section {
+        margin:
+            35px auto 45px;
+    }
+
+
+    .crystal-age-buttons {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .crystal-age-buttons button {
+        padding:
+            12px 8px;
+
+        font-size: 13px;
+    }
+
+
+    .crystal-section-heading h2 {
+        font-size: 30px;
+    }
+
+
+    .crystal-adventure-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .crystal-quest {
+        min-height: 310px;
+    }
+
+}
+.world-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+/* =====================================
+   СЕКРЕТ КРИСТАЛЬНОЙ ТРОПЫ — ВСТУПЛЕНИЕ
+===================================== */
+
+.quest-page {
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #ddd7ff;
+}
+
+
+.quest-intro {
+    min-height: 100vh;
+
+    padding: 28px 42px 40px;
+
+    position: relative;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(45, 27, 86, 0.56) 0%,
+            rgba(58, 35, 102, 0.25) 42%,
+            rgba(58, 35, 102, 0.02) 78%
+        ),
+        url("images/crystal-trail-bg.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Верхняя панель */
+
+.quest-intro-top {
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    position: relative;
+    z-index: 3;
+}
+
+
+.quest-home {
+    justify-self: start;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #654197;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    box-shadow:
+        0 8px 22px
+        rgba(60, 40, 100, 0.15);
+}
+
+
+.quest-world-name {
+    padding: 11px 22px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.88);
+
+    color: #654197;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+.quest-progress {
+    justify-self: end;
+
+    display: flex;
+    gap: 9px;
+
+    padding: 11px 16px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.88);
+}
+
+
+.quest-progress span {
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    border: 2px solid #8463b3;
+
+    background: transparent;
+}
+
+
+/* Основная часть */
+
+.quest-intro-content {
+    max-width: 1300px;
+
+    min-height: calc(100vh - 130px);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.quest-story {
+    width: min(580px, 52%);
+
+    padding: 42px 46px;
+
+    border-radius: 42px;
+
+    background:
+        rgba(255, 250, 255, 0.88);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 18px 50px
+        rgba(58, 35, 104, 0.2);
+}
+
+
+.quest-story-label {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    color: #8a67b8;
+
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+.quest-story h1 {
+    margin: 0 0 22px;
+
+    color: #5b338e;
+
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.98;
+
+    letter-spacing: -1px;
+}
+
+
+.quest-story h1 span {
+    color: #e5b939;
+}
+
+
+.quest-story p {
+    margin: 0 0 30px;
+
+    color: #554761;
+
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+.quest-start-button {
+    border: none;
+
+    padding: 17px 27px;
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ad77df,
+            #7042aa
+        );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(87, 54, 139, 0.3);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.quest-start-button:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Луми */
+
+.quest-lumi {
+    flex: 1;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.quest-lumi img {
+    width: min(470px, 95%);
+
+    height: auto;
+transform: translate(-90px, 55px);
+    filter:
+    saturate(0.88)
+    brightness(0.97)
+    drop-shadow(
+        0 18px 18px
+        rgba(55, 35, 95, 0.20)
+    );
+}
+
+
+/* Телефон */
+
+@media (max-width: 750px) {
+
+    .quest-intro {
+        padding:
+            15px 15px 30px;
+
+        background-position:
+            62% center;
+    }
+
+
+    .quest-intro-top {
+        grid-template-columns:
+            auto 1fr;
+
+        gap: 8px;
+    }
+
+
+    .quest-world-name {
+        font-size: 12px;
+
+        padding:
+            10px 12px;
+    }
+
+
+    .quest-progress {
+        grid-column:
+            1 / -1;
+
+        justify-self: center;
+
+        margin-top: 5px;
+    }
+
+
+    .quest-intro-content {
+    min-height: auto;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding-top: 22px;
+}
+
+
+    .quest-story {
+    width: 100%;
+
+    padding: 24px 18px;
+
+    text-align: center;
+
+    border-radius: 28px;
+}
+
+
+   .quest-story h1 {
+    font-size: 36px;
+    line-height: 1;
+}
+
+
+    .quest-story p {
+        font-size: 15px;
+    }
+
+
+   .quest-lumi img {
+    width: 250px;
+    transform: translate(-15px, -10px);
+}
+
+}
+/* ==========================================
+   КРИСТАЛЬНАЯ ТРОПА
+   ЗАДАНИЕ 1 — ЗАЖГИ 3 КРИСТАЛЛА
+========================================== */
+
+
+.crystal-game-page {
+    margin: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background: #cfc6f5;
+}
+
+
+
+.crystal-game-screen {
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 25px 38px 45px;
+
+
+    background-image:
+
+        linear-gradient(
+            180deg,
+            rgba(85, 59, 145, 0.16) 0%,
+            rgba(85, 59, 145, 0.04) 45%,
+            rgba(85, 59, 145, 0.15) 100%
+        ),
+
+        url("images/crystal-trail-bg.png");
+
+
+    background-size: cover;
+
+    background-position: center bottom;
+
+    background-repeat: no-repeat;
+}
+
+
+
+/* ==============================
+   ВЕРХНЯЯ ПАНЕЛЬ
+============================== */
+
+
+.crystal-game-top {
+    width: min(1400px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+
+.crystal-game-back {
+    justify-self: start;
+
+    padding: 12px 20px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.91);
+
+    color: #654197;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 18px
+        rgba(62, 42, 103, 0.12);
+}
+
+
+
+.crystal-game-number {
+    padding: 11px 22px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.91);
+
+    color: #68459a;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    box-shadow:
+        0 7px 18px
+        rgba(62, 42, 103, 0.10);
+}
+
+
+
+.crystal-game-progress {
+    justify-self: end;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 16px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.91);
+
+    box-shadow:
+        0 7px 18px
+        rgba(62, 42, 103, 0.10);
+}
+
+
+
+.crystal-game-progress span {
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid #8462b3;
+
+    background: transparent;
+}
+
+
+
+.crystal-game-progress span.completed {
+    background:
+        linear-gradient(
+            135deg,
+            #a66cdd,
+            #7040ad
+        );
+
+    border-color:
+        #7144a7;
+}
+
+
+
+/* ==============================
+   ЗАГОЛОВОК
+============================== */
+
+
+.crystal-game-title {
+    width: fit-content;
+
+    max-width: 760px;
+
+    margin:
+        35px auto 15px;
+
+    padding:
+        18px 40px 20px;
+
+    text-align: center;
+
+    border-radius: 34px;
+
+    background:
+        rgba(255, 251, 255, 0.91);
+
+    backdrop-filter:
+        blur(7px);
+
+    -webkit-backdrop-filter:
+        blur(7px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(70, 46, 116, 0.14);
+
+    position: relative;
+
+    z-index: 7;
+}
+
+
+
+.crystal-game-title > span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #9773bd;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+
+.crystal-game-title h1 {
+    margin:
+        0 0 7px;
+
+    color: #5b338d;
+
+    font-size:
+        clamp(31px, 4vw, 48px);
+
+    line-height: 1.08;
+}
+
+
+
+.crystal-game-title p {
+    margin: 0;
+
+    color: #62536d;
+
+    font-size: 16px;
+
+    line-height: 1.45;
+}
+
+
+
+/* ==============================
+   ИГРОВАЯ ОБЛАСТЬ
+============================== */
+
+
+.crystal-game-area {
+    width: min(1250px, 100%);
+
+    min-height: 500px;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    z-index: 4;
+}
+
+
+
+/* ==============================
+   ЛУМИ
+============================== */
+
+
+.crystal-game-lumi {
+    width: 30%;
+
+    min-width: 260px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+}
+
+
+
+.crystal-game-lumi img {
+    width: min(390px, 100%);
+
+    height: auto;
+
+    display: block;
+
+    transform:
+        translateY(30px);
+
+    filter:
+        saturate(0.88)
+        brightness(0.97)
+        drop-shadow(
+            0 18px 18px
+            rgba(55, 35, 95, 0.18)
+        );
+}
+
+
+
+/* ==============================
+   КРИСТАЛЬНАЯ ДОРОЖКА
+============================== */
+
+
+.crystal-path {
+    flex: 1;
+
+    min-height: 390px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-around;
+
+    gap: 12px;
+
+    padding:
+        20px 15px 25px;
+}
+
+
+
+/* разные высоты создают
+   ощущение дорожки */
+
+.crystal-button:nth-child(1) {
+    transform:
+        translateY(70px)
+        scale(0.82);
+}
+
+
+.crystal-button:nth-child(2) {
+    transform:
+        translateY(30px)
+        scale(0.94);
+}
+
+
+.crystal-button:nth-child(3) {
+    transform:
+        translateY(0)
+        scale(1.04);
+}
+
+
+.crystal-button:nth-child(4) {
+    transform:
+        translateY(-20px)
+        scale(0.91);
+}
+
+
+.crystal-button:nth-child(5) {
+    transform:
+        translateY(-45px)
+        scale(0.78);
+}
+
+
+
+.crystal-button {
+    width: 145px;
+
+    height: 185px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+
+.crystal-button img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        filter 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+
+.crystal-button:hover img {
+    transform:
+        translateY(-7px);
+}
+
+
+
+/* Загоревшийся кристалл */
+
+.crystal-button.is-lit img {
+    animation:
+        crystalGlow
+        0.55s ease;
+}
+
+
+
+@keyframes crystalGlow {
+
+    0% {
+        transform:
+            scale(0.9);
+    }
+
+    55% {
+        transform:
+            scale(1.13);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+
+}
+
+
+
+.crystal-button.is-lit::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15px;
+
+    transform:
+        translateX(-50%);
+
+    width: 110px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 235, 145, 0.58),
+            rgba(207, 174, 255, 0.25) 45%,
+            transparent 75%
+        );
+
+    filter:
+        blur(7px);
+
+    z-index: -1;
+}
+
+
+
+/* Когда испытание завершено */
+
+.crystal-button.task-complete {
+    cursor: default;
+}
+
+
+
+/* ==============================
+   УСПЕХ
+============================== */
+
+
+.crystal-success {
+    width: min(720px, calc(100% - 30px));
+
+    margin:
+        -20px auto 0;
+
+    padding:
+        17px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-radius: 32px;
+
+    background:
+        rgba(255, 251, 255, 0.94);
+
+    box-shadow:
+        0 14px 34px
+        rgba(70, 45, 115, 0.18);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    position: relative;
+
+    z-index: 12;
+}
+
+
+
+.crystal-success.show {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+
+.crystal-success-message {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+
+.crystal-success-message > span {
+    color: #e2b538;
+
+    font-size: 30px;
+}
+
+
+
+.crystal-success-message strong {
+    display: block;
+
+    color: #5b3688;
+
+    font-size: 18px;
+}
+
+
+
+.crystal-success-message p {
+    margin:
+        3px 0 0;
+
+    color: #66586f;
+
+    font-size: 14px;
+}
+
+
+
+.crystal-next-button {
+    flex-shrink: 0;
+
+    border: none;
+
+    padding:
+        13px 21px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a36ed5,
+            #7142a9
+        );
+
+    color: white;
+
+    font-weight: 800;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px
+        rgba(94, 55, 150, 0.22);
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+
+@media (max-width: 750px) {
+
+
+    .crystal-game-screen {
+        padding:
+            15px 12px 30px;
+
+        background-position:
+            58% bottom;
+    }
+
+
+
+    .crystal-game-top {
+        grid-template-columns:
+            auto 1fr;
+
+        gap: 8px;
+    }
+
+
+
+    .crystal-game-back {
+        padding:
+            10px 14px;
+
+        font-size: 13px;
+    }
+
+
+
+    .crystal-game-number {
+        padding:
+            10px 14px;
+
+        font-size: 13px;
+    }
+
+
+
+    .crystal-game-progress {
+        grid-column:
+            1 / -1;
+
+        justify-self: center;
+
+        padding:
+            9px 13px;
+    }
+
+
+
+    .crystal-game-progress span {
+        width: 13px;
+
+        height: 13px;
+    }
+
+
+
+    .crystal-game-title {
+        margin:
+            22px auto 8px;
+
+        padding:
+            16px 18px;
+
+        border-radius: 26px;
+    }
+
+
+
+    .crystal-game-title h1 {
+        font-size: 29px;
+    }
+
+
+
+    .crystal-game-title p {
+        font-size: 14px;
+    }
+
+
+
+    .crystal-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 0;
+    }
+
+
+
+    .crystal-game-lumi {
+        width: 100%;
+
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+
+    .crystal-game-lumi img {
+        width: 190px;
+
+        transform:
+            translateY(5px);
+    }
+
+
+
+    .crystal-path {
+        width: 100%;
+
+        min-height: 270px;
+
+        order: 1;
+
+        align-items: center;
+
+        gap: 0;
+
+        padding:
+            5px 0 0;
+    }
+
+
+
+    .crystal-button {
+        width: 82px;
+
+        height: 115px;
+    }
+
+
+
+    .crystal-button:nth-child(1) {
+        transform:
+            translateY(28px)
+            scale(0.78);
+    }
+
+
+    .crystal-button:nth-child(2) {
+        transform:
+            translateY(10px)
+            scale(0.90);
+    }
+
+
+    .crystal-button:nth-child(3) {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+
+    .crystal-button:nth-child(4) {
+        transform:
+            translateY(8px)
+            scale(0.88);
+    }
+
+
+    .crystal-button:nth-child(5) {
+        transform:
+            translateY(25px)
+            scale(0.76);
+    }
+
+
+
+    .crystal-success {
+        margin-top: 5px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 12px;
+
+        padding:
+            15px 18px;
+    }
+
+
+
+    .crystal-success-message {
+        justify-content: center;
+    }
+
+
+}
+/* ==========================================
+   КРИСТАЛЬНАЯ ТРОПА
+   ЗАДАНИЕ 2 — НАЙДИ ОТЛИЧАЮЩИЙСЯ КРИСТАЛЛ
+========================================== */
+
+
+/* Текущий этап прогресса */
+
+/* ==========================================
+   КРИСТАЛЬНАЯ ТРОПА
+   ЗАДАНИЕ 2
+========================================== */
+
+
+/* Текущий этап */
+
+.crystal-game-progress span.current {
+    background:
+        rgba(167, 116, 220, 0.25);
+
+    border-color: #8b61ba;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(158, 103, 210, 0.12);
+}
+
+
+
+/* Заголовок */
+
+.task2-title {
+    max-width: 850px;
+}
+
+
+
+/* ==========================================
+   ОСНОВНАЯ ОБЛАСТЬ
+========================================== */
+
+.task2-game-area {
+    width: min(1250px, 100%);
+
+    min-height: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 35px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==========================================
+   ЛУМИ
+========================================== */
+
+.task2-lumi {
+    width: 28%;
+
+    min-width: 250px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.task2-lumi img {
+    width: min(355px, 100%);
+
+    height: auto;
+
+    display: block;
+
+    transform:
+        translateY(32px);
+
+    filter:
+        saturate(0.88)
+        brightness(0.97)
+        drop-shadow(
+            0 18px 18px
+            rgba(55, 35, 95, 0.18)
+        );
+}
+
+
+
+/* ==========================================
+   ПЛОЩАДКА
+========================================== */
+
+.task2-stage {
+    flex: 1;
+
+    min-height: 370px;
+
+    padding:
+        35px 30px 25px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    position: relative;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.12),
+            rgba(105,77,151,0.14)
+        );
+
+    box-shadow:
+        inset 0 -12px 25px
+        rgba(70,48,110,0.08);
+}
+
+
+
+/* Свет под кристаллами */
+
+.task2-stage::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15px;
+
+    transform:
+        translateX(-50%);
+
+    width: 85%;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(238,218,255,0.48),
+            rgba(196,161,233,0.16) 55%,
+            transparent 80%
+        );
+
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+
+
+/* ==========================================
+   ЧЕТЫРЕ КРИСТАЛЛА
+========================================== */
+
+.task2-options {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    align-items: end;
+
+    gap: 24px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.task2-crystal {
+    height: 280px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+
+/* Основной кристалл */
+
+.task2-crystal .main-crystal {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+
+/* ==========================================
+   ДОПОЛНИТЕЛЬНЫЙ МАЛЕНЬКИЙ ОСКОЛОК
+========================================== */
+
+.task2-crystal .extra-shard {
+    position: absolute;
+
+    width: 62px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    left: 9%;
+
+    bottom: 7px;
+
+    transform:
+        rotate(-13deg);
+
+    filter:
+        brightness(0.98)
+        saturate(0.95);
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+
+/* небольшое различие расположений,
+   чтобы не выглядело копипастой */
+
+.task2-crystal:nth-child(2) .extra-shard {
+    left: 11%;
+    transform:
+        rotate(-10deg);
+}
+
+
+.task2-crystal:nth-child(4) .extra-shard {
+    left: 8%;
+    transform:
+        rotate(-15deg);
+}
+
+
+
+/* Наведение */
+
+.task2-crystal:hover .main-crystal {
+    transform:
+        translateY(-6px);
+}
+
+
+
+/* ==========================================
+   НЕПРАВИЛЬНЫЙ ВЫБОР
+========================================== */
+
+.task2-crystal.wrong {
+    animation:
+        task2Shake
+        0.4s ease;
+}
+
+
+@keyframes task2Shake {
+
+    0% {
+        transform:
+            translateX(0);
+    }
+
+    25% {
+        transform:
+            translateX(-7px);
+    }
+
+    50% {
+        transform:
+            translateX(7px);
+    }
+
+    75% {
+        transform:
+            translateX(-4px);
+    }
+
+    100% {
+        transform:
+            translateX(0);
+    }
+
+}
+
+
+
+/* ==========================================
+   ПРАВИЛЬНЫЙ ВЫБОР
+========================================== */
+
+.task2-crystal.correct .main-crystal {
+    animation:
+        task2Correct
+        0.7s ease forwards;
+
+    filter:
+        brightness(1.12)
+        saturate(1.08)
+        drop-shadow(
+            0 0 22px
+            rgba(244,214,139,0.75)
+        );
+}
+
+
+@keyframes task2Correct {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            translateY(-16px)
+            scale(1.1);
+    }
+
+    100% {
+        transform:
+            translateY(-9px)
+            scale(1.05);
+    }
+
+}
+
+
+.task2-crystal.correct::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 25px;
+
+    color: #e8bd3c;
+
+    font-size: 32px;
+
+    animation:
+        task2Sparkle
+        0.8s ease infinite alternate;
+}
+
+
+@keyframes task2Sparkle {
+
+    from {
+        opacity: 0.5;
+
+        transform:
+            scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1.15);
+    }
+
+}
+
+
+
+/* После правильного ответа */
+
+.task2-crystal.finished:not(.correct) {
+    cursor: default;
+
+    opacity: 0.8;
+
+    filter:
+        saturate(0.82);
+}
+
+
+
+/* ==========================================
+   ПОДСКАЗКА
+========================================== */
+
+.task2-hint {
+    width: fit-content;
+
+    margin:
+        -4px auto 14px;
+
+    padding:
+        10px 18px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,251,255,0.93);
+
+    color: #72518f;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    transform:
+        translateY(7px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    pointer-events: none;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.task2-hint.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (max-width: 750px) {
+
+
+    .task2-title h1 {
+        font-size: 27px;
+    }
+
+
+    .task2-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 0;
+    }
+
+
+    .task2-stage {
+        width: 100%;
+
+        min-height: 260px;
+
+        padding:
+            22px 8px 18px;
+
+        order: 1;
+
+        border-radius: 30px;
+    }
+
+
+    .task2-options {
+        gap: 4px;
+    }
+
+
+    .task2-crystal {
+        height: 175px;
+    }
+
+
+    .task2-crystal .extra-shard {
+        width: 38px;
+
+        height: 56px;
+
+        left: 5%;
+
+        bottom: 8px;
+    }
+
+
+    .task2-lumi {
+        width: 100%;
+
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .task2-lumi img {
+        width: 190px;
+
+        transform:
+            translateY(5px);
+    }
+
+
+    .task2-hint {
+        margin-top: 5px;
+
+        font-size: 13px;
+    }
+
+}
+/* ==========================================
+   КРИСТАЛЬНАЯ ТРОПА
+   ЗАДАНИЕ 3 — ПОЧИНИ МОСТ
+========================================== */
+
+
+.bridge-title {
+    max-width: 820px;
+}
+
+
+
+/* ==============================
+   ИГРОВАЯ ОБЛАСТЬ
+============================== */
+
+
+.bridge-game-area {
+    width: min(1300px, 100%);
+
+    min-height: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==============================
+   ЛУМИ
+============================== */
+
+
+.bridge-lumi {
+    width: 24%;
+
+    min-width: 230px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.bridge-lumi img {
+    width: min(320px, 100%);
+
+    height: auto;
+
+    display: block;
+
+    transform:
+        translateY(30px);
+
+    filter:
+    saturate(0.78)
+    brightness(0.94)
+    contrast(0.96)
+    hue-rotate(4deg)
+    drop-shadow(
+        0 16px 18px
+        rgba(55,35,95,0.15)
+    );
+}
+
+
+
+/* ==============================
+   МОСТ
+============================== */
+
+
+.bridge-scene {
+    width: 76%;
+
+    max-width: 900px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.bridge-wrapper {
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.broken-bridge {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 16px 18px
+            rgba(57,39,90,0.16)
+        );
+}
+
+
+
+/* ==============================
+   КАМЕНЬ, КОТОРЫЙ ВСТАЁТ В МОСТ
+============================== */
+
+
+.bridge-fixed-piece {
+    position: absolute;
+
+    width: 15%;
+
+    left: 50%;
+
+    top: 6%;
+
+    transform:
+        translate(-50%, -20px)
+        scale(0.75);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255,220,120,0.75)
+        );
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.55s ease;
+
+    z-index: 5;
+}
+
+
+.bridge-fixed-piece.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 55px)
+        scale(1);
+}
+
+
+
+/* ==============================
+   ВАРИАНТЫ КАМНЕЙ
+============================== */
+
+
+.bridge-options {
+    width: min(700px, 100%);
+
+    margin-top: -5px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+
+    align-items: center;
+}
+
+
+.bridge-option {
+    height: 130px;
+
+    padding: 10px;
+
+    border: 2px solid
+        rgba(255,255,255,0.65);
+
+    border-radius: 26px;
+
+    background:
+        rgba(255,251,255,0.77);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 24px
+        rgba(73,48,116,0.12);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+
+.bridge-option:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 15px 28px
+        rgba(73,48,116,0.18);
+}
+
+
+.bridge-option img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+
+/* ==============================
+   ОШИБКА
+============================== */
+
+
+.bridge-option.wrong {
+    animation:
+        bridgeWrong
+        0.42s ease;
+}
+
+
+@keyframes bridgeWrong {
+
+    0% {
+        transform:
+            translateX(0);
+    }
+
+    25% {
+        transform:
+            translateX(-7px);
+    }
+
+    50% {
+        transform:
+            translateX(7px);
+    }
+
+    75% {
+        transform:
+            translateX(-4px);
+    }
+
+    100% {
+        transform:
+            translateX(0);
+    }
+
+}
+
+
+
+/* ==============================
+   ПРАВИЛЬНЫЙ ВАРИАНТ
+============================== */
+
+
+.bridge-option.correct {
+    border-color:
+        rgba(235,197,85,0.8);
+
+    box-shadow:
+        0 0 25px
+        rgba(245,210,100,0.45);
+
+    animation:
+        bridgeCorrect
+        0.55s ease;
+}
+
+
+@keyframes bridgeCorrect {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+
+}
+
+
+.bridge-option.finished:not(.correct) {
+    opacity: 0.62;
+
+    cursor: default;
+}
+
+
+
+/* ==============================
+   ПОДСКАЗКА
+============================== */
+
+
+.bridge-hint {
+    width: fit-content;
+
+    margin:
+        2px auto 15px;
+
+    padding:
+        10px 18px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,251,255,0.94);
+
+    color: #72518f;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    transform:
+        translateY(7px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    pointer-events: none;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+.bridge-hint.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+
+@media (max-width: 750px) {
+
+
+    .bridge-title h1 {
+        font-size: 29px;
+    }
+
+
+    .bridge-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 5px;
+    }
+
+
+    .bridge-scene {
+        width: 100%;
+
+        order: 1;
+    }
+
+
+    .broken-bridge {
+        width: 100%;
+    }
+
+
+    .bridge-fixed-piece {
+    width: 16%;
+    top: 5%;
+}
+
+.bridge-fixed-piece.show {
+    transform:
+        translate(-50%, 38px)
+        scale(1);
+}
+
+
+    .bridge-options {
+        width: 100%;
+
+        gap: 7px;
+
+        margin-top: 0;
+    }
+
+
+    .bridge-option {
+        height: 90px;
+
+        padding: 6px;
+
+        border-radius: 18px;
+    }
+
+
+    .bridge-lumi {
+        width: 100%;
+
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .bridge-lumi img {
+        width: 180px;
+
+        transform:
+            translateY(5px);
+    }
+
+
+    .bridge-hint {
+        font-size: 13px;
+    }
+
+}
+/* ==========================================
+   ЗАДАНИЕ 3 — ПОМЕЩАЕМ В ОДИН ЭКРАН
+========================================== */
+
+@media (min-width: 751px) {
+
+    .bridge-page-screen {
+        height: 100vh;
+        min-height: 0;
+
+        overflow: hidden;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* Верхняя панель остаётся компактной */
+
+    .bridge-page-screen .crystal-game-top {
+        flex-shrink: 0;
+    }
+
+
+    /* Заголовок чуть компактнее */
+
+    .bridge-page-screen .crystal-game-title {
+        margin: 18px auto 8px;
+
+        padding: 14px 32px 16px;
+
+        flex-shrink: 0;
+    }
+
+
+    .bridge-page-screen .crystal-game-title h1 {
+        font-size: 38px;
+    }
+
+
+    .bridge-page-screen .crystal-game-title p {
+        font-size: 15px;
+    }
+
+
+    /* Игровое поле занимает оставшееся место */
+
+    .bridge-page-screen .bridge-game-area {
+        flex: 1;
+
+        min-height: 0;
+
+        margin-top: 0;
+
+        align-items: center;
+    }
+
+
+    /* Сам мост немного ограничиваем по высоте */
+
+    .bridge-page-screen .broken-bridge {
+        max-height: 38vh;
+
+        width: 100%;
+
+        object-fit: contain;
+    }
+
+
+    /* Луми тоже не растягивает страницу */
+
+    .bridge-page-screen .bridge-lumi img {
+        max-height: 39vh;
+
+        width: auto;
+
+        max-width: 100%;
+
+        transform: none;
+    }
+
+
+    /* Детали моста */
+
+    .bridge-page-screen .bridge-options {
+        margin-top: 4px;
+    }
+
+
+    .bridge-page-screen .bridge-option {
+        height: 105px;
+    }
+
+
+    /* Подсказка не увеличивает страницу */
+
+    .bridge-page-screen .bridge-hint {
+        position: absolute;
+
+        left: 50%;
+        bottom: 95px;
+
+        margin: 0;
+
+        transform: translate(-50%, 7px);
+    }
+
+
+    .bridge-page-screen .bridge-hint.show {
+        transform: translate(-50%, 0);
+    }
+
+
+    /* Блок успеха тоже лежит поверх страницы,
+       а не добавляет ей высоту */
+
+    .bridge-page-screen .crystal-success {
+        position: absolute;
+
+        left: 50%;
+        bottom: 18px;
+
+        margin: 0;
+
+        transform: translate(-50%, 20px);
+    }
+
+
+    .bridge-page-screen .crystal-success.show {
+        transform: translate(-50%, 0);
+    }
+
+}
+/* ==========================================
+   КРИСТАЛЬНАЯ ТРОПА
+   ЗАДАНИЕ 4 — УГОСТИ СВЕТЛЯЧКА
+========================================== */
+
+
+.firefly-title {
+    max-width: 760px;
+}
+
+
+
+/* ==========================================
+   ВЕСЬ ЭКРАН
+========================================== */
+
+@media (min-width: 751px) {
+
+    .firefly-page-screen {
+        height: 100vh;
+        min-height: 0;
+
+        overflow: hidden;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .firefly-page-screen .crystal-game-top {
+        flex-shrink: 0;
+    }
+
+
+    .firefly-page-screen .crystal-game-title {
+        flex-shrink: 0;
+
+        margin:
+            16px auto 7px;
+
+        padding:
+            13px 30px 15px;
+    }
+
+
+    .firefly-page-screen .crystal-game-title h1 {
+        font-size: 38px;
+    }
+
+}
+
+
+
+/* ==========================================
+   ИГРОВАЯ ОБЛАСТЬ
+========================================== */
+
+.firefly-game-area {
+    width: min(1250px, 100%);
+
+    flex: 1;
+
+    min-height: 0;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==========================================
+   ЛУМИ
+========================================== */
+
+.firefly-lumi {
+    width: 25%;
+
+    min-width: 230px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+}
+
+
+.firefly-lumi img {
+    width: min(315px, 100%);
+
+    max-height: 46vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        saturate(0.82)
+        brightness(0.96)
+        contrast(0.97)
+        drop-shadow(
+            0 16px 18px
+            rgba(55,35,95,0.16)
+        );
+}
+
+
+
+/* ==========================================
+   ОСНОВНАЯ ПАНЕЛЬ
+========================================== */
+
+.firefly-stage {
+    width: 75%;
+
+    max-width: 850px;
+
+    min-height: 430px;
+
+    padding:
+        18px 30px 22px;
+
+    border-radius: 42px;
+
+    background:
+        rgba(255,251,255,0.76);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.75);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 15px 36px
+        rgba(70,47,112,0.14);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+
+/* ==========================================
+   СВЕТЛЯЧОК
+========================================== */
+
+.firefly-character {
+    height: 185px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding-bottom: 48px;
+}
+
+
+.firefly-character > img {
+    width: 145px;
+
+    height: 145px;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+
+    filter:
+        drop-shadow(
+            0 7px 14px
+            rgba(255,210,76,0.25)
+        );
+}
+
+
+
+/* Когда ребёнок справился */
+
+.firefly-character > img.happy {
+    transform:
+        scale(1.12);
+
+    filter:
+        brightness(1.08)
+        drop-shadow(
+            0 0 25px
+            rgba(255,216,85,0.72)
+        );
+}
+
+
+
+/* ==========================================
+   ТРИ ОГОНЬКА
+========================================== */
+
+/* ==========================================
+   4 ОГОНЬКА ДЛЯ СЧЁТА
+========================================== */
+
+.magic-lights {
+    position: absolute;
+
+    left: 50%;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 9px 16px;
+
+    border-radius: 28px;
+
+    background: rgba(255, 252, 238, 0.90);
+
+    box-shadow:
+        0 8px 22px
+        rgba(104, 73, 135, 0.12);
+
+    z-index: 5;
+}
+
+
+.magic-lights span {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 38% 32%,
+            #ffffff 0%,
+            #fff7c9 18%,
+            #ffe36f 48%,
+            #f4b82e 78%,
+            #d99a14 100%
+        );
+
+    border:
+        2px solid
+        rgba(255, 236, 150, 0.95);
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 228, 103, 0.95),
+        0 0 18px
+        rgba(255, 204, 65, 0.70);
+
+    animation:
+        clearLightPulse
+        1.5s ease-in-out
+        infinite alternate;
+}
+
+
+.magic-lights span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.magic-lights span:nth-child(3) {
+    animation-delay: 0.30s;
+}
+
+.magic-lights span:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+
+@keyframes clearLightPulse {
+
+    from {
+        transform: scale(0.96);
+        filter: brightness(0.97);
+    }
+
+    to {
+        transform: scale(1.06);
+        filter: brightness(1.10);
+    }
+
+}
+
+
+
+/* ==========================================
+   ТЕКСТ
+========================================== */
+
+.firefly-instruction {
+    margin:
+        3px auto 8px;
+
+    text-align: center;
+
+    color: #5e4679;
+}
+
+
+.firefly-instruction strong {
+    display: block;
+
+    font-size: 20px;
+
+    color: #5d358d;
+}
+
+
+.firefly-instruction p {
+    margin:
+        3px 0 0;
+
+    font-size: 14px;
+}
+
+
+
+/* ==========================================
+   ЯЧЕЙКИ ДЛЯ ЯГОД
+========================================== */
+
+.berry-slots {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin:
+        4px 0 9px;
+}
+
+
+.berry-slot {
+    width: 68px;
+
+    height: 68px;
+
+    border-radius: 50%;
+
+    border:
+        2px dashed
+        rgba(116,81,159,0.38);
+
+    background:
+        rgba(241,231,255,0.40);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        background 0.25s ease;
+}
+
+
+.berry-slot img {
+    width: 62px;
+
+    height: 62px;
+
+    object-fit: contain;
+
+    animation:
+        berryAppear
+        0.35s ease;
+}
+
+
+@keyframes berryAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.6)
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+
+
+/* ==========================================
+   ПЯТЬ ЯГОД
+========================================== */
+
+.berry-options {
+    width: min(570px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+
+.berry-option {
+    height: 90px;
+
+    padding: 5px;
+
+    border: none;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.62);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        opacity 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+
+.berry-option img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.berry-option:hover {
+    transform:
+        translateY(-5px);
+}
+
+
+.berry-option.selected {
+    transform:
+        translateY(-7px)
+        scale(0.92);
+
+    opacity: 0.36;
+
+    box-shadow:
+        0 0 18px
+        rgba(139,91,195,0.22);
+}
+
+
+.berry-option.finished {
+    cursor: default;
+}
+
+
+
+/* ==========================================
+   ПОДСКАЗКА
+========================================== */
+
+.firefly-hint {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 94px;
+
+    transform:
+        translate(-50%, 7px);
+
+    padding:
+        10px 18px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,251,255,0.95);
+
+    color: #72518f;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: 11;
+}
+
+
+.firefly-hint.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+
+/* ==========================================
+   РЕЗУЛЬТАТ НЕ УВЕЛИЧИВАЕТ СТРАНИЦУ
+========================================== */
+
+@media (min-width: 751px) {
+
+    .firefly-page-screen .crystal-success {
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 17px;
+
+        margin: 0;
+
+        transform:
+            translate(-50%, 20px);
+    }
+
+
+    .firefly-page-screen .crystal-success.show {
+        transform:
+            translate(-50%, 0);
+    }
+
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (max-width: 750px) {
+
+
+    .firefly-title h1 {
+        font-size: 29px;
+    }
+
+
+    .firefly-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .firefly-stage {
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            20px 12px;
+
+        border-radius: 30px;
+
+        order: 1;
+    }
+
+
+    .firefly-character {
+        height: 125px;
+    }
+
+
+    .firefly-character > img {
+        width: 120px;
+
+        height: 120px;
+    }
+
+
+    .magic-lights {
+        right: -60px;
+
+        top: 16px;
+
+        transform:
+            scale(0.82);
+    }
+
+
+    .firefly-instruction strong {
+        font-size: 18px;
+    }
+
+
+    .berry-slots {
+        gap: 9px;
+    }
+
+
+    .berry-slot {
+        width: 58px;
+
+        height: 58px;
+    }
+
+
+    .berry-slot img {
+        width: 52px;
+
+        height: 52px;
+    }
+
+
+    .berry-options {
+        gap: 4px;
+    }
+
+
+    .berry-option {
+        height: 72px;
+
+        padding: 2px;
+
+        border-radius: 16px;
+    }
+
+
+    .firefly-lumi {
+        width: 100%;
+
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .firefly-lumi img {
+        width: 170px;
+
+        max-height: none;
+    }
+
+
+    .firefly-hint {
+        position: fixed;
+
+        bottom: 20px;
+
+        font-size: 13px;
+    }
+
+}
+.magic-lights {
+    left: 185%;
+
+    bottom: -5px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-width: 190px;
+
+    padding: 8px 16px;
+
+    border-radius: 28px;
+
+    background: rgba(255, 252, 238, 0.92);
+
+    box-shadow:
+        0 8px 22px
+        rgba(104, 73, 135, 0.12);
+}
+.magic-lights span {
+    width: 29px;
+    height: 29px;
+}
+.magic-lights span {
+    width: 29px;
+    height: 29px;
+}
+/* ==========================================
+   ЗАДАНИЕ 4 — НОВАЯ МЕХАНИКА
+========================================== */
+
+
+/* ЧЕТВЁРТЫЙ ОГОНЁК */
+
+.magic-lights span:nth-child(4) {
+    top: 76px;
+    left: 48px;
+}
+
+
+
+/* ==============================
+   ВЫБРАННЫЕ ЯГОДЫ
+============================== */
+
+.chosen-berries {
+    min-height: 70px;
+
+    margin: 5px 0 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.chosen-berries img {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    animation:
+        chosenBerryAppear
+        0.3s ease;
+}
+
+
+@keyframes chosenBerryAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.5)
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+}
+
+
+
+/* ==============================
+   6 ЯГОД
+============================== */
+
+.berry-options {
+    width: min(650px, 100%);
+
+    grid-template-columns:
+        repeat(6, 1fr);
+}
+
+
+.berry-option {
+    height: 82px;
+}
+
+
+
+/* Выбранная ягода снизу остаётся видимой,
+   но становится приглушённой */
+
+.berry-option.selected {
+    opacity: 0.34;
+
+    transform:
+        translateY(-4px)
+        scale(0.9);
+}
+
+
+
+/* ==============================
+   КНОПКА ДАЛЕЕ
+============================== */
+
+.firefly-check-button {
+    margin-top: 12px;
+
+    padding:
+        13px 29px;
+
+    border: none;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a66ed8,
+            #7040aa
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 9px 22px
+        rgba(91,53,145,0.25);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.firefly-check-button.show {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+.firefly-check-button.wrong {
+    animation:
+        fireflyButtonWrong
+        0.35s ease;
+}
+
+
+@keyframes fireflyButtonWrong {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-6px);
+    }
+
+    60% {
+        transform: translateX(6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+.firefly-check-button.correct {
+    background:
+        linear-gradient(
+            135deg,
+            #b78ae0,
+            #8551bd
+        );
+
+    box-shadow:
+        0 0 24px
+        rgba(231,198,90,0.35);
+}
+
+
+
+/* ==============================
+   ПОПРОБУЙ ЕЩЁ
+============================== */
+
+.firefly-answer-message {
+    height: 22px;
+
+    margin-top: 7px;
+
+    color: #765596;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    transform:
+        translateY(-4px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.firefly-answer-message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+
+/* ==============================
+   МОБИЛЬНАЯ ВЕРСИЯ
+============================== */
+
+@media (max-width: 750px) {
+
+    .chosen-berries {
+        min-height: 55px;
+
+        gap: 4px;
+    }
+
+
+    .chosen-berries img {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    .berry-options {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        width: 100%;
+
+        gap: 5px;
+    }
+
+
+    .berry-option {
+        height: 65px;
+    }
+
+
+    .firefly-check-button {
+        margin-top: 10px;
+
+        padding:
+            12px 25px;
+
+        font-size: 15px;
+    }
+
+}
+@media (max-width: 750px) {
+
+    .magic-lights {
+        left: 160%;
+
+        bottom: -5px;
+
+        transform: translateX(-50%);
+
+        min-width: 190px;
+
+        gap: 10px;
+
+        padding: 8px 16px;
+    }
+
+    .magic-lights span {
+        width: 29px;
+        height: 29px;
+    }
+
+}
+@media (max-width: 750px) {
+
+    .magic-lights {
+        left: calc(50% + 155px) !important;
+        right: auto !important;
+
+        bottom: 8px;
+
+        transform: translateX(-50%) !important;
+
+        min-width: 190px;
+
+        gap: 10px;
+        padding: 8px 16px;
+    }
+
+}
+@media (min-width: 751px) {
+
+    .magic-lights {
+        left: calc(50% + 150px) !important;
+        right: auto !important;
+
+        bottom: 8px !important;
+
+        transform: translateX(-50%) !important;
+
+        min-width: 180px;
+    }
+
+}
+@media (min-width: 751px) {
+
+    /* Светлячок крупнее */
+
+    .firefly-character {
+        height: 210px;
+    }
+
+    .firefly-character > img {
+        width: 190px;
+        height: 190px;
+    }
+
+
+    /* Блок с огоньками крупнее */
+
+    .magic-lights {
+        left: calc(50% + 165px) !important;
+
+        bottom: 12px !important;
+
+        min-width: 220px;
+
+        gap: 14px;
+
+        padding: 12px 18px;
+
+        border-radius: 32px;
+    }
+
+    .magic-lights span {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* Текст чуть ближе к светлячку */
+
+    .firefly-instruction {
+        margin-top: -2px;
+        margin-bottom: 14px;
+    }
+
+
+    /* Ягоды крупнее */
+
+    .berry-options {
+        width: min(720px, 100%);
+
+        gap: 12px;
+    }
+
+    .berry-option {
+        height: 105px;
+
+        padding: 7px;
+
+        border-radius: 26px;
+    }
+
+
+    /* Вся внутренняя часть чуть компактнее */
+
+    .firefly-stage {
+        justify-content: flex-start;
+
+        padding-top: 20px;
+    }
+
+}
+/* ==========================================
+   ЗАДАНИЕ 5 — СОРТИРОВКА КРИСТАЛЛОВ
+========================================== */
+
+
+.sorting-title {
+    max-width: 820px;
+}
+
+
+
+/* ==========================================
+   ОБЛАСТЬ ЗАДАНИЯ
+========================================== */
+
+.sorting-game-area {
+    width: min(1300px, 100%);
+
+    flex: 1;
+    min-height: 0;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==========================================
+   ЛУМИ
+========================================== */
+
+.sorting-lumi {
+    width: 24%;
+    min-width: 220px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.sorting-lumi img {
+    width: min(320px, 100%);
+    max-height: 48vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        saturate(0.84)
+        brightness(0.96)
+        drop-shadow(
+            0 16px 18px
+            rgba(55,35,95,0.16)
+        );
+}
+
+
+
+/* ==========================================
+   ОСНОВНАЯ ПАНЕЛЬ
+========================================== */
+
+.sorting-stage {
+    width: 76%;
+    max-width: 900px;
+
+    padding:
+        20px 28px 20px;
+
+    border-radius: 40px;
+
+    background:
+        rgba(255,251,255,0.78);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.80);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 15px 36px
+        rgba(70,47,112,0.14);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+
+/* ==========================================
+   КОРЗИНКИ
+========================================== */
+
+.sorting-baskets {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+.sorting-basket {
+    position: relative;
+
+    min-height: 210px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.25);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.sorting-basket > img {
+    width: 100%;
+    height: 210px;
+
+    object-fit: contain;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+
+.sorting-basket:hover {
+    transform: translateY(-3px);
+}
+
+
+.sorting-basket.drag-over {
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    background:
+        rgba(240,226,255,0.58);
+
+    box-shadow:
+        0 0 24px
+        rgba(142,98,196,0.28);
+}
+
+
+
+/* ==========================================
+   ПРАВИЛЬНАЯ КОРЗИНКА
+========================================== */
+
+.sorting-basket.correct {
+    animation:
+        sortingCorrect
+        0.45s ease;
+}
+
+
+@keyframes sortingCorrect {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+
+/* ==========================================
+   НЕПРАВИЛЬНАЯ КОРЗИНКА
+========================================== */
+
+.sorting-basket.wrong {
+    animation:
+        sortingWrong
+        0.35s ease;
+}
+
+
+@keyframes sortingWrong {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-7px);
+    }
+
+    60% {
+        transform: translateX(7px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+
+/* ==========================================
+   КРИСТАЛЛЫ ВНУТРИ КОРЗИН
+========================================== */
+
+.basket-items {
+    position: absolute;
+
+    left: 50%;
+    bottom: 46px;
+
+    transform:
+        translateX(-50%);
+
+    width: 68%;
+
+    min-height: 55px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    gap: 3px;
+
+    pointer-events: none;
+}
+
+
+.basket-items img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    animation:
+        crystalIntoBasket
+        0.35s ease;
+}
+
+
+@keyframes crystalIntoBasket {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-18px)
+            scale(1.18);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+
+/* ==========================================
+   ПОДСКАЗКА
+========================================== */
+
+.sorting-message {
+    min-height: 25px;
+
+    margin:
+        5px 0 7px;
+
+    color: #70508e;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: center;
+
+    opacity: 0.85;
+}
+
+
+
+/* ==========================================
+   КРИСТАЛЛЫ СНИЗУ
+========================================== */
+
+.sorting-crystals {
+    width: min(760px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+
+.sorting-crystal {
+    height: 100px;
+
+    padding: 7px;
+
+    border: none;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.68);
+
+    cursor: grab;
+
+    transition:
+        transform 0.22s ease,
+        opacity 0.25s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.sorting-crystal img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+}
+
+
+.sorting-crystal:hover {
+    transform:
+        translateY(-5px);
+}
+
+
+.sorting-crystal.selected {
+    transform:
+        translateY(-7px)
+        scale(1.04);
+
+    background:
+        rgba(239,224,255,0.92);
+
+    box-shadow:
+        0 0 20px
+        rgba(133,83,185,0.27);
+}
+
+
+.sorting-crystal.dragging {
+    opacity: 0.40;
+}
+
+
+.sorting-crystal.sorted {
+    opacity: 0;
+
+    transform:
+        scale(0.5);
+
+    pointer-events: none;
+}
+
+
+
+/* ==========================================
+   ИНСТРУКЦИЯ
+========================================== */
+
+.sorting-instruction {
+    margin:
+        10px 0 0;
+
+    padding:
+        8px 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.58);
+
+    color: #70508e;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+
+/* ==========================================
+   ДЕСКТОП — ВСЁ В ОДИН ЭКРАН
+========================================== */
+
+@media (min-width: 751px) {
+
+    .sorting-page-screen {
+        height: 100vh;
+        min-height: 0;
+
+        overflow: hidden;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .sorting-page-screen
+    .crystal-game-top {
+        flex-shrink: 0;
+    }
+
+
+    .sorting-page-screen
+    .crystal-game-title {
+        flex-shrink: 0;
+
+        margin:
+            16px auto 7px;
+
+        padding:
+            13px 30px 15px;
+    }
+
+
+    .sorting-page-screen
+    .crystal-game-title h1 {
+        font-size: 38px;
+    }
+
+
+    .sorting-page-screen
+    .crystal-success {
+        position: absolute;
+
+        left: 50%;
+        bottom: 17px;
+
+        margin: 0;
+
+        transform:
+            translate(-50%, 20px);
+    }
+
+
+    .sorting-page-screen
+    .crystal-success.show {
+        transform:
+            translate(-50%, 0);
+    }
+
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (max-width: 750px) {
+
+    .sorting-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+
+    .sorting-stage {
+        width: 100%;
+
+        padding:
+            16px 10px 18px;
+
+        border-radius: 30px;
+
+        order: 1;
+    }
+
+
+    .sorting-baskets {
+        gap: 7px;
+    }
+
+
+    .sorting-basket {
+        min-height: 145px;
+
+        border-radius: 22px;
+    }
+
+
+    .sorting-basket > img {
+        height: 145px;
+    }
+
+
+    .basket-items {
+        bottom: 30px;
+
+        width: 75%;
+
+        gap: 1px;
+    }
+
+
+    .basket-items img {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .sorting-crystals {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 5px;
+    }
+
+
+    .sorting-crystal {
+        height: 78px;
+
+        padding: 4px;
+
+        border-radius: 17px;
+    }
+
+
+    .sorting-instruction {
+        font-size: 12px;
+
+        padding:
+            7px 10px;
+    }
+
+
+    .sorting-lumi {
+        width: 100%;
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .sorting-lumi img {
+        width: 190px;
+
+        max-height: none;
+    }
+
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Зажги кристаллы — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=5"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen">
+
+
+    <!-- Верхняя панель -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            1 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Заголовок задания -->
+
+    <div class="crystal-game-title">
+
+        <span>
+            Первое испытание
+        </span>
+
+        <h1>
+            Зажги 3 кристалла ✦
+        </h1>
+
+        <p>
+            Нажми на три потухших кристалла,
+            чтобы осветить дорогу Луми.
+        </p>
+
+    </div>
+
+
+
+    <!-- Игровое поле -->
+
+    <section class="crystal-game-area">
+
+
+        <!-- Луми -->
+
+        <div class="crystal-game-lumi">
+
+            <img
+                src="images/lumi-crystal.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- Кристаллы -->
+
+        <div class="crystal-path">
+
+
+            <button
+                class="crystal-button"
+                aria-label="Кристалл 1"
+            >
+                <img
+                    src="images/crystal-off.png"
+                    alt=""
+                >
+            </button>
+
+
+            <button
+                class="crystal-button"
+                aria-label="Кристалл 2"
+            >
+                <img
+                    src="images/crystal-off.png"
+                    alt=""
+                >
+            </button>
+
+
+            <button
+                class="crystal-button"
+                aria-label="Кристалл 3"
+            >
+                <img
+                    src="images/crystal-off.png"
+                    alt=""
+                >
+            </button>
+
+
+            <button
+                class="crystal-button"
+                aria-label="Кристалл 4"
+            >
+                <img
+                    src="images/crystal-off.png"
+                    alt=""
+                >
+            </button>
+
+
+            <button
+                class="crystal-button"
+                aria-label="Кристалл 5"
+            >
+                <img
+                    src="images/crystal-off.png"
+                    alt=""
+                >
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- Ответ -->
+
+    <div
+        class="crystal-success"
+        id="crystalSuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+                <strong>
+                    Получилось!
+                </strong>
+
+                <p>
+                    Три кристалла сияют.
+                    Путь открыт!
+                </p>
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="nextTask"
+        >
+            Дальше →
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const crystals =
+    document.querySelectorAll(".crystal-button");
+
+const success =
+    document.getElementById("crystalSuccess");
+
+const nextTask =
+    document.getElementById("nextTask");
+
+let selectedCrystals = 0;
+let taskFinished = false;
+
+
+crystals.forEach(crystal => {
+
+    crystal.addEventListener("click", () => {
+
+        if (taskFinished) {
+            return;
+        }
+
+
+        const image =
+            crystal.querySelector("img");
+
+
+        /* Если кристалл уже выбран —
+           можно его снова выключить */
+
+        if (crystal.classList.contains("is-lit")) {
+
+            crystal.classList.remove("is-lit");
+
+            image.src =
+                "images/crystal-off.png";
+
+            selectedCrystals--;
+
+            return;
+        }
+
+
+        /* Включаем новый кристалл */
+
+        crystal.classList.add("is-lit");
+
+        image.src =
+            "images/crystal-on.png";
+
+        selectedCrystals++;
+
+
+
+        /* Выбрано ровно три */
+
+        if (selectedCrystals === 3) {
+
+            taskFinished = true;
+
+
+            crystals.forEach(item => {
+                item.classList.add("task-complete");
+            });
+
+
+            setTimeout(() => {
+
+                success.classList.add("show");
+
+            }, 500);
+
+        }
+
+    });
+
+});
+
+
+/* Второе задание сделаем следующим шагом */
+
+nextTask.addEventListener("click", () => {
+
+    window.location.href =
+        "crystal-trail-2.html";
+
+});
+
+</script>
+
+
+</body>
+
+</html>

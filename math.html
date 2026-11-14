@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счёт и математика — Луми</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="logo">Луми<span>☾✦</span></a>
+
+    <nav class="navigation">
+        <a href="index.html">Главная</a>
+        <a href="tasks.html" class="active">Задания</a>
+        <a href="index.html#adventures">Приключения</a>
+        <a href="index.html#benefits">Для родителей</a>
+    </nav>
+
+    <div class="header-icons">
+        <button aria-label="Поиск">⌕</button>
+        <button aria-label="Профиль">♙</button>
+    </div>
+</header>
+
+<main>
+
+<section class="subject-hero">
+    <a href="tasks.html" class="back-link">← Все задания</a>
+
+    <span class="subject-label">✦ Счёт и математика</span>
+
+    <h1>Математические приключения Луми</h1>
+
+    <p>
+        Считай, сравнивай и решай маленькие задачки вместе с Луми.
+    </p>
+</section>
+
+
+<section class="game-card">
+
+    <div class="game-top">
+        <span class="game-number">Задание 1</span>
+        <span class="game-age">3–4 года</span>
+    </div>
+
+    <h2>Сколько звёздочек?</h2>
+
+    <p class="game-instruction">
+        Посчитай звёздочки и выбери правильный ответ.
+    </p>
+
+    <div class="stars-task">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+    </div>
+
+    <div class="answer-buttons">
+        <button data-answer="4">4</button>
+        <button data-answer="5">5</button>
+        <button data-answer="6">6</button>
+    </div>
+
+    <div class="game-result" id="gameResult"></div>
+
+</section>
+
+
+<section class="coming-tasks">
+
+    <h2>Дальше в этом разделе</h2>
+
+    <div class="coming-grid">
+
+        <article>
+            <span>02</span>
+            <h3>Что больше?</h3>
+            <p>Сравни две группы предметов.</p>
+        </article>
+
+        <article>
+            <span>03</span>
+            <h3>Продолжи ряд</h3>
+            <p>Найди закономерность.</p>
+        </article>
+
+        <article>
+            <span>04</span>
+            <h3>Первый пример</h3>
+            <p>Реши простую задачку вместе с Луми.</p>
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Луми — мир маленьких открытий ✦</p>
+</footer>
+
+
+<script>
+
+const answerButtons = document.querySelectorAll(".answer-buttons button");
+const gameResult = document.getElementById("gameResult");
+
+answerButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        answerButtons.forEach(btn => {
+            btn.classList.remove("correct-answer", "wrong-answer");
+        });
+
+        const answer = button.dataset.answer;
+
+        if (answer === "5") {
+
+            button.classList.add("correct-answer");
+
+            gameResult.innerHTML =
+                "✦ Правильно! Здесь 5 звёздочек.";
+
+            gameResult.className =
+                "game-result success";
+
+        } else {
+
+            button.classList.add("wrong-answer");
+
+            gameResult.innerHTML =
+                "Попробуй ещё раз ✦";
+
+            gameResult.className =
+                "game-result try-again";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
