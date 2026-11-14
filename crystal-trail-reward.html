@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Кристалл открытий — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=14"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-reward-page">
+
+
+    <!-- СИЯНИЕ -->
+
+    <div class="reward-glow"></div>
+
+
+    <!-- ЛУМИ -->
+
+    <div class="reward-lumi">
+
+        <img
+            src="images/lumi-reward.png"
+            alt="Луми"
+        >
+
+    </div>
+
+
+
+    <!-- ОСНОВНАЯ КАРТОЧКА -->
+
+    <section class="reward-card">
+
+
+        <div class="reward-small-title">
+            Приключение завершено ✦
+        </div>
+
+
+        <h1>
+            Ты прошёл<br>
+            Кристальную тропу!
+        </h1>
+
+
+        <p class="reward-description">
+            Все семь испытаний пройдены.
+            Ты нашёл главный кристалл этого приключения.
+        </p>
+
+
+
+        <!-- КРИСТАЛЛ -->
+
+        <div class="reward-crystal-wrap">
+
+            <div class="reward-rays"></div>
+
+            <img
+                src="images/crystal-discovery.png"
+                alt="Кристалл открытий"
+                class="reward-crystal"
+            >
+
+        </div>
+
+
+
+        <div class="reward-name">
+
+            <span>✦</span>
+
+            <div>
+                <small>
+                    Твоя награда
+                </small>
+
+                <strong>
+                    Кристалл открытий
+                </strong>
+            </div>
+
+            <span>✦</span>
+
+        </div>
+
+
+
+        <p class="reward-final-text">
+            Кристалл открытий теперь твой.
+        </p>
+
+
+
+        <a
+            href="crystal-world.html"
+            class="reward-button"
+        >
+            Вернуться в Кристальный мир →
+        </a>
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+const rewardCrystal =
+    document.querySelector(
+        ".reward-crystal"
+    );
+
+
+setTimeout(() => {
+
+    rewardCrystal.classList.add(
+        "show"
+    );
+
+}, 250);
+
+</script>
+
+
+</body>
+
+</html>
