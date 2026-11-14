@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Продолжи узор — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=12"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen pattern-page-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-5.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            6 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+
+            <span class="current"></span>
+
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title pattern-title">
+
+        <span>
+            Шестое испытание
+        </span>
+
+        <h1>
+            Продолжи волшебный узор ✦
+        </h1>
+
+        <p>
+            Посмотри внимательно и найди, что должно быть дальше.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВАЯ ОБЛАСТЬ -->
+
+    <section class="pattern-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="pattern-lumi">
+
+            <img
+                src="images/lumi-pattern.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- ЗАДАНИЕ -->
+
+        <div class="pattern-stage">
+
+
+            <!-- УЗОР -->
+
+            <div class="magic-pattern">
+
+
+                <!-- КРИСТАЛЛ -->
+
+                <div class="pattern-cell">
+
+                    <img
+                        src="images/crystal-round-1.png"
+                        alt="Круглый кристалл"
+                    >
+
+                </div>
+
+
+
+                <!-- ЗВЕЗДА -->
+
+                <div class="pattern-cell">
+
+                    <div class="pattern-star">
+                        ✦
+                    </div>
+
+                </div>
+
+
+
+                <!-- КРИСТАЛЛ -->
+
+                <div class="pattern-cell">
+
+                    <img
+                        src="images/crystal-round-1.png"
+                        alt="Круглый кристалл"
+                    >
+
+                </div>
+
+
+
+                <!-- ЗВЕЗДА -->
+
+                <div class="pattern-cell">
+
+                    <div class="pattern-star">
+                        ✦
+                    </div>
+
+                </div>
+
+
+
+                <!-- ПУСТОЕ МЕСТО -->
+
+                <div
+                    class="pattern-cell pattern-empty"
+                    id="patternAnswer"
+                >
+
+                    <span>?</span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ПОДСКАЗКА -->
+
+            <div
+                class="pattern-message"
+                id="patternMessage"
+            >
+                Что должно быть дальше?
+            </div>
+
+
+
+            <!-- ВАРИАНТЫ -->
+
+            <div class="pattern-options">
+
+
+                <!-- ПРАВИЛЬНЫЙ -->
+
+                <button
+                    class="pattern-option"
+                    data-answer="correct"
+                >
+
+                    <img
+                        src="images/crystal-round-1.png"
+                        alt="Круглый кристалл"
+                    >
+
+                </button>
+
+
+
+                <!-- НЕПРАВИЛЬНЫЙ -->
+
+                <button
+                    class="pattern-option"
+                    data-answer="wrong"
+                >
+
+                    <img
+                        src="images/crystal-big-1.png"
+                        alt="Большой кристалл"
+                    >
+
+                </button>
+
+
+
+                <!-- НЕПРАВИЛЬНЫЙ -->
+
+                <button
+                    class="pattern-option"
+                    data-answer="wrong"
+                >
+
+                    <div class="pattern-option-star">
+                        ✦
+                    </div>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="patternSuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Правильно!
+                </strong>
+
+                <p>
+                    Узор продолжен.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="nextTask"
+        >
+            Дальше →
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const options =
+    document.querySelectorAll(
+        ".pattern-option"
+    );
+
+const answerCell =
+    document.getElementById(
+        "patternAnswer"
+    );
+
+const message =
+    document.getElementById(
+        "patternMessage"
+    );
+
+const success =
+    document.getElementById(
+        "patternSuccess"
+    );
+
+const progressCurrent =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+const nextTask =
+    document.getElementById(
+        "nextTask"
+    );
+
+
+let taskFinished = false;
+
+
+
+options.forEach(option => {
+
+    option.addEventListener(
+        "click",
+        () => {
+
+
+            if (taskFinished) {
+                return;
+            }
+
+
+
+            /* ПРАВИЛЬНЫЙ ОТВЕТ */
+
+            if (
+                option.dataset.answer
+                === "correct"
+            ) {
+
+                taskFinished = true;
+
+
+                options.forEach(item => {
+
+                    item.disabled = true;
+
+                });
+
+
+
+                answerCell.innerHTML = `
+                    <img
+                        src="images/crystal-round-1.png"
+                        alt="Круглый кристалл"
+                    >
+                `;
+
+
+                answerCell.classList.add(
+                    "correct"
+                );
+
+
+                option.classList.add(
+                    "correct"
+                );
+
+
+                message.textContent =
+                    "Правильно! Узор продолжается ✦";
+
+
+                progressCurrent
+                    .classList
+                    .remove("current");
+
+                progressCurrent
+                    .classList
+                    .add("completed");
+
+
+                setTimeout(() => {
+
+                    success.classList.add(
+                        "show"
+                    );
+
+                }, 500);
+
+
+                return;
+            }
+
+
+
+            /* НЕПРАВИЛЬНЫЙ ОТВЕТ */
+
+            option.classList.remove(
+                "wrong"
+            );
+
+
+            void option.offsetWidth;
+
+
+            option.classList.add(
+                "wrong"
+            );
+
+
+            message.textContent =
+                "Попробуй ещё ✦";
+
+        }
+    );
+
+});
+
+
+
+/* ЗАДАНИЕ 7 */
+
+nextTask.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+            "crystal-trail-7.html";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

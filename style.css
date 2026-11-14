@@ -6112,3 +6112,580 @@ transform: translate(-90px, 55px);
     }
 
 }
+/* ==========================================
+   ЗАДАНИЕ 6 — ПРОДОЛЖИ УЗОР
+========================================== */
+
+.pattern-title {
+    max-width: 850px;
+}
+
+
+
+/* ==========================================
+   ИГРОВАЯ ОБЛАСТЬ
+========================================== */
+
+.pattern-game-area {
+    width: min(1300px, 100%);
+
+    flex: 1;
+
+    min-height: 0;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 22px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==========================================
+   ЛУМИ
+========================================== */
+
+.pattern-lumi {
+    width: 25%;
+
+    min-width: 220px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.pattern-lumi img {
+    width: min(320px, 100%);
+
+    max-height: 48vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        saturate(0.84)
+        brightness(0.96)
+        drop-shadow(
+            0 16px 18px
+            rgba(55,35,95,0.16)
+        );
+}
+
+
+
+/* ==========================================
+   ПАНЕЛЬ
+========================================== */
+
+.pattern-stage {
+    width: 75%;
+
+    max-width: 900px;
+
+    padding:
+        32px 30px;
+
+    border-radius: 42px;
+
+    background:
+        rgba(255,251,255,0.80);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.8);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 15px 36px
+        rgba(70,47,112,0.14);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+
+/* ==========================================
+   УЗОР
+========================================== */
+
+.magic-pattern {
+    width: min(760px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 13px;
+
+    align-items: center;
+
+    padding:
+        18px 20px;
+
+    border-radius: 36px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(238,226,255,0.78),
+            rgba(255,248,233,0.80)
+        );
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(255,255,255,0.65);
+}
+
+
+
+/* ==========================================
+   ЯЧЕЙКИ
+========================================== */
+
+.pattern-cell {
+    height: 125px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,0.76);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+.pattern-cell img {
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+
+/* ==========================================
+   ЗВЕЗДА
+========================================== */
+
+.pattern-star,
+.pattern-option-star {
+    font-size: 76px;
+
+    line-height: 1;
+
+    color: #e4ad3e;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,220,100,0.48);
+
+    user-select: none;
+}
+
+
+
+/* ==========================================
+   ПУСТАЯ ЯЧЕЙКА
+========================================== */
+
+.pattern-empty {
+    border:
+        3px dashed
+        rgba(113,71,155,0.38);
+
+    background:
+        rgba(246,237,255,0.56);
+}
+
+
+.pattern-empty span {
+    font-size: 44px;
+
+    font-weight: 800;
+
+    color:
+        rgba(105,69,145,0.50);
+}
+
+
+.pattern-empty.correct {
+    border:
+        3px solid
+        rgba(157,107,199,0.35);
+
+    background:
+        rgba(247,238,255,0.88);
+
+    animation:
+        patternAnswerAppear
+        0.5s ease;
+}
+
+
+@keyframes patternAnswerAppear {
+
+    0% {
+        transform: scale(0.85);
+    }
+
+    60% {
+        transform: scale(1.07);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+
+/* ==========================================
+   ТЕКСТ
+========================================== */
+
+.pattern-message {
+    min-height: 28px;
+
+    margin:
+        15px 0 11px;
+
+    color: #674487;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+
+/* ==========================================
+   ВАРИАНТЫ
+========================================== */
+
+.pattern-options {
+    width: min(520px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.pattern-option {
+    height: 115px;
+
+    padding: 8px;
+
+    border: none;
+
+    border-radius: 27px;
+
+    background:
+        rgba(255,255,255,0.76);
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.pattern-option img {
+    width: 95px;
+
+    height: 95px;
+
+    object-fit: contain;
+}
+
+
+.pattern-option:hover {
+    transform:
+        translateY(-5px);
+}
+
+
+.pattern-option.correct {
+    transform:
+        scale(1.05);
+
+    background:
+        rgba(239,228,255,0.92);
+
+    box-shadow:
+        0 0 24px
+        rgba(144,91,191,0.28);
+}
+
+
+
+/* ==========================================
+   ОШИБКА
+========================================== */
+
+.pattern-option.wrong {
+    animation:
+        patternWrong
+        0.35s ease;
+}
+
+
+@keyframes patternWrong {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-7px);
+    }
+
+    60% {
+        transform: translateX(7px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+
+/* ==========================================
+   ДЕСКТОП
+========================================== */
+
+@media (min-width: 751px) {
+
+    .pattern-page-screen {
+        height: 100vh;
+
+        min-height: 0;
+
+        overflow: hidden;
+
+        padding-top: 18px;
+
+        padding-bottom: 18px;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    .pattern-page-screen
+    .crystal-game-top {
+        flex-shrink: 0;
+    }
+
+
+    .pattern-page-screen
+    .crystal-game-title {
+        flex-shrink: 0;
+
+        margin:
+            16px auto 7px;
+
+        padding:
+            13px 30px 15px;
+    }
+
+
+    .pattern-page-screen
+    .crystal-game-title h1 {
+        font-size: 38px;
+    }
+
+
+    .pattern-page-screen
+    .crystal-success {
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 17px;
+
+        margin: 0;
+
+        transform:
+            translate(-50%, 20px);
+    }
+
+
+    .pattern-page-screen
+    .crystal-success.show {
+        transform:
+            translate(-50%, 0);
+    }
+
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (max-width: 750px) {
+
+    .pattern-title h1 {
+        font-size: 28px;
+    }
+
+
+    .pattern-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .pattern-stage {
+        width: 100%;
+
+        padding:
+            20px 10px;
+
+        border-radius: 30px;
+
+        order: 1;
+    }
+
+
+    .magic-pattern {
+        gap: 5px;
+
+        padding:
+            10px 7px;
+
+        border-radius: 24px;
+    }
+
+
+    .pattern-cell {
+        height: 75px;
+
+        border-radius: 17px;
+    }
+
+
+    .pattern-cell img {
+        width: 55px;
+
+        height: 55px;
+    }
+
+
+    .pattern-star {
+        font-size: 46px;
+    }
+
+
+    .pattern-empty span {
+        font-size: 30px;
+    }
+
+
+    .pattern-message {
+        margin:
+            12px 0 8px;
+
+        font-size: 16px;
+    }
+
+
+    .pattern-options {
+        width: 100%;
+
+        gap: 7px;
+    }
+
+
+    .pattern-option {
+        height: 88px;
+
+        border-radius: 20px;
+    }
+
+
+    .pattern-option img {
+        width: 70px;
+
+        height: 70px;
+    }
+
+
+    .pattern-option-star {
+        font-size: 57px;
+    }
+
+
+    .pattern-lumi {
+        width: 100%;
+
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .pattern-lumi img {
+        width: 190px;
+
+        max-height: none;
+    }
+
+}
