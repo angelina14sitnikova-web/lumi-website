@@ -7782,3 +7782,172 @@ transform: translate(-90px, 55px);
     }
 
 }
+/* ==========================================
+   IPAD — ВЕРТИКАЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (min-width: 751px)
+       and (max-width: 1100px)
+       and (orientation: portrait) {
+
+
+    /* ======================================
+       ЗАДАНИЕ 1
+       ВСЕ 5 КРИСТАЛЛОВ ДОЛЖНЫ БЫТЬ ВИДНЫ
+    ====================================== */
+
+    .task-one-page .crystal-game-screen {
+        height: auto !important;
+        min-height: 100vh !important;
+
+        overflow: visible !important;
+    }
+
+
+    .task-one-page
+    :is(div, section):has(
+        > button img[src*="crystal-"]
+    ) {
+        width: min(820px, 92vw) !important;
+
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr)) !important;
+
+        gap: 10px !important;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+
+    .task-one-page
+    button:has(
+        img[src*="crystal-"]
+    ) {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+
+    .task-one-page
+    button:has(
+        img[src*="crystal-"]
+    ) img {
+        width: 100% !important;
+        max-width: 115px !important;
+
+        height: auto !important;
+
+        object-fit: contain !important;
+    }
+
+
+
+    /* ======================================
+       ЗАДАНИЕ 3
+       КУСОЧЕК МОСТА ОПУСКАЕМ В ПРОЁМ
+    ====================================== */
+
+    .bridge-page-screen {
+        height: auto !important;
+        min-height: 100vh !important;
+
+        overflow: visible !important;
+    }
+
+
+    .bridge-fixed-piece.show {
+        opacity: 1 !important;
+
+        transform:
+            translate(-50%, 95px)
+            scale(1) !important;
+    }
+
+
+
+    /* ======================================
+       ЗАДАНИЕ 4
+       ОГОНЬКИ НЕ ВЫХОДЯТ ЗА ПАНЕЛЬ
+    ====================================== */
+
+    .firefly-page-screen {
+        height: auto !important;
+        min-height: 100vh !important;
+
+        overflow: visible !important;
+    }
+
+
+    .firefly-stage {
+        width: min(610px, 68vw) !important;
+    }
+
+
+    .magic-lights {
+        left:
+            calc(50% + 90px) !important;
+
+        right: auto !important;
+
+        bottom: 8px !important;
+
+        transform:
+            translateX(-50%) !important;
+
+        min-width: 190px !important;
+
+        gap: 10px !important;
+
+        padding:
+            9px 14px !important;
+    }
+
+
+    .magic-lights span {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+
+
+    /* ======================================
+       ЗАДАНИЕ 7
+       ПОКАЗЫВАЕМ КНОПКУ ПОСЛЕ ОТВЕТА
+    ====================================== */
+
+    .final-page-screen {
+        height: auto !important;
+
+        min-height: 100vh !important;
+
+        overflow: visible !important;
+
+        padding-bottom: 30px !important;
+    }
+
+
+    .final-page-screen
+    .crystal-success {
+        position: relative !important;
+
+        left: auto !important;
+        bottom: auto !important;
+
+        width: min(720px, 92vw) !important;
+
+        margin:
+            18px auto 30px !important;
+
+        transform: none !important;
+    }
+
+
+    .final-page-screen
+    .crystal-success.show {
+        transform: none !important;
+    }
+
+}
