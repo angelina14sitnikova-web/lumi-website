@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Открой волшебную дверь — Луми</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=13"
+    >
+</head>
+
+
+<body class="crystal-game-page">
+
+
+<main class="crystal-game-screen final-page-screen">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <div class="crystal-game-top">
+
+        <a
+            href="crystal-trail-6.html"
+            class="crystal-game-back"
+        >
+            ← Назад
+        </a>
+
+
+        <div class="crystal-game-number">
+            7 из 7
+        </div>
+
+
+        <div class="crystal-game-progress">
+
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+            <span class="completed"></span>
+
+            <span class="current"></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <div class="crystal-game-title final-title">
+
+        <span>
+            Последнее испытание
+        </span>
+
+        <h1>
+            Открой волшебную дверь ✦
+        </h1>
+
+        <p>
+            Найди ключ, который подходит сразу по двум признакам.
+        </p>
+
+    </div>
+
+
+
+    <!-- ИГРОВАЯ ОБЛАСТЬ -->
+
+    <section class="final-game-area">
+
+
+        <!-- ЛУМИ -->
+
+        <div class="final-lumi">
+
+            <img
+                src="images/lumi-final.png"
+                alt="Луми"
+            >
+
+        </div>
+
+
+
+        <!-- ПАНЕЛЬ -->
+
+        <div class="final-stage">
+
+
+            <!-- ДВЕРЬ -->
+
+            <div class="door-area">
+
+                <img
+                    src="images/magic-door.png"
+                    alt="Волшебная дверь"
+                    class="magic-door"
+                    id="magicDoor"
+                >
+
+
+                <!-- ПОДСКАЗКА -->
+
+                <div class="key-rule">
+
+                    <div class="rule-shape">
+                        ○
+                    </div>
+
+                    <div class="rule-plus">
+                        +
+                    </div>
+
+                    <div class="rule-star">
+                        ✦
+                    </div>
+
+                </div>
+
+
+                <!-- СЮДА ПРИЛЕТИТ КЛЮЧ -->
+
+                <div
+                    class="door-key-slot"
+                    id="doorKeySlot"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ТЕКСТ -->
+
+            <div
+                class="final-message"
+                id="finalMessage"
+            >
+                Какой ключ подойдёт?
+            </div>
+
+
+
+            <!-- КЛЮЧИ -->
+
+            <div class="key-options">
+
+
+                <button
+                    class="key-option"
+                    data-answer="correct"
+                >
+                    <img
+                        src="images/key-round-star.png"
+                        alt="Ключ"
+                    >
+                </button>
+
+
+                <button
+                    class="key-option"
+                    data-answer="wrong"
+                >
+                    <img
+                        src="images/key-round-moon.png"
+                        alt="Ключ"
+                    >
+                </button>
+
+
+                <button
+                    class="key-option"
+                    data-answer="wrong"
+                >
+                    <img
+                        src="images/key-angular-star.png"
+                        alt="Ключ"
+                    >
+                </button>
+
+
+                <button
+                    class="key-option"
+                    data-answer="wrong"
+                >
+                    <img
+                        src="images/key-angular-moon.png"
+                        alt="Ключ"
+                    >
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- УСПЕХ -->
+
+    <div
+        class="crystal-success"
+        id="finalSuccess"
+    >
+
+        <div class="crystal-success-message">
+
+            <span>✦</span>
+
+            <div>
+
+                <strong>
+                    Дверь открыта!
+                </strong>
+
+                <p>
+                    Ты прошёл все испытания Кристальной тропы.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="crystal-next-button"
+            id="rewardButton"
+        >
+            Получить Кристалл открытий ✦
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+const keys =
+    document.querySelectorAll(".key-option");
+
+const door =
+    document.getElementById("magicDoor");
+
+const keySlot =
+    document.getElementById("doorKeySlot");
+
+const message =
+    document.getElementById("finalMessage");
+
+const success =
+    document.getElementById("finalSuccess");
+
+const progressCurrent =
+    document.querySelector(
+        ".crystal-game-progress .current"
+    );
+
+const rewardButton =
+    document.getElementById("rewardButton");
+
+
+let taskFinished = false;
+
+
+
+keys.forEach(key => {
+
+    key.addEventListener("click", () => {
+
+        if (taskFinished) {
+            return;
+        }
+
+
+
+        /* ПРАВИЛЬНЫЙ КЛЮЧ */
+
+        if (
+            key.dataset.answer
+            === "correct"
+        ) {
+
+            taskFinished = true;
+
+
+            keys.forEach(item => {
+
+                item.disabled = true;
+
+            });
+
+
+            key.classList.add(
+                "correct"
+            );
+
+
+            keySlot.innerHTML = `
+                <img
+                    src="images/key-round-star.png"
+                    alt=""
+                >
+            `;
+
+
+            keySlot.classList.add(
+                "show"
+            );
+
+
+            door.classList.add(
+                "open"
+            );
+
+
+            message.textContent =
+                "Ключ подошёл! ✦";
+
+
+            progressCurrent
+                .classList
+                .remove("current");
+
+            progressCurrent
+                .classList
+                .add("completed");
+
+
+            setTimeout(() => {
+
+                success.classList.add(
+                    "show"
+                );
+
+            }, 850);
+
+
+            return;
+        }
+
+
+
+        /* НЕПРАВИЛЬНЫЙ КЛЮЧ */
+
+        key.classList.remove("wrong");
+
+        void key.offsetWidth;
+
+        key.classList.add("wrong");
+
+
+        message.textContent =
+            "Посмотри ещё раз ✦";
+
+    });
+
+});
+
+
+
+rewardButton.addEventListener(
+    "click",
+    () => {
+
+        alert(
+            "Кристалл открытий получен ✦"
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -6689,3 +6689,558 @@ transform: translate(-90px, 55px);
     }
 
 }
+/* ==========================================
+   ЗАДАНИЕ 7 — ВОЛШЕБНАЯ ДВЕРЬ
+========================================== */
+
+.final-title {
+    max-width: 860px;
+}
+
+
+
+/* ==========================================
+   ИГРОВАЯ ОБЛАСТЬ
+========================================== */
+
+.final-game-area {
+    width: min(1300px, 100%);
+
+    flex: 1;
+    min-height: 0;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+
+/* ==========================================
+   ЛУМИ
+========================================== */
+
+.final-lumi {
+    width: 24%;
+    min-width: 220px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+
+.final-lumi img {
+    width: min(320px, 100%);
+    max-height: 48vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+        saturate(0.86)
+        brightness(0.97)
+        drop-shadow(
+            0 16px 18px
+            rgba(55,35,95,0.16)
+        );
+}
+
+
+
+/* ==========================================
+   ПАНЕЛЬ
+========================================== */
+
+.final-stage {
+    width: 76%;
+    max-width: 900px;
+
+    padding:
+        18px 28px 22px;
+
+    border-radius: 42px;
+
+    background:
+        rgba(255,251,255,0.80);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.8);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 15px 36px
+        rgba(70,47,112,0.14);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+
+/* ==========================================
+   ДВЕРЬ
+========================================== */
+
+.door-area {
+    height: 255px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.magic-door {
+    width: 225px;
+    height: 255px;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+
+.magic-door.open {
+    transform:
+        scale(1.04);
+
+    filter:
+        brightness(1.12)
+        drop-shadow(
+            0 0 28px
+            rgba(255,222,119,0.72)
+        );
+}
+
+
+
+/* ==========================================
+   ПОДСКАЗКА НА ДВЕРИ
+========================================== */
+
+.key-rule {
+    position: absolute;
+
+    right: -145px;
+    top: 78px;
+
+    min-width: 125px;
+
+    padding:
+        9px 13px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.90);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    box-shadow:
+        0 8px 18px
+        rgba(84,57,112,0.12);
+}
+
+
+.rule-shape {
+    width: 32px;
+    height: 32px;
+
+    border:
+        4px solid #8e65b9;
+
+    border-radius: 50%;
+
+    color: transparent;
+}
+
+
+.rule-plus {
+    color: #80609d;
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+
+.rule-star {
+    color: #e8b33f;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,215,93,0.46);
+}
+
+
+
+/* ==========================================
+   КЛЮЧ У ЗАМКА
+========================================== */
+
+.door-key-slot {
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.4);
+
+    opacity: 0;
+
+    z-index: 5;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.55s ease;
+}
+
+
+.door-key-slot img {
+    width: 110px;
+    height: 110px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(255,220,106,0.75)
+        );
+}
+
+
+.door-key-slot.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+
+/* ==========================================
+   ТЕКСТ
+========================================== */
+
+.final-message {
+    min-height: 28px;
+
+    margin:
+        5px 0 10px;
+
+    color: #674487;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    text-align: center;
+}
+
+
+
+/* ==========================================
+   ВАРИАНТЫ КЛЮЧЕЙ
+========================================== */
+
+.key-options {
+    width: min(700px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.key-option {
+    height: 125px;
+
+    padding: 8px;
+
+    border: none;
+
+    border-radius: 27px;
+
+    background:
+        rgba(255,255,255,0.76);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.key-option img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+.key-option:hover {
+    transform:
+        translateY(-5px);
+}
+
+
+.key-option.correct {
+    transform:
+        scale(1.05);
+
+    background:
+        rgba(240,228,255,0.95);
+
+    box-shadow:
+        0 0 24px
+        rgba(143,91,190,0.28);
+}
+
+
+
+/* ==========================================
+   ОШИБКА
+========================================== */
+
+.key-option.wrong {
+    animation:
+        keyWrong
+        0.35s ease;
+}
+
+
+@keyframes keyWrong {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-7px);
+    }
+
+    60% {
+        transform: translateX(7px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+
+/* ==========================================
+   ДЕСКТОП
+========================================== */
+
+@media (min-width: 751px) {
+
+    .final-page-screen {
+        height: 100vh;
+        min-height: 0;
+
+        overflow: hidden;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .final-page-screen
+    .crystal-game-top {
+        flex-shrink: 0;
+    }
+
+
+    .final-page-screen
+    .crystal-game-title {
+        flex-shrink: 0;
+
+        margin:
+            16px auto 7px;
+
+        padding:
+            13px 30px 15px;
+    }
+
+
+    .final-page-screen
+    .crystal-game-title h1 {
+        font-size: 38px;
+    }
+
+
+    .final-page-screen
+    .crystal-success {
+        position: absolute;
+
+        left: 50%;
+        bottom: 17px;
+
+        margin: 0;
+
+        transform:
+            translate(-50%, 20px);
+    }
+
+
+    .final-page-screen
+    .crystal-success.show {
+        transform:
+            translate(-50%, 0);
+    }
+
+}
+
+
+
+/* ==========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================================== */
+
+@media (max-width: 750px) {
+
+    .final-title h1 {
+        font-size: 28px;
+    }
+
+
+    .final-game-area {
+        min-height: auto;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+    .final-stage {
+        width: 100%;
+
+        padding:
+            18px 10px;
+
+        border-radius: 30px;
+
+        order: 1;
+    }
+
+
+    .door-area {
+        height: 220px;
+    }
+
+
+    .magic-door {
+        width: 185px;
+        height: 220px;
+    }
+
+
+    .key-rule {
+        right: -100px;
+        top: 70px;
+
+        min-width: 100px;
+
+        padding:
+            7px 9px;
+
+        gap: 7px;
+    }
+
+
+    .rule-shape {
+        width: 25px;
+        height: 25px;
+
+        border-width: 3px;
+    }
+
+
+    .rule-plus {
+        font-size: 19px;
+    }
+
+
+    .rule-star {
+        font-size: 28px;
+    }
+
+
+    .key-options {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 7px;
+    }
+
+
+    .key-option {
+        height: 95px;
+
+        border-radius: 20px;
+    }
+
+
+    .final-lumi {
+        width: 100%;
+        min-width: 0;
+
+        order: 2;
+    }
+
+
+    .final-lumi img {
+        width: 190px;
+
+        max-height: none;
+    }
+
+}
