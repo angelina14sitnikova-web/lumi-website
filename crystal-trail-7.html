@@ -344,17 +344,21 @@ keys.forEach(key => {
             progressCurrent
                 .classList
                 .add("completed");
+                setTimeout(() => {
+
+    success.classList.add("show");
 
 
-            setTimeout(() => {
+    setTimeout(() => {
 
-                success.classList.add(
-                    "show"
-                );
+        success.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
-            }, 850);
+    }, 250);
 
-
+}, 850);
             return;
         }
 
