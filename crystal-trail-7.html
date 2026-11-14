@@ -2,6 +2,7 @@
 <html lang="ru">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -13,8 +14,890 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=13"
+        href="style.css?v=20"
     >
+
+
+    <!-- =====================================
+         СТИЛИ ТОЛЬКО ДЛЯ 7 ЗАДАНИЯ
+    ====================================== -->
+
+    <style>
+
+        /* =====================================
+           ОБЩАЯ СТРАНИЦА
+        ====================================== */
+
+        .final-title {
+            max-width: 860px;
+        }
+
+
+        .final-game-area {
+            width: min(1300px, 100%);
+
+            flex: 1;
+            min-height: 0;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 22px;
+
+            position: relative;
+
+            z-index: 4;
+        }
+
+
+
+        /* =====================================
+           ЛУМИ
+        ====================================== */
+
+        .final-lumi {
+            width: 24%;
+            min-width: 220px;
+
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+
+        .final-lumi img {
+            width: min(320px, 100%);
+
+            max-height: 48vh;
+
+            object-fit: contain;
+
+            display: block;
+
+            filter:
+                saturate(0.86)
+                brightness(0.97)
+                drop-shadow(
+                    0 16px 18px
+                    rgba(55,35,95,0.16)
+                );
+        }
+
+
+
+        /* =====================================
+           ОСНОВНАЯ ПАНЕЛЬ
+        ====================================== */
+
+        .final-stage {
+            width: 76%;
+            max-width: 900px;
+
+            padding:
+                18px 28px 22px;
+
+            border-radius: 42px;
+
+            background:
+                rgba(255,251,255,0.80);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.8);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+
+            box-shadow:
+                0 15px 36px
+                rgba(70,47,112,0.14);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: visible;
+        }
+
+
+
+        /* =====================================
+           ДВЕРЬ
+        ====================================== */
+
+        .door-area {
+            width: 100%;
+
+            height: 270px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .magic-door {
+            width: 235px;
+            height: 265px;
+
+            object-fit: contain;
+
+            display: block;
+
+            transition:
+                transform 0.6s ease,
+                filter 0.6s ease;
+        }
+
+
+        .magic-door.open {
+            transform:
+                scale(1.04);
+
+            filter:
+                brightness(1.12)
+                drop-shadow(
+                    0 0 30px
+                    rgba(255,222,119,0.75)
+                );
+        }
+
+
+
+        /* =====================================
+           ПОДСКАЗКА:
+           КРУГЛЫЙ ОБОДОК + ЗВЕЗДА
+        ====================================== */
+
+        .key-rule {
+            position: absolute;
+
+            right: 18px;
+            top: 20px;
+
+            width: 190px;
+
+            padding: 9px;
+
+            border-radius: 26px;
+
+            background:
+                rgba(255,255,255,0.94);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(73,48,105,0.12);
+
+            z-index: 10;
+        }
+
+
+        .rule-symbol-box {
+            width: 68px;
+            height: 68px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(248,240,255,0.96),
+                    rgba(255,250,239,0.96)
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        /* КРУГЛЫЙ ОБОДОК */
+
+        .key-ring-symbol {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 50%;
+
+            border:
+                6px solid
+                #d7ae69;
+
+            background:
+                rgba(255,250,239,0.90);
+
+            box-shadow:
+                inset
+                0 0 0 4px
+                #b58ad3,
+
+                0 0 10px
+                rgba(220,180,94,0.30);
+
+            position: relative;
+        }
+
+
+        .key-ring-symbol::before,
+        .key-ring-symbol::after {
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+
+            width: 7px;
+            height: 7px;
+
+            background:
+                #b58ad3;
+
+            transform:
+                translateY(-50%)
+                rotate(45deg);
+        }
+
+
+        .key-ring-symbol::before {
+            left: -10px;
+        }
+
+
+        .key-ring-symbol::after {
+            right: -10px;
+        }
+
+
+
+        /* ПЛЮС */
+
+        .rule-plus {
+            color:
+                #765493;
+
+            font-size: 23px;
+
+            font-weight: 900;
+
+            flex-shrink: 0;
+        }
+
+
+
+        /* ЗВЕЗДА */
+
+        .key-star-symbol {
+            color:
+                #efb83e;
+
+            font-size: 46px;
+
+            line-height: 1;
+
+            text-shadow:
+                0 0 10px
+                rgba(255,215,79,0.52);
+        }
+
+
+
+        /* =====================================
+           КЛЮЧ У ДВЕРИ
+        ====================================== */
+
+        .door-key-slot {
+            position: absolute;
+
+            left: 50%;
+            top: 57%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.4);
+
+            opacity: 0;
+
+            z-index: 7;
+
+            transition:
+                opacity 0.45s ease,
+                transform 0.55s ease;
+        }
+
+
+        .door-key-slot img {
+            width: 110px;
+            height: 110px;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 0 18px
+                    rgba(255,220,106,0.75)
+                );
+        }
+
+
+        .door-key-slot.show {
+            opacity: 1;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+        }
+
+
+
+        /* =====================================
+           ТЕКСТ
+        ====================================== */
+
+        .final-message {
+            min-height: 28px;
+
+            margin:
+                5px 0 10px;
+
+            color:
+                #674487;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+
+        /* =====================================
+           КЛЮЧИ
+        ====================================== */
+
+        .key-options {
+            width:
+                min(700px, 100%);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .key-option {
+            height: 125px;
+
+            padding: 8px;
+
+            border: none;
+
+            border-radius: 27px;
+
+            background:
+                rgba(255,255,255,0.76);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                background 0.22s ease;
+        }
+
+
+        .key-option img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        .key-option:hover {
+            transform:
+                translateY(-5px);
+        }
+
+
+        .key-option.correct {
+            transform:
+                scale(1.05);
+
+            background:
+                rgba(240,228,255,0.95);
+
+            box-shadow:
+                0 0 24px
+                rgba(143,91,190,0.28);
+        }
+
+
+
+        /* =====================================
+           НЕПРАВИЛЬНЫЙ КЛЮЧ
+        ====================================== */
+
+        .key-option.wrong {
+            animation:
+                keyWrong
+                0.35s ease;
+        }
+
+
+        @keyframes keyWrong {
+
+            0% {
+                transform:
+                    translateX(0);
+            }
+
+            30% {
+                transform:
+                    translateX(-7px);
+            }
+
+            60% {
+                transform:
+                    translateX(7px);
+            }
+
+            100% {
+                transform:
+                    translateX(0);
+            }
+
+        }
+
+
+
+        /* =====================================
+           КНОПКА НАГРАДЫ
+        ====================================== */
+
+        .final-reward-area {
+            width: 100%;
+
+            margin-top: 16px;
+
+            display: none;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            text-align: center;
+        }
+
+
+        .final-reward-area.show {
+            display: flex;
+        }
+
+
+        .final-reward-text {
+            color:
+                #68428d;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+
+        .final-reward-button {
+            padding:
+                14px 28px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a875d2,
+                    #7142aa
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 22px
+                rgba(84,48,135,0.24);
+
+            animation:
+                rewardButtonAppear
+                0.45s ease;
+        }
+
+
+        @keyframes rewardButtonAppear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(12px)
+                    scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+
+
+        /* =====================================
+           КОМПЬЮТЕР
+        ====================================== */
+
+        @media (min-width: 1101px) {
+
+            .final-page-screen {
+                min-height: 100vh;
+
+                padding-top: 18px;
+                padding-bottom: 25px;
+
+                display: flex;
+
+                flex-direction: column;
+            }
+
+        }
+
+
+
+        /* =====================================
+           IPAD ВЕРТИКАЛЬНО
+        ====================================== */
+
+        @media (min-width: 751px)
+               and (max-width: 1100px)
+               and (orientation: portrait) {
+
+            .final-page-screen {
+                height: auto !important;
+
+                min-height: 100vh !important;
+
+                overflow: visible !important;
+
+                padding-bottom:
+                    35px !important;
+            }
+
+
+            .final-game-area {
+                align-items:
+                    center;
+            }
+
+
+            .final-stage {
+                width:
+                    min(650px, 69vw);
+
+                overflow:
+                    visible !important;
+            }
+
+
+            .door-area {
+                height:
+                    250px;
+            }
+
+
+            .magic-door {
+                width:
+                    220px;
+
+                height:
+                    245px;
+            }
+
+
+            .key-rule {
+                right:
+                    14px;
+
+                top:
+                    15px;
+
+                width:
+                    175px;
+
+                padding:
+                    7px;
+
+                gap:
+                    7px;
+            }
+
+
+            .rule-symbol-box {
+                width:
+                    62px;
+
+                height:
+                    62px;
+            }
+
+
+            .key-ring-symbol {
+                width:
+                    39px;
+
+                height:
+                    39px;
+            }
+
+
+            .key-star-symbol {
+                font-size:
+                    40px;
+            }
+
+
+            .rule-plus {
+                font-size:
+                    20px;
+            }
+
+
+            .key-option {
+                height:
+                    112px;
+            }
+
+
+            .final-reward-area {
+                margin-top:
+                    14px;
+
+                padding-bottom:
+                    5px;
+            }
+
+
+            .final-reward-button {
+                width:
+                    min(360px, 90%);
+
+                padding:
+                    14px 18px;
+            }
+
+        }
+
+
+
+        /* =====================================
+           ТЕЛЕФОН
+        ====================================== */
+
+        @media (max-width: 750px) {
+
+            .final-title h1 {
+                font-size:
+                    28px;
+            }
+
+
+            .final-game-area {
+                min-height:
+                    auto;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    8px;
+            }
+
+
+            .final-stage {
+                width:
+                    100%;
+
+                padding:
+                    18px 10px;
+
+                border-radius:
+                    30px;
+
+                order:
+                    1;
+            }
+
+
+            .door-area {
+                height:
+                    225px;
+            }
+
+
+            .magic-door {
+                width:
+                    185px;
+
+                height:
+                    220px;
+            }
+
+
+            .key-rule {
+                right:
+                    4px;
+
+                top:
+                    15px;
+
+                width:
+                    145px;
+
+                padding:
+                    6px;
+
+                gap:
+                    5px;
+            }
+
+
+            .rule-symbol-box {
+                width:
+                    51px;
+
+                height:
+                    51px;
+
+                border-radius:
+                    15px;
+            }
+
+
+            .key-ring-symbol {
+                width:
+                    32px;
+
+                height:
+                    32px;
+
+                border-width:
+                    5px;
+            }
+
+
+            .key-star-symbol {
+                font-size:
+                    34px;
+            }
+
+
+            .rule-plus {
+                font-size:
+                    18px;
+            }
+
+
+            .key-options {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap:
+                    7px;
+            }
+
+
+            .key-option {
+                height:
+                    95px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .final-reward-button {
+                width:
+                    min(330px, 94%);
+
+                font-size:
+                    14px;
+            }
+
+
+            .final-lumi {
+                width:
+                    100%;
+
+                min-width:
+                    0;
+
+                order:
+                    2;
+            }
+
+
+            .final-lumi img {
+                width:
+                    190px;
+
+                max-height:
+                    none;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -24,9 +907,12 @@
 <main class="crystal-game-screen final-page-screen">
 
 
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+    <!-- =====================================
+         ВЕРХНЯЯ ПАНЕЛЬ
+    ====================================== -->
 
     <div class="crystal-game-top">
+
 
         <a
             href="crystal-trail-6.html"
@@ -54,11 +940,14 @@
 
         </div>
 
+
     </div>
 
 
 
-    <!-- ЗАГОЛОВОК -->
+    <!-- =====================================
+         ЗАГОЛОВОК
+    ====================================== -->
 
     <div class="crystal-game-title final-title">
 
@@ -78,7 +967,9 @@
 
 
 
-    <!-- ИГРОВАЯ ОБЛАСТЬ -->
+    <!-- =====================================
+         ИГРОВАЯ ОБЛАСТЬ
+    ====================================== -->
 
     <section class="final-game-area">
 
@@ -96,7 +987,9 @@
 
 
 
-        <!-- ПАНЕЛЬ -->
+        <!-- =================================
+             БЕЛАЯ ПАНЕЛЬ
+        ================================== -->
 
         <div class="final-stage">
 
@@ -105,51 +998,66 @@
 
             <div class="door-area">
 
+
                 <img
                     src="images/magic-door.png"
                     alt="Волшебная дверь"
                     class="magic-door"
                     id="magicDoor"
                 >
-<div class="key-rule">
-
-    <div class="rule-card">
-
-        <div class="rule-ring"></div>
-
-        <span>
-            круглый
-        </span>
-
-    </div>
 
 
-    <div class="rule-plus">
-        +
-    </div>
+
+                <!-- ПОДСКАЗКА -->
+
+                <div class="key-rule">
 
 
-    <div class="rule-card">
+                    <!-- КРУГЛЫЙ ОБОДОК -->
 
-        <div class="rule-star">
-            ★
-        </div>
+                    <div class="rule-symbol-box">
 
-        <span>
-            со звездой
-        </span>
+                        <div
+                            class="key-ring-symbol"
+                        ></div>
 
-    </div>
-
-</div>
+                    </div>
 
 
-                <!-- СЮДА ПРИЛЕТИТ КЛЮЧ -->
+
+                    <!-- ПЛЮС -->
+
+                    <div class="rule-plus">
+                        +
+                    </div>
+
+
+
+                    <!-- ЗВЕЗДА -->
+
+                    <div class="rule-symbol-box">
+
+                        <div
+                            class="key-star-symbol"
+                        >
+                            ★
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ПРАВИЛЬНЫЙ КЛЮЧ
+                     ПОЯВИТСЯ ЗДЕСЬ -->
 
                 <div
                     class="door-key-slot"
                     id="doorKeySlot"
                 ></div>
+
 
             </div>
 
@@ -166,54 +1074,101 @@
 
 
 
-            <!-- КЛЮЧИ -->
+            <!-- =================================
+                 ЧЕТЫРЕ КЛЮЧА
+            ================================== -->
 
             <div class="key-options">
 
+
+                <!-- ПРАВИЛЬНЫЙ -->
 
                 <button
                     class="key-option"
                     data-answer="correct"
                 >
+
                     <img
                         src="images/key-round-star.png"
-                        alt="Ключ"
+                        alt="Ключ с круглым ободком и звездой"
                     >
+
                 </button>
 
+
+
+                <!-- КРУГЛЫЙ + ЛУНА -->
 
                 <button
                     class="key-option"
                     data-answer="wrong"
                 >
+
                     <img
                         src="images/key-round-moon.png"
                         alt="Ключ"
                     >
+
                 </button>
 
+
+
+                <!-- УГЛОВАТЫЙ + ЗВЕЗДА -->
 
                 <button
                     class="key-option"
                     data-answer="wrong"
                 >
+
                     <img
                         src="images/key-angular-star.png"
                         alt="Ключ"
                     >
+
                 </button>
 
+
+
+                <!-- УГЛОВАТЫЙ + ЛУНА -->
 
                 <button
                     class="key-option"
                     data-answer="wrong"
                 >
+
                     <img
                         src="images/key-angular-moon.png"
                         alt="Ключ"
                     >
+
                 </button>
 
+
+            </div>
+
+
+
+            <!-- =================================
+                 НАГРАДА
+                 СКРЫТА ДО ПРАВИЛЬНОГО ОТВЕТА
+            ================================== -->
+
+            <div
+                class="final-reward-area"
+                id="finalRewardArea"
+            >
+
+                <div class="final-reward-text">
+                    ✦ Дверь открыта!
+                </div>
+
+
+                <button
+                    class="final-reward-button"
+                    id="rewardButton"
+                >
+                    Получить Кристалл открытий ✦
+                </button>
 
             </div>
 
@@ -224,180 +1179,218 @@
     </section>
 
 
-
-    <!-- УСПЕХ -->
-
-    <div
-        class="crystal-success"
-        id="finalSuccess"
-    >
-
-        <div class="crystal-success-message">
-
-            <span>✦</span>
-
-            <div>
-
-                <strong>
-                    Дверь открыта!
-                </strong>
-
-                <p>
-                    Ты прошёл все испытания Кристальной тропы.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="crystal-next-button"
-            id="rewardButton"
-        >
-            Получить Кристалл открытий ✦
-        </button>
-
-    </div>
-
-
 </main>
 
 
 
 <script>
 
-const keys =
-    document.querySelectorAll(".key-option");
+    /* ==========================================
+       ЭЛЕМЕНТЫ
+    ========================================== */
 
-const door =
-    document.getElementById("magicDoor");
-
-const keySlot =
-    document.getElementById("doorKeySlot");
-
-const message =
-    document.getElementById("finalMessage");
-
-const success =
-    document.getElementById("finalSuccess");
-
-const progressCurrent =
-    document.querySelector(
-        ".crystal-game-progress .current"
-    );
-
-const rewardButton =
-    document.getElementById("rewardButton");
+    const keys =
+        document.querySelectorAll(
+            ".key-option"
+        );
 
 
-let taskFinished = false;
+    const door =
+        document.getElementById(
+            "magicDoor"
+        );
 
 
-
-keys.forEach(key => {
-
-    key.addEventListener("click", () => {
-
-        if (taskFinished) {
-            return;
-        }
+    const keySlot =
+        document.getElementById(
+            "doorKeySlot"
+        );
 
 
-
-        /* ПРАВИЛЬНЫЙ КЛЮЧ */
-
-        if (
-            key.dataset.answer
-            === "correct"
-        ) {
-
-            taskFinished = true;
+    const message =
+        document.getElementById(
+            "finalMessage"
+        );
 
 
-            keys.forEach(item => {
-
-                item.disabled = true;
-
-            });
-
-
-            key.classList.add(
-                "correct"
-            );
+    const rewardArea =
+        document.getElementById(
+            "finalRewardArea"
+        );
 
 
-            keySlot.innerHTML = `
-                <img
-                    src="images/key-round-star.png"
-                    alt=""
-                >
-            `;
+    const rewardButton =
+        document.getElementById(
+            "rewardButton"
+        );
 
 
-            keySlot.classList.add(
-                "show"
-            );
+    const progressCurrent =
+        document.querySelector(
+            ".crystal-game-progress .current"
+        );
 
 
-            door.classList.add(
-                "open"
-            );
-
-
-            message.textContent =
-                "Ключ подошёл! ✦";
-
-
-            progressCurrent
-                .classList
-                .remove("current");
-
-            progressCurrent
-                .classList
-                .add("completed");
-                setTimeout(() => {
-
-    success.classList.add("show");
-
-
-    setTimeout(() => {
-
-        success.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-    }, 250);
-
-}, 850);
-            return;
-        }
+    let taskFinished = false;
 
 
 
-        /* НЕПРАВИЛЬНЫЙ КЛЮЧ */
+    /* ==========================================
+       НАЖАТИЕ НА КЛЮЧ
+    ========================================== */
 
-        key.classList.remove("wrong");
+    keys.forEach(key => {
 
-        void key.offsetWidth;
+        key.addEventListener(
+            "click",
+            () => {
 
-        key.classList.add("wrong");
+
+                if (taskFinished) {
+                    return;
+                }
 
 
-        message.textContent =
-            "Посмотри ещё раз ✦";
+
+                /* ==============================
+                   ПРАВИЛЬНЫЙ КЛЮЧ
+                ============================== */
+
+                if (
+                    key.dataset.answer
+                    === "correct"
+                ) {
+
+                    taskFinished = true;
+
+
+
+                    /* Блокируем ключи */
+
+                    keys.forEach(item => {
+
+                        item.disabled = true;
+
+                    });
+
+
+
+                    /* Подсвечиваем выбранный */
+
+                    key.classList.add(
+                        "correct"
+                    );
+
+
+
+                    /* Показываем ключ у двери */
+
+                    keySlot.innerHTML = `
+                        <img
+                            src="images/key-round-star.png"
+                            alt=""
+                        >
+                    `;
+
+
+                    keySlot.classList.add(
+                        "show"
+                    );
+
+
+
+                    /* Дверь начинает светиться */
+
+                    door.classList.add(
+                        "open"
+                    );
+
+
+
+                    /* Меняем текст */
+
+                    message.textContent =
+                        "Ключ подошёл! ✦";
+
+
+
+                    /* Завершаем прогресс */
+
+                    if (progressCurrent) {
+
+                        progressCurrent
+                            .classList
+                            .remove("current");
+
+                        progressCurrent
+                            .classList
+                            .add("completed");
+
+                    }
+
+
+
+                    /* ПОКАЗЫВАЕМ КНОПКУ */
+
+                    setTimeout(() => {
+
+                        rewardArea
+                            .classList
+                            .add("show");
+
+                    }, 650);
+
+
+                    return;
+
+                }
+
+
+
+                /* ==============================
+                   НЕПРАВИЛЬНЫЙ КЛЮЧ
+                ============================== */
+
+                key.classList.remove(
+                    "wrong"
+                );
+
+
+                void key.offsetWidth;
+
+
+                key.classList.add(
+                    "wrong"
+                );
+
+
+                message.textContent =
+                    "Посмотри ещё раз ✦";
+
+            }
+        );
 
     });
 
-});
-rewardButton.addEventListener(
-    "click",
-    () => {
 
-        window.location.href =
-            "crystal-trail-reward.html";
 
-    }
-);
+    /* ==========================================
+       ПЕРЕХОД НА ЭКРАН НАГРАДЫ
+    ========================================== */
 
+    rewardButton.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+                "crystal-trail-reward.html";
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
