@@ -1,5 +1,6 @@
 (() => {
 'use strict';
+function initAdventureHelp(){
 const body=document.body,kind=body.dataset.adventure;
 if(kind!=='trail'&&kind!=='lighthouse')return;
 const trailHints={intro:'Нажми «Начать приключение» и помогай Луми шаг за шагом. В каждом задании можно открыть подсказку. Не торопись: взрослый может прочитать задание вслух.',1:'Нажимай на потухшие кристаллы по одному и считай: один, два, три. Когда зажгутся ровно три, остановись — путь откроется.',2:'Сравни маленькие осколки у основания каждого кристалла. У обычных кристаллов их два. Найди тот, у которого одного осколка не хватает.',3:'Посмотри на края пустого места в мосту. Сравни их с краями трёх кусочков. Нужен кусочек такой формы, чтобы он заполнил отверстие.',4:'Сначала сосчитай все огоньки рядом со светлячком. Затем добавляй ягодки по одной, пока ягод и огоньков не станет одинаково. Нажми «Далее».',5:'Нажми на кристалл, затем на нужную корзинку. В одну собирай круглые кристаллы, в другую — большие вытянутые. Картинки корзинок помогут сравнить форму.',6:'Читай узор слева направо и называй картинки: кристалл, звёздочка, кристалл, звёздочка. Какая картинка повторится следующей? Выбери её внизу.',7:'Ключ должен подходить сразу по двум признакам: круглое колечко и звезда. Сначала найди ключи с круглым колечком, затем среди них выбери тот, на котором звезда.',reward:'Все семь испытаний пройдены! Твой Кристалл открытий уже найден. Кнопка внизу вернёт тебя в Кристальный мир к возрасту 3–4 года.'};
@@ -16,4 +17,6 @@ function update(){const n=step();let text=(kind==='trail'?trailHints:lighthouseH
 button.onclick=()=>{if(!panel.hidden){close();return;}update();panel.hidden=false;button.setAttribute('aria-expanded','true');};panel.querySelector('button').onclick=()=>close(true);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close(true);});
 if(kind==='lighthouse'){new MutationObserver(()=>{if(!panel.hidden)update();}).observe(body,{attributes:true,attributeFilter:['data-scene']});window.addEventListener('hashchange',()=>close());}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initAdventureHelp,{once:true});else initAdventureHelp();
 })();
