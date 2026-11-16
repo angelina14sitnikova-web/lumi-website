@@ -1,0 +1,101 @@
+/* Illustrated editions: presentation only; task rules and event handlers are preserved. */
+:is(.lumi-trail,.lumi-lighthouse){--gold:#f4d596;--cream:#fff1d4;--night:#121b47;--ink:#302347;color:#fff4db;background:#111a40;font-family:'Trebuchet MS',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+:is(.lumi-trail,.lumi-lighthouse) button{font-family:inherit;touch-action:manipulation}
+:is(.lumi-trail,.lumi-lighthouse) :is(button,a):focus-visible{outline:3px solid #fff0ac;outline-offset:5px}
+.lumi-trail{--scene:url('trail-enchanted-night.png')}
+.lumi-trail:is([data-step="3"],[data-step="6"]){--scene:url('crystal-grotto-night.png')}
+.lumi-trail :is(.quest-intro,.crystal-game-screen,.crystal-reward-page){background:linear-gradient(90deg,#07133166,#10204a0a 70%),var(--scene) center/cover fixed;min-height:100svh;padding:24px clamp(16px,3vw,48px) 40px;isolation:isolate}
+.lumi-trail :is(.quest-intro,.crystal-game-screen,.crystal-reward-page):before{content:'';position:absolute;inset:12px;border:1px solid #edcf8c65;border-radius:35px;pointer-events:none;z-index:-1;box-shadow:inset 0 0 45px #030d3455}
+:is(.lumi-trail,.lumi-lighthouse) :is(.adventure-menu,.crystal-game-back,.quest-home,.world-back,.sound,.back){background:linear-gradient(145deg,#313462dd,#151d43e6);color:#fff0cb;border:1px solid #edcf8b9c;box-shadow:inset 0 1px #fff2,0 5px 18px #02082255;text-decoration:none;min-height:46px;border-radius:28px}
+:is(.lumi-trail,.lumi-lighthouse) .adventure-help-button{background:linear-gradient(#fff1cb,#eec784);color:#493251;border:2px solid #fff1c9;box-shadow:0 4px 0 #987048,0 5px 22px #edba5e33}
+:is(.lumi-trail,.lumi-lighthouse) .adventure-tools{max-width:1250px;margin:14px auto;gap:12px}
+:is(.lumi-trail,.lumi-lighthouse) .adventure-help-panel{background:linear-gradient(120deg,#fff2d9,#e9dff2);border-color:#f9d699;box-shadow:0 12px 45px #03092388;color:#3d3056}
+.lumi-trail :is(.crystal-game-top,.quest-intro-top){max-width:1250px;grid-template-columns:1fr auto 1fr;gap:12px}
+.lumi-trail :is(.crystal-game-number,.quest-world-name){background:#18234ad9;border:1px solid #edcf8b8c;color:#f5e1b1;font-size:14px;letter-spacing:.6px;box-shadow:0 4px 16px #030a2c44}
+.lumi-trail :is(.crystal-game-progress,.quest-progress){background:#172246d9;border:1px solid #edd39565;box-shadow:inset 0 1px #fff2;padding:9px 13px;gap:6px}
+.lumi-trail :is(.crystal-game-progress,.quest-progress) span{border:0;width:27px;height:29px;border-radius:0;background:url('../star-tower/assets/star-gold.png') center/contain no-repeat;filter:grayscale(1) brightness(.85);opacity:.42}
+.lumi-trail .crystal-game-progress span.completed{background:url('../star-tower/assets/star-gold.png') center/contain no-repeat;filter:drop-shadow(0 0 5px #ffd88088);opacity:1}
+.lumi-trail .crystal-game-progress span.current{background:url('../star-tower/assets/star-gold.png') center/contain no-repeat;filter:none;opacity:.7}
+/* Open storybook covers: the landscape is the hero, with real cutout Lumi. */
+.lumi-trail .quest-intro-content{min-height:650px;max-width:1250px;align-items:center;gap:25px}
+.lumi-trail .quest-story{width:58%;padding:36px 20px 36px 5px;background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.lumi-trail .quest-story-label,.lumi-lighthouse .intro .eyebrow{color:#f2d29b;text-transform:uppercase;letter-spacing:3px;font-size:13px;line-height:1.6}
+.lumi-trail .quest-story h1,.lumi-lighthouse .intro h1{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:#fff0cb;font-size:clamp(42px,5.2vw,72px);line-height:1.08;letter-spacing:-1.5px;text-shadow:0 3px 2px #101634,0 0 25px #758ce955;margin:18px 0 24px}
+.lumi-trail .quest-story h1 span{display:none}
+.lumi-trail .quest-story p,.lumi-lighthouse .intro p{font-size:20px;color:#f5e9ff;line-height:1.6;text-shadow:0 2px 6px #030b30;max-width:570px}
+.lumi-trail .quest-lumi{width:34%;align-self:flex-end;margin:0 0 35px;position:relative}
+.lumi-trail .quest-lumi img{width:100%;max-height:430px;object-fit:contain;filter:drop-shadow(0 14px 18px #050e3c77)}
+:is(.lumi-trail,.lumi-lighthouse) :is(.quest-start-button,.crystal-next-button,.reward-button,.firefly-check-button,.final-reward-button,.primary){background:linear-gradient(#fff2cd 0%,#f7dba2 45%,#dfad66 100%);border:2px solid #fff1d0;color:#443052;text-shadow:none;box-shadow:inset 0 2px 2px #fff9,0 5px 0 #93664a,0 10px 28px #040a3066;border-radius:36px;min-height:58px;padding:16px 28px;font-size:19px;font-weight:800;cursor:pointer;transition:transform .18s,filter .18s}
+:is(.lumi-trail,.lumi-lighthouse) :is(.quest-start-button,.crystal-next-button,.reward-button,.firefly-check-button,.final-reward-button,.primary):hover{filter:brightness(1.07);transform:translateY(-2px)}
+/* Cream instruction scrolls and blue-gold illuminated play stages. */
+.lumi-trail .crystal-game-title{width:min(100%,1040px);max-width:none;margin:24px auto 25px;padding:22px 35px;border:2px solid #f5d399;border-radius:37px;background:linear-gradient(115deg,#fff3de,#e9dff0);box-shadow:inset 0 2px 2px #fff8,0 8px 30px #000a2a66}
+.lumi-trail .crystal-game-title>span{color:#795d77;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.lumi-trail .crystal-game-title h1{font-size:clamp(26px,3.2vw,40px);color:#302347;line-height:1.18;margin-bottom:10px}
+.lumi-trail .crystal-game-title p{font-size:19px;color:#443652}
+.lumi-trail :is(.crystal-game-area,.task2-game-area,.bridge-game-area,.firefly-game-area,.sorting-game-area,.pattern-game-area,.final-game-area){display:grid;grid-template-columns:220px minmax(0,1fr);width:min(1180px,100%);gap:24px;align-items:center;min-height:430px;margin:0 auto}
+.lumi-trail :is(.crystal-game-lumi,.task2-lumi,.bridge-lumi,.firefly-lumi,.sorting-lumi,.pattern-lumi,.final-lumi){width:100%;min-width:0;align-self:end;position:relative;margin-bottom:20px}
+.lumi-trail :is(.crystal-game-lumi,.task2-lumi,.bridge-lumi,.firefly-lumi,.sorting-lumi,.pattern-lumi,.final-lumi) img{width:100%;height:auto;max-height:320px;object-fit:contain;transform:none;filter:drop-shadow(0 12px 16px #040b2c88)}
+.lumi-trail :is(.crystal-path,.task2-stage,.bridge-scene,.firefly-stage,.sorting-stage,.pattern-stage,.final-stage){width:100%;min-width:0;max-width:none;border:1px solid #e7c687a1;border-radius:38px;background:linear-gradient(135deg,#303466c9,#101f4fc9);box-shadow:inset 0 0 35px #b7bcff12,0 16px 40px #040b2e66;padding:25px;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);position:relative}
+.lumi-trail .bridge-scene{display:flex}
+.lumi-trail .task2-options{gap:14px}.lumi-trail .task2-crystal{height:240px;min-width:0;border-radius:26px;background:radial-gradient(ellipse at bottom,#a3abf022,transparent 70%)}
+.lumi-trail .task2-crystal .main-crystal{filter:drop-shadow(0 8px 12px #040b3b66)}
+.lumi-trail :is(.firefly-instruction,.sorting-instruction,.pattern-message,.final-message){color:#f8e8c9;text-shadow:0 2px 4px #091333}
+.lumi-trail :is(.firefly-instruction p,.firefly-instruction strong){color:#f8e8c9}
+.lumi-trail :is(.pattern-cell,.pattern-option,.bridge-option,.key-option,.rule-symbol-box){background:linear-gradient(#fff0d1,#dbc7e8);border:2px solid #f8dbac;box-shadow:0 4px 0 #776083,0 8px 17px #030b303d;border-radius:24px}
+.lumi-trail .magic-pattern{gap:12px}.lumi-trail .pattern-cell{width:90px;height:96px;min-width:0}.lumi-trail .pattern-empty{border-style:dashed}
+.lumi-trail .magic-door{filter:drop-shadow(0 0 22px #efc57b44)}
+.lumi-trail :is(.task2-hint,.bridge-hint,.sorting-message,.firefly-answer-message){color:#ffe9bf}
+.lumi-trail .crystal-success.show{width:min(860px,100%);margin:24px auto 0;padding:22px 28px;border:2px solid #f9d99f;background:linear-gradient(#fff0d8,#e5d9ee);border-radius:30px;box-shadow:0 0 35px #f5d48433,0 12px 25px #040b2e66}
+.lumi-trail .crystal-success-message strong{color:#604269;font-size:28px}.lumi-trail .crystal-success-message p{color:#554063}
+/* Lighthouse: a richly illustrated night, with a framed stage for each task. */
+.lumi-lighthouse .ambient{background:linear-gradient(#06143022,#0b17374d),url('lighthouse-moonlit.png') center/cover;transition:none}
+.lumi-lighthouse:is([data-scene="1"],[data-scene="3"],[data-scene="5"],[data-scene="6"]) .ambient{background-image:linear-gradient(#08133222,#10184344),url('crystal-grotto-night.png')}
+.lumi-lighthouse[data-scene="4"] .ambient{background-image:linear-gradient(#06122c22,#14223a55),url('trail-enchanted-night.png')}
+.lumi-lighthouse .app{max-width:1320px;padding:24px 32px 14px}
+.lumi-lighthouse .topbar{grid-template-columns:130px minmax(0,1fr) 70px;gap:14px}
+.lumi-lighthouse .age{background:#17244bd9;color:#f4ddb1;border:1px solid #e8c68288;font-size:15px;letter-spacing:1px;box-shadow:none}
+.lumi-lighthouse .progress{background:#152045d9;border:1px solid #e8ca8f7d;box-shadow:inset 0 1px #fff2;padding:7px 18px;gap:9px;margin:16px auto}
+.lumi-lighthouse .progress .dot{width:30px;height:32px;min-width:30px;min-height:32px;border:0;background:transparent url('../star-tower/assets/star-gold.png') center/contain no-repeat;opacity:.35;filter:grayscale(1);box-shadow:none}
+.lumi-lighthouse .progress .dot.done{background:transparent url('../star-tower/assets/star-gold.png') center/contain no-repeat;opacity:1;filter:drop-shadow(0 0 4px #ffe29788)}
+.lumi-lighthouse .progress .dot.active{opacity:.8;filter:none;box-shadow:none}.lumi-lighthouse .progress .dot:after{display:none}.lumi-lighthouse .progress .dot:disabled{background:transparent url('../star-tower/assets/star-gold.png') center/contain no-repeat}
+.lumi-lighthouse .intro{display:grid;grid-template-columns:1.3fr .7fr;min-height:650px;gap:20px;align-items:center;padding:15px 0 30px;background:none;border:0;box-shadow:none}
+.lumi-lighthouse .intro-copy{padding:30px 10px 30px 0;background:none;border:0;border-radius:0;box-shadow:none;text-align:left;max-width:100%}
+.lumi-lighthouse .intro h1{font-size:clamp(43px,5.1vw,69px);text-align:left;margin:20px 0 25px}
+.lumi-lighthouse .intro p{font-size:20px;line-height:1.65;margin:0 0 30px}
+.lumi-lighthouse .intro .hero-lumi{width:100%;height:380px;align-self:end;position:relative;grid-column:2;margin:0 0 20px;transform:none}
+.lumi-lighthouse .intro .primary{min-width:0;font-size:20px}.lumi-lighthouse .intro .secondary{display:block;background:#172450d9;border:1px solid #e7cd92;color:#f7e4b8;text-decoration:none}
+.lumi-lighthouse .page-head{max-width:1050px;margin:0 auto 8px;grid-template-columns:65px 1fr 70px}.lumi-lighthouse .page-head h1{color:#fff0d0;text-shadow:0 3px 8px #020b30;font-size:clamp(27px,3vw,40px)}
+.lumi-lighthouse .page-head .number{color:#f2dfbb;background:#17234bd9;border-color:#e4c68b88}
+.lumi-lighthouse .instruction{background:linear-gradient(120deg,#fff0db,#e6dcee);color:#382c4c;border:2px solid #f7dba5;box-shadow:0 8px 30px #040a2b55;max-width:990px;padding:17px 30px;font-size:19px;border-radius:32px;margin:0 auto 24px;backdrop-filter:none}
+.lumi-lighthouse .scene{grid-template-columns:215px minmax(0,1fr);gap:24px}.lumi-lighthouse .lumi-side{align-self:end}.lumi-lighthouse .lumi{width:215px;height:245px}.lumi-lighthouse .lumi-caption{background:linear-gradient(#fff1d6,#e9ddee);border:1px solid #f8dba5;color:#473651;box-shadow:0 5px 16px #040b2e55;max-width:210px;font-size:14px;padding:12px 15px}.lumi-lighthouse .lumi-caption:before{background:#fff0d6;border-color:#f8dba5}
+.lumi-lighthouse .card{background:linear-gradient(130deg,#31366bd9,#111e4bd9);border:1px solid #e7c78da6;border-radius:37px;box-shadow:inset 0 0 35px #a5b2ff15,0 15px 40px #030a2c77;padding:28px;min-height:360px;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.lumi-lighthouse .card:before,.lumi-lighthouse .card:after{opacity:.95;filter:drop-shadow(0 0 10px #83cdff88)}
+.lumi-lighthouse :is(.counter,.phase){color:#f0deba;font-size:15px}
+.lumi-lighthouse :is(.gem-tile,.symbol-tile,.puzzle-piece){background:linear-gradient(145deg,#ffefd9,#d8c9e8);border:2px solid #f3d9a8;box-shadow:0 4px 0 #786188,0 6px 16px #040b2d55;border-radius:23px}
+.lumi-lighthouse :is(.gem-tile.selected,.symbol-tile.selected,.puzzle-piece.selected){outline:3px solid #ffdc7a;outline-offset:2px;box-shadow:0 0 25px #ffe6aa66}
+.lumi-lighthouse .gem-tile.matched{background:#c9e8da;border-color:#9ed8bd;opacity:.7}
+.lumi-lighthouse .pattern-row{background:#f6e8d9f5;border:1px solid #f9dbab;box-shadow:0 4px 0 #7e6787}.lumi-lighthouse .pattern-row.solved{background:#d4efdf}
+.lumi-lighthouse :is(.answer-slot,.step-slot){background:#e4d9ed;border-color:#dcb778}.lumi-lighthouse .memory-top{background:#17244ac9;border-color:#d7b77c8c}
+.lumi-lighthouse .path-hint{background:linear-gradient(#fff1d6,#d8cbea);border:1px solid #f4d496;color:#635169}.lumi-lighthouse .destination{background:#fff0d9;color:#5d466e;padding:9px}
+.lumi-lighthouse .message:not(:empty){color:#493654;background:#fff1d9;border:1px solid #edc785}.lumi-lighthouse .message.success{color:#326d5c}
+.lumi-lighthouse .secondary{color:#f3dfb9}.lumi-lighthouse footer{color:#f1ddb4;background:#132047b3;border-color:#e3c69055;padding:7px 17px;margin-top:18px}
+.lumi-lighthouse .reward,.lumi-trail .reward-card{background:linear-gradient(135deg,#252d5ee8,#122249e8);border:2px solid #efce8e;box-shadow:inset 0 0 50px #a1aaff18,0 0 50px #f3d29822,0 15px 50px #030b2f77;border-radius:42px;color:#fff1cf}
+.lumi-lighthouse .reward h1,.lumi-trail .reward-card h1{font-family:Georgia,serif;color:#fff0c9;text-shadow:0 2px 10px #040b2f;font-size:clamp(34px,4vw,55px)}
+.lumi-lighthouse .reward :is(p,h2),.lumi-trail :is(.reward-description,.reward-final-text,.reward-name strong,.reward-small-title){color:#f4e2bd}
+.lumi-trail .crystal-reward-page{display:flex;align-items:center;justify-content:center;gap:25px;flex-wrap:wrap}.lumi-trail .reward-lumi{position:relative;inset:auto;width:250px;flex-shrink:0;z-index:2}.lumi-trail .reward-lumi img{width:100%;filter:drop-shadow(0 12px 20px #030b2d88)}.lumi-trail .reward-card{width:min(620px,100%);padding:35px}.lumi-trail .reward-glow{pointer-events:none}
+@media(max-width:900px){.lumi-trail :is(.crystal-game-top,.quest-intro-top){grid-template-columns:auto 1fr}.lumi-trail :is(.crystal-game-progress,.quest-progress){grid-column:2;grid-row:1;justify-self:end}.lumi-trail :is(.crystal-game-number,.quest-world-name){grid-row:2;grid-column:1/-1;justify-self:center}.lumi-trail :is(.crystal-game-area,.task2-game-area,.bridge-game-area,.firefly-game-area,.sorting-game-area,.pattern-game-area,.final-game-area){grid-template-columns:155px minmax(0,1fr);gap:15px}.lumi-trail .task2-crystal{height:190px}.lumi-lighthouse .scene{grid-template-columns:155px 1fr;gap:15px}.lumi-lighthouse .lumi{width:155px;height:190px}.lumi-lighthouse .card{padding:24px 18px}.lumi-lighthouse .app{padding:20px}.lumi-trail .quest-story{width:60%}.lumi-trail .quest-lumi{width:36%}.lumi-trail .quest-story h1{font-size:49px}.lumi-lighthouse .intro h1{font-size:49px}}
+@media(max-width:600px){
+.lumi-trail :is(.quest-intro,.crystal-game-screen,.crystal-reward-page){padding:18px 14px 30px;background-attachment:scroll;background-position:65% center}.lumi-trail :is(.quest-intro,.crystal-game-screen,.crystal-reward-page):before{inset:7px;border-radius:25px}
+:is(.lumi-trail,.lumi-lighthouse) .adventure-tools{justify-content:center;margin:13px auto;gap:8px}.adventure-help-button,.adventure-menu{font-size:14px;min-height:44px;padding:10px 15px}
+.lumi-trail :is(.crystal-game-progress,.quest-progress){gap:4px;padding:8px 10px}.lumi-trail :is(.crystal-game-progress,.quest-progress) span{width:23px;height:25px}.lumi-trail :is(.crystal-game-number,.quest-world-name){font-size:12px;padding:8px 14px}.lumi-trail :is(.crystal-game-back,.quest-home){padding:10px 14px;font-size:14px}
+.lumi-trail .quest-intro-content{display:flex;flex-direction:column;gap:0;min-height:0}.lumi-trail .quest-story{width:100%;padding:30px 12px 0;text-align:center}.lumi-trail .quest-story h1{font-size:42px;line-height:1.1;margin:14px 0 20px}.lumi-trail .quest-story p{font-size:17px;line-height:1.6}.lumi-trail .quest-lumi{align-self:center;width:220px;margin:30px 0 0}.lumi-trail .quest-start-button{width:100%;font-size:17px}
+.lumi-trail .crystal-game-title{padding:19px 16px;margin:20px auto;border-radius:28px}.lumi-trail .crystal-game-title h1{font-size:27px}.lumi-trail .crystal-game-title p{font-size:17px}.lumi-trail .crystal-game-title>span{font-size:11px}
+.lumi-trail :is(.crystal-game-area,.task2-game-area,.bridge-game-area,.firefly-game-area,.sorting-game-area,.pattern-game-area,.final-game-area){display:flex;flex-direction:column-reverse;gap:20px;min-height:0}
+.lumi-trail :is(.crystal-game-lumi,.task2-lumi,.bridge-lumi,.firefly-lumi,.sorting-lumi,.pattern-lumi,.final-lumi){width:150px;min-width:0;align-self:center;margin:0}
+.lumi-trail :is(.crystal-game-lumi,.task2-lumi,.bridge-lumi,.firefly-lumi,.sorting-lumi,.pattern-lumi,.final-lumi) img{max-height:175px}
+.lumi-trail :is(.crystal-path,.task2-stage,.bridge-scene,.firefly-stage,.sorting-stage,.pattern-stage,.final-stage){padding:20px 13px;border-radius:28px;min-height:0}.lumi-trail .crystal-path{min-height:235px}.lumi-trail .task2-stage{min-height:210px;align-items:center}.lumi-trail .task2-options{gap:5px}.lumi-trail .task2-crystal{height:165px}.lumi-trail .pattern-cell{width:calc((100% - 24px)/5);height:70px}.lumi-trail .magic-pattern{gap:6px}.lumi-trail .crystal-success.show{padding:20px;flex-direction:column;gap:18px}.lumi-trail .crystal-success-message strong{font-size:26px}
+.lumi-lighthouse .app{padding:18px 14px 12px}.lumi-lighthouse .topbar{grid-template-columns:77px 1fr 45px;gap:6px}.lumi-lighthouse .age{font-size:11px;letter-spacing:0;padding:8px}.lumi-lighthouse .progress{gap:7px;padding:8px 14px}.lumi-lighthouse .progress .dot{width:27px;height:29px;min-width:27px;min-height:29px}.lumi-lighthouse .intro{display:flex;flex-direction:column;min-height:0;gap:0;padding:0}.lumi-lighthouse .intro-copy{padding:30px 10px 0;text-align:center}.lumi-lighthouse .intro h1{font-size:42px;text-align:center;line-height:1.1;margin:18px 0 24px}.lumi-lighthouse .intro p{font-size:17px;line-height:1.6;margin-bottom:25px}.lumi-lighthouse .intro .hero-lumi{width:220px;height:250px;align-self:center;margin:25px auto 0}.lumi-lighthouse .intro .primary{font-size:17px;width:100%}.lumi-lighthouse .intro .eyebrow{font-size:12px;letter-spacing:2px}
+.lumi-lighthouse .page-head{grid-template-columns:40px 1fr 55px;gap:6px}.lumi-lighthouse .page-head h1{font-size:26px}.lumi-lighthouse .instruction{padding:17px 16px;font-size:17px;border-radius:27px;margin:13px auto 20px}.lumi-lighthouse .scene{display:flex;flex-direction:column-reverse;gap:20px}.lumi-lighthouse .card{padding:22px 15px;border-radius:29px;min-height:0}.lumi-lighthouse .lumi-side{align-self:center;max-width:100%;gap:12px}.lumi-lighthouse .lumi{width:130px;height:150px}.lumi-lighthouse .lumi-caption{max-width:175px;font-size:13px;padding:12px}.lumi-lighthouse .counter,.lumi-lighthouse .phase{font-size:13px}.lumi-lighthouse .gem-tile{min-height:83px;border-radius:19px}.lumi-lighthouse .gem-tile .art{width:63px;height:70px}.lumi-lighthouse .pattern-row{gap:4px}.lumi-lighthouse .pattern-row .art{width:25px}.lumi-lighthouse .reward{padding:28px 20px}.lumi-lighthouse .reward .lumi{width:200px;height:210px}.lumi-lighthouse .reward h1{font-size:37px}.lumi-lighthouse footer{font-size:10px}
+.lumi-trail .reward-lumi{width:180px;order:2}.lumi-trail .reward-card{padding:26px 20px;border-radius:32px}.lumi-trail .reward-card h1{font-size:37px}
+}
+@media(prefers-reduced-motion:no-preference){:is(.lumi-trail,.lumi-lighthouse) :is(.quest-story,.intro-copy,.crystal-game-title,.page-head){animation:storybook-enter .65s both}@keyframes storybook-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}}
