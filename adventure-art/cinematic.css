@@ -106,3 +106,30 @@
 .lumi-trail .task2-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lumi-trail .task2-crystal{height:180px}
 }
 .lumi-lighthouse:is([data-scene="intro"],[data-scene="reward"],[data-scene="7"] ) .ambient{background:linear-gradient(#06143022,#0b17374d),url('lighthouse-moonlit.png') center/cover}
+
+/* iPad containment and five visually distinct stair widths. */
+.lumi-trail,.lumi-trail *{box-sizing:border-box}
+.lumi-trail .crystal-game-screen{width:100%;max-width:100%;min-width:0}
+.lumi-trail.task-one-page .crystal-game-area{min-width:0;max-width:100%}
+.lumi-trail.task-one-page .crystal-game-area .crystal-path{width:100%!important;max-width:100%!important;min-width:0;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;align-items:center;justify-items:center;gap:clamp(4px,1vw,14px)!important;margin:0!important;padding:32px 14px!important;min-height:280px}
+.lumi-trail.task-one-page .crystal-path .crystal-button{width:100%!important;min-width:0!important;max-width:135px;height:180px;transform:none!important;margin:0}
+.lumi-trail.task-one-page .crystal-path .crystal-button img{width:100%!important;max-width:100%!important;height:100%!important;object-fit:contain}
+.lumi-trail .firefly-game-area .firefly-stage{width:100%!important;max-width:100%;min-width:0}
+.lumi-lighthouse[data-scene="3"] .stairs-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,4vw,42px);align-items:center}
+.lumi-lighthouse[data-scene="3"] .slabs{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;min-width:0}
+.lumi-lighthouse[data-scene="3"] .steps{width:100%;gap:12px}
+.lumi-lighthouse[data-scene="3"] .slab{flex-shrink:0;height:44px;min-height:44px}
+.lumi-lighthouse[data-scene="3"] .step-slot{height:44px;min-height:44px;flex-shrink:0}
+.lumi-lighthouse[data-scene="3"] .step-slot .slab{max-width:none!important;height:100%;min-height:0}
+@media(max-width:1100px){
+.lumi-trail.task-one-page .crystal-game-area{display:flex;flex-direction:column;gap:22px}
+.lumi-trail.task-one-page .crystal-game-area .crystal-path{order:1;min-height:260px}
+.lumi-trail.task-one-page .crystal-game-lumi{order:2;width:160px;align-self:center}
+}
+@media(max-width:600px){
+.lumi-trail.task-one-page .crystal-game-area .crystal-path{padding:22px 8px!important;min-height:200px}
+.lumi-trail.task-one-page .crystal-path .crystal-button{height:125px}
+.lumi-lighthouse[data-scene="3"] .card{padding:24px 12px}
+.lumi-lighthouse[data-scene="3"] .stairs-layout{gap:18px}
+.lumi-lighthouse[data-scene="3"] .slab,.lumi-lighthouse[data-scene="3"] .step-slot{height:44px;min-height:44px}
+}
