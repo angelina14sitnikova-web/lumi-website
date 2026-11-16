@@ -1,0 +1,380 @@
+[
+  {
+    "file": "bridge-clouds.png",
+    "width": 1000,
+    "height": 333,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 83590,
+    "sha256": "3045094c604d86511c351791fe810831b16138bda8220b1e07fbd3eb046ae9fe"
+  },
+  {
+    "file": "cloud.png",
+    "width": 800,
+    "height": 410,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 66566,
+    "sha256": "55ada36780210acc06ea37962966a878fd9e87f8bb8a94e44b4897a6af73db08"
+  },
+  {
+    "file": "crystal.png",
+    "width": 600,
+    "height": 548,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 51276,
+    "sha256": "d49c164c5da505bd082547a0b03d8d9de92617b07298c0e3a6b049910a345834"
+  },
+  {
+    "file": "lamp.png",
+    "width": 640,
+    "height": 626,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 82579,
+    "sha256": "f143dbb5d2f9825401e44a49cf680e96f3aa0b3a9b0ba417a70b8aaa1c2a5101"
+  },
+  {
+    "file": "lumi-happy.png",
+    "width": 640,
+    "height": 585,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 80636,
+    "sha256": "749d2b3916a30a2c7131b271f9338d7a6b2f5671e62e240db5b3a9080f2b226a"
+  },
+  {
+    "file": "lumi-reward.png",
+    "width": 640,
+    "height": 585,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 72516,
+    "sha256": "536f3a7a2343d8e53700ecfc8c965889017bcbf406f7830c6694871830377c19"
+  },
+  {
+    "file": "lumi-thinking.png",
+    "width": 640,
+    "height": 585,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 88115,
+    "sha256": "2081cf36a0ca514ac1fc1c0fc006a871c89d4bedac8c21f6a8ebdb0a3697d8f6"
+  },
+  {
+    "file": "lumi-welcome.png",
+    "width": 640,
+    "height": 625,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 94989,
+    "sha256": "e6d9251a99eab5e8fe546f7bf0eed96fdaa4906b614a503d8cc7f52050ce0958"
+  },
+  {
+    "file": "medal.png",
+    "width": 600,
+    "height": 600,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 122975,
+    "sha256": "e0eb82e402ce8971175cb5a04f5347f6ce0104b0fae43f5bda00b170ef5f3c16"
+  },
+  {
+    "file": "morning.png",
+    "width": 420,
+    "height": 560,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 86937,
+    "sha256": "fd0e89379fec363ace5a2b64c1d78a60ded2c70eec057fe09e5c46a9e5e1e3b4"
+  },
+  {
+    "file": "night.png",
+    "width": 420,
+    "height": 560,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 96077,
+    "sha256": "a546bfb008b5681755cc925ffcd739aa60e301091d4dfd9dca85c65e31b4b6fa"
+  },
+  {
+    "file": "planet.png",
+    "width": 600,
+    "height": 400,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 44209,
+    "sha256": "49e418ba6ce1a9ed2adf3877a9d51804359f8733aafe6fb0ed6f733c5187dfd6"
+  },
+  {
+    "file": "predawn.png",
+    "width": 420,
+    "height": 560,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 65057,
+    "sha256": "52c7d6fd2e41d9a31adc9748a24e98a97e3c20ccec3a411ad1822ddb045dff21"
+  },
+  {
+    "file": "rocket-body.png",
+    "width": 600,
+    "height": 900,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 86486,
+    "sha256": "e95ab5b3b38e84d3cded1c62a667bccce29a7ebad5b281910ddc33a8e4c19a25"
+  },
+  {
+    "file": "rocket-flame.png",
+    "width": 600,
+    "height": 765,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 71808,
+    "sha256": "d79e239a4aba0df08e06e4b86e39ac85d2a9f621bed9b5799c316629c2bff694"
+  },
+  {
+    "file": "spark.png",
+    "width": 180,
+    "height": 120,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 6306,
+    "sha256": "3f0737dd7f42d060b51e7330ded45767d5a26b9dc71ace3c8a7a5ad1d591ed45"
+  },
+  {
+    "file": "star-atlas.png",
+    "width": 640,
+    "height": 427,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 98578,
+    "sha256": "6caa8ba45698ed8027eb3edbc5420154f8ee4677f95404933d5c8d2b35ed9517"
+  },
+  {
+    "file": "star-blue.png",
+    "width": 240,
+    "height": 160,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 12392,
+    "sha256": "7eac29b56285fbfe36aba7eb4ac9b81a462a9699fe311bbdb270a2adf8cdbd91"
+  },
+  {
+    "file": "star-gold.png",
+    "width": 240,
+    "height": 160,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 14678,
+    "sha256": "2dea37e65475b7bfd938bf6a7723438de0bc950f82296641ebaba5a536601554"
+  },
+  {
+    "file": "star-mechanism.png",
+    "width": 600,
+    "height": 591,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 163839,
+    "sha256": "232a881d5d1deb9e27b90d6b2decefe7fc701b4ea71764912c65efa480c2eec5"
+  },
+  {
+    "file": "star-six.png",
+    "width": 240,
+    "height": 219,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 19952,
+    "sha256": "19b8f546ab64130406a361da585138947cd7d721a5fe35c3c7094c6c84365580"
+  },
+  {
+    "file": "sunset.png",
+    "width": 420,
+    "height": 560,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 67373,
+    "sha256": "57f8b5bc0f2a0cfd86c3484be8650685335cb483bc211b12a7af89246aefff18"
+  },
+  {
+    "file": "telescope.png",
+    "width": 600,
+    "height": 548,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 73257,
+    "sha256": "6beac4c0d30b3e7d20c85855162bb09bb824d45d36c24f0212662b501b668b3a"
+  },
+  {
+    "file": "time-clock.png",
+    "width": 600,
+    "height": 600,
+    "alpha": true,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes": 119351,
+    "sha256": "50d48c842ec8c3d5b464256231ff34db3c1cce7fb9e6c7567e2b7a009fce1c53"
+  },
+  {
+    "file": "tower-final.png",
+    "width": 1536,
+    "height": 864,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 350130,
+    "sha256": "7c21b3ead1f727d84e9378c8f253050f7a7f2b88448e4273cfa4e805bd299ceb"
+  },
+  {
+    "file": "tower-night.png",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 436708,
+    "sha256": "9ce99cb7f47c8c7206fc3f405d635c0fad62f4ae0ce8128e2b3ba742766d1ef0"
+  },
+  {
+    "file": "tower-room.png",
+    "width": 1536,
+    "height": 864,
+    "alpha": false,
+    "cornerAlpha": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "bytes": 328913,
+    "sha256": "ca66b5c923ee4054f66f0a40ee6ab6846588097f7d29518360de2c4991fce99f"
+  }
+]
