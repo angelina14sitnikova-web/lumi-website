@@ -99,3 +99,10 @@
 .lumi-trail .reward-lumi{width:180px;order:2}.lumi-trail .reward-card{padding:26px 20px;border-radius:32px}.lumi-trail .reward-card h1{font-size:37px}
 }
 @media(prefers-reduced-motion:no-preference){:is(.lumi-trail,.lumi-lighthouse) :is(.quest-story,.intro-copy,.crystal-game-title,.page-head){animation:storybook-enter .65s both}@keyframes storybook-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}}
+@media(max-width:600px){
+.lumi-trail :is(.crystal-game-area,.task2-game-area,.bridge-game-area,.firefly-game-area,.sorting-game-area,.pattern-game-area,.final-game-area){flex-direction:column}
+.lumi-trail :is(.crystal-game-lumi,.task2-lumi,.bridge-lumi,.firefly-lumi,.sorting-lumi,.pattern-lumi,.final-lumi){order:2}
+.lumi-trail :is(.crystal-path,.task2-stage,.bridge-scene,.firefly-stage,.sorting-stage,.pattern-stage,.final-stage){order:1}
+.lumi-trail .task2-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.lumi-trail .task2-crystal{height:180px}
+}
+.lumi-lighthouse:is([data-scene="intro"],[data-scene="reward"],[data-scene="7"] ) .ambient{background:linear-gradient(#06143022,#0b17374d),url('lighthouse-moonlit.png') center/cover}
