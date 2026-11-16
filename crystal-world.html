@@ -213,20 +213,25 @@
 
 
     <!-- 4–5 лет -->
-
     <div class="age-adventures" id="age-4-5">
-
         <div class="crystal-section-heading">
             <span>4–5 лет</span>
-            <h2>Новые приключения готовятся ✦</h2>
-            <p>
-                Здесь появятся более сложные истории
-                для детей 4–5 лет.
-            </p>
+            <h2>Выбери приключение ✦</h2>
+            <p>Волшебные истории и новые открытия вместе с Луми.</p>
         </div>
-
+        <div class="crystal-adventure-grid">
+            <article class="crystal-quest featured-quest">
+                <div class="quest-number">Приключение 01</div>
+                <div class="quest-content">
+                    <span class="quest-type">✦ Знакомство с приключением</span>
+                    <h3>Тайна Кристального маяка</h3>
+                    <p>Маяк погас, и волшебные дорожки потеряли свет. Познакомься с новой историей Луми. Задания скоро появятся.</p>
+                    <div class="quest-skills"><span>Логика</span><span>Сравнение</span><span>Память</span></div>
+                    <a href="crystal-lighthouse/index.html" class="quest-button">Открыть приключение →</a>
+                </div>
+            </article>
+        </div>
     </div>
-
 
     <!-- 5–6 лет -->
 
@@ -296,10 +301,20 @@ crystalAgeButtons.forEach(button => {
             document.getElementById(button.dataset.age);
 
         target.classList.add("active-adventures");
+        history.replaceState(null, "", "#" + button.dataset.age);
 
     });
 
 });
+
+function restoreCrystalAge() {
+    const selected = Array.from(crystalAgeButtons).find(
+        button => "#" + button.dataset.age === location.hash
+    );
+    if (selected) selected.click();
+}
+restoreCrystalAge();
+window.addEventListener("hashchange", restoreCrystalAge);
 
 </script>
 
