@@ -1,0 +1,13 @@
+'use strict';
+// To add an adventure, append one record. New directions need one definition here.
+window.LumiCatalogData={
+ ages:[{id:'age-3-4',label:'3–4 года'},{id:'age-4-5',label:'4–5 лет'},{id:'age-5-6',label:'5–6 лет'},{id:'age-6-7',label:'6–7 лет'}],
+ directions:[{id:'math-logic',label:'Математика и логика'},{id:'speech',label:'Развитие речи'}],
+ adventures:[
+  {id:'crystal-trail',title:'Секрет Кристальной тропы',age:'age-3-4',direction:'math-logic',description:'Помоги Луми пройти волшебную тропу, решить семь загадок и открыть древнюю дверь.',cover:'adventure-art/trail-enchanted-night.png',coverAlt:'Волшебная Кристальная тропа',game:'crystal-trail.html',status:'available',number:'01',skills:['Счёт','Логика','Внимание']},
+  {id:'magic-garden',title:'Луми и Волшебный сад',age:'age-3-4',direction:'speech',description:'Верни саду его голос: узнай звуки животных, помоги малышам найти мам и расскажи историю о цветке.',cover:'magic-garden/assets/cover.webp',coverAlt:'Луми у калитки цветущего Волшебного сада',game:'magic-garden/index.html',status:'available',number:'05',skills:['Развитие речи','Слуховое внимание','Связная речь']},
+  {id:'crystal-lighthouse',title:'Луми и Тайна Кристального маяка',age:'age-4-5',direction:'math-logic',description:'Помоги Луми пройти семь испытаний и вернуть свет волшебному маяку.',cover:'adventure-art/lighthouse-moonlit.png',coverAlt:'Кристальный маяк над морем на закате',game:'crystal-lighthouse/index.html',status:'available',number:'02',skills:['Логика','Сравнение','Память']},
+  {id:'star-tower',title:'Луми и Тайна Звёздной башни',age:'age-5-6',direction:'math-logic',description:'Верни семь исчезнувших звёзд, восстанови небесную карту и зажги башню вместе с Луми.',cover:'star-tower/assets/tower-night.png',coverAlt:'Волшебная Звёздная башня над облаками',game:'star-tower/index.html',status:'available',number:'03',skills:['Логика','Память','Счёт','Воображение']},
+  {id:'enchanted-library',title:'Луми и Тайна Зачарованной библиотеки',age:'age-6-7',direction:'math-logic',description:'Разгадай шифр, собери ключи, восстанови сказку и открой семь печатей Книги тысячи историй.',cover:'enchanted-library/assets/library-cover.png',coverAlt:'Зачарованная библиотека с сияющими окнами и волшебной книгой',game:'enchanted-library/index.html?welcome=1&v=5',status:'available',number:'04',skills:['Логика','Чтение','Счёт','Геометрия']}
+ ]
+};

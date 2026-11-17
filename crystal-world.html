@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кристальный мир — Луми</title>
+    <title>Приключения с Луми — игры для детей 3–7 лет</title>
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="stylesheet" href="star-tower/card.css">
 <link rel="stylesheet" href="adventure-art/cards.css?v=2">
-<link rel="stylesheet" href="magic-garden/card.css">
+<link rel="stylesheet" href="site-sections/sections.css">
+<link rel="stylesheet" href="site-sections/catalog.css">
 </head>
 
-<body>
+<body class="catalog-page">
 
 <header class="header">
 
@@ -21,7 +22,7 @@
     <nav class="navigation">
         <a href="index.html">Главная</a>
         <a href="tasks.html">Задания</a>
-        <a href="index.html#adventures" class="active">Приключения</a>
+        <a href="crystal-world.html" class="active">Приключения</a>
         <a href="index.html#benefits">Для родителей</a>
     </nav>
 
@@ -38,7 +39,7 @@
 <section class="crystal-page-hero">
 
     <a href="index.html#adventures" class="crystal-back">
-        ← Все миры
+        ← Все разделы
     </a>
 
     <div class="crystal-hero-text">
@@ -47,11 +48,10 @@
             ✦ Мир приключений
         </span>
 
-        <h1>Кристальный мир</h1>
+        <h1>Приключения с Луми</h1>
 
         <p>
-            Волшебная долина загадок, сияющих кристаллов
-            и маленьких открытий.
+            В каждом путешествии тебя ждут волшебные задания, новые открытия и особенная награда!
         </p>
 
     </div>
@@ -59,176 +59,17 @@
 </section>
 
 
-<section class="crystal-age-section">
-
-    <p class="crystal-age-title">
-        Выбери свой возраст
-    </p>
-
-    <div class="crystal-age-buttons">
-
-        <button class="active-age" data-age="age-3-4">
-            3–4 года
-        </button>
-
-        <button data-age="age-4-5">
-            4–5 лет
-        </button>
-
-        <button data-age="age-5-6">
-            5–6 лет
-        </button>
-
-        <button data-age="age-6-7">
-            6–7 лет
-        </button>
-
-    </div>
-
+<section class="crystal-age-section" aria-labelledby="age-title">
+  <p class="crystal-age-title" id="age-title">Выбери свой возраст</p>
+  <div class="crystal-age-buttons" role="group" aria-labelledby="age-title"></div>
 </section>
-
-
-<section class="crystal-adventures">
-
-    <!-- 3–4 года -->
-
-    <div class="age-adventures active-adventures" id="age-3-4">
-
-        <div class="crystal-section-heading">
-            <span>3–4 года</span>
-            <h2>Выбери приключение ✦</h2>
-            <p>
-                Короткие игровые истории для первых открытий.
-            </p>
-        </div>
-
-
-        <div class="crystal-adventure-grid">
-
-            <article class="crystal-quest featured-quest illustrated-quest">
-                <img class="quest-cover" src="adventure-art/trail-enchanted-night.png" alt="Волшебная Кристальная тропа" loading="lazy">
-
-                <div class="quest-number">
-                    Приключение 01
-                </div>
-
-                <div class="quest-content">
-
-                    <span class="quest-type">
-                        ✦ 7 испытаний
-                    </span>
-
-                    <h3>
-                        Секрет Кристальной тропы
-                    </h3>
-
-                    <p>
-                        Помоги Луми пройти волшебную тропу,
-                        решить семь загадок и открыть древнюю дверь.
-                    </p>
-
-                    <div class="quest-skills">
-                        <span>Счёт</span>
-                        <span>Логика</span>
-                        <span>Внимание</span>
-                    </div>
-
-                    <a href="crystal-trail.html" class="quest-button">
-                        Начать приключение →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="crystal-quest featured-quest illustrated-quest garden-card">
-                <img class="quest-cover" src="magic-garden/assets/cover.webp" alt="Луми у калитки цветущего Волшебного сада" loading="lazy">
-                <div class="quest-number">Приключение 05</div>
-                <div class="quest-content">
-                    <span class="quest-type">7 заданий · 3–4 года</span>
-                    <h3>Луми и Волшебный сад</h3>
-                    <p>Верни саду его голос: узнай звуки животных, помоги малышам найти мам и расскажи историю о цветке.</p>
-                    <div class="quest-skills"><span>Развитие речи</span><span>Слуховое внимание</span><span>Связная речь</span></div>
-                    <a href="magic-garden/index.html" class="quest-button">Начать приключение →</a>
-                </div>
-            </article>
-
-
-
-
-        </div>
-
-    </div>
-
-
-    <!-- 4–5 лет -->
-    <div class="age-adventures" id="age-4-5">
-        <div class="crystal-section-heading">
-            <span>4–5 лет</span>
-            <h2>Выбери приключение ✦</h2>
-            <p>Волшебные истории и новые открытия вместе с Луми.</p>
-        </div>
-        <div class="crystal-adventure-grid">
-            <article class="crystal-quest featured-quest illustrated-quest">
-                <img class="quest-cover" src="adventure-art/lighthouse-moonlit.png" alt="Кристальный маяк над морем на закате" loading="lazy">
-                <div class="quest-number">Приключение 01</div>
-                <div class="quest-content">
-                    <span class="quest-type">✦ 7 испытаний</span>
-                    <h3>Тайна Кристального маяка</h3>
-                    <p>Помоги Луми пройти семь испытаний и вернуть свет волшебному маяку.</p>
-                    <div class="quest-skills"><span>Логика</span><span>Сравнение</span><span>Память</span></div>
-                    <a href="crystal-lighthouse/index.html" class="quest-button">Начать приключение →</a>
-                </div>
-            </article>
-        </div>
-    </div>
-
-    <!-- 5–6 лет -->
-    <div class="age-adventures" id="age-5-6">
-        <div class="crystal-section-heading">
-            <span>5–6 лет</span>
-            <h2>Выбери приключение ✦</h2>
-            <p>Звёздные загадки, волшебные механизмы и новые открытия.</p>
-        </div>
-        <div class="crystal-adventure-grid">
-            <article class="crystal-quest featured-quest star-tower-card illustrated-quest">
-                <img class="star-tower-cover quest-cover" src="star-tower/assets/tower-night.png" alt="Волшебная Звёздная башня над облаками" loading="lazy">
-                <div class="quest-number">Приключение 01</div>
-                <div class="quest-content">
-                    <span class="quest-type">✦ 7 испытаний · 5–6 лет</span>
-                    <h3>Луми и Тайна Звёздной башни</h3>
-                    <p>Верни семь исчезнувших звёзд, восстанови небесную карту и зажги башню вместе с Луми.</p>
-                    <div class="quest-skills"><span>Логика</span><span>Память</span><span>Счёт</span><span>Воображение</span></div>
-                    <a href="star-tower/index.html" class="quest-button">Начать приключение →</a>
-                </div>
-            </article>
-        </div>
-    </div>
-
-    <!-- 6–7 лет -->
-    <div class="age-adventures" id="age-6-7">
-        <div class="crystal-section-heading">
-            <span>6–7 лет</span>
-            <h2>Выбери приключение ✦</h2>
-            <p>Сказочные загадки для любознательных исследователей.</p>
-        </div>
-        <div class="crystal-adventure-grid">
-            <article class="crystal-quest featured-quest illustrated-quest">
-                <img class="quest-cover" src="enchanted-library/assets/library-cover.png" alt="Зачарованная библиотека с сияющими окнами и волшебной книгой" loading="lazy">
-                <div class="quest-number">Приключение 04</div>
-                <div class="quest-content">
-                    <span class="quest-type">✦ 7 испытаний · 6–7 лет</span>
-                    <h3>Луми и Тайна Зачарованной библиотеки</h3>
-                    <p>Разгадай шифр, собери ключи, восстанови сказку и открой семь печатей Книги тысячи историй.</p>
-                    <div class="quest-skills"><span>Логика</span><span>Чтение</span><span>Счёт</span><span>Геометрия</span></div>
-                    <a href="enchanted-library/index.html?welcome=1&amp;v=5" class="quest-button">Начать приключение →</a>
-                </div>
-            </article>
-        </div>
-    </div>
-
+<section class="catalog-filter-area" aria-labelledby="filter-title">
+  <p class="catalog-filter-title" id="filter-title">Что будем развивать?</p>
+  <div class="catalog-filters" id="catalog-filters" role="group" aria-labelledby="filter-title"></div>
+  <p id="catalog-status" class="catalog-sr-only" role="status" aria-live="polite"></p>
 </section>
+<div class="crystal-adventures" id="catalog-content"></div>
+<noscript><section class="catalog-filter-area"><p>Включи JavaScript для выбора возраста и фильтров. Все приключения:</p><p><a href="crystal-trail.html">Секрет Кристальной тропы</a> · <a href="magic-garden/index.html">Луми и Волшебный сад</a> · <a href="crystal-lighthouse/index.html">Тайна Кристального маяка</a> · <a href="star-tower/index.html">Тайна Звёздной башни</a> · <a href="enchanted-library/index.html?welcome=1&amp;v=5">Тайна Зачарованной библиотеки</a></p></section></noscript>
 
 </main>
 
@@ -238,49 +79,8 @@
 </footer>
 
 
-<script>
-
-const crystalAgeButtons =
-    document.querySelectorAll(".crystal-age-buttons button");
-
-const crystalAgeSections =
-    document.querySelectorAll(".age-adventures");
-
-
-crystalAgeButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        crystalAgeButtons.forEach(btn => {
-            btn.classList.remove("active-age");
-        });
-
-        crystalAgeSections.forEach(section => {
-            section.classList.remove("active-adventures");
-        });
-
-        button.classList.add("active-age");
-
-        const target =
-            document.getElementById(button.dataset.age);
-
-        target.classList.add("active-adventures");
-        history.replaceState(null, "", "#" + button.dataset.age);
-
-    });
-
-});
-
-function restoreCrystalAge() {
-    const selected = Array.from(crystalAgeButtons).find(
-        button => "#" + button.dataset.age === location.hash
-    );
-    if (selected) selected.click();
-}
-restoreCrystalAge();
-window.addEventListener("hashchange", restoreCrystalAge);
-
-</script>
+<script src="site-sections/catalog-data.js"></script>
+<script src="site-sections/catalog.js"></script>
 
 </body>
 </html>
