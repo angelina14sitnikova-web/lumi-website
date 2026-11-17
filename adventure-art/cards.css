@@ -1,7 +1,7 @@
-/* Only the three available adventures; other cards and the global theme stay intact. */
+/* Available adventures; other cards and the global theme stay intact. */
 .age-adventures .illustrated-quest{position:relative;overflow:hidden;border:1px solid #f6dfb4;background:linear-gradient(140deg,#fffbf4,#f1e7fb);box-shadow:0 14px 38px #74518b1c;transition:transform .25s ease,box-shadow .25s ease}
 .age-adventures .illustrated-quest:hover{transform:translateY(-4px);box-shadow:0 19px 42px #74518b2a}
-:is(#age-3-4,#age-4-5,#age-5-6) .illustrated-quest .quest-cover{display:block;width:100%;height:240px;object-fit:cover;object-position:72% 43%;border-radius:25px;margin-bottom:18px;box-shadow:0 6px 20px #70509320}
+:is(#age-3-4,#age-4-5,#age-5-6,#age-6-7) .illustrated-quest .quest-cover{display:block;width:100%;height:240px;object-fit:cover;object-position:72% 43%;border-radius:25px;margin-bottom:18px;box-shadow:0 6px 20px #70509320}
 .age-adventures .illustrated-quest .quest-number{position:relative}.age-adventures .illustrated-quest .quest-type{color:#946c34}.age-adventures .illustrated-quest .quest-skills{display:flex;flex-wrap:wrap;gap:7px}.age-adventures .illustrated-quest .quest-button{border:1px solid #f8dca4;box-shadow:0 5px 16px #70458c24}
-@media(max-width:600px){:is(#age-3-4,#age-4-5,#age-5-6) .illustrated-quest .quest-cover{height:200px;border-radius:20px}.age-adventures .illustrated-quest:hover{transform:none}}
+@media(max-width:600px){:is(#age-3-4,#age-4-5,#age-5-6,#age-6-7) .illustrated-quest .quest-cover{height:200px;border-radius:20px}.age-adventures .illustrated-quest:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.age-adventures .illustrated-quest{transition:none}}
