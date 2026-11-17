@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Луми — мир маленьких открытий</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="site-sections/sections.css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
     <nav class="navigation">
       <a href="#home" class="active">Главная</a>
       <a href="tasks.html">Задания</a>
-      <a href="#adventures">Приключения</a>
+      <a href="crystal-world.html">Приключения</a>
       <a href="#benefits">Для родителей</a>
     </nav>
 
@@ -60,47 +61,36 @@
     </section>
 
     
-<section class="adventures" id="adventures">
-
-    <h2>✧ Выбери своё приключение ✧</h2>
-
-    <div class="adventure-grid">
-
-        <a href="crystal-world.html" class="world-card crystal world-card-link">
-            <div class="world-art"></div>
-
-            <div class="world-content">
-                <h3>Кристальный мир</h3>
-                <p>Отправляйся навстречу загадкам и открытиям!</p>
-                <span class="world-arrow">→</span>
-            </div>
-        </a>
-
-        <article class="world-card forest">
-            <div class="world-art"></div>
-
-            <div class="world-content">
-                <h3>Лес открытий</h3>
-                <p>Изучай природу и её секреты!</p>
-                <span class="world-arrow">→</span>
-            </div>
-        </article>
-
-        <article class="world-card stars">
-            <div class="world-art"></div>
-
-            <div class="world-content">
-                <h3>Звёздная миссия</h3>
-                <p>Путешествуй по космосу и узнавай новое!</p>
-                <span class="world-arrow">→</span>
-            </div>
-        </article>
-
-    </div>
-
+<section class="adventures lumi-sections" id="adventures" aria-labelledby="sections-title">
+  <h2 id="sections-title">✧ Открой мир Луми ✧</h2>
+  <p class="sections-intro">Играй, учись, исследуй и создавай вместе с Луми!</p>
+  <div class="adventure-grid sections-grid">
+    <article class="world-card section-card section-adventures">
+      <img class="section-cover" src="site-sections/assets/adventures.webp" alt="Приключения с Луми: сказочный мир вместе с Луми" width="1200" height="800" loading="lazy">
+      <div class="world-content section-content"><span class="section-status available">Доступен</span>
+        <h3>Приключения с Луми</h3><p>Отправляйся в сказочные путешествия, выполняй задания и собирай волшебные награды!</p><a class="section-link" href="crystal-world.html">Выбрать приключение <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="world-card section-card section-academy">
+      <img class="section-cover" src="site-sections/assets/academy.webp" alt="Академия Луми: сказочный мир вместе с Луми" width="1200" height="800" loading="lazy">
+      <div class="world-content section-content"><span class="section-status ">Скоро открытие</span>
+        <h3>Академия Луми</h3><p>Учись новому, развивай речь, мышление и внимание вместе с Луми!</p><a class="section-link" href="academy.html">О разделе <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="world-card section-card section-encyclopedia">
+      <img class="section-cover" src="site-sections/assets/encyclopedia.webp" alt="Энциклопедия Луми: сказочный мир вместе с Луми" width="1200" height="800" loading="lazy">
+      <div class="world-content section-content"><span class="section-status ">Скоро открытие</span>
+        <h3>Энциклопедия Луми</h3><p>Открывай удивительные тайны природы, космоса и окружающего мира!</p><a class="section-link" href="encyclopedia.html">О разделе <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="world-card section-card section-workshop">
+      <img class="section-cover" src="site-sections/assets/workshop.webp" alt="Мастерская Луми: сказочный мир вместе с Луми" width="1200" height="800" loading="lazy">
+      <div class="world-content section-content"><span class="section-status ">Скоро открытие</span>
+        <h3>Мастерская Луми</h3><p>Рисуй, раскрашивай, фантазируй и создавай маленькие чудеса!</p><a class="section-link" href="workshop.html">О разделе <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </div>
 </section>
-
-    </section>
 
   </main>
 
