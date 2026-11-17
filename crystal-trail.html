@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script src="analytics/lumi-analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -78,6 +79,7 @@
 const startQuest = document.getElementById("startQuest");
 
 startQuest.addEventListener("click", () => {
+    window.LumiAnalytics?.begin("crystal-trail",true);
     window.location.href = "crystal-trail-1.html";
 });
 </script>

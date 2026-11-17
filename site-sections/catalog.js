@@ -29,7 +29,7 @@
   if(matches.length){const grid=node('div','crystal-adventure-grid');matches.forEach(a=>grid.append(card(a)));section.append(grid);}else section.append(node('p','catalog-empty','Здесь скоро появятся новые приключения!'));
   catalog.append(section);status.textContent='Возраст: '+ageLabel(selectedAge)+'. '+(selectedDirection==='all'?'Все приключения':directionLabel(selectedDirection))+'. Найдено: '+matches.length+'.';
  }
- function selectAge(id,updateHash){if(!data.ages.some(a=>a.id===id))id=data.ages[0].id;selectedAge=id;selectedDirection='all';if(updateHash)history.replaceState(null,'','#'+id);render();}
+ function selectAge(id,updateHash){if(!data.ages.some(a=>a.id===id))id=data.ages[0].id;selectedAge=id;selectedDirection='all';if(updateHash){history.replaceState(null,'','#'+id);window.LumiAnalytics?.age(id);}render();}
  ageButtons.replaceChildren();data.ages.forEach(a=>{const b=node('button','',a.label);b.type='button';b.dataset.age=a.id;b.onclick=()=>selectAge(a.id,true);ageButtons.append(b);});
  [{id:'all',label:'Все приключения'},...data.directions].forEach(d=>{const b=node('button','catalog-filter',d.label);b.type='button';b.dataset.direction=d.id;b.onclick=()=>{selectedDirection=d.id;render();};filters.append(b);});
  window.addEventListener('hashchange',()=>selectAge(location.hash.slice(1),false));render();
