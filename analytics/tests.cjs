@@ -1,0 +1,41 @@
+const {JSDOM}=require('jsdom');
+const fs=require('fs'),assert=require('node:assert/strict');
+const code=fs.readFileSync(require('node:path').join(__dirname,'lumi-analytics.js'),'utf8');
+let checks=0;const ok=(x,msg)=>{assert.ok(x,msg);checks++};
+async function env(saved=null,broken=false,seed=null){
+ const dom=new JSDOM('<!doctype html><html><head></head><body><input class="ym-record-keys" value="PRIVATE CHILD NAME"><textarea>PRIVATE TEXT</textarea></body></html>',{url:'https://example.test/lumi/index.html?private=SECRET#PRIVATE',runScripts:'outside-only'});
+ const w=dom.window,d=w.document;const sc=d.createElement('script');sc.src='https://example.test/lumi/analytics/lumi-analytics.js';Object.defineProperty(d,'currentScript',{value:sc});
+ if(saved)w.localStorage.setItem('lumi.analytics.consent.v1',saved);
+ w.localStorage.setItem('lumi-game-progress','KEEP');if(seed)for(const [k,v]of Object.entries(seed))w.sessionStorage.setItem(k,v);
+ if(broken){Object.defineProperty(w,'localStorage',{get(){throw new Error('blocked storage')}});Object.defineProperty(w,'sessionStorage',{get(){throw new Error('blocked storage')}});}
+ const calls=[];w.ym=(...a)=>calls.push(a);
+ w.eval(code);await new Promise(r=>setTimeout(r,5));
+ return {w,d,calls,api:w.LumiAnalytics,allow(){d.querySelector('[data-choice="allowed"]').click()},deny(){d.querySelector('[data-choice="denied"]').click()},load(){d.getElementById('lumi-metrika-sdk').onload()},close(){w.close()}};
+}
+(async()=>{
+ let e=await env();ok(!e.d.getElementById('lumi-metrika-sdk'),'no SDK before consent');e.api.begin('magic-garden',true);e.api.taskComplete('magic-garden',1);ok(!e.calls.length,'no calls before consent');e.d.querySelector('[data-close]').click();ok(!e.d.getElementById('lumi-metrika-sdk'),'closing does not consent');e.deny();ok(!e.calls.length,'reject no calls');e.allow();ok(e.d.querySelectorAll('#lumi-metrika-sdk').length===1,'one loader');e.api.begin('magic-garden',true);e.api.begin('magic-garden',true);e.api.taskComplete('magic-garden',1);e.api.taskComplete('magic-garden',1);e.load();ok(e.calls.filter(c=>c[1]==='init').length===1,'one init');
+ const opts=e.calls.find(c=>c[1]==='init')[2];for(const key of ['webvisor','clickmap','trackLinks','ecommerce','accurateTrackBounce','childIframe','trackHash','sendTitle'])ok(opts[key]===false,key+' off');ok(opts.defer&&opts.disableYtm,'automatic hits and tag manager disabled');
+ const hit=e.calls.find(c=>c[1]==='hit');ok(hit[2]==='https://example.test/lumi/index.html','URL sanitized');ok(hit[3].title===''&&!hit[3].referer.includes('SECRET'),'no title or sensitive referrer');
+ ok(e.calls.filter(c=>c[2]==='adventure_start').length===1,'double start dedupe');ok(e.calls.filter(c=>c[2]==='task_complete').length===1,'double task dedupe');
+ const before=e.calls.length;e.w.eval(code);ok(e.d.querySelectorAll('#lumi-analytics-controls').length===1,'singleton UI');ok(e.calls.length===before,'singleton init');
+ for(let n=2;n<=7;n++){e.api.taskComplete('magic-garden',n);e.api.taskComplete('magic-garden',n)}e.api.complete('magic-garden');e.api.complete('magic-garden');ok(e.calls.filter(c=>c[2]==='task_complete').length===7,'seven task events');ok(e.calls.filter(c=>c[2]==='adventure_complete').length===1,'one completion');
+ for(const id of ['age-3-4','age-4-5','age-5-6','age-6-7']){e.api.age(id);e.api.age(id)}ok(e.calls.filter(c=>/^age_/.test(c[2])).length===4,'four age goals deduped');
+ e.api.begin('private-person',true);e.api.taskComplete('magic-garden',8);e.api.taskComplete('magic-garden','PRIVATE');e.api.age('PRIVATE');
+ for(const c of e.calls.filter(c=>c[1]==='reachGoal')){ok(c[0]===114310945,'one counter');ok(Object.keys(c[3]).every(k=>['adventure_id','age_group','task_number'].includes(k)),'technical fields only')}
+ ok(!JSON.stringify(e.calls).includes('PRIVATE')&&!JSON.stringify(e.calls).includes('SECRET'),'no field contents or query');ok(e.d.body.classList.contains('ym-disable-submit'),'form tracking disabled');ok(e.d.querySelector('input').classList.contains('ym-disable-keys'),'field recording disabled');
+ const input=e.d.createElement('input');e.d.body.append(input);await new Promise(r=>setTimeout(r,5));ok(input.classList.contains('ym-disable-keys'),'new fields protected');
+ e.deny();ok(e.calls.at(-1)[1]==='destruct','withdraw destruct');const count=e.calls.length;e.api.age('age-3-4');e.api.taskComplete('magic-garden',2);ok(e.calls.length===count,'withdraw blocks events');e.allow();ok(!e.d.getElementById('lumi-metrika-sdk'),'no second init same document');ok(e.w.localStorage.getItem('lumi-game-progress')==='KEEP','game storage retained');e.close();
+ e=await env();e.allow();const late=e.d.getElementById('lumi-metrika-sdk');e.api.begin('star-tower',true);e.deny();late.onload();ok(!e.calls.some(c=>c[1]==='init'||c[1]==='reachGoal'),'withdraw loading race');e.close();
+ e=await env('denied');ok(!e.d.getElementById('lumi-metrika-sdk'),'persisted refusal');e.close();
+ e=await env('allowed');ok(!!e.d.getElementById('lumi-metrika-sdk'),'persisted allow');e.d.getElementById('lumi-metrika-sdk').onerror();e.api.begin('star-tower',true);ok(!e.calls.length,'blocked SDK does not throw or send');e.close();
+ e=await env(null,true);ok(!e.d.getElementById('lumi-metrika-sdk'),'storage disabled defaults off');e.allow();e.load();e.api.begin('star-tower',true);ok(e.calls.some(c=>c[2]==='adventure_start'),'in-memory consent works');e.close();
+ e=await env('allowed');e.load();e.w.dispatchEvent(new e.w.StorageEvent('storage',{key:'lumi.analytics.consent.v1',newValue:'denied'}));ok(e.calls.at(-1)[1]==='destruct','cross-tab revocation');const len=e.calls.length;e.api.begin('star-tower',true);ok(len===e.calls.length,'cross-tab gate');e.close();
+ e=await env('allowed');e.load();e.api.begin('crystal-trail',true);e.api.taskComplete('crystal-trail',7);e.api.complete('crystal-trail');ok(!e.calls.some(c=>c[2]==='adventure_complete'),'direct last page not full completion');for(let n=1;n<7;n++)e.api.taskComplete('crystal-trail',n);e.api.complete('crystal-trail');ok(e.calls.some(c=>c[2]==='adventure_complete'),'full trail complete');e.close();
+ 
+ e=await env('allowed');e.api.begin('star-tower',true);const seed={};for(let i=0;i<e.w.sessionStorage.length;i++){const k=e.w.sessionStorage.key(i);seed[k]=e.w.sessionStorage.getItem(k)}e.close();
+ e=await env('allowed',false,seed);e.load();e.api.begin('star-tower',false);ok(e.calls.filter(c=>c[2]==='adventure_start').length===1,'pending start survives immediate navigation');ok(!e.w.sessionStorage.getItem('lumi.analytics.pending.v1'),'queue removed after flush');e.api.taskComplete('star-tower',1);const run=e.w.sessionStorage.getItem('lumi.analytics.runs.v1');e.close();
+ e=await env('allowed',false,{'lumi.analytics.runs.v1':run});e.load();e.api.begin('star-tower',false);e.api.taskComplete('star-tower',1);ok(!e.calls.some(c=>c[1]==='reachGoal'),'resume and completed task not resent after reload');e.api.begin('star-tower',true);ok(!e.calls.some(c=>c[1]==='reachGoal'),'double start debounce');const clock=e.w.Date.now();e.w.Date.now=()=>clock+2000;e.api.begin('star-tower',true);e.api.taskComplete('star-tower',1);ok(e.calls.filter(c=>c[1]==='reachGoal').length===2,'intentional replay new start and task');e.close();
+ e=await env('denied',false,seed);e.allow();e.load();ok(!e.calls.some(c=>c[1]==='reachGoal'),'old pending events dropped on refusal');e.close();
+ e=await env('allowed',false,{'lumi.analytics.pending.v1':JSON.stringify([['adventure_start',{adventure_id:'star-tower',age_group:'5-6',name:'PRIVATE'}],['arbitrary',{name:'PRIVATE'}]])});e.load();ok(!e.calls.some(c=>c[1]==='reachGoal'),'persisted payload allowlist rejects extra personal fields');e.close();
+ console.log(JSON.stringify({checks,result:'PASS'}));
+})().catch(e=>{console.error(e);process.exitCode=1});
