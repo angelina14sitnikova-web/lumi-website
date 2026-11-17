@@ -27,3 +27,6 @@
 @media(max-width:1050px){.header{flex-wrap:wrap;gap:14px}.header .navigation{order:3;width:100%;min-width:0;justify-content:center;flex-wrap:wrap}.header-icons{margin-left:auto}}
 @media(max-width:700px){.lumi-sections .sections-grid{grid-template-columns:minmax(0,1fr);gap:22px}.section-content{padding:23px;min-height:270px}.section-content h3{font-size:27px}.section-content p{font-size:17px}.sections-intro{font-size:17px}.future-panel{grid-template-columns:minmax(0,1fr)}.future-panel>img{height:auto;min-height:0;aspect-ratio:3/2}.future-copy{padding:28px 24px}.future-page{padding:0 15px;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.world-card,.section-link{transition:none}}
+
+/* The preserved full-width landscape must not create a scrollbar at viewport edges. */
+.lumi-home main{overflow-x:clip}

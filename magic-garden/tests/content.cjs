@@ -30,8 +30,8 @@ tasks[5].rounds.forEach(r=>{assert.equal(r.options.length,3);assert.equal(new Se
 for(const r of tasks[4].rounds.filter(r=>r.answerSize)){
  assert(r.options.some(c=>c.id===r.answer&&c.size!==r.answerSize&&!matches(r,c)));
 }
-const catalog=fs.readFileSync(path.resolve(root,'../crystal-world.html'),'utf8');
-const age=catalog.split('<!-- 3–4 года -->')[1].split('<!-- 4–5 лет -->')[0];
-assert.equal((age.match(/<article /g)||[]).length,2);
-assert(age.includes('crystal-trail.html')&&age.includes('magic-garden/index.html'));
-console.log('PASS: 7 games, 28 rounds, unambiguous answers, referenced graphics/audio, story, families, traits and two catalog cards');
+require('../../site-sections/catalog-data.js');
+const age=window.LumiCatalogData.adventures.filter(a=>a.age==='age-3-4');
+assert(age.length>=2);
+assert(age.some(a=>a.game==='crystal-trail.html')&&age.some(a=>a.game==='magic-garden/index.html'));
+console.log('PASS: 7 games, 28 rounds, unambiguous answers, referenced graphics/audio, story, families, traits and catalog records');
