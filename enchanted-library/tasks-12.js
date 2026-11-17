@@ -6,7 +6,7 @@ root.innerHTML=`<div class="cipher-table">${symbols.map((s,i)=>`<div>${A(s,'','�
 const paint=()=>root.querySelectorAll('[data-slot]').forEach((b,i)=>{b.textContent=answer[i]||'·';b.classList.toggle('selected',i===active);});
 root.querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{active=+b.dataset.slot;paint();});root.querySelectorAll('[data-letter]').forEach(b=>b.onclick=()=>{if(done)return;answer[active]=b.dataset.letter;if(b.dataset.letter)active=Math.min(4,active+1);paint();});root.querySelector('#check-cipher').onclick=()=>{if(answer.join('')==='КНИГА'){done=true;L.success();}else L.message('Попробуй ещё раз! Сверь каждую букву с таблицей.',true);};paint();
 }});
-const maze=['111111111','100010001','101010101','101000101','101110101','100010001','111010111','100000001','111111111'];
+const maze=['111111111','100010001','101010111','101000101','101110101','100010001','111010111','100000001','111111111'];
 const keys=[[1,7],[5,1],[7,3]],start=[1,1],exit=[7,7];
 // Published pure data also supports a state-space reachability test including key order.
 window.LibraryMaze={maze,keys,start,exit};
