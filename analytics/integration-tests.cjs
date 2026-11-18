@@ -16,6 +16,7 @@ for(const [file,name,extra,prepare] of [
  for(let n=1;n<=7;n++){prepare(ctx,n);ctx[name]();ctx[name]();}
  ok(calls.filter(x=>x[0]==='task').length===7,file+' seven task signals');ok(calls.filter(x=>x[0]==='complete').length===1,file+' completion once');
 }
+const oldCalls=[];const oldCtx=vm.createContext({...common,window:{LumiAnalytics:{taskComplete:()=>{},complete:()=>oldCalls.push('complete')}},saved:{done:[1,2,3,4,5,6,7]},finished:false,current:7});vm.runInContext(fn('crystal-lighthouse/lighthouse.js','complete'),oldCtx);oldCtx.complete();ok(oldCalls.length===0,'replaying old final lighthouse task is not full completion');
 function htmls(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{if(['dist','.openai','.git'].includes(e.name))return [];const p=path.join(dir,e.name);return e.isDirectory()?htmls(p):p.endsWith('.html')?[p]:[]})}
 const pages=htmls(root);
 for(const p of pages){const s=fs.readFileSync(p,'utf8');const scripts=[...s.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];ok(scripts.filter(x=>/lumi-analytics\.js/.test(x[1])).length===1,path.relative(root,p)+' shared loader once');for(const m of scripts){const src=m[1].match(/src="([^"]+)"/);if(src&&!/^https?:/.test(src[1]))ok(fs.existsSync(path.resolve(path.dirname(p),src[1].split('?')[0])),'script exists '+src[1]);else if(!src&&m[2].trim())acorn.parse(m[2],{ecmaVersion:'latest'});}}
