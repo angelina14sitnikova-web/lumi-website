@@ -2,6 +2,7 @@
 <html lang="ru">
 
 <head>
+<script src="analytics/lumi-analytics.js"></script>
     <meta charset="UTF-8">
 
     <meta
@@ -358,6 +359,7 @@ bridgeOptions.forEach(option => {
         setTimeout(() => {
 
             success.classList.add("show");
+window.LumiAnalytics?.taskComplete("crystal-trail",3);
 
         }, 900);
 
