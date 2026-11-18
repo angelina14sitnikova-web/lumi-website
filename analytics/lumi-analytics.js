@@ -99,15 +99,14 @@
  function ui(){
   const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('lumi-analytics.css',base);document.head.append(css);
   const controls=document.createElement('div');controls.id='lumi-analytics-controls';
-  const settings=document.createElement('button');settings.type='button';settings.textContent='Родителям: настройки аналитики';settings.onclick=()=>{panel.hidden=false;updateStatus();panel.querySelector('button').focus();};controls.append(settings);
-  panel=document.createElement('section');panel.id='lumi-analytics-panel';panel.setAttribute('aria-label','Родителям: аналитика сайта');panel.setAttribute('role','region');panel.hidden=consent==='allowed'||consent==='denied';
-  panel.innerHTML='<h2>Родителям: статистика Lumi</h2><p>С вашего разрешения Яндекс Метрика помогает понять, какие приключения и задания интересны. Сервис получает технические данные браузера и устройства, IP-адрес и cookie-идентификаторы, просмотры и события игры. Имена, голос и содержимое полей мы не передаём. Вебвизор, карта кликов, запись форм и электронная коммерция отключены.</p><p>Можно играть без аналитики. Отозвать согласие можно в настройках аналитики внизу любой страницы. Отзыв останавливает дальнейшую отправку, но не удаляет ранее отправленные данные.</p><p class="lumi-analytics-status" aria-live="polite"></p><div class="lumi-analytics-actions"><button type="button" data-choice="allowed">Разрешить аналитику</button><button type="button" data-choice="denied">Без аналитики / отозвать согласие</button><button type="button" data-close>Закрыть</button></div>';
-  status=panel.querySelector('.lumi-analytics-status');
+  const settings=document.createElement('button');settings.type='button';settings.textContent='Родителям: настройки аналитики';settings.onclick=()=>{panel.hidden=false;status.hidden=false;updateStatus();panel.querySelector('button').focus();};controls.append(settings);
+  panel=document.createElement('section');panel.id='lumi-analytics-panel';panel.setAttribute('aria-label','Родителям: аналитика сайта');panel.setAttribute('role','region');const home=new URL('../',base).pathname;const isHome=location.pathname===home||location.pathname===home+'index.html';panel.hidden=!isHome||consent==='allowed'||consent==='denied';
+  panel.innerHTML='<h2>Родителям: аналитика Lumi</h2><p>С вашего разрешения Яндекс Метрика помогает улучшать приключения. Можно играть и без аналитики. Решение можно изменить в настройках внизу страницы.</p><details><summary>Какие данные передаются?</summary><p>Технические данные браузера и устройства, IP-адрес, cookie-идентификаторы, просмотры и события игры. Имена, голос и содержимое полей не передаются. Вебвизор, карта кликов, запись форм и электронная коммерция отключены. Отзыв согласия останавливает дальнейшую отправку, но не удаляет ранее отправленные данные.</p></details><p class="lumi-analytics-status" aria-live="polite"></p><div class="lumi-analytics-actions"><button type="button" data-choice="allowed">Разрешить аналитику</button><button type="button" data-choice="denied">Продолжить без аналитики</button></div>';
+  status=panel.querySelector('.lumi-analytics-status');status.hidden=true;
   panel.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>choose(b.dataset.choice));
-  panel.querySelector('[data-close]').onclick=()=>{panel.hidden=true;settings.focus();};
   document.body.append(controls,panel);updateStatus();if(consent==='allowed')load();
  }
  window.addEventListener('pagehide',()=>observer?.disconnect());
- window.addEventListener('storage',e=>{if(e.key!==KEY)return;consent=e.newValue;if(consent!=='allowed')revoke();else load();updateStatus();});
+ window.addEventListener('storage',e=>{if(e.key!==KEY)return;consent=e.newValue;if(panel&&(consent==='allowed'||consent==='denied'))panel.hidden=true;if(consent!=='allowed')revoke();else load();updateStatus();});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ui,{once:true});else ui();
 })();
