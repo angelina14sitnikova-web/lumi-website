@@ -37,17 +37,18 @@
     </section>`;
   }
 
-  function choices(items, state, type, audio = item => item) {
+  function choices(items, state, type, linkedArt = null) {
     return `<div class="option-grid ${type}">${items.map((item,index)=>{
       const selected = String(index) === state.selected;
       const diagram = type === 'positions' ?
         `<span class="scheme" aria-hidden="true">${[0,1,2].map(i=>`<i class="${i===index?'lit':''}"></i>`).join('')}</span>` : '';
       const illustration = type === 'portals' ?
-        object(['portal-past','portal-now','portal-future'][index],'','portal') : '';
+        `<span class="portal-art">${object(['portal-past','portal-now','portal-future'][index],'','portal')}
+        ${state.done && selected ? img('scenes',linkedArt,'webp','','portal-transfer') : ''}</span>` : '';
       const wheel = type === 'positions' ? gear(index + 1, state.done && selected ? 'working-gear' : '') : '';
       return `<div class="option"><button class="choice" type="button" data-choose="${index}" aria-pressed="${selected}"
         ${state.done?'disabled':''}>${wheel}${illustration}${diagram}<span>${safe(item)}</span></button>
-        ${listen(audio(item),'Слушать')}</div>`;
+        ${listen(item,'Слушать')}</div>`;
     }).join('')}</div>`;
   }
 
@@ -64,16 +65,16 @@
       `<div class="option"><button class="letter-tile choice" type="button" data-choose="${index}" data-drag="${index}"
         aria-label="Выбрать букву ${symbol}" aria-pressed="${state.selected===String(index)}" ${state.done?'disabled':''}>${symbol}</button>
         ${listen('phoneme:'+C.phonemes[symbol], 'Послушать звук')}</div>`).join('');
-    return `${wordArt(round)}<div class="letter-word" aria-label="Слово с пропуском">
+    return `${wordArt(round)}<div class="letter-word ${state.done?'repaired':''}" aria-label="${state.done?round.word:'Слово с пропуском'}">
       ${prefix}<span data-drop="0" class="letter-slot ${value?'filled':''}">${value}</span>${suffix}</div>
       <div class="option-grid letters">${tiles}</div>${state.done?'':check(!!value)}`;
   }
 
   function time(round, state) {
     const labels = C.portals[state.round < 6 ? 0 : 1];
-    return `<div class="story-illustration ${state.done?'portal-transfer':''}" style="--portal:${Number(state.selected) - 1}">
-      ${scene(round.art,round.sentence)}</div>${listen(round.sentence,'Послушать предложение')}
-      ${choices(labels,state,'portals')}${state.done?'':check(state.selected!==null)}`;
+    return `${state.done?'':`<div class="story-illustration">${scene(round.art,round.sentence)}</div>`}
+      ${listen(round.sentence,'Послушать предложение')}
+      ${choices(labels,state,'portals',round.art)}${state.done?'':check(state.selected!==null)}`;
   }
 
   function twins(round, state) {
@@ -85,8 +86,11 @@
     const story = task.id === 'story';
     const locked = story ? state.storyPhase !== 'sort' : state.done;
     const name = value => story ? C.story.captions[Number(value)-1] : value;
-    const item = (value, inSlot) => {
-      const art = story ? scene('story-'+value, '') : safe(value);
+    const item = (value, slot = -1) => {
+      const inSlot = slot >= 0;
+      const displayed = task.id==='sentence' && slot===0 ? value[0].toUpperCase()+value.slice(1) : value;
+      const punctuation = task.id==='sentence' && locked && slot===state.slots.length-1 ? '.' : '';
+      const art = story ? scene('story-'+value, '') : safe(displayed + punctuation);
       const label = locked ? name(value) : (inSlot ? 'Убрать: ' : 'Выбрать: ') + name(value);
       const button = `<button class="tile ${story?'picture-tile':''}" type="button" data-drag="${safe(value)}"
         data-tile="${safe(value)}" aria-label="${safe(label)}" ${locked?'disabled':''}>${art}</button>`;
@@ -96,8 +100,8 @@
     };
     const slots = state.slots.map((value,index) =>
       `<div class="tile-slot" data-drop="${index}" aria-label="Ячейка ${index+1}">
-        ${value===null?`<span aria-hidden="true">${index+1}</span>`:item(value,true)}</div>`).join('');
-    const pool = state.order.filter(value=>!state.slots.includes(value)).map(value=>item(value,false)).join('');
+        ${value===null?`<span aria-hidden="true">${index+1}</span>`:item(value,index)}</div>`).join('');
+    const pool = state.order.filter(value=>!state.slots.includes(value)).map(value=>item(value)).join('');
     const illustration = story ? '<h2>«Маленькие часы»</h2>' :
       task.id==='cipher' ? wordArt(round) : scene(round.art,C.sentenceText(round.answers[0]));
     const result = task.id==='cipher' ? listen(round.word,'Послушать собранное слово') :
@@ -106,7 +110,10 @@
       .map(line=>listen(line,line)).join('')}</div><div class="actions">${state.storyPhase==='tell' ?
       '<button id="told" type="button">Я рассказал историю</button>' :
       `${listen(C.story.example,'Послушать образец')}<button id="story-done" type="button">Готово</button>`}</div>`;
-    return `${illustration}<div class="sequence ${story?'picture-sequence':''} ${locked?'ordered':''}">
+    const running = state.round + Number(state.done);
+    const movement = task.id==='cipher' ? `<div class="cipher-train" role="img" aria-label="Запущено ${running} из 6 шестерёнок">
+      ${list(6).map(i=>gear(i,i<=running?'working-gear':'waiting')).join('')}</div>` : '';
+    return `${illustration}${movement}<div class="sequence ${story?'picture-sequence':''} ${locked?'ordered':''}">
       <div class="slot-grid" style="--count:${state.slots.length}">${slots}</div>
       ${locked?'':`<div class="tile-pool" data-drop="-1">${pool}</div>`}
     </div>${locked ? (story?oral:result) : check(!state.slots.includes(null))}`;
@@ -150,10 +157,10 @@
       return `<button class="seat ${installed?'installed':''}" type="button" data-seat="${id}" data-drop="${id-1}"
         aria-label="${label+shapes[id-1]}" ${installed||state.launched?'disabled':''}>${gear(id,installed?'working-gear':'silhouette')}</button>`;
     }).join('');
-    const pool = list(7).filter(id=>!state.clockSlots[id-1]).map(id=>
+    const pool = state.clockOrder.filter(id=>!state.clockSlots[id-1]).map(id=>
       `<button type="button" class="loose-gear" data-drag="${id}" data-gear="${id}"
       aria-pressed="${state.selected===String(id)}" aria-label="Шестерёнка с ${shapes[id-1]}">${gear(id)}</button>`).join('');
-    const completed = state.launched && reveal;
+    const prizeState = reveal ? '' : 'hidden';
     return `<section class="finish panel ${state.launched?'running':''}">
       ${progress(state.earned)}<h1>${title}</h1>
       ${state.launched ? '' : `<p>${C.feedback.assemble}</p>${listen(C.feedback.assemble,'Послушать задание')}`}
@@ -169,7 +176,7 @@
       ${lumi('finish','Луми радуется восстановлению часов','finish-lumi')}
       <p class="feedback" role="status" aria-live="polite">${feedback}</p>
       ${allPlaced&&!state.launched?'<button id="launch" type="button">Запустить часы</button>':''}
-      ${completed?`<div class="final-prize">
+      ${state.launched?`<div class="final-prize" ${prizeState}>
         <p>${C.finale}</p>${listen(C.finale,'Послушать поздравление')}
         ${img('rewards','medal','webp','Золотая медаль с часами и кристаллами','medal')}
         <h2>Медаль «Хранитель времени»</h2>

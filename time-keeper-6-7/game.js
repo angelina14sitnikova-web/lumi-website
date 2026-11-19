@@ -8,6 +8,7 @@
   const progressKey = 'lumi.time-keeper-6-7.progress.v1';
   const medalKey = 'lumi.time-keeper-6-7.medal.v1';
   const pictureOrder = ['1','2','3','4','5'];
+  const gears = [1,2,3,4,5,6,7];
   const app = document.getElementById('game');
   const reward = document.getElementById('reward');
   const nextTask = document.getElementById('next-task');
@@ -44,6 +45,7 @@
         saved.clockSlots.some(value=>typeof value !== 'boolean') ||
         (saved.stage < 7 && (saved.launched || saved.clockSlots.some(Boolean))) ||
         (saved.launched && !saved.clockSlots.every(Boolean))) return null;
+      if (!Array.isArray(saved.clockOrder) || !tiles.same([...saved.clockOrder].sort(),gears)) saved.clockOrder = tiles.shuffle(gears);
       if (!['sort','tell','sample'].includes(saved.storyPhase)) return null;
       const {pool, answer} = sequenceFor(saved);
       if (!Array.isArray(saved.order) || !tiles.same([...saved.order].sort(), [...pool].sort())) return null;
@@ -62,7 +64,7 @@
     return {
       version:1, started:false, stage:0, round:0, earned:0, done:false, pending:false,
       voice:state?.voice ?? true, music:state?.music ?? false, launched:false, selected:null,
-      order:[], slots:[], storyPhase:'sort', clockSlots:Array(7).fill(false),
+      order:[], slots:[], storyPhase:'sort', clockSlots:Array(7).fill(false), clockOrder:tiles.shuffle(gears),
     };
   }
 
@@ -224,10 +226,18 @@
         line = round.explanation;
     }
     if (!valid) return wrong();
+    const origin = task.id==='tense' ? app.querySelector('.story-illustration img')?.getBoundingClientRect() : null;
     state.done = true;
     feedback = C.feedback.correct;
     save();
     render();
+    if (origin && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      const arriving = app.querySelector('.portal-transfer');
+      const target = arriving.getBoundingClientRect();
+      const scale = Math.min(origin.width/(target.width || 1),6);
+      arriving.animate?.([{transform:'translate('+(origin.x-target.x)+'px,'+(origin.y-target.y)+'px) scale('+scale+')'},
+        {transform:'translate(0,0) scale(1)'}],{duration:700,easing:'ease-in-out'});
+    }
     effect('correct');
     speech([C.feedback.correct,line]);
     app.querySelector('#next-round')?.focus({preventScroll:true});
@@ -333,10 +343,11 @@
     analytics('complete',true);
     render();
     effect('final');
-    const delay = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 0 : 1600;
+    const delay = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 0 : 2200;
     window.setTimeout(() => {
       reveal = true;
-      render();
+      const prize = app.querySelector('.final-prize');
+      if (prize) prize.hidden = false;
       speech([C.finale]);
     },delay);
   }
