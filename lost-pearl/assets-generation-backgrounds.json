@@ -1,0 +1,464 @@
+{
+  "bg-start": {
+    "file": "assets/bg-start.webp",
+    "source": "exec-19979ee5-07de-4157-8816-2a41b13ad92d.png",
+    "prompt": "Earlier image generation by parent agent, see conversation",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 132400
+    }
+  },
+  "bg-treasures": {
+    "file": "assets/bg-treasures.webp",
+    "source": "exec-905f755f-19df-436c-8213-3a58d781c468.png",
+    "prompt": "Earlier image generation by parent agent, see conversation",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 142622
+    }
+  },
+  "bg-opposites": {
+    "file": "assets/bg-opposites.webp",
+    "source": "exec-e17154df-05d2-463b-889c-dfeffc7a24ee.png",
+    "prompt": "Earlier image generation by parent agent, see conversation",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 86578
+    }
+  },
+  "lumi-start": {
+    "file": "assets/lumi-start.png",
+    "source": "exec-22f3097b-bb1d-4b9b-9555-33e48b13a026.png",
+    "prompt": "Earlier image generation by parent agent, see conversation",
+    "original": {
+      "width": 1148,
+      "height": 1370,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 503,
+      "height": 600,
+      "size": 274180,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.478,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "bg-rhymes": {
+    "file": "assets/bg-rhymes.webp",
+    "source": "exec-4265dd23-45f3-4d92-ab5e-8fc9e37f3dca.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The reference collage is a visual STYLE reference only; never reproduce its collage or interface. A beautiful musical underwater grotto, distinctive flowing lavender stone ceiling above, gently curving aquamarine water, coral-pink and pearl-colored plants confined to extreme edges, tiny golden luminous musical ornaments far in the background, NOT written musical notes. A calm open sandy center and right foreground with abundant empty space for three separate singing shells. No Lumi, no characters, no foreground interactive items, no text, no lettering, no UI, no frames. Premium clean smooth children’s storybook illustration, turquoise and aquamarine water, lilac and coral-pink accents, pearl and warm gold light, gentle sunbeams through water, rounded expressive environment forms, polished soft gradients. No grain, speckles, noise, rough textures or sharp shadows. Each scene must have a unique clear composition while matching the approved magical kingdom.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 105416
+    }
+  },
+  "bg-glass": {
+    "file": "assets/bg-glass.webp",
+    "source": "exec-23f315a6-ea78-4f8e-8eb0-0ebdf397065d.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The reference collage is a visual STYLE reference only; never reproduce its collage or interface. A magical underwater optical workshop, with a rounded coral workbench far left, luminous glass bubbles hanging at the far edges, a lilac alcove and softly glowing golden instruments in the distant background. Keep the entire central and right foreground empty for a large transforming item, separate magnifying glass and three answer shells. No Lumi, no characters, no foreground interactive items, no text, no lettering, no UI, no frames. Premium clean smooth children’s storybook illustration, turquoise and aquamarine water, lilac and coral-pink accents, pearl and warm gold light, gentle sunbeams through water, rounded expressive environment forms, polished soft gradients. No grain, speckles, noise, rough textures or sharp shadows. Each scene must have a unique clear composition while matching the approved magical kingdom.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 146074
+    }
+  },
+  "bg-words": {
+    "file": "assets/bg-words.webp",
+    "source": "exec-4bebc992-eab4-435b-bc12-5735ba3b44b8.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The reference collage is a visual STYLE reference only; never reproduce its collage or interface. An underwater artists studio in a pink and lilac coral grotto, distant jars of colored pigment and tiny brushes along the far-left wall, a curved blue coral arch opening into sunlit clear water at the back. Keep the central foreground and right area empty for separate story illustration and three selectable item illustrations. No Lumi, no characters, no foreground interactive items, no text, no lettering, no UI, no frames. Premium clean smooth children’s storybook illustration, turquoise and aquamarine water, lilac and coral-pink accents, pearl and warm gold light, gentle sunbeams through water, rounded expressive environment forms, polished soft gradients. No grain, speckles, noise, rough textures or sharp shadows. Each scene must have a unique clear composition while matching the approved magical kingdom.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 128238
+    }
+  },
+  "bg-sentence": {
+    "file": "assets/bg-sentence.webp",
+    "source": "exec-54522169-b9cc-41f6-86d1-031be95f1549.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The approved reference collage is a visual STYLE reference only, not an edit target. A friendly magical underwater school of words: softly rounded pearly columns and lilac coral shelves at the far left, a distant open classroom arch at the back, small unmarked open books and pearl lamps only at the distant edges. No written letters or symbols. Clear central pale-blue sandy area for a large separate story card, three sentence slots and answer cards. Spacious and welcoming. No Lumi or foreground characters, no text, no lettering, no interface, no frames, no watermark. Premium smooth children’s storybook illustration, turquoise and aquamarine, lilac, coral-pink, pearl and warm gold highlights, soft sunbeams through water, polished soft gradients, rounded charming forms. Absolutely no grain, speckles, noise, rough texture, harsh shadows. One complete illustration.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 115660
+    }
+  },
+  "bg-final": {
+    "file": "assets/bg-final.webp",
+    "source": "exec-0f2fe52e-0712-4fc5-b3d9-2d9ec97c56d6.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The approved reference collage is a visual STYLE reference only, not an edit target. The fully restored magical underwater kingdom: an enormous open lavender-pink pearlescent shell at center-right on a circular coral dais, holding one huge brilliantly luminous white pearl. Golden rays radiate from the pearl. Beautiful lilac palace towers far right behind it, luminous corals and soft turquoise plants at edges, tiny happy tropical fish swimming high in the background, elegant floating bubbles, sunlight through clear aquamarine water. Keep the lower-left open for a separate happy Lumi cutout and leave upper-left clear for large HTML congratulation text. This final scene is joyful, glowing and clearly distinct from the start scene. No Lumi or foreground characters, no text, no lettering, no interface, no frames, no watermark. Premium smooth children’s storybook illustration, turquoise and aquamarine, lilac, coral-pink, pearl and warm gold highlights, soft sunbeams through water, polished soft gradients, rounded charming forms. Absolutely no grain, speckles, noise, rough texture, harsh shadows. One complete illustration.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 162540
+    }
+  },
+  "bg-story": {
+    "file": "assets/bg-story.webp",
+    "source": "exec-dc7162a1-7a82-4287-9367-017974631e64.png",
+    "prompt": "Use case: illustration-story. Create ONE new landscape 3:2 finished background for the Lumi underwater educational game. The approved reference collage is a visual STYLE reference only, not an edit target. A treasure-map cave: a rounded lavender coral grotto wall framing an open turquoise window into an underwater reef, little pearl lamps along the upper rim, a distant ancient coral arch and sandy trail vanishing into aquamarine water. A small closed treasure chest in the extreme distant left background is acceptable, but keep the entire central and right foreground empty for four large story illustrations and their ordered strip. Uniquely mysterious but completely kind and bright, never dark or scary. No Lumi or foreground characters, no text, no lettering, no interface, no frames, no watermark. Premium smooth children’s storybook illustration, turquoise and aquamarine, lilac, coral-pink, pearl and warm gold highlights, soft sunbeams through water, polished soft gradients, rounded charming forms. Absolutely no grain, speckles, noise, rough texture, harsh shadows. One complete illustration.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 146346
+    }
+  },
+  "lumi-glass": {
+    "file": "assets/lumi-glass.png",
+    "source": "exec-cb73a20a-89ea-4f48-97ab-568e2864ebf4.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for a real children’s underwater game. Image 1 approved collage = world/style reference; image 2 = exact original Lumi identity; image 3 = transparent diving helmet reference. Keep the SAME face, very big rounded head, compact beige-milk puppy body, huge round blue eyes, little brown nose, long floppy ears, three soft cream forelock tufts, blue paw pads, blue crescent on bare chest, blue cape fastened by one round blue clasp. Clear transparent spherical diving helmet around head, face unobscured. Standing in three-quarter view, holding a beautiful small golden magical magnifying glass with one paw out to his right, looking at the glass with delighted curiosity, other paw slightly raised. Include this held magnifying glass only, no other props. Premium smooth clean storybook finish, soft rounded volume and natural soft gradients. Full head, helmet, body, all paws and cape entirely inside canvas, generous clean transparent margins. Deliver genuine alpha PNG background, no white matte, no rectangle, no checkerboard, no scenery, no ground shadow, no detached sparkles, no stray colored pixels, no confetti, no grain, no noise, no text. The only opaque silhouette is the puppy and held prop if specified; all surrounding background truly transparent.",
+    "original": {
+      "width": 1198,
+      "height": 1313,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 547,
+      "height": 600,
+      "size": 311529,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.467,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-opposites": {
+    "file": "assets/lumi-opposites.png",
+    "source": "exec-5543075d-54de-42a8-949c-b93d00a881cd.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for a real children’s underwater game. Image 1 approved collage = world/style reference; image 2 = exact original Lumi identity; image 3 = transparent diving helmet reference. Keep the SAME face, very big rounded head, compact beige-milk puppy body, huge round blue eyes, little brown nose, long floppy ears, three soft cream forelock tufts, blue paw pads, blue crescent on bare chest, blue cape fastened by one round blue clasp. Clear transparent spherical diving helmet around head, face unobscured. Standing with compact body in a gentle three-quarter view, extending one paw clearly to point to the right, other paw held at waist, bright encouraging smile, both blue eyes open. Distinct from waving start pose. Premium smooth clean storybook finish, soft rounded volume and natural soft gradients. Full head, helmet, body, all paws and cape entirely inside canvas, generous clean transparent margins. Deliver genuine alpha PNG background, no white matte, no rectangle, no checkerboard, no scenery, no ground shadow, no detached sparkles, no stray colored pixels, no confetti, no grain, no noise, no text. The only opaque silhouette is the puppy and held prop if specified; all surrounding background truly transparent.",
+    "original": {
+      "width": 1197,
+      "height": 1314,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 547,
+      "height": 600,
+      "size": 283577,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.502,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-treasures": {
+    "file": "assets/lumi-treasures.png",
+    "source": "exec-9253e58b-fbbc-417f-928d-ee1f216d0c9d.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for a real children’s underwater game. Image 1 approved collage = world/style reference; image 2 = exact original Lumi identity; image 3 = transparent diving helmet reference. Keep the SAME face, very big rounded head, compact beige-milk puppy body, huge round blue eyes, little brown nose, long floppy ears, three soft cream forelock tufts, blue paw pads, blue crescent on bare chest, blue cape fastened by one round blue clasp. Clear transparent spherical diving helmet around head, face unobscured. Sitting three-quarter view, thoughtfully examining something at his right side: one paw near his chin, other paw resting near his chest, eyes looking curiously right and slightly down. Do NOT include a chest or any other object; the chest will be added separately. Premium smooth clean storybook finish, soft rounded volume and natural soft gradients. Full head, helmet, body, all paws and cape entirely inside canvas, generous clean transparent margins. Deliver genuine alpha PNG background, no white matte, no rectangle, no checkerboard, no scenery, no ground shadow, no detached sparkles, no stray colored pixels, no confetti, no grain, no noise, no text. The only opaque silhouette is the puppy and held prop if specified; all surrounding background truly transparent.",
+    "original": {
+      "width": 1207,
+      "height": 1303,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 556,
+      "height": 600,
+      "size": 288342,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.486,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-words": {
+    "file": "assets/lumi-words.png",
+    "source": "exec-9ab12ce4-2171-43d0-8de9-463767fc409b.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for an underwater game for preschoolers. Reference image 1 approved collage = style; image 2 = exact original Lumi identity; image 3 = diving helmet appearance. Keep the SAME face and proportions: very large round head, compact beige-milk puppy body, very big round blue eyes, tiny brown nose, soft long floppy ears, characteristic three soft cream forelock tufts, blue paw pads, blue crescent on chest, blue cape with round blue clasp. A clear spherical diving helmet surrounds his head without hiding face. Standing with compact body and feet close together, head tilted gently to the LEFT in a thoughtful expression, mouth a little closed smile, eyes looking upward, one paw under his chin while the other is extended palm-up as if searching for a word. No props. This is distinct from the seated treasures pose. Premium clean polished smooth storybook rendering, gentle volume and soft gradients, no fur grain, no noise or spots. Entire helmet, body, ears, cape and all paws fully in frame with clean transparent margins. Genuine alpha PNG background: no white matte, no square, no rectangle, no checkerboard, no ground, no shadow, no detached glitter or particles, no stray colored pixels. No text, no watermark. Only puppy and helmet on transparency.",
+    "original": {
+      "width": 1132,
+      "height": 1390,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 489,
+      "height": 600,
+      "size": 260351,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.484,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-sentence": {
+    "file": "assets/lumi-sentence.png",
+    "source": "exec-a8e2aebf-e260-4300-b175-f00176f682d2.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for an underwater game for preschoolers. Reference image 1 approved collage = style; image 2 = exact original Lumi identity; image 3 = diving helmet appearance. Keep the SAME face and proportions: very large round head, compact beige-milk puppy body, very big round blue eyes, tiny brown nose, soft long floppy ears, characteristic three soft cream forelock tufts, blue paw pads, blue crescent on chest, blue cape with round blue clasp. A clear spherical diving helmet surrounds his head without hiding face. Standing in a welcoming explanatory pose, one paw extended forward palm-up and the other held open at the side as if helping a child put words together, bright encouraging expression, body angled a little left but gaze toward the right. Do not include cards, letters or other props. Premium clean polished smooth storybook rendering, gentle volume and soft gradients, no fur grain, no noise or spots. Entire helmet, body, ears, cape and all paws fully in frame with clean transparent margins. Genuine alpha PNG background: no white matte, no square, no rectangle, no checkerboard, no ground, no shadow, no detached glitter or particles, no stray colored pixels. No text, no watermark. Only puppy and helmet on transparency.",
+    "original": {
+      "width": 1159,
+      "height": 1356,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 513,
+      "height": 600,
+      "size": 282663,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.469,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-rhymes": {
+    "file": "assets/lumi-rhymes.png",
+    "source": "exec-20926ead-e1ce-4c70-b1fc-7b961f2c4b23.png",
+    "prompt": "Use case: illustration-story. Create ONE standalone full-body Lumi PNG cutout for an underwater game for preschoolers. Reference image 1 approved collage = style; image 2 = exact original Lumi identity; image 3 = diving helmet appearance. Keep the SAME face and proportions: very large round head, compact beige-milk puppy body, very big round blue eyes, tiny brown nose, soft long floppy ears, characteristic three soft cream forelock tufts, blue paw pads, blue crescent on chest, blue cape with round blue clasp. A clear spherical diving helmet surrounds his head without hiding face. Sitting with his head slightly tilted to the right, one paw lifted beside the outside of his transparent helmet at ear level as if listening carefully to singing shells, the other paw resting gently on his knee, small attentive smile, both eyes open. Do not include any shells or notes. Premium clean polished smooth storybook rendering, gentle volume and soft gradients, no fur grain, no noise or spots. Entire helmet, body, ears, cape and all paws fully in frame with clean transparent margins. Genuine alpha PNG background: no white matte, no square, no rectangle, no checkerboard, no ground, no shadow, no detached glitter or particles, no stray colored pixels. No text, no watermark. Only puppy and helmet on transparency.",
+    "original": {
+      "width": 1181,
+      "height": 1332,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 532,
+      "height": 600,
+      "size": 295202,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.457,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "glass": {
+    "file": "assets/glass.png",
+    "source": "exec-e76b43ad-dd66-4e1f-9390-7b6f6332b199.png",
+    "prompt": "Use case: illustration-story. Asset type: separate transparent PNG interactive object for Lumi underwater game. Approved reference collage is style reference only. ONE large magical handheld magnifying glass for children, warm polished golden round frame with a small shell ornament at its top and a tiny turquoise jewel on its handle. Clear transparent circular lens with gentle aqua reflections, short sturdy gold handle angled down right. Entire item in canvas, no hands, no character, no background, no table, no other objects. It should be visually recognizable instantly as a magnifying glass, not a hand mirror. Premium smooth clean children’s storybook rendering, soft rounded volume, polished gradients, gentle warm highlights, no grain or noisy texture, no rough edges. Genuine alpha transparent background with clean generous margins. No white matte, no square, no checkerboard, no scene, no ground shadow, no colored stray pixels, no watermark. One finished asset, not sprite sheet.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 600,
+      "height": 400,
+      "size": 130491,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.71,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "medal": {
+    "file": "assets/medal.png",
+    "source": "exec-b15b067d-36f0-4b64-9d37-2ce42fead954.png",
+    "prompt": "Use case: illustration-story. Asset type: separate transparent PNG interactive object for Lumi underwater game. Approved reference collage is style reference only. ONE unique premium golden reward medal shaped like an OPEN SCALLOP SHELL, gently curved golden ridges and warm gold sculptural volume. A beautiful luminous white pearl with pastel lilac-pink iridescence rests at the center of the lower shell. A small elegant blue ribbon loop at top makes it visibly a collectible medal rather than a giant scenery shell. No writing or lettering, no shield shape, no stars, no detached sparkles. Front three-quarter view, isolated complete silhouette. Premium smooth clean children’s storybook rendering, soft rounded volume, polished gradients, gentle warm highlights, no grain or noisy texture, no rough edges. Genuine alpha transparent background with clean generous margins. No white matte, no square, no checkerboard, no scene, no ground shadow, no colored stray pixels, no watermark. One finished asset, not sprite sheet.",
+    "original": {
+      "width": 1302,
+      "height": 1208,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 600,
+      "height": 557,
+      "size": 219411,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.643,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "pearl": {
+    "file": "assets/pearl.png",
+    "source": "exec-e1eeed07-4b59-4113-b923-44702acdd1c3.png",
+    "prompt": "Use case: illustration-story. Asset type: separate transparent PNG interactive object for Lumi underwater game. Approved reference collage is style reference only. ONE beautiful large round magical pearl, softly luminous white with pale blush pink and lavender iridescence, delicate warm golden reflected light, a polished pearlescent spherical surface with a soft dimensional highlight. The pearl alone, no shell, no pedestal, no text, no detached sparkles. The pearl is the collectible reward used in the seven-slot progress display. Clean circular silhouette and a very subtle soft translucent rim, no large background halo. Premium smooth clean children’s storybook rendering, soft rounded volume, polished gradients, gentle warm highlights, no grain or noisy texture, no rough edges. Genuine alpha transparent background with clean generous margins. No white matte, no square, no checkerboard, no scene, no ground shadow, no colored stray pixels, no watermark. One finished asset, not sprite sheet.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 600,
+      "height": 400,
+      "size": 116321,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.638,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "cover": {
+    "file": "assets/cover.webp",
+    "source": "exec-64220c84-0717-488b-a1df-30bc72e91092.png",
+    "prompt": "Use case: illustration-story. Image 1 approved nine-screen collage = style/world reference, image 2 exact original Lumi identity, image 3 helmet and proportions reference. Keep Lumi a beige-milk puppy with huge rounded head, very large round blue eyes when open, brown little nose, long floppy ears, distinctive short cream forelock, compact body, blue paw pads, blue chest crescent and blue cape with round blue clasp. ONE beautiful NEW landscape 3:2 catalogue COVER illustration for the completed Lumi underwater adventure, NO text or interface. Exact reference puppy Lumi in a clear transparent spherical diving helmet is prominently seated at left, full compact body and cape visible, reaching one paw toward a magnificent glowing white pearl inside an open lavender-pink shell on the right. A lilac underwater palace in the right background, soft rounded pink and turquoise corals around edges, gentle tiny fish high in the water, floating bubbles and golden sunbeams through aquamarine clear water. Warm inviting storybook atmosphere. Keep important face, helmet and pearl inside central 80 percent so card cropping will not cut them. No frame, no lettering, no watermark. Premium smooth clean polished gradients and softly dimensional storybook rendering, no grain, stippling, spots or visual noise, no harsh shadows. Do not change face proportions, ears or character identity.",
+    "original": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    "output": {
+      "width": 1536,
+      "height": 1024,
+      "size": 160522
+    }
+  },
+  "lumi-story": {
+    "file": "assets/lumi-story.png",
+    "source": "exec-66710366-0e35-4db1-b661-7044df9a0e62.png",
+    "prompt": "Use case: illustration-story. Image 1 approved nine-screen collage = style/world reference, image 2 exact original Lumi identity, image 3 helmet and proportions reference. Keep Lumi a beige-milk puppy with huge rounded head, very large round blue eyes when open, brown little nose, long floppy ears, distinctive short cream forelock, compact body, blue paw pads, blue chest crescent and blue cape with round blue clasp. ONE standalone full-body Lumi cutout, sitting with a small open parchment treasure map held gently in both paws, eyes looking down at the map, fascinated kind smile. Map has only a faint winding dotted route and tiny shell drawing, no letters or numbers. Clear transparent round diving helmet, exact reference puppy identity, blue cape and crescent. Entire puppy, helmet, paws, cape and map fully visible. Genuine alpha transparent background, no scene, no ground shadow, no detached glitter or stray particles, no white matte or checkerboard. Premium smooth clean polished gradients and softly dimensional storybook rendering, no grain, stippling, spots or visual noise, no harsh shadows. Do not change face proportions, ears or character identity.",
+    "original": {
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 548,
+      "height": 600,
+      "size": 307372,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.46,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "lumi-final": {
+    "file": "assets/lumi-final.png",
+    "source": "exec-a066f3b8-6f30-4fc9-8db0-3390a274cb01.png",
+    "prompt": "Use case: illustration-story. Image 1 approved nine-screen collage = style/world reference, image 2 exact original Lumi identity, image 3 helmet and proportions reference. Keep Lumi a beige-milk puppy with huge rounded head, very large round blue eyes when open, brown little nose, long floppy ears, distinctive short cream forelock, compact body, blue paw pads, blue chest crescent and blue cape with round blue clasp. ONE standalone full-body Lumi cutout in a unique final celebration pose, sitting with both blue-padded feet forward, happily hugging one beautiful glowing white-lilac pearl with BOTH paws in front of his chest. Eyes joyfully closed in curved happy arcs, delighted broad smile. Clear transparent round diving helmet around the exact reference puppy head; ears, cream forelock, blue cape, clasp and chest crescent remain identifiable. Entire silhouette fully visible with generous transparent margin. Genuine alpha transparent background, no scenery, no ground shadow, no detached sparkles or colored particles, no white matte, no square or checkerboard. Premium smooth clean polished gradients and softly dimensional storybook rendering, no grain, stippling, spots or visual noise, no harsh shadows. Do not change face proportions, ears or character identity.",
+    "original": {
+      "width": 1198,
+      "height": 1313,
+      "mode": "RGBA"
+    },
+    "output": {
+      "width": 547,
+      "height": 600,
+      "size": 273797,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_fraction": 0.476,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "dolphin",
+    "source": "exec-95d0d049-6152-4ee6-b1cb-320c38dbaef1.png",
+    "file": "assets/dolphin.png",
+    "size": [
+      450,
+      300
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "ef87a7e1849852092565e92174a8ef24236ca05c030be4a88fe6cc3ae32de60a",
+    "provenance": "Recovered completed image_gen output left before prior session interrupted; original generation prompt not recovered. Visual content and actual alpha inspected."
+  },
+  {
+    "name": "shell",
+    "source": "exec-a858341d-360a-4b57-9fb3-8e60e2406008.png",
+    "file": "assets/shell.png",
+    "size": [
+      450,
+      300
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "f31772b04805b79e76f94f855b056b9f984898f43c511a0cd5c1e55b482b9fc7",
+    "provenance": "Recovered completed image_gen output left before prior session interrupted; original generation prompt not recovered. Visual content and actual alpha inspected."
+  },
+  {
+    "name": "turtle",
+    "source": "exec-378bedb3-c545-433c-91e9-43b4995faef5.png",
+    "file": "assets/turtle.png",
+    "size": [
+      450,
+      300
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "dc32e08ad90552464a27a00c385ea19363751dde9c49e4bad6e3719821008e81",
+    "provenance": "Recovered completed image_gen output left before prior session interrupted; original generation prompt not recovered. Visual content and actual alpha inspected."
+  },
+  {
+    "name": "hoop",
+    "source": "exec-35c521d8-57f5-416d-bf30-7f00e4b1552d.png",
+    "file": "assets/hoop.png",
+    "size": [
+      450,
+      450
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "17d1f31a7474f028a58e71c139b1d34318f73be231b60176b801a74375675665",
+    "provenance": "Recovered completed image_gen output left before prior session interrupted; original generation prompt not recovered. Visual content and actual alpha inspected."
+  },
+  {
+    "name": "octopus-sad",
+    "source": "exec-16fbac77-e41d-4209-9bbd-8bd3f3f60a1a.png",
+    "file": "assets/octopus-sad.png",
+    "size": [
+      450,
+      413
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "a8f9a619b7d90c2b57d753326694e8451e3caaf7096ca6e0a1081ee6d2d44b0a",
+    "provenance": "Recovered completed image_gen output left before prior session interrupted; original generation prompt not recovered. Visual content and actual alpha inspected."
+  }
+]

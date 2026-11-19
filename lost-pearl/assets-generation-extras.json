@@ -1,0 +1,328 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "Луми и потерянная жемчужина: подводное приключение.webp",
+  "assets": [
+    {
+      "id": "poppy",
+      "source": "exec-8f5d9aa0-3cb2-412d-bdf5-3e0ff0a9a5ce.png",
+      "path": "poppy.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One vivid red poppy flower with a dark center, green stem and two leaves, unmistakably a poppy (мак). Style: smooth clean polished children's storybook illustration with softly rounded volume and expressive but simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "ball",
+      "source": "exec-12d6e329-447c-4132-9299-242ccc365169.png",
+      "path": "ball.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One round inflated beach ball with broad cheerful yellow pink blue panels. Style: smooth clean polished children's storybook illustration with softly rounded volume and expressive but simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "house",
+      "source": "exec-f2125382-7e6e-4ee0-b5f6-4071c42bc7cb.png",
+      "path": "house.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One cozy small fairytale house, front three-quarter view, warm peach walls, coral-pink roof, two windows and a door. Style: smooth clean polished children's storybook illustration with softly rounded volume and expressive but simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "shield",
+      "source": "exec-e7927f07-cb4a-4e71-b23c-cd7e82aa61e7.png",
+      "path": "shield.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One friendly toy shield, clear medieval shield silhouette, blue enamel face and rounded golden rim, no lettering. Style: smooth clean polished children's storybook illustration with softly rounded volume and expressive but simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "cat",
+      "source": "exec-be7971e7-5796-4287-bd4e-b073e0abcbfb.png",
+      "path": "cat.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One adorable sitting cream-and-coral domestic kitten with pointed ears, whiskers and a curled tail. Clearly a cat, not a dog. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills 80 percent of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces to inanimate objects. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "chair",
+      "source": "exec-2db35efc-da2b-4bd7-8cea-8b0472e32d1c.png",
+      "path": "chair.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One simple charming wooden chair, full object in three-quarter view, clear seat, back and four legs, pastel aquamarine cushion. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills 80 percent of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces to inanimate objects. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "shirt",
+      "source": "exec-60f6495a-c052-423b-99a7-5a76f5fd93ad.png",
+      "path": "shirt.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One small bright yellow sleeveless undershirt/tank top (майка), laid out front-facing with two shoulder straps and clearly no sleeves, no writing. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills 80 percent of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces to inanimate objects. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "spoon",
+      "source": "exec-0694ef3e-be69-49a6-9707-f216436aa131.png",
+      "path": "spoon.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One silver-blue spoon with a rounded bowl and long handle, three-quarter view, unmistakable everyday spoon. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills 80 percent of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces to inanimate objects. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "hat",
+      "source": "exec-96e112a8-ff55-4557-b0d9-c879c9b6998f.png",
+      "path": "hat.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One cozy lilac knitted winter hat (шапка) with a rounded gold pom-pom, no face and no text. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills 80 percent of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces to inanimate objects. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "smile",
+      "source": "exec-3efbf82c-d1bd-4c3b-aba8-b4157206d0be.png",
+      "path": "smile.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One large clearly smiling face of a friendly little turquoise sea creature, front-facing. Very clear broad happy mouth and curved cheeks, two kind eyes, communicating the word smile (улыбка), no other objects. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces except when the requested object itself is a smiling face. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "boat",
+      "source": "exec-9f3e13da-23dc-4b75-9961-fdf6fd570368.png",
+      "path": "boat.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One small wooden rowboat with two oars, full three-quarter view, warm golden wood and aquamarine trim, no water or setting. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces except when the requested object itself is a smiling face. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          411
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "star",
+      "source": "exec-37b4afe9-2191-4e49-80a5-88db57ad0f45.png",
+      "path": "star.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One coral-pink five-armed sea star, rounded organic arms, no face, unmistakable sea star. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces except when the requested object itself is a smiling face. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "brush",
+      "source": "exec-f09dfe86-aab4-4d85-837e-198018ec9546.png",
+      "path": "brush.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One painter paintbrush with a rounded golden wooden handle, silver-blue ferrule, brown bristles tipped coral paint. Full brush diagonal. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces except when the requested object itself is a smiling face. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "watering-can",
+      "source": "exec-46f8c3c5-1048-443b-b73d-f087aad1ccf1.png",
+      "path": "watering-can.png",
+      "prompt": "Use case: illustration-story. Asset type: ONE isolated interactive PNG object for a premium Russian preschool Lumi underwater story game. Input image is STYLE reference only (approved nine-panel collage). Primary request: One small aqua watering can with a curved handle, spout and clearly visible perforated sprinkler rose, no water. Style: smooth clean polished children's storybook illustration with softly rounded volume and simple readable shapes. Aqua, lavender, coral pink and gentle gold accents consistent with reference. Object fills most of square canvas with generous transparent margin, full object entirely visible, centered. No scene, no ground, no shadows outside object, no frame/card rectangle, no lettering, no watermark, no grain, no speckles, no noise. Do not add faces except when the requested object itself is a smiling face. Real transparent alpha background, not white and not a painted checkerboard. Keep object easily recognizable at 150 pixels.",
+      "validation": {
+        "mode": "RGBA",
+        "size": [
+          450,
+          450
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

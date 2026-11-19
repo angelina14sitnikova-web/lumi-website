@@ -3,7 +3,7 @@
  'use strict';
  if (window.LumiAnalytics) return;
  const ID=114310945, KEY='lumi.analytics.consent.v1', RUNS='lumi.analytics.runs.v1', QUEUE='lumi.analytics.pending.v1';
- const ages={'crystal-trail':'3-4','magic-garden':'3-4','crystal-lighthouse':'4-5','star-tower':'5-6','enchanted-library':'6-7'};
+ const ages={'crystal-trail':'3-4','magic-garden':'3-4','crystal-lighthouse':'4-5','lost-pearl-4-5':'4-5','star-tower':'5-6','enchanted-library':'6-7'};
  const ownScript=document.currentScript, base=new URL('.',ownScript.src);
  let consent=read('localStorage',KEY), requested=false, initialized=false, stopped=false, pending=[], panel, status, observer;
  let runs;try{runs=JSON.parse(sessionStorage.getItem(RUNS)||'{}');}catch{runs={};}

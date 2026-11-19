@@ -1,0 +1,249 @@
+[
+  {
+    "name": "chest-fish",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing exactly three clearly recognizable friendly fish: a goldfish, an orange-and-white clownfish, and a flat brown flounder. All three clearly visible above chest rim, not jewels.",
+    "source": "exec-25036cd5-156c-4771-a02d-6e00a7620fb4.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-shells",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing exactly three clearly different seashells: pink scallop shell, peach spiral conch, ivory clam.",
+    "source": "exec-92d11305-a07b-4fb4-8e34-f9019040e887.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-seaweed",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing three clearly different bunches of green seaweed.",
+    "source": "exec-9c87e315-1742-4719-b451-e84a3c6ba1da.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-jewels",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing a gold ring with purple gemstone, a gold bracelet and a pearl necklace. All three visible, no loose gems dominating.",
+    "source": "exec-f1975713-4d1a-4b7a-b51f-7179f122593a.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-transport",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing three clearly distinct water vehicles: a sailing ship, small rowboat, and yellow submarine. Readable as a group of water transport.",
+    "source": "exec-8f995b95-ddb7-42fc-a5ed-3bc92d0bdd06.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-stones",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing exactly three smooth natural sea pebbles of different shapes, gray-blue and pale brown, unmistakably ordinary stones, no gems.",
+    "source": "exec-77ff11dd-4e16-4906-a303-431b06f63795.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-starfish",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing three friendly five-armed sea stars, pink, coral and gold, clearly starfish with soft organic arms.",
+    "source": "exec-3808ad45-bc9e-4efb-8fc1-675b9f8d92d4.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-animals",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing three clearly visible friendly sea animals as a magical illustrative grouping: a blue dolphin, orange crab and green sea turtle. Not toys, no fish or shells.",
+    "source": "exec-11116590-e351-4a85-a1b8-257b0671c875.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-corals",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing exactly three coral branches: pink branching coral, lilac rounded coral and soft golden coral. No animals, shells or fish.",
+    "source": "exec-3f37382d-7719-4abe-9d48-3f719b81271a.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "chest-toys",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. A beautiful open rounded golden wooden treasure chest with lilac interior, scallop-shell gold clasp, containing three clearly TOY model boats made from colorful wooden blocks, chunky toy proportions with simple little painted sails. No living animals or full-size vehicles.",
+    "source": "exec-efa25987-f87f-4979-890b-61d803d63fae.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "fish",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and warm golden light, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. One adorable small orange clownfish-like fish with rounded body, two white stripes, big friendly blue eyes, tiny fins, whole side view facing right. The same image will be displayed in two sizes, so no extra objects, bubbles or scenery.",
+    "source": "exec-a7aa4096-e7d6-41f4-8582-5ff3d2515453.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "seaweed-long",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One LONG upright green seaweed plant, three smooth wavy narrow blades arising from one tiny shared natural root, tall slender silhouette, fresh soft green, clearly long blades. No pot, rock, substrate or separate objects.",
+    "source": "exec-0bf5c376-5e63-4c97-a8f3-f6573f2cf189.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      300,
+      450
+    ]
+  },
+  {
+    "name": "seaweed-short",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One SHORT upright green seaweed plant, three smooth wavy narrow blades arising from one tiny shared natural root, short compact silhouette, fresh soft green, clearly short blades. No pot, rock, substrate or separate objects.",
+    "source": "exec-b6123455-c4bb-4b39-ab3e-edbc66a07163.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      411
+    ]
+  },
+  {
+    "name": "chest-open",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One OPEN golden-brown rounded wooden treasure chest with gold bands, lilac interior, scallop-shell gold clasp, lid fully raised, empty inside so its open state is unmistakable. Three-quarter front view.",
+    "source": "exec-55fcecc5-2898-4332-93dc-c310f05eecb7.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      354
+    ]
+  },
+  {
+    "name": "chest-closed",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One CLOSED golden-brown rounded wooden treasure chest with gold bands and scallop-shell gold clasp, rounded lid fully shut, no gap and nothing visible inside. Three-quarter front view.",
+    "source": "exec-9566771d-c902-4967-8ba1-1938920b2dac.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "octopus-happy",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One friendly small lavender-purple octopus with a large round head, eight short rounded arms, large dark violet eyes and an unmistakably HAPPY broad open smile, raised cheerful eyebrows. No props.",
+    "source": "exec-172174d0-0044-4300-b8b3-b10c618a77a5.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      413
+    ]
+  },
+  {
+    "name": "ship",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One charming wooden sailing ship, side three-quarter view, two masts with cream fabric sails, warm brown curved hull, tiny golden pennant, easily recognizable and simple enough for a preschooler. No water or ocean backdrop.",
+    "source": "exec-2bf51f0c-e329-4768-9035-646b7d8036d4.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  },
+  {
+    "name": "crab",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One friendly bright coral-orange crab with rounded body, two raised claws, visible small legs, big cheerful expressive eyes, whole body facing forward. No props.",
+    "source": "exec-f42b251c-db7d-47d9-b1bd-cf1e2ede2f66.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      338
+    ]
+  },
+  {
+    "name": "tail",
+    "prompt": "Use case: illustration-story. Create ONE finished isolated PNG game object for Lumi, ages 4–5. Match the approved attached collage's premium smooth storybook rendering: gently rounded three-dimensional forms, clear friendly shapes, soft turquoise/lilac/coral accents and soft lighting on the object itself, clean painterly gradients, absolutely no grain, speckles, noisy texture, harsh shadows, words, labels, interface, frame or watermark. Single centered object with ample clean margin. REAL transparent alpha outside the object: no backdrop, no white matte, no checkerboard, no rectangular boundary, no ground plane or cast shadow. Important: absolutely NO exterior glow, halo, haze, blur, fog or cast shadow outside the solid object silhouette. The empty canvas must have alpha exactly zero including every pixel of its outer border. One unmistakable big fish tail: smooth turquoise forked tail fin attached to a short rounded blue tail stalk, side view, clearly a fish tail rather than a leaf or bow. No face, body or scenery.",
+    "source": "exec-df517a34-bc9d-47f9-9957-85af63704119.png",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "size": [
+      450,
+      300
+    ]
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "approved nine-screen Lumi lost-pearl collage",
+  "assets": [
+    {
+      "name": "scene-paint-shell.png",
+      "source": "exec-3e800659-3071-47de-842d-4f26e64179e3.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly round lavender-purple octopus with large blue eyes and pink undersides of tentacles is painting a large pink seashell using a clearly recognizable WOODEN-HANDLED PAINTBRUSH with orange bristles dipped in purple paint. One tentacle holds the brush touching the shell, another steadies the shell. Small palette nearby, simple underwater art corner. The tool must be unmistakably a paintbrush, not a spoon. Same charming octopus identity as the reference's middle panel.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 742957,
+      "sha256": "488c7b66e38b7963e85089f62965d61405285cf9cc3f5083292093ceefa5c78a"
+    },
+    {
+      "name": "scene-jump.png",
+      "source": "exec-bce48f83-6e5a-43d4-9ebd-6e7f03bfe0ec.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly small blue dolphin with a cream muzzle, large expressive blue eyes and curved dorsal fin is leaping through a large upright golden hoop. The dolphin's head and front body have passed through the hoop while tail remains on the other side, making the action unambiguous. The whole hoop is visible; the dolphin swims in a graceful upward arc above a coral garden, soft magical bubbles. Dolphin is NOT holding the hoop.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 701137,
+      "sha256": "c404c50ee5d6cb0fb6af17476d33ba8d8d9281786021424da8f853af06513b5a"
+    },
+    {
+      "name": "scene-swim.png",
+      "source": "exec-d242ffc9-e427-425f-b6fd-09ba9abe77bc.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly mint-green sea turtle with a warm gold-and-green patterned shell and expressive eyes is swimming TOWARD a small old sunken wooden sailing ship on the right. Turtle at left clearly faces right, front flippers reaching forward, small stream of bubbles BEHIND its tail. Ship clearly visible at right and directly in its line of travel, simple calm sandy seafloor between. Do not place another attractive destination such as a chest or coral in front of the turtle. No arrows or drawn motion lines.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 687687,
+      "sha256": "978aa523dfed2ce512ac4b6ed47decc03b981773c6ed2eb9c879d48884ed6172"
+    },
+    {
+      "name": "scene-paint-picture.png",
+      "source": "exec-85e59155-f3b8-4d7d-ae36-dd9b8c87eaed.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. Use Image 1 as CHARACTER IDENTITY reference: exactly the SAME friendly rounded lavender-purple octopus with blue eyes and pink tentacle undersides. Create a DIFFERENT new scene: this octopus is PAINTING A PICTURE on a small easel with a rectangular canvas, using a wooden-handled paintbrush. The canvas shows a simple colorful coral reef painting. A tentacle holds the brush in contact with the canvas; a palette has three paint blobs. There is NO seashell being painted in this scene. Main octopus and canvas fill most of the frame, calm underwater art workshop.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 743078,
+      "sha256": "1b945070e23f66c71a4ba11a16eb889c035beaad178f76359667fd4f6c2741c0"
+    },
+    {
+      "name": "scene-comb.png",
+      "source": "exec-857faa14-4863-4853-958f-12193857b62d.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly young fairy-tale mermaid with a modest lavender sleeveless top, coral-pink tail and long golden hair is sitting on a smooth underwater rock COMBING her hair with a clearly recognizable large pale-aqua COMB WITH DISTINCT TEETH. Her hand holds the comb in contact with a strand of hair beside her head; the teeth are visible. The action and tool must be unmistakable, not a brush or spoon. Wholesome children's picture book character, no glamour, no seductive styling. Calm turquoise water and a few coral flowers, no excessive props.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 740176,
+      "sha256": "c0ae72439d502b5cfe29c4be0794ddfd2950ec0f07e4f70bb520eb219e7ed060"
+    },
+    {
+      "name": "scene-carry.png",
+      "source": "exec-3f1ef370-a574-4e45-8c49-a6977a88063a.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly orange-red crab with a rounded body and large expressive blue eyes is walking along the sandy underwater floor while carrying ONE large round luminous pearl securely in its TWO front claws, held in front of its body so the viewer sees clearly what it carries. The single pearl is the central item, not a shell or stone. Soft coral surroundings confined to edges; no other objects or pearls. Show the entire crab and the pearl in a medium-close composition.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 698273,
+      "sha256": "125b2fbaab20ec55ff9812654bec53654b42e9fd797207264de1d32acbc14edb"
+    },
+    {
+      "name": "story-1.png",
+      "source": "exec-20931796-3b6e-4db4-88aa-3a7a11412de4.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. FIRST standalone picture for a four-scene story. Preserve this character for the entire series: a SMALL blue dolphin calf, cream muzzle and belly, large blue eyes, curved dorsal fin, cheerful rounded face. He discovers and picks up a single old warm-tan parchment treasure MAP lying on the sand. Map has curled upper and lower corners, a small simple coral-island drawing, a curved red trail and one small treasure mark, NO writing or numerals. Dolphin looks surprised and delighted at this map, holding it with both front flippers, so finding the MAP is the sole clear event. Location is a magical coral reef: turquoise water, lilac rock arch in distant upper right, pink branching coral at left, yellow and lavender small corals on sand. There is NO chest and NO pearl anywhere in this first picture. Medium framing with dolphin and map filling most of frame. No number or order marker.",
+      "width": 700,
+      "height": 467,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 445687,
+      "sha256": "fa35fa130b27b564558a668c637f1dbf3a2c4c84b4572c9f5ddd02f2587f0e96"
+    },
+    {
+      "name": "scene-catch.png",
+      "source": "exec-28d1091d-d7d1-48ae-884b-de0e0441d1b1.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. Use Image 1 as identity reference for the SAME friendly blue dolphin with cream muzzle, large blue eyes and curved dorsal fin. A different new scene: the dolphin CATCHES one colorful striped beach ball with its two front flippers immediately in front of its chest. Ball clearly held between the flippers, dolphin gazes happily at it. Entire dolphin and ball visible. No hoop in this scene. Calm underwater school play area with lilac corals near edges.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 690033,
+      "sha256": "cd65597e6ee38fc967af8c4098909f872c260edb995d0610edc485b3c0e884af"
+    },
+    {
+      "name": "action-sleep.png",
+      "source": "exec-abb9b3a7-5051-4224-9704-195a468d3ae8.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. A friendly small blue dolphin with cream muzzle is SLEEPING peacefully on a soft pale-blue pillow in a large open pink shell bed. Eyes fully closed, relaxed curled body, a small lilac blanket covers the tail. One clear action only: sleeping. Peaceful underwater bedroom with very few details. NO letters such as ZZZ, no symbols, no moon, no music notes. Wholesome, cozy, unmistakably sleeping.",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 629283,
+      "sha256": "c42d04229a02901570148c39b27af5bd50d69b90a3f5ff610d9d4cf12d4abeb0"
+    },
+    {
+      "name": "story-2.png",
+      "source": "exec-4ddade70-c52a-4c53-b1ee-7b9943027ef1.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. SECOND standalone picture of the story in Image 1. Identity lock: exactly the SAME small blue dolphin calf with cream belly/muzzle, same eyes, dorsal fin and face. EXACTLY the SAME tan curled parchment map with coral and palm island, a curved red dotted trail and red treasure mark. Now the dolphin is SWIMMING ALONG THE CORAL REEF, following that map. Clear full side view dolphin travelling from left toward right through an open passage of colorful pink, yellow and lilac coral formations, map held low in one front flipper as he looks ahead along the route rather than staring down at it. A gentle bubble trail stays behind tail. Same distant lilac rock arch and turquoise water as scene 1, now closer to the arch. There is NO chest or pearl yet. Make the new event clearly 'travels through reef', different from 'finds map'. No arrows, surprise marks, numbers, text or sequence markers.",
+      "width": 700,
+      "height": 467,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 465458,
+      "sha256": "d62908fce5867d580894d095a708ebecc4639519208173caa5bc53faa9806c83"
+    },
+    {
+      "name": "story-3.png",
+      "source": "exec-ece10013-83d5-487c-b6c9-46ba75380eaa.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. THIRD standalone picture of the story in Image 1. Identity lock: exactly the SAME small blue dolphin calf, same cream muzzle/belly, blue eyes, dorsal fin and face. EXACTLY the SAME tan curled parchment map with coral and palm island, curved red dotted trail and red treasure mark. He has arrived at the base of the SAME lilac rock arch in the same coral reef and has DISCOVERED ONE CLOSED OLD TREASURE CHEST on the sandy floor. The chest is golden-brown wood, gently rounded lid, two broad gold straps, gold shell-shaped clasp at the center, gold corner trim, no lock or writing. IMPORTANT: lid completely CLOSED, no contents, no visible pearls or glow. Dolphin at left looks with delighted curiosity toward the closed chest at right while still holding the SAME map lowered beside his belly. Chest large and clearly visible. The story event must unambiguously be discovering a CLOSED chest, not opening it. Same smooth palette and place, no text or sequence marks.",
+      "width": 700,
+      "height": 467,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 473206,
+      "sha256": "691a013f416e4efbd8bf6d40dbbb8a02da4d47af83660c461722cb8ac410ed85"
+    },
+    {
+      "name": "story-4.png",
+      "source": "exec-3079c94e-1b41-494f-980a-a24e89748013.png",
+      "prompt": "Use case: illustration-story. Create ONE standalone landscape 3:2 children's educational story illustration, NOT a collage or interface. Match the approved Lumi underwater reference's polished soft-volume storybook art: smooth clean gradients, turquoise/aquamarine water, lilac and coral-pink accents, gentle sunbeams, no grain, noise, rough texture or harsh shadows. Clearly readable main action for ages 4–5, close enough to recognize the tool/action. No text, lettering, symbols, numbers, borders, arrows or watermark. No Lumi character. FOURTH and final standalone picture of the SAME dolphin story. Image 1 is the EXACT character, chest and location reference from the previous scene. Preserve the same small blue dolphin calf with cream muzzle and belly, large blue eyes, same dorsal fin and face; preserve the EXACT same golden-brown wooden chest, same two broad gold straps, same gold shell-shaped front clasp and gold corner trim; preserve the SAME lilac coral rock arch behind the chest, pink branching coral at left, yellow/lavender small corals at bottom. Now the chest is OPEN: lid hinged up, the shell clasp remains on the front panel. The delighted dolphin at left is taking out and holding ONE large glowing pearl in his two front flippers above the open chest rim. The pearl emits gentle warm golden light. The SAME tan curled parchment MAP from the previous scenes is laid clearly on the sand in the lower left: same palm/coral island drawing, curved red dotted path and treasure mark. Keep map, chest and dolphin recognizable across scenes; no extra treasure objects to distract. The new event must unmistakably be 'opens the chest and finds a pearl', while the preceding scene had the lid closed and NO pearl. No text, numbers, order markers, arrows or interface.",
+      "width": 700,
+      "height": 467,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 461771,
+      "sha256": "5615601f1a245ff21d74d913d788f1352374c7e56241e9002036e62476301ad7"
+    },
+    {
+      "name": "action-jump.png",
+      "source": "assets/scene-jump.png",
+      "operation": "exact copy; same jumping action illustration",
+      "width": 900,
+      "height": 600,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 701137,
+      "sha256": "c404c50ee5d6cb0fb6af17476d33ba8d8d9281786021424da8f853af06513b5a"
+    }
+  ],
+  "visual_qa": {
+    "checked": "All 13 output files visually inspected from generated outputs; action-jump is exact copy of inspected scene-jump.",
+    "actions": [
+      "Paintbrush contacts seashell",
+      "Dolphin passes through upright hoop",
+      "Turtle faces and swims toward ship at right",
+      "Crab carries one pearl in claws",
+      "Mermaid uses toothed comb on hair",
+      "Octopus paints rectangular canvas",
+      "Dolphin holds/catches one beach ball",
+      "Sleeping dolphin has closed eyes and pillow"
+    ],
+    "story": [
+      "Map found, no chest",
+      "Dolphin travels through coral passage with same map",
+      "Closed chest, no pearl visible",
+      "Same chest open, dolphin holding pearl; same map on sand"
+    ],
+    "story_identity": "Same blue dolphin with cream muzzle and belly, blue eyes; matching tan curled parchment map and golden-brown chest with two gold straps and shell clasp. Same lilac arch and coral palette across scenes.",
+    "not_tested": "No gameplay, browser or audio tests performed by this graphics subtask."
+  }
+}

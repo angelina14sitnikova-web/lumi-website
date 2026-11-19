@@ -1,0 +1,128 @@
+{
+  "lumi-final.png": {
+    "1": {
+      "components": 517,
+      "secondary_pixels": 1095
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-glass.png": {
+    "1": {
+      "components": 781,
+      "secondary_pixels": 1443
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-opposites.png": {
+    "1": {
+      "components": 685,
+      "secondary_pixels": 1368
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-rhymes.png": {
+    "1": {
+      "components": 621,
+      "secondary_pixels": 1121
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-sentence.png": {
+    "1": {
+      "components": 763,
+      "secondary_pixels": 1428
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-start.png": {
+    "1": {
+      "components": 658,
+      "secondary_pixels": 1256
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-story.png": {
+    "1": {
+      "components": 590,
+      "secondary_pixels": 1103
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-treasures.png": {
+    "1": {
+      "components": 619,
+      "secondary_pixels": 1185
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  },
+  "lumi-words.png": {
+    "1": {
+      "components": 656,
+      "secondary_pixels": 1195
+    },
+    "16": {
+      "components": 1,
+      "secondary_pixels": 0
+    },
+    "128": {
+      "components": 1,
+      "secondary_pixels": 0
+    }
+  }
+}
