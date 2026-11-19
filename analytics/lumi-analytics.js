@@ -3,7 +3,7 @@
  'use strict';
  if (window.LumiAnalytics) return;
  const ID=114310945, KEY='lumi.analytics.consent.v1', RUNS='lumi.analytics.runs.v1', QUEUE='lumi.analytics.pending.v1';
- const ages={'crystal-trail':'3-4','magic-garden':'3-4','crystal-lighthouse':'4-5','lost-pearl-4-5':'4-5','star-tower':'5-6','snow-kingdom-5-6':'5-6','enchanted-library':'6-7'};
+ const ages={'crystal-trail':'3-4','magic-garden':'3-4','crystal-lighthouse':'4-5','lost-pearl-4-5':'4-5','star-tower':'5-6','snow-kingdom-5-6':'5-6','enchanted-library':'6-7','time-keeper-6-7':'6-7'};
  const ownScript=document.currentScript, base=new URL('.',ownScript.src);
  let consent=read('localStorage',KEY), requested=false, initialized=false, stopped=false, pending=[], panel, status, observer;
  let runs;try{runs=JSON.parse(sessionStorage.getItem(RUNS)||'{}');}catch{runs={};}
@@ -48,10 +48,13 @@
    run.tasks.push(n);persist();emit('task_complete',{adventure_id:id,age_group:ages[id],task_number:n});
   });
  }
- function complete(id){
+ function complete(id,completedLocally=false){
   safe(()=>{
    if(consent!=='allowed'||stopped||!Object.prototype.hasOwnProperty.call(ages,id))return;
-   const run=runs[id];if(!run||run.complete||!run.tasks.includes(7))return;
+   // The interactive clock can be restored in a different tab from task seven.
+   const restoredClock=id==='time-keeper-6-7'&&completedLocally===true;
+   const run=runs[id]||(restoredClock?(runs[id]={started:false,tasks:[],complete:false}):null);
+   if(!run||run.complete||(!restoredClock&&!run.tasks.includes(7)))return;
    // The multipage trail has no independent completion state. Require all seven answers.
    if(id==='crystal-trail'&&run.tasks.length!==7)return;
    run.complete=true;persist();emit('adventure_complete',{adventure_id:id,age_group:ages[id]});
