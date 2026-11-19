@@ -180,6 +180,7 @@ function award(stage) {
 
   assert.equal(saved().stage,7);
   assert.equal(d.querySelector('#launch'),null);
+  assert.notDeepEqual(saved().clockOrder,[1,2,3,4,5,6,7]);
   click('[data-gear="1"]');click('[data-seat="2"]');
   assert(!saved().clockSlots.some(Boolean));
   assert.equal(find('.feedback').textContent,material.feedback.misplaced);
@@ -199,9 +200,11 @@ function award(stage) {
   assert(saved().launched);
   assert.equal(events.filter(([name])=>name==='complete').length,1);
   assert(find('.finish.running'));
+  assert.equal(find('.final-prize').hidden,true);
   assert.equal(w.localStorage.getItem(medal),'earned');
   await new Promise(resolve=>setTimeout(resolve,10));
   assert(find('.final-prize .medal'));
+  assert.equal(find('.final-prize').hidden,false);
   assert.equal(find('.final-prize .exit').getAttribute('href'),'../crystal-world.html#age-6-7');
   assert.deepEqual(events.filter(([name])=>name==='taskComplete').map(event=>event[2]),[1,2,3,4,5,6,7]);
   click('#voice');click('#music-toggle');
