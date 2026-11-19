@@ -1,0 +1,1047 @@
+{
+  "voice": "ru-RU-SvetlanaNeural",
+  "rate": "-12%",
+  "tracks": [
+    {
+      "text": "Волшебная снежинка рассыпалась на семь ледяных осколков. Помоги Луми найти их и вернуть свет Снежному королевству!",
+      "path": "audio/v-bdd354e3664b4526.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.888000"
+      }
+    },
+    {
+      "text": "Вместе мы пройдём через заснеженный лес, замёрзшую реку, ледяную пещеру и снежную деревню. За каждое выполненное задание ты получишь один ледяной осколок.",
+      "path": "audio/v-36ee1b49a48d347b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "12.936000"
+      }
+    },
+    {
+      "text": "Все ледяные осколки собраны! Благодаря тебе волшебная снежинка снова сияет. Ты замечательно справился со всеми заданиями!",
+      "path": "audio/v-afd3bc1087a53f98.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "12.048000"
+      }
+    },
+    {
+      "text": "Попробуй ещё раз!",
+      "path": "audio/v-2e3aefc104bd315c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.568000"
+      }
+    },
+    {
+      "text": "Послушай внимательнее.",
+      "path": "audio/v-e3614bdf68d01a7c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "У тебя обязательно получится!",
+      "path": "audio/v-fcac059eed1b42a8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.624000"
+      }
+    },
+    {
+      "text": "Правильно!",
+      "path": "audio/v-f351afd8641cf675.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Ты нашёл ледяной осколок!",
+      "path": "audio/v-eb38c0a36c6d3f43.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.192000"
+      }
+    },
+    {
+      "text": "Все семь ледяных осколков собраны!",
+      "path": "audio/v-8b95e1e1f1a72a69.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.744000"
+      }
+    },
+    {
+      "text": "Снеговик",
+      "path": "audio/v-b426afbff8690c87.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.232000"
+      }
+    },
+    {
+      "text": "Сова",
+      "path": "audio/v-40d11f25113be94c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Лиса",
+      "path": "audio/v-6927f63ea3c4e84d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.920000"
+      }
+    },
+    {
+      "text": "Ёлка",
+      "path": "audio/v-8e8fe221ccc0c7d1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Лыжи",
+      "path": "audio/v-56df17a50d1fc08c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Луна",
+      "path": "audio/v-b25f2c7cdbc55f26.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Шапка",
+      "path": "audio/v-af208ab6e25d0b06.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.040000"
+      }
+    },
+    {
+      "text": "Заяц",
+      "path": "audio/v-3ea26197abe1b6e8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.992000"
+      }
+    },
+    {
+      "text": "Морковь",
+      "path": "audio/v-dc04081151a7db9a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Мост",
+      "path": "audio/v-264e7e982cb04c79.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Ведро",
+      "path": "audio/v-a7cabde5385680f1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Санки",
+      "path": "audio/v-d572bebcd430344b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.088000"
+      }
+    },
+    {
+      "text": "Шарф",
+      "path": "audio/v-f58d4e3d51279c73.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Снег",
+      "path": "audio/v-94cc8b2cae214d15.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Дом",
+      "path": "audio/v-318bc00c150798bf.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Кот",
+      "path": "audio/v-7d2532b69353b222.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Коньки",
+      "path": "audio/v-30e8bb651b8bd760.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.920000"
+      }
+    },
+    {
+      "text": "Варежки",
+      "path": "audio/v-98eb50d195d9da40.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.112000"
+      }
+    },
+    {
+      "text": "Фонарь",
+      "path": "audio/v-6f9e0dd4c52d28a6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.968000"
+      }
+    },
+    {
+      "text": "Лёд",
+      "path": "audio/v-cbd153f1f3db814d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Зима",
+      "path": "audio/v-ed5c0dfc17e07fd2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Снежинка",
+      "path": "audio/v-1412cca4e30ab011.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.256000"
+      }
+    },
+    {
+      "text": "Рукавичка",
+      "path": "audio/v-eefee0c412a1ddc0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.256000"
+      }
+    },
+    {
+      "text": "Варежка",
+      "path": "audio/v-60dd316d7fe1c6dc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.088000"
+      }
+    },
+    {
+      "text": "Сапоги",
+      "path": "audio/v-755dd24f2c122ab9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.040000"
+      }
+    },
+    {
+      "text": "Дождь",
+      "path": "audio/v-ec6fa62845d25eed.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.944000"
+      }
+    },
+    {
+      "text": "Песок",
+      "path": "audio/v-31b9e38df6f150ce.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.968000"
+      }
+    },
+    {
+      "text": "Листопад",
+      "path": "audio/v-46858766011dee6c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Сосулька",
+      "path": "audio/v-b6a4d7ce953b571f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Ветка",
+      "path": "audio/v-7ab76a2eea0a8973.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.968000"
+      }
+    },
+    {
+      "text": "Свечка",
+      "path": "audio/v-5df3bb97b007c464.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Носки",
+      "path": "audio/v-c4aa72d24d4b3863.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.992000"
+      }
+    },
+    {
+      "text": "Медведь",
+      "path": "audio/v-66d903e3352d0bda.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.992000"
+      }
+    },
+    {
+      "text": "Велосипед",
+      "path": "audio/v-06458c4e6b3a40c4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.328000"
+      }
+    },
+    {
+      "text": "Машина",
+      "path": "audio/v-53de9f24a54da43f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "Звезда",
+      "path": "audio/v-638a9a538d76b8ba.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "Цветок",
+      "path": "audio/v-d24439a7ae88c15d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.112000"
+      }
+    },
+    {
+      "text": "Бабочка",
+      "path": "audio/v-828e36c5d8d79303.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.160000"
+      }
+    },
+    {
+      "text": "Разложи картинки по порядку. Можно перетащить картинку или нажать на неё.",
+      "path": "audio/v-b20127529652c63e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.512000"
+      }
+    },
+    {
+      "text": "А теперь расскажи эту историю своими словами. Посмотри на картинки, они помогут тебе.",
+      "path": "audio/v-3d7e466cd3ce5c9e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.232000"
+      }
+    },
+    {
+      "text": "Вспомни, что зайчик увидел в самом начале. Что должно произойти до того, как он украсит снеговика?",
+      "path": "audio/v-eaedd743242798d1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.216000"
+      }
+    },
+    {
+      "text": "Что произошло сначала?",
+      "path": "audio/v-98df4dd7b5517b04.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.048000"
+      }
+    },
+    {
+      "text": "Что зайчик сделал потом?",
+      "path": "audio/v-45a492e217c7aebc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.096000"
+      }
+    },
+    {
+      "text": "Что произошло дальше?",
+      "path": "audio/v-675602b06bc0c039.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.808000"
+      }
+    },
+    {
+      "text": "Чем закончилась история?",
+      "path": "audio/v-f0e1c8cabf6e6780.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.288000"
+      }
+    },
+    {
+      "text": "Зайчик выходит из домика и видит первый снег.",
+      "path": "audio/v-ef910039b95645b3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.440000"
+      }
+    },
+    {
+      "text": "Зайчик катает большие снежные комья.",
+      "path": "audio/v-3fa16168086003ea.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.032000"
+      }
+    },
+    {
+      "text": "Зайчик складывает комья друг на друга и лепит снеговика.",
+      "path": "audio/v-a8a7f18b9ccf82d2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.992000"
+      }
+    },
+    {
+      "text": "Зайчик украшает снеговика морковкой, шарфом и шапкой.",
+      "path": "audio/v-64e774ce293605a7.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.352000"
+      }
+    },
+    {
+      "text": "Однажды зайчик вышел из домика и увидел снег. Он скатал большие снежные комья и слепил снеговика. Затем зайчик надел на снеговика шапку и шарф и сделал ему нос из морковки. Получился красивый снеговик.",
+      "path": "audio/v-4145befbe5ef73a7.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "19.008000"
+      }
+    },
+    {
+      "text": "Послушай звук. Выбери все картинки, названия которых начинаются с этого звука, и нажми «Проверить».",
+      "path": "audio/v-356a5279b364eefe.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.648000"
+      }
+    },
+    {
+      "text": "Послушай название картинки. Произнеси его медленно и прислушайся к самому началу слова.",
+      "path": "audio/v-dd84097350b32546.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.376000"
+      }
+    },
+    {
+      "text": "Послушай слово. Выбери льдинку, на которой столько точек, сколько слогов в слове.",
+      "path": "audio/v-82f31549ac9bb88f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.064000"
+      }
+    },
+    {
+      "text": "Скажи слово медленно и прохлопай каждый слог. Посчитай, сколько хлопков получилось.",
+      "path": "audio/v-ea3b465c27b6b8f9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.184000"
+      }
+    },
+    {
+      "text": "Рассмотри картинку. Послушай три варианта, выбери тот, который звучит правильно, и нажми «Проверить».",
+      "path": "audio/v-e5101d097c19fce3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.864000"
+      }
+    },
+    {
+      "text": "Скажи сначала название предмета, а потом опиши, какой он. Произнеси оба слова вместе.",
+      "path": "audio/v-92b87733899d4341.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.120000"
+      }
+    },
+    {
+      "text": "Красный варежка",
+      "path": "audio/v-387e2ecf2d97d5b0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.568000"
+      }
+    },
+    {
+      "text": "Красная варежка",
+      "path": "audio/v-7014291c0ce363e4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.592000"
+      }
+    },
+    {
+      "text": "Красное варежка",
+      "path": "audio/v-503db4096c3c695d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.592000"
+      }
+    },
+    {
+      "text": "Пушистая снег",
+      "path": "audio/v-fa90af680b1c5cb0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.496000"
+      }
+    },
+    {
+      "text": "Пушистое снег",
+      "path": "audio/v-72d50aa17c5fef31.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.520000"
+      }
+    },
+    {
+      "text": "Пушистый снег",
+      "path": "audio/v-e08f89aa1f54793a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.448000"
+      }
+    },
+    {
+      "text": "Синее ведро",
+      "path": "audio/v-e2b5ef8e2b3a7d0a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.352000"
+      }
+    },
+    {
+      "text": "Синий ведро",
+      "path": "audio/v-a22c6710a9f0d6e2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.352000"
+      }
+    },
+    {
+      "text": "Синяя ведро",
+      "path": "audio/v-04caadbf56ff9d75.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.376000"
+      }
+    },
+    {
+      "text": "Тёплая сапоги",
+      "path": "audio/v-d44a802857fd23a9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.520000"
+      }
+    },
+    {
+      "text": "Тёплые сапоги",
+      "path": "audio/v-a2ef2e1c3d958514.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.520000"
+      }
+    },
+    {
+      "text": "Тёплое сапоги",
+      "path": "audio/v-23ed8648a1b8a707.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.520000"
+      }
+    },
+    {
+      "text": "Высокое ёлка",
+      "path": "audio/v-11e0dd5d1dc9e1ec.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.712000"
+      }
+    },
+    {
+      "text": "Высокий ёлка",
+      "path": "audio/v-24879a49febcba0e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.592000"
+      }
+    },
+    {
+      "text": "Высокая ёлка",
+      "path": "audio/v-ea63dd1612e68cfc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.712000"
+      }
+    },
+    {
+      "text": "Послушай загадку и выбери картинку-отгадку.",
+      "path": "audio/v-3520d8760f7c7498.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.344000"
+      }
+    },
+    {
+      "text": "Послушай загадку ещё раз. Подумай, какой предмет подходит сразу ко всем подсказкам.",
+      "path": "audio/v-e4412d6ea6e5bd32.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "6.576000"
+      }
+    },
+    {
+      "text": "С неба падает, землю укрывает, белый и холодный, в тепле тает.",
+      "path": "audio/v-23da76ecabec001b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "6.144000"
+      }
+    },
+    {
+      "text": "Под крышей выросла прозрачная ледяная палочка. На солнышке она капает и становится короче.",
+      "path": "audio/v-7878c62f9ef015de.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.448000"
+      }
+    },
+    {
+      "text": "Две сестрички согревают руки на морозе. У каждой есть отдельный домик для большого пальца.",
+      "path": "audio/v-60d1ec96f00fa588.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.088000"
+      }
+    },
+    {
+      "text": "Из снежных комьев сделан, с морковкой вместо носа. Стоит во дворе и не боится мороза.",
+      "path": "audio/v-4d11a2a97369fc82.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.448000"
+      }
+    },
+    {
+      "text": "С горки быстро мчатся. У них есть полозья, но нет колёс.",
+      "path": "audio/v-7e2dc963f30b4241.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "6.816000"
+      }
+    },
+    {
+      "text": "Маленькая ледяная звёздочка с узорами. Падает с неба, а на тёплой ладошке тает.",
+      "path": "audio/v-0af08ccf508e9d62.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.112000"
+      }
+    },
+    {
+      "text": "Рассмотри сцену и послушай вопрос. Затем послушай варианты, выбери ответ и нажми «Проверить».",
+      "path": "audio/v-5b7a406b6a249f01.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.144000"
+      }
+    },
+    {
+      "text": "Найди глазами животное и предмет рядом с ним. Покажи пальчиком, где находится животное.",
+      "path": "audio/v-b5a14af5b0b0fbdc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.496000"
+      }
+    },
+    {
+      "text": "Где спрятался зайчик?",
+      "path": "audio/v-4b37a3dfd73123ad.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.000000"
+      }
+    },
+    {
+      "text": "Перед ёлкой",
+      "path": "audio/v-43e7f9c0767af862.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.280000"
+      }
+    },
+    {
+      "text": "За ёлкой",
+      "path": "audio/v-eba32241f831162d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.280000"
+      }
+    },
+    {
+      "text": "Под ёлкой",
+      "path": "audio/v-4c1ff09e35aba396.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.160000"
+      }
+    },
+    {
+      "text": "Где находится лисёнок?",
+      "path": "audio/v-c1941d2fad5f74fd.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.952000"
+      }
+    },
+    {
+      "text": "Под скамейкой",
+      "path": "audio/v-4bf9d9772550d479.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.400000"
+      }
+    },
+    {
+      "text": "На скамейке",
+      "path": "audio/v-633ee13848b968f6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.352000"
+      }
+    },
+    {
+      "text": "Перед скамейкой",
+      "path": "audio/v-9f707227cc0a6bb6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.496000"
+      }
+    },
+    {
+      "text": "Где летит сова?",
+      "path": "audio/v-73c08fc78f67348f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.568000"
+      }
+    },
+    {
+      "text": "Около домика",
+      "path": "audio/v-bd5c1fcf2f04d41b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.472000"
+      }
+    },
+    {
+      "text": "За домиком",
+      "path": "audio/v-1712e6ad6466a463.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.256000"
+      }
+    },
+    {
+      "text": "Над домиком",
+      "path": "audio/v-a251f1eada6bb2db.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.328000"
+      }
+    },
+    {
+      "text": "Где сидит белочка?",
+      "path": "audio/v-06b133df3934e3fe.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.712000"
+      }
+    },
+    {
+      "text": "Между ёлками",
+      "path": "audio/v-a5ce1ef43a70a6d4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.568000"
+      }
+    },
+    {
+      "text": "Перед ёлками",
+      "path": "audio/v-b656650bb8e68109.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.352000"
+      }
+    },
+    {
+      "text": "На ёлке",
+      "path": "audio/v-6238ac05b616af0c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.208000"
+      }
+    },
+    {
+      "text": "Где стоит оленёнок?",
+      "path": "audio/v-73281d14f54ff342.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.072000"
+      }
+    },
+    {
+      "text": "За снеговиком",
+      "path": "audio/v-92d02a9956642915.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.496000"
+      }
+    },
+    {
+      "text": "Около снеговика",
+      "path": "audio/v-741a37d99c2b76c5.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.592000"
+      }
+    },
+    {
+      "text": "На снеговике",
+      "path": "audio/v-a2fa49bbf0992602.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.400000"
+      }
+    },
+    {
+      "text": "Где сидит волчонок?",
+      "path": "audio/v-3a818cb7d59773ef.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.832000"
+      }
+    },
+    {
+      "text": "В домике",
+      "path": "audio/v-6b4016335e49be5e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Перед домиком",
+      "path": "audio/v-75c868ed329a07f6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.328000"
+      }
+    },
+    {
+      "text": "Снежный ветер перепутал слова. Послушай три заклинания, выбери то, которое звучит правильно, и нажми «Проверить».",
+      "path": "audio/v-84f2808890141a80.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "10.656000"
+      }
+    },
+    {
+      "text": "Посмотри, кто на картинке и что он делает. Произнеси это сам, а потом ещё раз послушай варианты.",
+      "path": "audio/v-0770d0f84f3fe8e9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.976000"
+      }
+    },
+    {
+      "text": "Снеговик стоят во дворе",
+      "path": "audio/v-a85f9174cc499272.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "Снеговик стоит во дворе",
+      "path": "audio/v-bf72749a9c4e590c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.024000"
+      }
+    },
+    {
+      "text": "Снеговик стоять во дворе",
+      "path": "audio/v-28396420b0a2d186.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.144000"
+      }
+    },
+    {
+      "text": "Белочка прыгают по веткам",
+      "path": "audio/v-06f600e64de275f6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Белочка прыгать по веткам",
+      "path": "audio/v-686cfb60c51d73d2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Белочка прыгает по веткам",
+      "path": "audio/v-9465991182fc06c7.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Снежинки падают с неба",
+      "path": "audio/v-2a6810694bd0902e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.216000"
+      }
+    },
+    {
+      "text": "Снежинки падает с неба",
+      "path": "audio/v-461095e953241fc0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.192000"
+      }
+    },
+    {
+      "text": "Снежинки падать с неба",
+      "path": "audio/v-bd6c49f86bd39cb1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.144000"
+      }
+    },
+    {
+      "text": "Зайчик нашла морковку",
+      "path": "audio/v-778169a15333e3a6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.048000"
+      }
+    },
+    {
+      "text": "Зайчик нашёл морковку",
+      "path": "audio/v-d293e2e6ff95a814.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.072000"
+      }
+    },
+    {
+      "text": "Зайчик нашли морковку",
+      "path": "audio/v-a8e68af87af53a9a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.024000"
+      }
+    },
+    {
+      "text": "Дети лепит снеговика",
+      "path": "audio/v-cb7563ee6c936548.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.976000"
+      }
+    },
+    {
+      "text": "Дети лепить снеговика",
+      "path": "audio/v-3d710409e42a2a76.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.024000"
+      }
+    },
+    {
+      "text": "Дети лепят снеговика",
+      "path": "audio/v-aff7341e308badef.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.976000"
+      }
+    }
+  ],
+  "acoustic_review": "pending"
+}
