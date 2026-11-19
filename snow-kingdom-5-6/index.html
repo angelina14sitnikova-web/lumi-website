@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#20396a">
+  <meta name="description" content="Зимнее речевое приключение для детей 5–6 лет. Семь заданий с Луми и история о первом снеге.">
+  <title>Луми и Тайна Снежного королевства</title>
+  <link rel="stylesheet" href="snow.css">
+  <script defer src="../analytics/lumi-analytics.js?v=snow-kingdom-1"></script>
+  <script defer src="content.js"></script>
+  <script defer src="speech-map.js"></script>
+  <script defer src="sound.js"></script>
+  <script defer src="story.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body class="snow-page">
+  <div class="snow-fall" aria-hidden="true"></div>
+  <header class="snow-top">
+    <a class="quiet return-link" href="../crystal-world.html#age-5-6">В каталог</a>
+    <div class="sound-buttons" aria-label="Настройки звука">
+      <button id="voice" class="quiet" type="button" aria-pressed="true">Голос: вкл.</button>
+      <button id="music-toggle" class="quiet" type="button" aria-pressed="false">Музыка: выкл.</button>
+    </div>
+  </header>
+  <main id="game" tabindex="-1"></main>
+  <p id="sound-status" class="sound-status" role="status" aria-live="polite"></p>
+  <footer class="snow-footer" data-lumi-analytics-footer></footer>
+  <dialog id="reward" aria-labelledby="reward-heading">
+    <div class="reward-content">
+      <h2 id="reward-heading">ПРАВИЛЬНО!</h2>
+      <div class="reward-art">
+        <img src="assets/lumi/final.png" alt="Луми радуется">
+        <img id="reward-shard" src="assets/rewards/shard-1.png" alt="Ледяной осколок">
+      </div>
+      <p id="reward-caption"></p>
+      <button id="next-task" type="button">Дальше</button>
+    </div>
+  </dialog>
+  <audio id="narration" preload="none" playsinline></audio>
+  <audio id="music" preload="none" loop playsinline src="audio/music.mp3"></audio>
+  <audio id="chime" preload="none" playsinline></audio>
+</body>
+</html>
