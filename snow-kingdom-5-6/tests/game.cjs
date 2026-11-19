@@ -50,6 +50,12 @@ const view = selector => {
 };
 const click = selector => view(selector).click();
 const select = answer => click('[data-select="' + answer + '"]');
+function checkImages() {
+  for (const image of d.querySelectorAll('img[src]')) {
+    const resource = image.getAttribute('src');
+    assert(fs.existsSync(path.join(root, resource)), 'Missing resource ' + resource);
+  }
+}
 const snapshot = () => Object.fromEntries(Object.keys(w.localStorage).map(k => [k, w.localStorage.getItem(k)]));
 
 function pointer(name, target, x, y) {
@@ -62,6 +68,7 @@ open({[otherGame]: 'sentinel'});
 const content = w.SnowContent;
 assert.equal(content.tasks.length, 7);
 assert.equal(content.tasks.reduce((count, task) => count + (task.rounds?.length || 0), 0), 33);
+checkImages();
 click('#begin');
 assert(audio.find(([, lines]) => Array.isArray(lines) && lines.includes('phoneme:s')));
 assert.equal(events[0][2], true);
@@ -73,6 +80,7 @@ for (const [stage, task] of Array.from(content.tasks).slice(0, 6).entries()) {
   for (const [index, round] of task.rounds.entries()) {
     assert.equal(current().stage, stage);
     assert.equal(current().round, index);
+    checkImages();
     assert.equal(current().earned, stage);
     click('#hint');
     assert(view('.feedback').textContent.includes(task.hint));
@@ -134,6 +142,7 @@ for (const [stage, task] of Array.from(content.tasks).slice(0, 6).entries()) {
   rates.push(played - stageStart);
 }
 
+checkImages();
 assert.notEqual(current().order.join(), '1,2,3,4');
 assert.equal(view('#check-story').disabled, true);
 const card3 = view('[data-story-card="3"]');
@@ -167,6 +176,7 @@ click('#story-done');
 assert.equal(current().earned, 7);
 click('#next-task');
 assert.equal(current().stage, 7);
+checkImages();
 assert.equal(view('h1').textContent, 'Ты спас Снежное королевство!');
 assert.equal(d.querySelectorAll('.orbit-shard').length, 7);
 assert.equal(w.localStorage.getItem(medal), 'earned');
