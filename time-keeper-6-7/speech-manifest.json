@@ -1,0 +1,1471 @@
+{
+  "voice": "ru-RU-SvetlanaNeural",
+  "rate": "-12%",
+  "tracks": [
+    {
+      "text": "Главные часы остановились, а семь волшебных шестерёнок исчезли! Помоги Луми пройти испытания, восстановить механизм и вернуть времени его волшебную силу.",
+      "path": "audio/v-ba98a6dda9a2730d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "12.864000"
+      }
+    },
+    {
+      "text": "В Башне времени перепутались прошлое, настоящее и будущее. За каждое испытание ты получишь золотую шестерёнку. Когда соберёшь все семь, установи их на места и запусти часы!",
+      "path": "audio/v-057f34133cb2024d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "15.840000"
+      }
+    },
+    {
+      "text": "Все семь шестерёнок снова на своих местах! Главные часы заработали, и волшебное королевство ожило. Ты настоящий Хранитель времени!",
+      "path": "audio/v-c2e331762370b679.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "12.864000"
+      }
+    },
+    {
+      "text": "Попробуй ещё раз!",
+      "path": "audio/v-2e3aefc104bd315c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.568000"
+      }
+    },
+    {
+      "text": "Послушай внимательно.",
+      "path": "audio/v-276f779c331609a0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.880000"
+      }
+    },
+    {
+      "text": "Подумай, какое слово подходит.",
+      "path": "audio/v-2724db375fd9d164.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Давай попробуем вместе!",
+      "path": "audio/v-cee910144a0dc7da.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "Правильно!",
+      "path": "audio/v-f351afd8641cf675.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Ты нашёл золотую шестерёнку!",
+      "path": "audio/v-95669cfd33e243c9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.336000"
+      }
+    },
+    {
+      "text": "Подбери посадочное место к каждой шестерёнке. Нажми на деталь и на её место или перетащи её.",
+      "path": "audio/v-6906272272aacc95.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.736000"
+      }
+    },
+    {
+      "text": "Шестерёнка встала на место!",
+      "path": "audio/v-aff0bfe547157807.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Эта деталь подходит к другому месту. Посмотри на форму.",
+      "path": "audio/v-a61e56c417747de8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "6.168000"
+      }
+    },
+    {
+      "text": "Все семь деталей на своих местах! Запусти часы.",
+      "path": "audio/v-75a32924797bf24c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.952000"
+      }
+    },
+    {
+      "text": "Начало слова",
+      "path": "audio/v-2005c18eb9bedc25.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.496000"
+      }
+    },
+    {
+      "text": "Середина слова",
+      "path": "audio/v-5041bf861b3f1b89.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.520000"
+      }
+    },
+    {
+      "text": "Конец слова",
+      "path": "audio/v-48671cfa3b6396bf.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.448000"
+      }
+    },
+    {
+      "text": "Вчера",
+      "path": "audio/v-6bc6210fc2f693f1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.920000"
+      }
+    },
+    {
+      "text": "Сегодня",
+      "path": "audio/v-b688b4c0d7836656.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.208000"
+      }
+    },
+    {
+      "text": "Завтра",
+      "path": "audio/v-68f5b5aa7c2c88cb.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.040000"
+      }
+    },
+    {
+      "text": "Уже было",
+      "path": "audio/v-89f32df394d1ad3d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.112000"
+      }
+    },
+    {
+      "text": "Происходит сейчас",
+      "path": "audio/v-5083a5eb64b60575.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.712000"
+      }
+    },
+    {
+      "text": "Будет потом",
+      "path": "audio/v-506520ec74f48119.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.328000"
+      }
+    },
+    {
+      "text": "Маленькие часы",
+      "path": "audio/v-4269fe9f5de34843.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.712000"
+      }
+    },
+    {
+      "text": "Теперь расскажи историю своими словами. Используй слова «сначала», «затем», «после этого», «наконец».",
+      "path": "audio/v-5981f964932c1e73.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "10.152000"
+      }
+    },
+    {
+      "text": "Однажды Луми нашёл старые часы и заметил, что они остановились. Он открыл крышку и увидел, что в механизме не хватает шестерёнки. Луми поискал деталь и нашёл её под столом. Затем он установил шестерёнку на место, и часы снова заработали. Луми очень обрадовался.",
+      "path": "audio/v-b5115e4c69b94b22.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "23.904000"
+      }
+    },
+    {
+      "text": "Луми находит на столе старые остановившиеся часы.",
+      "path": "audio/v-a08ce7f0235e9ba8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.752000"
+      }
+    },
+    {
+      "text": "Луми открывает крышку часов и замечает пустое место для шестерёнки.",
+      "path": "audio/v-6868b85816d13615.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.808000"
+      }
+    },
+    {
+      "text": "Луми ищет деталь и находит её под столом.",
+      "path": "audio/v-43604713ee784e4f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.296000"
+      }
+    },
+    {
+      "text": "Луми устанавливает шестерёнку внутрь механизма.",
+      "path": "audio/v-870cbe217ffdb350.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.488000"
+      }
+    },
+    {
+      "text": "Часы снова работают, а Луми радуется.",
+      "path": "audio/v-5a65bc62ff812c76.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "4.056000"
+      }
+    },
+    {
+      "text": "Кого ты видишь на картинках?",
+      "path": "audio/v-d224323864cd9d46.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.192000"
+      }
+    },
+    {
+      "text": "Что сначала обнаружил Луми?",
+      "path": "audio/v-5362f92ee8ce17b5.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Почему часы не работали?",
+      "path": "audio/v-4ed1ebefd5c35c7c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.976000"
+      }
+    },
+    {
+      "text": "Как Луми нашёл нужную деталь?",
+      "path": "audio/v-598c8da743fb306d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Что он сделал потом?",
+      "path": "audio/v-b8cb864df2d8a33f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.736000"
+      }
+    },
+    {
+      "text": "Чем закончилась история?",
+      "path": "audio/v-f0e1c8cabf6e6780.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.288000"
+      }
+    },
+    {
+      "text": "Послушай слово и звук. Выбери, где в слове слышится этот звук.",
+      "path": "audio/v-387f530b5c19dce3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.368000"
+      }
+    },
+    {
+      "text": "Произнеси слово медленно и прислушайся, где находится нужный звук.",
+      "path": "audio/v-2a7b6ddc310b3aaa.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.640000"
+      }
+    },
+    {
+      "text": "Сок",
+      "path": "audio/v-d4b3327fa06d49e9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Оса",
+      "path": "audio/v-e4f9e48909db0618.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Нос",
+      "path": "audio/v-9da075dd937b0523.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Мак",
+      "path": "audio/v-7bc910338837a81b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Лампа",
+      "path": "audio/v-dae8341a8851c100.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.944000"
+      }
+    },
+    {
+      "text": "Дом",
+      "path": "audio/v-318bc00c150798bf.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Послушай слово. Соедини слоги по порядку и нажми «Проверить».",
+      "path": "audio/v-daa46d6c9ecfbcf9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.128000"
+      }
+    },
+    {
+      "text": "Произнеси слово по слогам. Какой слог слышится первым? Какой идёт за ним?",
+      "path": "audio/v-3bec1cc8f743e4f7.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.976000"
+      }
+    },
+    {
+      "text": "Часы",
+      "path": "audio/v-7e6da98020ac2053.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.920000"
+      }
+    },
+    {
+      "text": "ЧА",
+      "path": "audio/v-0911e1327a5f7a7f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "СЫ",
+      "path": "audio/v-bc34890dc325f09a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "КА",
+      "path": "audio/v-7743f4d168e371ab.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "МА",
+      "path": "audio/v-92645ab3f03a1236.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Луна",
+      "path": "audio/v-b25f2c7cdbc55f26.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ЛУ",
+      "path": "audio/v-2ac54d9ab9730e4e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "НА",
+      "path": "audio/v-f3f9a37b709ad09b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ЛА",
+      "path": "audio/v-959175cd0918b11d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "РА",
+      "path": "audio/v-8fa2c374c52b15fc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Рыба",
+      "path": "audio/v-2fe34cb2c04947f4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "РЫ",
+      "path": "audio/v-3778bfbb128fba29.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "БА",
+      "path": "audio/v-5fe8f10620287e36.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "БО",
+      "path": "audio/v-0e1f0e06b479063e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Машина",
+      "path": "audio/v-53de9f24a54da43f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "ШИ",
+      "path": "audio/v-6c6869dc39345e93.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ЛИ",
+      "path": "audio/v-56ce8e341cfefade.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Корова",
+      "path": "audio/v-c200189aef3c0bff.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.944000"
+      }
+    },
+    {
+      "text": "КО",
+      "path": "audio/v-f3497c4a1a5f8830.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "РО",
+      "path": "audio/v-6f9d58acd03afc68.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ВА",
+      "path": "audio/v-30cbd21f64bb6d90.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ЛО",
+      "path": "audio/v-fad0cffd4919958c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Ракета",
+      "path": "audio/v-83fdb2447aeeba34.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "КЕ",
+      "path": "audio/v-8b56c4176674a233.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ТА",
+      "path": "audio/v-c3ec2bb226118b95.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "ТО",
+      "path": "audio/v-8dd4dfdd84ac8412.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Послушай слово. Выбери букву, которой не хватает, и нажми «Проверить».",
+      "path": "audio/v-16d0d74e08b1da24.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.944000"
+      }
+    },
+    {
+      "text": "Скажи слово медленно. Прислушайся, какой звук слышится на месте пустой клеточки.",
+      "path": "audio/v-37afb391547e0fcb.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.112000"
+      }
+    },
+    {
+      "text": "Кот",
+      "path": "audio/v-7d2532b69353b222.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Лук",
+      "path": "audio/v-08089a6cfbc73182.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Послушай предложение и выбери, когда это произошло. Затем нажми «Проверить».",
+      "path": "audio/v-77072aaeb68ad349.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.088000"
+      }
+    },
+    {
+      "text": "Прислушайся к словам о времени и к тому, как звучит действие. Оно уже было, происходит сейчас или будет потом?",
+      "path": "audio/v-25aecb2e5336981f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "10.008000"
+      }
+    },
+    {
+      "text": "Зайчик вчера посадил цветок.",
+      "path": "audio/v-7246b00f12955783.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Белочка сегодня рисует картину.",
+      "path": "audio/v-1406986bb5e4d4da.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.552000"
+      }
+    },
+    {
+      "text": "Луми завтра отправится в путешествие.",
+      "path": "audio/v-ab672c2f352b4759.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.984000"
+      }
+    },
+    {
+      "text": "Вчера котёнок построил домик.",
+      "path": "audio/v-d5ab024647d1a5b2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Сегодня медвежонок читает книгу.",
+      "path": "audio/v-50583b152ff5fb12.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.648000"
+      }
+    },
+    {
+      "text": "Завтра лисёнок приготовит пирог.",
+      "path": "audio/v-a6fc3039b40426a6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.624000"
+      }
+    },
+    {
+      "text": "Луми уже собрал игрушки.",
+      "path": "audio/v-40ba5f98e92e2710.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.048000"
+      }
+    },
+    {
+      "text": "Белочка нарисует картину.",
+      "path": "audio/v-df6bdc742d683a96.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.216000"
+      }
+    },
+    {
+      "text": "Послушай словосочетание. Выбери слово, близкое по смыслу, и нажми «Проверить».",
+      "path": "audio/v-3eccc651f29da88d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.592000"
+      }
+    },
+    {
+      "text": "Подставь каждое слово в словосочетание. В каком случае получится похожий смысл?",
+      "path": "audio/v-eec4af2a50ba84bb.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.848000"
+      }
+    },
+    {
+      "text": "Смелый рыцарь",
+      "path": "audio/v-8c2e722fc93607e6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.544000"
+      }
+    },
+    {
+      "text": "Смелый и храбрый — это слова, близкие по значению.",
+      "path": "audio/v-b60a38f17c507701.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.352000"
+      }
+    },
+    {
+      "text": "Храбрый",
+      "path": "audio/v-148733e2ce46b3d9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "Грустный",
+      "path": "audio/v-4e9f130d28a0a005.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.112000"
+      }
+    },
+    {
+      "text": "Медленный",
+      "path": "audio/v-6e503025a34ba530.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Красивый дворец",
+      "path": "audio/v-14ab1c235e4151d1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.544000"
+      }
+    },
+    {
+      "text": "О дворце можно сказать «красивый» или «прекрасный». Эти слова близки по смыслу.",
+      "path": "audio/v-21c588a9cb04af08.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.072000"
+      }
+    },
+    {
+      "text": "Старый",
+      "path": "audio/v-27c6b02261caa618.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.968000"
+      }
+    },
+    {
+      "text": "Прекрасный",
+      "path": "audio/v-b61910996ac45632.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Тёмный",
+      "path": "audio/v-21943a44634e7a71.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.040000"
+      }
+    },
+    {
+      "text": "Весёлый праздник",
+      "path": "audio/v-2722e67b37267a54.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.640000"
+      }
+    },
+    {
+      "text": "Весёлый и радостный — слова, близкие по смыслу в этом примере.",
+      "path": "audio/v-e63a1edeb8623281.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "5.736000"
+      }
+    },
+    {
+      "text": "Тихий",
+      "path": "audio/v-c7c0ccc28c238231.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Долгий",
+      "path": "audio/v-449f28fc0ddac225.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.088000"
+      }
+    },
+    {
+      "text": "Радостный",
+      "path": "audio/v-36d3892c68b46cbb.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Большой замок",
+      "path": "audio/v-0836cf74b7853c14.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.424000"
+      }
+    },
+    {
+      "text": "Большой и огромный — близкие слова. Огромный значит очень большой.",
+      "path": "audio/v-d6f13334c677759f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.512000"
+      }
+    },
+    {
+      "text": "Огромный",
+      "path": "audio/v-675211cf9c05b76d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Маленький",
+      "path": "audio/v-05c191c0c7cc026c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Высокий",
+      "path": "audio/v-e24b10ae3b505022.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Быстро бежать",
+      "path": "audio/v-35cfe8bf95bbf75e.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.424000"
+      }
+    },
+    {
+      "text": "Быстро и стремительно — близкие слова. Стремительно значит очень быстро.",
+      "path": "audio/v-dfb07621f6e1184f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.728000"
+      }
+    },
+    {
+      "text": "Медленно",
+      "path": "audio/v-f73ed701818520d3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Стремительно",
+      "path": "audio/v-08d851ebde02618b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.352000"
+      }
+    },
+    {
+      "text": "Осторожно",
+      "path": "audio/v-4326c0d4449f4994.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.184000"
+      }
+    },
+    {
+      "text": "Посмотри на картинку и послушай слова. Составь из них предложение и нажми «Проверить».",
+      "path": "audio/v-01293a11d5520eac.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "8.568000"
+      }
+    },
+    {
+      "text": "Найди, кто что делает. Прочитай или произнеси вслух всё предложение.",
+      "path": "audio/v-9ebccd1c74330d12.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.704000"
+      }
+    },
+    {
+      "text": "Спит",
+      "path": "audio/v-b358dfff22cd862d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.968000"
+      }
+    },
+    {
+      "text": "Котёнок",
+      "path": "audio/v-c3be0a35f917a9cc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Котёнок спит.",
+      "path": "audio/v-6a6b6f2d0e059a31.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.472000"
+      }
+    },
+    {
+      "text": "Спит котёнок.",
+      "path": "audio/v-f8b94c20c32708d4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.496000"
+      }
+    },
+    {
+      "text": "Морковку",
+      "path": "audio/v-56aa5d5f04d85669.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Зайчик",
+      "path": "audio/v-a5326910d6859666.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.112000"
+      }
+    },
+    {
+      "text": "Ест",
+      "path": "audio/v-28fdda58c7556705.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.944000"
+      }
+    },
+    {
+      "text": "Зайчик ест морковку.",
+      "path": "audio/v-bf30d5336487fe0b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.096000"
+      }
+    },
+    {
+      "text": "Зайчик морковку ест.",
+      "path": "audio/v-0df370908abc6af1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.048000"
+      }
+    },
+    {
+      "text": "Ест зайчик морковку.",
+      "path": "audio/v-5513ce85ea582696.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.144000"
+      }
+    },
+    {
+      "text": "Ест морковку зайчик.",
+      "path": "audio/v-66ee633bc65586e6.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.072000"
+      }
+    },
+    {
+      "text": "Морковку зайчик ест.",
+      "path": "audio/v-40327339f531e4ee.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.072000"
+      }
+    },
+    {
+      "text": "Морковку ест зайчик.",
+      "path": "audio/v-fd5b37b41c3a8ed9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.192000"
+      }
+    },
+    {
+      "text": "Картину",
+      "path": "audio/v-6e79d8e19c5a8e21.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.016000"
+      }
+    },
+    {
+      "text": "Белочка",
+      "path": "audio/v-2750a3ef77ce01a2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.160000"
+      }
+    },
+    {
+      "text": "Рисует",
+      "path": "audio/v-5f7ecdca599416fd.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.136000"
+      }
+    },
+    {
+      "text": "Белочка рисует картину.",
+      "path": "audio/v-16eebd750b06c9f1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.096000"
+      }
+    },
+    {
+      "text": "Белочка картину рисует.",
+      "path": "audio/v-8e48bcac0aae9fe8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Рисует белочка картину.",
+      "path": "audio/v-f3bbe1148ef82e8c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.168000"
+      }
+    },
+    {
+      "text": "Рисует картину белочка.",
+      "path": "audio/v-5de3fc914562445a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "Картину белочка рисует.",
+      "path": "audio/v-07a9adb5cd2d75ae.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "Картину рисует белочка.",
+      "path": "audio/v-0907c3327500e864.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.120000"
+      }
+    },
+    {
+      "text": "Летит",
+      "path": "audio/v-f66d58b8b00ac642.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.064000"
+      }
+    },
+    {
+      "text": "Бабочка",
+      "path": "audio/v-828e36c5d8d79303.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.160000"
+      }
+    },
+    {
+      "text": "Цветком",
+      "path": "audio/v-07c93221d98128cc.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.088000"
+      }
+    },
+    {
+      "text": "Над",
+      "path": "audio/v-362accf026b7fca8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Бабочка летит над цветком.",
+      "path": "audio/v-1fc20d53a0947132.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.264000"
+      }
+    },
+    {
+      "text": "Бабочка над цветком летит.",
+      "path": "audio/v-a9883473e209c67a.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.312000"
+      }
+    },
+    {
+      "text": "Летит бабочка над цветком.",
+      "path": "audio/v-dd21f819509e455c.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.240000"
+      }
+    },
+    {
+      "text": "Летит над цветком бабочка.",
+      "path": "audio/v-b609001e7d3c52b9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.288000"
+      }
+    },
+    {
+      "text": "Над цветком бабочка летит.",
+      "path": "audio/v-d9d8f2baadeaee31.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.312000"
+      }
+    },
+    {
+      "text": "Над цветком летит бабочка.",
+      "path": "audio/v-730d12c09486d5a4.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.288000"
+      }
+    },
+    {
+      "text": "Книгу",
+      "path": "audio/v-b24061a757cc51b7.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Читает",
+      "path": "audio/v-f8333e69ba824bfb.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.088000"
+      }
+    },
+    {
+      "text": "Луми",
+      "path": "audio/v-6f22a47953ea0809.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Интересную",
+      "path": "audio/v-9b3e1eaa9c513980.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.424000"
+      }
+    },
+    {
+      "text": "Луми читает интересную книгу.",
+      "path": "audio/v-22c5ad63b2ccd871.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.528000"
+      }
+    },
+    {
+      "text": "Луми читает книгу интересную.",
+      "path": "audio/v-67780b279dd251e3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.792000"
+      }
+    },
+    {
+      "text": "Луми интересную читает книгу.",
+      "path": "audio/v-14d27936790b72df.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.600000"
+      }
+    },
+    {
+      "text": "Луми интересную книгу читает.",
+      "path": "audio/v-f23e551c480c4477.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.552000"
+      }
+    },
+    {
+      "text": "Луми книгу читает интересную.",
+      "path": "audio/v-3058e5b0023844b3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.768000"
+      }
+    },
+    {
+      "text": "Луми книгу интересную читает.",
+      "path": "audio/v-5f13ec5ccdaf7143.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Читает Луми интересную книгу.",
+      "path": "audio/v-5e97e0c9faa8bad9.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Читает Луми книгу интересную.",
+      "path": "audio/v-97dd7df8ef798159.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.744000"
+      }
+    },
+    {
+      "text": "Читает интересную Луми книгу.",
+      "path": "audio/v-8e38e108c4271663.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.480000"
+      }
+    },
+    {
+      "text": "Читает интересную книгу Луми.",
+      "path": "audio/v-725b475de8a9e044.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.576000"
+      }
+    },
+    {
+      "text": "Читает книгу Луми интересную.",
+      "path": "audio/v-7c34ee6602c602c2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.792000"
+      }
+    },
+    {
+      "text": "Читает книгу интересную Луми.",
+      "path": "audio/v-40473ad5d287f9e0.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.720000"
+      }
+    },
+    {
+      "text": "Интересную Луми читает книгу.",
+      "path": "audio/v-2fb80edb8c0f4b0b.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.480000"
+      }
+    },
+    {
+      "text": "Интересную Луми книгу читает.",
+      "path": "audio/v-967738881654c112.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.504000"
+      }
+    },
+    {
+      "text": "Интересную читает Луми книгу.",
+      "path": "audio/v-b9a93a277a6a0fa5.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.480000"
+      }
+    },
+    {
+      "text": "Интересную читает книгу Луми.",
+      "path": "audio/v-6408e9e5524dd4f2.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.648000"
+      }
+    },
+    {
+      "text": "Интересную книгу Луми читает.",
+      "path": "audio/v-4e3e65d16dbd8429.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.456000"
+      }
+    },
+    {
+      "text": "Интересную книгу читает Луми.",
+      "path": "audio/v-305834cb0e6b1663.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.504000"
+      }
+    },
+    {
+      "text": "Книгу Луми читает интересную.",
+      "path": "audio/v-cfdb4819ed6f9ff8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.744000"
+      }
+    },
+    {
+      "text": "Книгу Луми интересную читает.",
+      "path": "audio/v-d70e4ed568ce6553.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.600000"
+      }
+    },
+    {
+      "text": "Книгу читает Луми интересную.",
+      "path": "audio/v-1641042a101957a8.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.768000"
+      }
+    },
+    {
+      "text": "Книгу читает интересную Луми.",
+      "path": "audio/v-37cd010ebc8632e1.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.672000"
+      }
+    },
+    {
+      "text": "Книгу интересную Луми читает.",
+      "path": "audio/v-7153529e0ccb99a3.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.504000"
+      }
+    },
+    {
+      "text": "Книгу интересную читает Луми.",
+      "path": "audio/v-4387f8984e8f38e5.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "3.648000"
+      }
+    },
+    {
+      "text": "Разложи пять картинок по порядку. Нажимай на них или перетаскивай в ячейки.",
+      "path": "audio/v-b915547d59c920a5.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "7.680000"
+      }
+    },
+    {
+      "text": "Поищи картинку, где Луми впервые видит часы. Что нужно было сделать до того, как часы заработали?",
+      "path": "audio/v-088c99a3c22ab155.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "9.384000"
+      }
+    },
+    {
+      "text": "Арка",
+      "path": "audio/v-1e00c4d8af67c54f.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Облако",
+      "path": "audio/v-02c76adb5ad9b905.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "2.040000"
+      }
+    },
+    {
+      "text": "Утка",
+      "path": "audio/v-a6d7a019e11b7dbd.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.896000"
+      }
+    },
+    {
+      "text": "Иглы",
+      "path": "audio/v-a57d1c62f9beaa5d.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Сыр",
+      "path": "audio/v-83771ced7d0c8a69.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    },
+    {
+      "text": "Торт",
+      "path": "audio/v-2f04ce4e05610285.mp3",
+      "stream": {
+        "codec_name": "mp3",
+        "duration": "1.872000"
+      }
+    }
+  ],
+  "acoustic_review": "pending"
+}
