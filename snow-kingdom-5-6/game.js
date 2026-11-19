@@ -147,7 +147,7 @@
   }
 
   const objectAliases = { 'red-mitten': 'mitten', 'fluffy-snow': 'snow', 'blue-bucket': 'bucket', 'tall-fir': 'fir' };
-  const object = (id, alt = '') => `<img src="assets/objects/${objectAliases[id] || id}.png" alt="${alt}" draggable="false">`;
+  const object = (id, alt = '') => `<img src="assets/objects/${objectAliases[id] || id}.webp" alt="${alt}" draggable="false">`;
   const scene = (id, alt = '') => `<img class="scene-picture" src="assets/scenes/${id}.webp" alt="${alt}" draggable="false">`;
   const check = () => `<button id="check" type="button" ${selected.length ? '' : 'disabled'}>Проверить</button>`;
   const next = () => '<button id="next-round" type="button">Дальше</button>';
@@ -177,7 +177,7 @@
   function syllableChoices(round) {
     const steps = state.round + Number(state.done);
     const pads = Array.from({length: 7}, (_, index) => `<div class="river-step">
-      <img class="river-pad ${index <= steps ? 'reached' : ''}" src="assets/objects/ice-step.png" alt="">
+      <img class="river-pad ${index <= steps ? 'reached' : ''}" src="assets/objects/ice-step.webp" alt="">
       ${index === steps ? `<img class="river-lumi ${state.done ? 'jumping' : ''}" src="assets/lumi/syllables.png" alt="">` : ''}
     </div>`).join('');
     const options = [1, 2, 3, 4].map(number => {
@@ -200,10 +200,12 @@
       ['voice-blue', 'voice-lilac', 'voice-gold'];
     const options = round.options.map((line, index) =>
       `<div class="spoken-option ${selected.includes(index) ? 'selected' : ''}">
-        <img class="voice-art" src="assets/objects/${ornaments[index]}.png" alt="">
-        <button class="quiet" type="button" data-hear="${line}" aria-label="Послушать вариант ${index + 1}">Слушать</button>
-        <button class="quiet" type="button" data-select="${index}" aria-pressed="${selected.includes(index)}"
-          aria-label="Выбрать вариант ${index + 1}" ${state.done ? 'disabled' : ''}>Выбрать</button>
+        <button class="select-card" type="button" data-select="${index}" aria-pressed="${selected.includes(index)}"
+          aria-label="Выбрать вариант ${index + 1}" ${state.done ? 'disabled' : ''}>
+          <img class="voice-art" src="assets/objects/${ornaments[index]}.webp" alt="">
+          <span>Выбрать</span>
+        </button>
+        <button class="quiet hear" type="button" data-hear="${line}" aria-label="Послушать вариант ${index + 1}">Слушать</button>
       </div>`).join('');
     return `<div class="${state.done && task.id === 'places' ? 'scene-found' : ''}">${picture}</div>
       ${task.id === 'spells' ? `<div class="spellbook ${state.done ? 'book-glow' : ''}"><img src="assets/rewards/book.png" alt=""></div>` : ''}
@@ -290,7 +292,8 @@
   function incorrect() {
     const { retry, listen, encourage } = C.feedback;
     const options = [retry, listen, encourage];
-    note(options[attempts % options.length]);
+    const { task } = current();
+    note(task.id === 'riddles' ? task.hint : options[attempts % options.length]);
     attempts += 1;
     speech([feedback]);
   }
