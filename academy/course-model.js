@@ -45,9 +45,13 @@ export function checkAnswer(task, answer) {
   return Boolean(type?.isReady(task) && type.check(task, answer));
 }
 
+export function practiceSetIsReady(tasks) {
+  return Array.isArray(tasks) && tasks.length > 0 &&
+    tasks.every(task => practiceTypes.get(task.kind)?.isReady(task));
+}
+
 export function practiceIsReady(lesson) {
-  return canOpen(lesson) && Boolean(lesson.practice?.length) &&
-    lesson.practice.every(task => practiceTypes.get(task.kind)?.isReady(task));
+  return canOpen(lesson) && practiceSetIsReady(lesson.practice);
 }
 
 function readProgress() {

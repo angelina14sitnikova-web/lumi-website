@@ -99,6 +99,14 @@ if (course) {
   document.querySelector('.academy-return').href = course.agePage;
   const [ages] = course.age.split(' ');
   document.querySelector('#program-back-label').textContent = 'К предметам для ' + ages + ' лет';
+  if (course.readingNote) {
+    const note = element('aside', 'academy-frame course-foundation');
+    const source = element('a', '', 'Разъяснение о приёме в первый класс');
+    source.href = course.readingSource;
+    note.append(element('p', '', course.readingNote), element('p'));
+    note.lastChild.append(source);
+    document.querySelector('.course-hero').after(note);
+  }
   document.title = course.title + ' · ' + course.age + ' — Академия Луми';
 }
 updateCatalog();

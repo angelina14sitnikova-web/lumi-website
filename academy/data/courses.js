@@ -16,6 +16,12 @@ import literacy56 from './literacy-5-6.js';
 import logic56 from './logic-5-6.js';
 import memory56 from './memory-5-6.js';
 import writing56 from './writing-5-6.js';
+import math67 from './math-6-7.js';
+import speech67 from './speech-6-7.js';
+import literacy67 from './literacy-6-7.js';
+import logic67 from './logic-6-7.js';
+import memory67 from './memory-6-7.js';
+import writing67 from './writing-6-7.js';
 import { lessonContent } from './lesson-content.js';
 
 const ageGroups = [
@@ -69,6 +75,44 @@ const ageGroups = [
         ...writing,
         modules: writing56,
         room: { image: 'assets/writing-classroom-5-6.webp', alt: 'Творческая мастерская с бумагой, карандашами и альбомом', width: 600, height: 600 },
+      },
+    ],
+  },
+  {
+    id: '6-7',
+    label: '6–7 лет',
+    programs: [
+      {
+        ...math,
+        modules: math67,
+        room: { image: 'assets/math-classroom-6-7.webp', alt: 'Математический кабинет со счётами и геометрическими фигурами', width: 600, height: 600 },
+      },
+      {
+        ...speech,
+        modules: speech67,
+        room: { image: 'assets/speech-classroom-6-7.webp', alt: 'Сказочный театр с кукольной сценой и иллюстрированной книгой', width: 600, height: 600 },
+      },
+      {
+        ...literacy,
+        modules: literacy67,
+        room: { image: 'assets/literacy-classroom-6-7.webp', alt: 'Сказочная библиотека с раскрытыми книгами', width: 600, height: 600 },
+        readingNote: 'Чтение слов и предложений в Академии — дополнительное направление. Умение читать не требуется при поступлении в первый класс.',
+        readingSource: 'https://xn--273--84d1f.xn--p1ai/voprosy_i_otvety/obyazatelno-li-rebenok-dolzhen-budet-umet-chitat-pri-postuplenii-v-pervyy-klass',
+      },
+      {
+        ...logic,
+        modules: logic67,
+        room: { image: 'assets/logic-classroom-6-7.webp', alt: 'Мастерская с головоломками и геометрическими узорами', width: 600, height: 600 },
+      },
+      {
+        ...memory,
+        modules: memory67,
+        room: { image: 'assets/memory-classroom-6-7.webp', alt: 'Обсерватория с телескопом и парными карточками', width: 600, height: 600 },
+      },
+      {
+        ...writing,
+        modules: writing67,
+        room: { image: 'assets/writing-classroom-6-7.webp', alt: 'Творческая мастерская с бумагой, карандашами и тетрадью', width: 600, height: 600 },
       },
     ],
   },

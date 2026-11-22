@@ -8,6 +8,8 @@
   <script src="../analytics/lumi-analytics.js"></script>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="academy.css">
+  <link rel="stylesheet" href="course.css">
+  <script type="module" src="subjects.js"></script>
 </head>
 <body class="academy-page">
   <a class="academy-skip" href="#academy-main">К содержанию</a>
@@ -24,8 +26,8 @@
         <div class="academy-ornament" aria-hidden="true"><span></span></div>
         <p class="academy-age">6–7 лет</p>
         <h1 id="academy-age-title">Будущие школьники</h1>
-        <p class="academy-lead">Скоро здесь появятся волшебные уроки!</p>
-        <a class="academy-button" href="../academy.html#door-6-7"><span aria-hidden="true">←</span> Вернуться в Академию</a>
+        <p class="academy-lead">Выбери, чему хочешь учиться вместе с Луми.</p>
+        <a class="academy-return" href="../academy.html#door-6-7"><span aria-hidden="true">←</span> Вернуться в Академию</a>
       </div>
       <div class="academy-age-scene">
         <img class="academy-age-art" src="assets/door-6-7.webp" alt="" width="762" height="506" fetchpriority="high">
@@ -33,6 +35,23 @@
         <span class="academy-light academy-light-one" aria-hidden="true"></span>
         <span class="academy-light academy-light-two" aria-hidden="true"></span>
       </div>
+    </section>
+    <section class="subject-library" aria-labelledby="subjects-title">
+      <div class="academy-section-heading">
+        <div class="academy-ornament" aria-hidden="true"><span></span></div>
+        <h2 id="subjects-title">Выбери предмет</h2>
+        <p id="subjects-count"></p>
+      </div>
+      <ul class="subject-grid" id="subjects"></ul>
+      <noscript><p>Включи JavaScript, чтобы открыть каталог предметов.</p></noscript>
+      <details class="academy-frame course-foundation">
+        <summary>О программе</summary>
+        <p>Это авторская образовательная программа Lumi для детей 6–7 лет. При её разработке учитывались ФГОС ДО и возрастное содержание ФОП ДО в разделах 19.7, 20.7, 21.7 и 22.7.</p>
+        <ul>
+          <li><a href="https://www.consultant.ru/document/cons_doc_LAW_154637/">ФГОС дошкольного образования — приказ № 1155 от 17.10.2013, с изменениями</a></li>
+          <li><a href="https://www.consultant.ru/document/cons_doc_LAW_435832/">ФОП дошкольного образования — приказ № 1028 от 25.11.2022</a></li>
+        </ul>
+      </details>
     </section>
   </main>
   <footer class="academy-footer" data-lumi-analytics-footer>

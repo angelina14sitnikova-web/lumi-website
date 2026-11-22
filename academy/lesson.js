@@ -1,4 +1,4 @@
-import { canOpen, checkAnswer, findCourse, findLesson, lessonUrl, practiceIsReady, programUrl, saveCompletion } from './course-model.js';
+import { canOpen, checkAnswer, findCourse, findLesson, lessonUrl, practiceIsReady, practiceSetIsReady, programUrl, saveCompletion } from './course-model.js';
 
 const params = new URLSearchParams(location.search);
 const course = findCourse(params.get('course') ?? undefined);
@@ -8,8 +8,8 @@ const context = document.querySelector('#lesson-context');
 const title = document.querySelector('#lesson-title');
 const returnLink = document.querySelector('#lesson-return');
 let sceneIndex = 0;
-let taskIndex = 0;
-const answers = [];
+const standardPractice = { index: 0, answers: [] };
+const optionalPractice = { index: 0, answers: [] };
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -97,9 +97,9 @@ function showExplanation(moveFocus = true) {
   show(panel, sectionTitle, moveFocus);
 }
 
-function options(task, feedback, next) {
+function options(task, feedback, next, state) {
   const choices = element('div', 'lesson-choices');
-  let solved = answers[taskIndex] !== undefined;
+  let solved = state.answers[state.index] !== undefined;
   for (const choice of task.choices) {
     const control = button(choice.label, () => {
       if (solved) return;
@@ -109,14 +109,14 @@ function options(task, feedback, next) {
         return;
       }
       solved = true;
-      answers[taskIndex] = choice.id;
+      state.answers[state.index] = choice.id;
       control.classList.add('is-correct');
       feedback.textContent = task.success || 'Верно!';
       feedback.dataset.state = 'correct';
       next.hidden = false;
     });
     if (choice.image) control.prepend(graphic(choice.image, ''));
-    if (answers[taskIndex] === choice.id) control.classList.add('is-correct');
+    if (state.answers[state.index] === choice.id) control.classList.add('is-correct');
     choices.append(control);
   }
   return choices;
@@ -124,33 +124,44 @@ function options(task, feedback, next) {
 
 const practiceViews = new Map([['choice', options]]);
 
-function showPractice() {
+function showPractice(reward = null) {
+  const challenge = reward !== null;
+  const state = challenge ? optionalPractice : standardPractice;
+  const tasks = challenge ? lesson.challenge : lesson.practice;
   const panel = element('section', 'lesson-step');
-  const heading = element('h2', 'lesson-part', 'Практика');
+  const heading = element('h2', 'lesson-part', challenge ? 'Дополнительные задания' : 'Практика');
   const controls = element('div', 'lesson-controls');
-  controls.append(button('К объяснению', () => showExplanation()));
+  controls.append(challenge
+    ? button('К результату урока', () => showReward(reward))
+    : button('К объяснению', () => showExplanation()));
 
-  const tasks = lesson.practice || [];
   panel.append(heading);
-  if (!practiceIsReady(lesson)) {
+  if (!(challenge ? practiceSetIsReady(tasks) : practiceIsReady(lesson))) {
     panel.append(element('p', 'lesson-pending', 'Задания для этого урока ещё готовятся.'));
     const listLink = element('a', 'academy-button', 'К списку уроков');
     listLink.href = programUrl(course, module);
     controls.append(listLink);
   } else {
-    const task = tasks[taskIndex];
-    const hint = element('p', 'lesson-feedback', answers[taskIndex] === undefined ? '' : (task.success || 'Верно!'));
+    const task = tasks[state.index];
+    const hint = element('p', 'lesson-feedback', state.answers[state.index] === undefined ? '' : (task.success || 'Верно!'));
     hint.setAttribute('role', 'status');
-    const last = taskIndex === tasks.length - 1;
-    const next = button(last ? 'Завершить урок' : 'Следующее задание', () => {
-      if (last) showReward();
-      else { taskIndex += 1; showPractice(); }
+    const last = state.index === tasks.length - 1;
+    const finish = challenge ? 'Готово' : 'Завершить урок';
+    const next = button(last ? finish : 'Следующее задание', () => {
+      if (!last) {
+        state.index += 1;
+        showPractice(reward);
+      } else if (challenge) {
+        showReward(reward, true);
+      } else if (tasks.every((question, index) => checkAnswer(question, state.answers[index]))) {
+        showReward({ saved: saveCompletion(course, module, lesson, state.answers) });
+      }
     }, true);
-    next.hidden = answers[taskIndex] === undefined;
+    next.hidden = state.answers[state.index] === undefined;
     panel.append(
-      element('p', 'course-kicker lesson-count', 'Задание ' + (taskIndex + 1) + ' из ' + tasks.length),
+      element('p', 'course-kicker lesson-count', 'Задание ' + (state.index + 1) + ' из ' + tasks.length),
       element('h3', 'lesson-question', task.prompt),
-      practiceViews.get(task.kind)(task, hint, next),
+      practiceViews.get(task.kind)(task, hint, next, state),
       hint,
     );
     controls.append(next);
@@ -159,18 +170,21 @@ function showPractice() {
   show(panel, heading, true);
 }
 
-function showReward() {
-  if (!lesson.practice.every((task, index) => checkAnswer(task, answers[index]))) return;
-  const saved = saveCompletion(course, module, lesson, answers);
+function showReward(reward, challengeFinished = false) {
   const panel = element('section', 'lesson-step lesson-reward');
   const star = element('span', 'lesson-reward-star');
   star.setAttribute('aria-hidden', 'true');
   const heading = element('h2', 'lesson-part', 'Урок пройден!');
   const listLink = element('a', 'academy-button', 'К списку уроков');
   listLink.href = programUrl(course, module);
-  panel.append(star, heading, element('p', '', saved
+  panel.append(star, heading, element('p', '', reward.saved
     ? 'Ты выполнил все задания и получил золотую звезду!'
     : 'Ты выполнил все задания и получил золотую звезду! Браузер не смог сохранить результат.'), listLink);
+  if (challengeFinished) {
+    panel.append(element('p', '', 'Дополнительные задания выполнены.'));
+  } else if (practiceSetIsReady(lesson.challenge)) {
+    panel.append(button('Попробовать дополнительные задания', () => showPractice(reward)));
+  }
   show(panel, heading, true);
 }
 
@@ -196,6 +210,9 @@ if (canOpen(lesson)) {
   const message = element('h2', 'lesson-part', lesson ? 'Занятие готовится' : 'Урок пока недоступен');
   pending.append(lumi, message);
   if (lesson) pending.append(element('p', '', 'Здесь появятся объяснение Луми и практика.'));
+  if (module?.includesReading) {
+    pending.append(element('p', '', 'Чтение слов и предложений — дополнительное направление подготовки в Академии.'));
+  }
   const link = element('a', 'academy-button', 'К списку уроков');
   link.href = returnLink.href;
   pending.append(link);
@@ -215,4 +232,24 @@ if (canOpen(lesson)) {
     }
     content.append(navigation);
   }
+}
+
+if (lesson?.parentMaterials?.length) {
+  const materials = element('details', 'academy-frame course-foundation');
+  materials.append(element('summary', '', 'Материалы для родителей'));
+  const list = element('ul');
+  for (const material of lesson.parentMaterials) {
+    const item = element('li');
+    if (material.href) {
+      const link = element('a', '', material.title);
+      link.href = material.href;
+      item.append(link);
+    } else {
+      item.append(element('strong', '', material.title));
+    }
+    if (material.text) item.append(element('p', '', material.text));
+    list.append(item);
+  }
+  materials.append(list);
+  content.after(materials);
 }

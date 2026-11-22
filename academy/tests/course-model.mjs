@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { canOpen, courseCounts, findCourse, findLesson, isComplete, lessonUrl, passPractice, saveCompletion } from '../course-model.js';
+import { canOpen, courseCounts, findCourse, findLesson, isComplete, lessonUrl, passPractice, practiceSetIsReady, saveCompletion } from '../course-model.js';
 
 const storage = new Map();
 globalThis.localStorage = {
@@ -29,6 +29,12 @@ const subjects = [
   ['logic-5-6', 7, 42],
   ['memory-5-6', 7, 42],
   ['writing-5-6', 7, 42],
+  ['math-6-7', 10, 60],
+  ['speech-6-7', 9, 54],
+  ['literacy-6-7', 9, 54],
+  ['logic-6-7', 7, 42],
+  ['memory-6-7', 6, 36],
+  ['writing-6-7', 7, 42],
 ];
 for (const [courseId, modules, lessons] of subjects) {
   const subject = findCourse(courseId);
@@ -47,7 +53,7 @@ for (const [courseId, modules, lessons] of subjects) {
     }
   }
 }
-assert.equal(urls.size, 846);
+assert.equal(urls.size, 1134);
 assert.deepEqual(findLesson(course, 'missing', 'missing'), { module: undefined, lesson: undefined });
 
 const module = { id: 'fixture-module' };
@@ -56,11 +62,14 @@ assert(!saveCompletion(course, module, empty, []));
 assert(!storage.size);
 
 const task = { kind: 'choice', choices: [{ id: 'left' }, { id: 'right' }], correct: 'right' };
-const lesson = { ...empty, scenes: [{}], practice: [task, task] };
+const lesson = { ...empty, scenes: [{}], practice: [task, task], challenge: [task] };
+assert(practiceSetIsReady(lesson.challenge));
+assert(!practiceSetIsReady([{ kind: 'unsupported' }]));
+assert(!passPractice(lesson, ['right', 'right', 'right']));
 assert(!passPractice(lesson, ['right']));
 assert(!saveCompletion(course, module, lesson, ['right', 'left']));
 assert(!isComplete(course, module, lesson));
 assert(saveCompletion(course, module, lesson, ['right', 'right']));
 assert(isComplete(course, module, lesson));
 
-console.log('PASS: 846 unique lesson routes and completion requires all practice answers');
+console.log('PASS: 1134 unique lesson routes and completion requires all practice answers');
