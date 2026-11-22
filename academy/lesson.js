@@ -200,7 +200,10 @@ if (lesson && module) {
   title.textContent = number + ' ' + lesson.title;
   document.title = title.textContent + ' — Академия Луми';
 }
-if (canOpen(lesson)) {
+if (lesson?.format === 'comparison' && practiceIsReady(lesson)) {
+  const { mountComparison } = await import('./activities/comparison.js');
+  mountComparison(content, course, module, lesson);
+} else if (canOpen(lesson) && lesson.format !== 'comparison') {
   showExplanation(false);
 } else {
   const pending = element('div', 'lesson-coming');

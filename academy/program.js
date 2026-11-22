@@ -1,4 +1,4 @@
-import { canOpen, courseCounts, findCourse, isComplete, lessonUrl, practiceIsReady } from './course-model.js';
+import { canOpen, courseCounts, findCourse, isComplete, lessonUrl, moduleStars, practiceIsReady } from './course-model.js';
 
 const catalog = document.querySelector('#modules');
 const params = new URLSearchParams(location.search);
@@ -42,22 +42,37 @@ function updateCatalog() {
     name.append(element('span', 'course-kicker', 'Модуль ' + (moduleIndex + 1)), element('strong', '', module.title));
     const count = element('span', 'course-module-count', 'Уроков: ' + module.lessons.length);
     summary.append(cover, name, count);
-    details.append(summary);
+    if (module.lessons.some(lesson => lesson.format === 'comparison')) {
+      const stars = moduleStars(course, module);
+      const progress = element('div', 'cmp-module-progress');
+      const badge = element('span', stars === module.lessons.length ? 'cmp-medal' : 'cmp-module-star', '★');
+      badge.setAttribute('aria-hidden', 'true');
+      const text = element('div', '');
+      text.append(element('strong', '', 'Звёздочки: ' + stars + ' из ' + module.lessons.length));
+      if (stars === module.lessons.length) text.append(element('p', '', 'Медаль внимательного исследователя'));
+      progress.append(badge, text);
+      details.append(summary, progress);
+    } else {
+      details.append(summary);
+    }
 
     if (!module.lessons.length) {
       details.append(element('p', 'course-module-empty', 'Уроки готовятся.'));
     } else {
       const lessons = element('ol', 'course-lessons');
       module.lessons.forEach((lesson, lessonIndex) => {
-        const row = element('li', 'course-lesson-row');
+        const row = element('li', lesson.format === 'comparison'
+          ? 'course-lesson-row cmp-course-row' : 'course-lesson-row');
         const number = (moduleIndex + 1) + '.' + (lessonIndex + 1);
         row.append(element('span', 'course-lesson-number', number));
         const link = element('a', '', lesson.title);
         link.href = lessonUrl(course, module, lesson);
         row.append(link);
-        const status = isComplete(course, module, lesson) ? 'Пройден'
+        const complete = isComplete(course, module, lesson);
+        const ready = practiceIsReady(lesson);
+        const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : practiceIsReady(lesson) ? 'Доступен' : 'Объяснение доступно';
+            : ready ? (lesson.format === 'comparison' ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');

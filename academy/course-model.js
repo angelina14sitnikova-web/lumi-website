@@ -1,4 +1,5 @@
 import { courses } from './data/courses.js';
+import { comparisonAnswer, comparisonReady } from './activities/comparison-model.js';
 
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
@@ -34,6 +35,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['comparison', { isReady: comparisonReady, check: comparisonAnswer }],
   ['choice', {
     isReady: task => Array.isArray(task.choices) && task.choices.some(choice => choice.id === task.correct),
     check: (task, answer) => task.correct === answer,
@@ -65,6 +67,12 @@ function readProgress() {
 
 export function isComplete(course, module, lesson) {
   return practiceIsReady(lesson) && readProgress().has(keyFor(course, module, lesson));
+}
+
+export function moduleStars(course, module) {
+  const completed = readProgress();
+  return module.lessons.filter(lesson => practiceIsReady(lesson) &&
+    completed.has(keyFor(course, module, lesson))).length;
 }
 
 export function passPractice(lesson, answers) {

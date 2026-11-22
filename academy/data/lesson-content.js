@@ -1,2 +1,4 @@
+import { comparisonLessons } from './comparison-3-4.js';
+
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = {};
+export const lessonContent = { ...comparisonLessons };
