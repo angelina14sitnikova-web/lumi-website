@@ -10,6 +10,12 @@ import literacy45 from './literacy-4-5.js';
 import logic45 from './logic-4-5.js';
 import memory45 from './memory-4-5.js';
 import writing45 from './writing-4-5.js';
+import math56 from './math-5-6.js';
+import speech56 from './speech-5-6.js';
+import literacy56 from './literacy-5-6.js';
+import logic56 from './logic-5-6.js';
+import memory56 from './memory-5-6.js';
+import writing56 from './writing-5-6.js';
 import { lessonContent } from './lesson-content.js';
 
 const ageGroups = [
@@ -28,6 +34,42 @@ const ageGroups = [
       { ...logic, modules: logic45 },
       { ...memory, modules: memory45 },
       { ...writing, modules: writing45 },
+    ],
+  },
+  {
+    id: '5-6',
+    label: '5–6 лет',
+    programs: [
+      {
+        ...math,
+        modules: math56,
+        room: { image: 'assets/math-classroom-5-6.webp', alt: 'Математический кабинет со счётами, лентами для измерения и деревянными фигурами', width: 600, height: 600 },
+      },
+      {
+        ...speech,
+        modules: speech56,
+        room: { image: 'assets/speech-classroom-5-6.webp', alt: 'Сказочная гостиная с книгой и кукольной сценой', width: 600, height: 600 },
+      },
+      {
+        ...literacy,
+        modules: literacy56,
+        room: { image: 'assets/literacy-classroom-5-6.webp', alt: 'Сказочная библиотека с колокольчиками и раскрытой книгой', width: 600, height: 600 },
+      },
+      {
+        ...logic,
+        modules: logic56,
+        room: { image: 'assets/logic-classroom-5-6.webp', alt: 'Мастерская с головоломками, узорами и деревянными фигурами', width: 600, height: 600 },
+      },
+      {
+        ...memory,
+        modules: memory56,
+        room: { image: 'assets/memory-classroom-5-6.webp', alt: 'Кабинет наблюдений с телескопом, карточками и лупой', width: 600, height: 600 },
+      },
+      {
+        ...writing,
+        modules: writing56,
+        room: { image: 'assets/writing-classroom-5-6.webp', alt: 'Творческая мастерская с бумагой, карандашами и альбомом', width: 600, height: 600 },
+      },
     ],
   },
 ];
