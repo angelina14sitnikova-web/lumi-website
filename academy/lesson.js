@@ -200,7 +200,10 @@ if (lesson && module) {
   title.textContent = number + ' ' + lesson.title;
   document.title = title.textContent + ' — Академия Луми';
 }
-if (lesson?.format === 'comparison' && practiceIsReady(lesson)) {
+if (lesson?.format === 'colors' && practiceIsReady(lesson)) {
+  const { mountColors } = await import('./activities/colors.js');
+  mountColors(content, course, module, lesson);
+} else if (lesson?.format === 'comparison' && practiceIsReady(lesson)) {
   const { mountComparison } = await import('./activities/comparison.js');
   mountComparison(content, course, module, lesson);
 } else if (canOpen(lesson) && lesson.format !== 'comparison') {

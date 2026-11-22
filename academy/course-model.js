@@ -1,6 +1,8 @@
 import { courses } from './data/courses.js';
 import { comparisonAnswer, comparisonReady } from './activities/comparison-model.js';
 
+import { colorsAnswer, colorsReady } from './activities/colors-model.js';
+
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
 
@@ -35,6 +37,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['colors', { isReady: colorsReady, check: colorsAnswer }],
   ['comparison', { isReady: comparisonReady, check: comparisonAnswer }],
   ['choice', {
     isReady: task => Array.isArray(task.choices) && task.choices.some(choice => choice.id === task.correct),
