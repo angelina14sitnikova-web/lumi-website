@@ -3,65 +3,48 @@
 <head>
 <script src="analytics/lumi-analytics.js"></script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Луми — мир маленьких открытий</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="site-sections/sections.css">
+  <link rel="stylesheet" href="site-sections/home.css">
+  <script src="site-sections/home.js" defer></script>
 </head>
 <body class="lumi-home">
 
-  <header class="header">
-    <a href="index.html" class="logo">Луми<span>☾✦</span></a>
-
-    <nav class="navigation">
-      <a href="#home" class="active">Главная</a>
-      <a href="tasks.html">Задания</a>
-      <a href="crystal-world.html">Приключения</a>
-      <a href="#benefits">Для родителей</a>
-    </nav>
-
-    <div class="header-icons">
-      <button aria-label="Поиск" title="Поиск пока в разработке">⌕</button>
-      <button aria-label="Профиль" title="Профиль пока в разработке">♙</button>
+  <a class="home-skip" href="#home">К содержанию</a>
+  <header class="home-header">
+    <div class="home-header-inner">
+      <a href="index.html" class="home-logo" aria-label="Луми — главная">Луми <span aria-hidden="true">✧</span></a>
+      <button class="home-menu-toggle" type="button" aria-expanded="false" aria-controls="home-navigation" hidden>
+        <span class="home-menu-icon" aria-hidden="true"></span> Меню
+      </button>
+      <nav class="home-navigation" id="home-navigation" aria-label="Основная навигация">
+        <a href="#home" aria-current="page">Главная</a>
+        <a href="academy.html">Академия</a>
+        <a href="tasks.html">Задания</a>
+        <a href="crystal-world.html">Приключения</a>
+        <a href="#benefits">Родителям</a>
+      </nav>
     </div>
   </header>
 
   <main>
-
-    <section class="hero" id="home">
-      <div class="hero-text">
-        <h1>Добро пожаловать
-в Луми! <span>✧</span></h1>
-        <p>Мир маленьких открытий начинается здесь.</p>
-        <div class="hero-slogan">
-          Исследуй. Играй. Узнавай новое.
+    <section class="home-hero" id="home" aria-labelledby="home-title" tabindex="-1">
+      <div class="home-welcome">
+        <h1 id="home-title">Добро пожаловать <span>в мир Луми!</span></h1>
+        <p>Учимся, играем и открываем новое вместе!</p>
+        <div class="home-actions">
+          <a class="home-action home-action-primary" href="academy.html">Начать обучение</a>
+          <a class="home-action home-action-secondary" href="crystal-world.html">Играть</a>
         </div>
-        <a class="main-button" href="#adventures">
-          Исследовать мир Луми →
-        </a>
       </div>
-
-      <div class="hero-image">
-        <img src="images/lumi-new.png" alt="Персонаж Луми">
+      <div class="home-character">
+        <img src="images/lumi-new.png" alt="Щенок Луми машет лапкой" width="1359" height="1158" fetchpriority="high">
       </div>
-
-      <div class="hero-decoration decoration-one">✦</div>
-      <div class="hero-decoration decoration-two">✧</div>
-      <div class="hero-decoration decoration-three">✿</div>
     </section>
+    <p class="home-ribbon">Учись · Играй · Открывай новое</p>
 
-    <section class="benefits" id="benefits">
-      <div><span>▤</span> Развивающие
-задания</div>
-      <div><span>♧</span> Увлекательные
-приключения</div>
-      <div><span>♧</span> Познавательный
-контент</div>
-      <div><span>♡</span> Поддержка
-родителей</div>
-    </section>
-
-    
 <section class="adventures lumi-sections" id="adventures" aria-labelledby="sections-title">
   <h2 id="sections-title">✧ Открой мир Луми ✧</h2>
   <p class="sections-intro">Играй, учись, исследуй и создавай вместе с Луми!</p>
@@ -95,7 +78,7 @@
 
   </main>
 
-  <footer>
+  <footer id="benefits" class="home-footer" aria-label="Родителям" data-lumi-analytics-footer tabindex="-1">
     <p>Луми — мир маленьких открытий ✦</p>
   </footer>
 
