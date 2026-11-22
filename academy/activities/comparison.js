@@ -17,6 +17,18 @@ const marks = {
   match: 'найди копию', odd: 'отличается', larger: 'больший предмет',
   pair: 'соедини пару', 'new-detail': 'новая деталь',
 };
+const markLabels = {
+  color: 'Цвет', size: 'Размер', shape: 'Форма', star: 'Звёздочка', moon: 'Полумесяц',
+  left: 'Слева', middle: 'Посередине', right: 'Справа',
+  move: 'Игрушка переехала', appear: 'Игрушка появилась', vanish: 'Игрушка исчезла',
+};
+const cueLabels = {
+  color: 'Смотрим на цвет', size: 'Смотрим на размер', shape: 'Смотрим на форму',
+  move: 'Смотрим, куда переехала игрушка', appear: 'Ищем новую игрушку',
+  vanish: 'Ищем пропавшую игрушку', match: 'Ищем такую же игрушку',
+  odd: 'Ищем игрушку, которая отличается', larger: 'Ищем большую игрушку',
+  pair: 'Соединяем одинаковые игрушки', 'new-detail': 'Смотрим на значки',
+};
 
 function node(tag, className, text) {
   const item = document.createElement(tag);
@@ -106,13 +118,15 @@ function board(view = {}, effect) {
   if (sample) {
     const pedestal = node('div', 'cmp-pedestal');
     pedestal.append(pieceArt(sample));
-    pedestal.setAttribute('aria-label', 'Образец');
-    stage.append(pedestal);
+    const sampleBox = node('div', 'cmp-sample');
+    sampleBox.append(node('span', 'cmp-caption', 'Образец'), pedestal);
+    stage.append(sampleBox);
   }
   if (feature || aim) {
     const key = node('div', 'cmp-visual-key');
     if (feature) key.append(icon(feature));
     if (aim && aim !== feature && (!compareIsShown(view) || aim === 'new-detail')) key.append(icon(aim));
+    if (key.childElementCount) key.append(node('span', 'cmp-cue-label', cueLabels[feature || aim]));
     stage.append(key);
   }
   if (before && after) {
@@ -128,6 +142,7 @@ function board(view = {}, effect) {
       if (odd === index) cell.classList.add('cmp-demo-odd');
       cell.dataset.size = toy.size;
       cell.append(pieceArt(toy));
+      if (view.captions?.[index]) cell.append(node('span', 'cmp-display-caption', view.captions[index]));
       if (feature === 'color' && effect) {
         const swatch = node('span', 'cmp-swatch');
         swatch.style.backgroundColor = swatches[toy.color];
@@ -247,11 +262,16 @@ export function mountComparison(content, course, module, lesson) {
     panel.dataset.round = String(roundIndex + 1);
     const title = node('h2', 'cmp-heading', 'Практика');
     const prompt = node('p', 'cmp-prompt', exercise.prompt);
+    const guide = node('p', 'cmp-guide', exercise.guide);
+    guide.id = 'cmp-guide';
     const status = node('div', 'cmp-response');
     const response = node('p');
     response.setAttribute('role', 'status');
     status.append(response);
     const grid = node('div', 'cmp-options');
+    grid.setAttribute('role', 'group');
+    grid.setAttribute('aria-label', 'Варианты ответа');
+    grid.setAttribute('aria-describedby', guide.id);
     grid.dataset.tiles = String(pieces.length);
     const matched = new Set();
     const pairAnswers = [];
@@ -271,10 +291,17 @@ export function mountComparison(content, course, module, lesson) {
       const item = control('', () => choose(index));
       item.className = 'cmp-option';
       item.dataset.option = String(index);
-      item.setAttribute('aria-label', label(piece));
+      const caption = piece.mark && (view.answerLabels?.[piece.mark] || markLabels[piece.mark]);
+      item.setAttribute('aria-label', caption || label(piece));
       if (pairMode) item.setAttribute('aria-pressed', 'false');
-      item.append(pieceArt(piece), node('span', 'cmp-choice-check', '✓'));
+      const art = pieceArt(piece);
+      art.setAttribute('aria-hidden', 'true');
+      item.append(art, node('span', 'cmp-choice-check', '✓'));
       item.lastChild.setAttribute('aria-hidden', 'true');
+      if (caption) {
+        item.classList.add('cmp-option-captioned');
+        item.append(node('span', 'cmp-option-caption', caption));
+      }
       grid.append(item);
       return item;
     });
@@ -301,7 +328,21 @@ export function mountComparison(content, course, module, lesson) {
         if (pairMode) choice.setAttribute('aria-pressed', 'true');
       });
       status.dataset.feedback = 'correct';
-      response.textContent = pairMode ? 'Получилась пара!' : 'Верно!';
+      const answerMark = pieces[indices[0]].mark;
+      if (pairMode) {
+        response.textContent = finished
+          ? (exercise.pairs.length === 1 ? 'Пара готова!' : 'Все пары готовы!')
+          : 'Пара готова! Найди ещё две одинаковые игрушки.';
+      } else if (answerMark && view.answerLabels?.[answerMark]) {
+        response.textContent = 'Верно! ' + view.answerLabels[answerMark] + '.';
+      } else {
+        const feedback = {
+          color: 'У игрушек разный цвет.', size: 'Одна игрушка больше другой.', shape: 'У игрушек разная форма.',
+          star: 'На дверце звёздочка.', moon: 'На дверце полумесяц.',
+          left: 'Игрушка теперь слева.', middle: 'Игрушка теперь посередине.', right: 'Игрушка теперь справа.',
+        };
+        response.textContent = feedback[answerMark] ? 'Верно! ' + feedback[answerMark] : 'Верно!';
+      }
       if (view.explainOdd) {
         choices.forEach((choice, index) => {
           if (index !== indices[0]) choice.classList.add('cmp-confirm-group');
@@ -325,11 +366,16 @@ export function mountComparison(content, course, module, lesson) {
       if (selected === index) {
         choices[index].setAttribute('aria-pressed', 'false');
         selected = -1;
+        if (status.dataset.feedback === 'select') response.textContent = 'Нажми на любую игрушку, чтобы начать пару.';
         return;
       }
       if (selected < 0) {
         selected = index;
         choices[index].setAttribute('aria-pressed', 'true');
+        if (!errors) {
+          status.dataset.feedback = 'select';
+          response.textContent = 'Теперь нажми на точно такую же игрушку.';
+        }
         return;
       }
       const first = selected;
@@ -366,7 +412,7 @@ export function mountComparison(content, course, module, lesson) {
       practice();
     }
 
-    panel.append(title, dots(lesson.practice.length, exerciseIndex, 'Упражнение'), prompt, board(view), grid);
+    panel.append(title, dots(lesson.practice.length, exerciseIndex, 'Упражнение'), prompt, guide, board(view), grid);
     if (!lastRound || roundIndex) panel.append(dots(exercise.rounds.length, roundIndex, 'Ход'));
     panel.append(status, nav);
     show(panel, title);

@@ -14,6 +14,7 @@ for (const lesson of module.lessons) {
   assert(practiceIsReady(lesson));
   for (const task of lesson.practice) {
     assert(comparisonReady(task));
+    assert(task.guide.length > 30);
     if (task.pairs) {
       const answer = [...task.pairs].reverse().map(([a, b]) => [b, a]);
       assert(comparisonAnswer(task, answer));
