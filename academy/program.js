@@ -1,4 +1,4 @@
-import { canOpen, findCourse, isComplete, lessonUrl, practiceIsReady } from './course-model.js';
+import { canOpen, courseCounts, findCourse, isComplete, lessonUrl, practiceIsReady } from './course-model.js';
 
 const catalog = document.querySelector('#modules');
 const params = new URLSearchParams(location.search);
@@ -33,14 +33,15 @@ function updateCatalog() {
     details.open = moduleIndex === 0 && !location.hash;
     const summary = element('summary');
     const cover = element('img', 'course-module-cover');
-    cover.src = module.cover || 'assets/subject-math.webp';
+    cover.src = module.cover || course.icon;
     cover.alt = '';
     cover.width = 96;
     cover.height = 96;
     cover.loading = 'lazy';
     const name = element('span', 'course-module-name');
     name.append(element('span', 'course-kicker', 'Модуль ' + (moduleIndex + 1)), element('strong', '', module.title));
-    summary.append(cover, name);
+    const count = element('span', 'course-module-count', 'Уроков: ' + module.lessons.length);
+    summary.append(cover, name, count);
     details.append(summary);
 
     if (!module.lessons.length) {
@@ -54,13 +55,10 @@ function updateCatalog() {
         const link = element('a', '', lesson.title);
         link.href = lessonUrl(course, module, lesson);
         row.append(link);
-        if (isComplete(course, module, lesson)) {
-          row.append(element('span', 'course-status', 'Пройден'));
-        } else if (!canOpen(lesson)) {
-          row.append(element('span', 'course-status', 'Готовится'));
-        } else if (!practiceIsReady(lesson)) {
-          row.append(element('span', 'course-status', 'Объяснение доступно'));
-        }
+        const status = isComplete(course, module, lesson) ? 'Пройден'
+          : !canOpen(lesson) ? 'Скоро'
+            : practiceIsReady(lesson) ? 'Доступен' : 'Объяснение доступно';
+        row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');
         link.append(arrow);
@@ -83,9 +81,19 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').textContent = course.title + ' · ' + course.age;
-  const lessonCount = course.modules.reduce((count, module) => count + module.lessons.length, 0);
-  document.querySelector('#course-count').textContent = 'Модулей: ' + course.modules.length + ' · Уроков: ' + lessonCount;
+  document.querySelector('#course-title').replaceChildren(course.title + ' ',
+    element('span', 'course-age-label', '· ' + course.age));
+  const counts = courseCounts(course);
+  const count = document.querySelector('#course-count');
+  count.textContent = 'Модулей: ' + counts.modules + ' · Уроков: ' + counts.lessons;
+  count.hidden = false;
+  document.querySelector('#academy-main').dataset.courseTheme = course.theme;
+  const art = document.querySelector('#course-room-art');
+  art.alt = course.room.alt;
+  art.width = course.room.width;
+  art.height = course.room.height;
+  art.src = course.room.image;
+  document.querySelector('#course-room').hidden = false;
   document.querySelector('.academy-return').href = course.agePage;
   document.title = course.title + ' · ' + course.age + ' — Академия Луми';
 }

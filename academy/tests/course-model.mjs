@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { canOpen, findCourse, findLesson, isComplete, lessonUrl, passPractice, saveCompletion } from '../course-model.js';
+import { canOpen, courseCounts, findCourse, findLesson, isComplete, lessonUrl, passPractice, saveCompletion } from '../course-model.js';
 
 const storage = new Map();
 globalThis.localStorage = {
@@ -10,18 +10,32 @@ globalThis.localStorage = {
 const course = findCourse();
 const ids = new Set();
 const urls = new Set();
-assert.equal(course.modules.length, 12);
-for (const module of course.modules) {
-  assert.equal(module.lessons.length, 7);
-  for (const lesson of module.lessons) {
-    assert(!ids.has(lesson.id));
-    ids.add(lesson.id);
-    urls.add(lessonUrl(course, module, lesson));
-    assert.equal(findLesson(course, module.id, lesson.id).lesson, lesson);
-    if (!canOpen(lesson)) assert(!isComplete(course, module, lesson));
+const subjects = [
+  ['math-3-4', 12, 84],
+  ['speech-3-4', 10, 60],
+  ['literacy-3-4', 5, 30],
+  ['logic-3-4', 7, 42],
+  ['memory-3-4', 6, 36],
+  ['writing-3-4', 6, 36],
+];
+for (const [courseId, modules, lessons] of subjects) {
+  const subject = findCourse(courseId);
+  assert.deepEqual(courseCounts(subject), { modules, lessons });
+  assert(!ids.has(subject.id));
+  ids.add(subject.id);
+  for (const module of subject.modules) {
+    assert(!ids.has(module.id));
+    ids.add(module.id);
+    for (const lesson of module.lessons) {
+      assert(!ids.has(lesson.id));
+      ids.add(lesson.id);
+      urls.add(lessonUrl(subject, module, lesson));
+      assert.equal(findLesson(subject, module.id, lesson.id).lesson, lesson);
+      if (!canOpen(lesson)) assert(!isComplete(subject, module, lesson));
+    }
   }
 }
-assert.equal(urls.size, 84);
+assert.equal(urls.size, 288);
 assert.deepEqual(findLesson(course, 'missing', 'missing'), { module: undefined, lesson: undefined });
 
 const module = { id: 'fixture-module' };
@@ -37,4 +51,4 @@ assert(!isComplete(course, module, lesson));
 assert(saveCompletion(course, module, lesson, ['right', 'right']));
 assert(isComplete(course, module, lesson));
 
-console.log('PASS: 84 unique lesson routes and completion requires all practice answers');
+console.log('PASS: 288 unique lesson routes and completion requires all practice answers');

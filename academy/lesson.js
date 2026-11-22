@@ -1,4 +1,4 @@
-import { canOpen, checkAnswer, findCourse, findLesson, practiceIsReady, programUrl, saveCompletion } from './course-model.js';
+import { canOpen, checkAnswer, findCourse, findLesson, lessonUrl, practiceIsReady, programUrl, saveCompletion } from './course-model.js';
 
 const params = new URLSearchParams(location.search);
 const course = findCourse(params.get('course') ?? undefined);
@@ -122,6 +122,8 @@ function options(task, feedback, next) {
   return choices;
 }
 
+const practiceViews = new Map([['choice', options]]);
+
 function showPractice() {
   const panel = element('section', 'lesson-step');
   const heading = element('h2', 'lesson-part', 'Практика');
@@ -148,7 +150,7 @@ function showPractice() {
     panel.append(
       element('p', 'course-kicker lesson-count', 'Задание ' + (taskIndex + 1) + ' из ' + tasks.length),
       element('h3', 'lesson-question', task.prompt),
-      options(task, hint, next),
+      practiceViews.get(task.kind)(task, hint, next),
       hint,
     );
     controls.append(next);
@@ -173,6 +175,7 @@ function showReward() {
 }
 
 if (course) {
+  document.querySelector('#academy-main').dataset.courseTheme = course.theme;
   context.textContent = course.title + ' · ' + course.age;
   returnLink.href = programUrl(course, module);
 }
@@ -195,4 +198,19 @@ if (canOpen(lesson)) {
   link.href = returnLink.href;
   pending.append(link);
   content.append(pending);
+  if (lesson) {
+    const ordered = course.modules.flatMap(entry => entry.lessons.map(item => ({ module: entry, lesson: item })));
+    const current = ordered.findIndex(entry => entry.lesson === lesson);
+    const navigation = element('nav', 'lesson-neighbors');
+    navigation.setAttribute('aria-label', 'Соседние темы');
+    for (const [offset, label] of [[-1, '← Предыдущая тема'], [1, 'Следующая тема →']]) {
+      const entry = ordered[current + offset];
+      if (!entry) continue;
+      const neighbor = element('a', 'academy-return', label);
+      neighbor.href = lessonUrl(course, entry.module, entry.lesson);
+      neighbor.setAttribute('aria-label', label + ' — ' + entry.lesson.title);
+      navigation.append(neighbor);
+    }
+    content.append(navigation);
+  }
 }

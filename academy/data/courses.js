@@ -1,135 +1,16 @@
+import math from './math-3-4.js';
+import speech from './speech-3-4.js';
+import literacy from './literacy-3-4.js';
+import logic from './logic-3-4.js';
+import memory from './memory-3-4.js';
+import writing from './writing-3-4.js';
 import { lessonContent } from './lesson-content.js';
 
-// Array order defines the numbering shown to children.
-const mathModules = [
-  [
-    { id: 'compare', title: 'Учимся замечать и сравнивать', cover: 'assets/module-1.webp' },
-    ['compare-1', 'Одинаковые предметы'],
-    ['compare-2', 'Разные предметы'],
-    ['compare-3', 'Найди такой же'],
-    ['compare-4', 'Что изменилось?'],
-    ['compare-5', 'Чем отличаются предметы?'],
-    ['compare-6', 'Найди лишний предмет'],
-    ['compare-7', 'Сравниваем два предмета'],
-  ],
-  [
-    { id: 'colors', title: 'Мир цветов', cover: 'assets/module-2.webp' },
-    ['colors-1', 'Красный цвет'],
-    ['colors-2', 'Жёлтый цвет'],
-    ['colors-3', 'Синий цвет'],
-    ['colors-4', 'Зелёный цвет'],
-    ['colors-5', 'Белый и чёрный'],
-    ['colors-6', 'Розовый, голубой и серый'],
-    ['colors-7', 'Сортируем предметы по цвету'],
-  ],
-  [
-    { id: 'color-world', title: 'Цвета вокруг нас', cover: 'assets/module-3.webp' },
-    ['color-world-1', 'Найди предмет нужного цвета'],
-    ['color-world-2', 'Одинаковый цвет — разные предметы'],
-    ['color-world-3', 'Один предмет — разные цвета'],
-    ['color-world-4', 'Подбираем предметы по образцу'],
-    ['color-world-5', 'Найди ошибку в цветной группе'],
-    ['color-world-6', 'Собираем разноцветные пары'],
-    ['color-world-7', 'Повторяем изученные цвета'],
-  ],
-  [
-    { id: 'sizes', title: 'Большой и маленький', cover: 'assets/module-4.webp' },
-    ['sizes-1', 'Большой и маленький'],
-    ['sizes-2', 'Выбираем самый большой из двух'],
-    ['sizes-3', 'Выбираем маленький предмет'],
-    ['sizes-4', 'Одинаковые по размеру'],
-    ['sizes-5', 'Сравниваем предметы наложением'],
-    ['sizes-6', 'Подбираем предмет по размеру'],
-    ['sizes-7', 'Раскладываем большие и маленькие предметы'],
-  ],
-  [
-    { id: 'dimensions', title: 'Длина, высота и ширина', cover: 'assets/module-5.webp' },
-    ['dimensions-1', 'Длинный и короткий'],
-    ['dimensions-2', 'Одинаковые по длине'],
-    ['dimensions-3', 'Высокий и низкий'],
-    ['dimensions-4', 'Одинаковые по высоте'],
-    ['dimensions-5', 'Широкий и узкий'],
-    ['dimensions-6', 'Одинаковые по ширине'],
-    ['dimensions-7', 'Сравниваем предметы разными способами'],
-  ],
-  [
-    { id: 'shapes', title: 'Знакомимся с фигурами', cover: 'assets/module-6.webp' },
-    ['shapes-1', 'Круг'],
-    ['shapes-2', 'Квадрат'],
-    ['shapes-3', 'Треугольник'],
-    ['shapes-4', 'Шар'],
-    ['shapes-5', 'Куб'],
-    ['shapes-6', 'Круг и шар: в чём разница?'],
-    ['shapes-7', 'Квадрат и куб: в чём разница?'],
-  ],
-  [
-    { id: 'shape-world', title: 'Фигуры вокруг нас', cover: 'assets/module-7.webp' },
-    ['shape-world-1', 'Находим круглые предметы'],
-    ['shape-world-2', 'Находим квадратные предметы'],
-    ['shape-world-3', 'Находим треугольные предметы'],
-    ['shape-world-4', 'Находим предметы, похожие на шар'],
-    ['shape-world-5', 'Находим предметы, похожие на куб'],
-    ['shape-world-6', 'Подбираем фигуру к предмету'],
-    ['shape-world-7', 'Сортируем предметы по форме'],
-  ],
-  [
-    { id: 'quantity', title: 'Один и много', cover: 'assets/module-8.webp' },
-    ['quantity-1', 'Один предмет'],
-    ['quantity-2', 'Много предметов'],
-    ['quantity-3', 'Один или много?'],
-    ['quantity-4', 'Мало и много'],
-    ['quantity-5', 'Сравниваем две группы предметов'],
-    ['quantity-6', 'Собираем группу по образцу'],
-    ['quantity-7', 'Где предметов больше?'],
-  ],
-  [
-    { id: 'pairs', title: 'Поровну или не поровну', cover: 'assets/module-9.webp' },
-    ['pairs-1', 'Составляем пары'],
-    ['pairs-2', 'Каждому предмету — пара'],
-    ['pairs-3', 'Столько же'],
-    ['pairs-4', 'Поровну'],
-    ['pairs-5', 'Не поровну'],
-    ['pairs-6', 'Чего больше, а чего меньше?'],
-    ['pairs-7', 'Делаем поровну: добавляем или убираем один предмет'],
-  ],
-  [
-    { id: 'space', title: 'Где находится предмет?', cover: 'assets/module-10.webp' },
-    ['space-1', 'Впереди и сзади'],
-    ['space-2', 'Сверху и снизу'],
-    ['space-3', 'Справа и слева от себя'],
-    ['space-4', 'Близко и далеко'],
-    ['space-5', 'Ближе и дальше'],
-    ['space-6', 'Находим предмет по указанию'],
-    ['space-7', 'Помогаем Луми ориентироваться'],
-  ],
-  [
-    { id: 'time', title: 'Когда это происходит?', cover: 'assets/module-11.webp' },
-    ['time-1', 'Утро'],
-    ['time-2', 'День'],
-    ['time-3', 'Вечер'],
-    ['time-4', 'Ночь'],
-    ['time-5', 'Утро и вечер'],
-    ['time-6', 'День и ночь'],
-    ['time-7', 'Раньше и позже'],
-  ],
-  [
-    { id: 'review', title: 'Математические открытия Луми', cover: 'assets/module-12.webp' },
-    ['review-1', 'Найди пару по цвету'],
-    ['review-2', 'Найди пару по форме'],
-    ['review-3', 'Найди пару по размеру'],
-    ['review-4', 'Сравни две группы'],
-    ['review-5', 'Разложи предметы по признаку'],
-    ['review-6', 'Где спрятался предмет?'],
-    ['review-7', 'Большое повторение: чему мы научились?'],
-  ],
-];
-
-export const courses = [{
-  id: 'math-3-4',
-  title: 'Математика',
+export const courses = [math, speech, literacy, logic, memory, writing].map(course => ({
+  ...course,
   age: '3–4 года',
   agePage: 'age-3-4.html',
-  modules: mathModules.map(([module, ...titles]) => ({
+  modules: course.modules.map(([module, ...titles]) => ({
     ...module,
     lessons: titles.map(([id, title]) => ({
       id,
@@ -139,4 +20,4 @@ export const courses = [{
       ...lessonContent[id],
     })),
   })),
-}];
+}));

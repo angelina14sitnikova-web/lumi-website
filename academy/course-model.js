@@ -7,6 +7,13 @@ export function findCourse(id = 'math-3-4') {
   return courses.find(course => course.id === id);
 }
 
+export function courseCounts(course) {
+  return {
+    modules: course.modules.length,
+    lessons: course.modules.reduce((sum, module) => sum + module.lessons.length, 0),
+  };
+}
+
 export function findLesson(course, moduleId, lessonId) {
   const module = course?.modules.find(entry => entry.id === moduleId);
   const lesson = module?.lessons.find(entry => entry.id === lessonId);
@@ -26,13 +33,21 @@ export function canOpen(lesson) {
   return Boolean(lesson?.scenes?.length);
 }
 
-export function checkAnswer(task, choiceId) {
-  return task.kind === 'choice' && task.choices?.some(choice => choice.id === choiceId) && task.correct === choiceId;
+const practiceTypes = new Map([
+  ['choice', {
+    isReady: task => Array.isArray(task.choices) && task.choices.some(choice => choice.id === task.correct),
+    check: (task, answer) => task.correct === answer,
+  }],
+]);
+
+export function checkAnswer(task, answer) {
+  const type = practiceTypes.get(task.kind);
+  return Boolean(type?.isReady(task) && type.check(task, answer));
 }
 
 export function practiceIsReady(lesson) {
   return canOpen(lesson) && Boolean(lesson.practice?.length) &&
-    lesson.practice.every(task => task.kind === 'choice' && checkAnswer(task, task.correct));
+    lesson.practice.every(task => practiceTypes.get(task.kind)?.isReady(task));
 }
 
 function readProgress() {

@@ -27,7 +27,7 @@ for(const age of ['3-4','4-5','5-6','6-7']){
  assert(academy.includes(`id="door-${age}"`));
  assert(academy.includes(`href="${target}"`));
  const page=fs.readFileSync(path.join(root,target),'utf8');
- assert(page.includes(age==='3-4' ? 'href="program.html"' : 'Скоро здесь появятся волшебные уроки!'));
+ assert(page.includes(age==='3-4' ? 'id="subjects"' : 'Скоро здесь появятся волшебные уроки!'));
  assert(page.includes(`href="../academy.html#door-${age}"`));
 }
 // The navigation/catalog must never overwrite adventure saves or install analytics.

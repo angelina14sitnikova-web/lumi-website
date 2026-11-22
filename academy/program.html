@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Математика · 3–4 года — Академия Луми</title>
-  <meta name="description" content="Математика для детей 3–4 лет в Академии Луми.">
+  <title>Учебная программа — Академия Луми</title>
+  <meta name="description" content="Учебная программа для детей 3–4 лет в Академии Луми.">
   <script src="../analytics/lumi-analytics.js"></script>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="academy.css">
@@ -25,12 +25,12 @@
     <section class="academy-age-panel academy-frame course-hero" aria-labelledby="course-title">
       <div class="academy-age-copy">
         <div class="academy-ornament" aria-hidden="true"><span></span></div>
-        <h1 id="course-title">Математика · 3–4 года</h1>
-        <p id="course-count" class="academy-age">Модулей: 12 · Уроков: 84</p>
+        <h1 id="course-title">Учебная программа</h1>
+        <p id="course-count" class="academy-age" hidden></p>
         <p class="academy-lead">Учебная программа Академии Луми</p>
       </div>
-      <div class="academy-age-scene course-room">
-        <img class="academy-age-art" src="assets/math-classroom.webp" width="1200" height="800" alt="Сказочный кабинет математики со счётами и деревянными фигурами" fetchpriority="high">
+      <div class="academy-age-scene course-room" id="course-room" hidden>
+        <img class="academy-age-art" id="course-room-art" alt="" fetchpriority="high">
         <img class="academy-age-lumi" src="../enchanted-library/assets/lumi-reading.png" width="640" height="585" alt="Луми с открытой книгой">
         <span class="academy-light academy-light-one" aria-hidden="true"></span>
       </div>
@@ -41,7 +41,7 @@
         <h2 id="modules-title">Учебные модули</h2>
       </div>
       <div id="modules"></div>
-      <noscript><p>Включи JavaScript, чтобы открыть учебную программу и посмотреть формат урока.</p></noscript>
+      <noscript><p>Включи JavaScript, чтобы открыть учебную программу.</p></noscript>
     </section>
   </main>
   <footer class="academy-footer" data-lumi-analytics-footer>
