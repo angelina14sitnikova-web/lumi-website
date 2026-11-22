@@ -1,6 +1,133 @@
 <!doctype html>
-<html lang="ru"><head>
-<script src="analytics/lumi-analytics.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Академия Луми — скоро открытие</title><meta name="description" content="Учись новому, развивай речь, мышление и внимание вместе с Луми! Раздел скоро откроется."><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="site-sections/sections.css"></head>
-<body><header class="header"><a href="index.html" class="logo">Луми<span>☾✦</span></a><nav class="navigation" aria-label="Основная навигация"><a href="index.html">Главная</a><a href="index.html#adventures">Разделы Луми</a><a href="crystal-world.html">Приключения</a><a href="tasks.html">Задания</a></nav></header>
-<main class="future-page"><section class="future-panel" aria-labelledby="future-title"><img src="site-sections/assets/academy.webp" alt="Академия Луми: Луми в сказочном мире" width="1200" height="800"><div class="future-copy"><span class="section-status">Скоро открытие</span><h1 id="future-title">Академия Луми</h1><p>Учись новому, развивай речь, мышление и внимание вместе с Луми!</p><p>Здесь появятся отдельные занятия и последовательные программы: развитие речи, математика, обучение грамоте и подготовка к школе.</p><p>Луми готовит для тебя новые открытия. Этот раздел скоро откроется!</p><a class="section-link" href="index.html">На главную <span aria-hidden="true">→</span></a></div></section></main>
-<footer><p>Луми — мир маленьких открытий ✦</p></footer></body></html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Академия Луми — волшебная школа маленьких открытий</title>
+  <meta name="description" content="Выбери свою волшебную дверь в Академии Луми для детей от 3 до 7 лет.">
+  <script src="analytics/lumi-analytics.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="academy/academy.css">
+</head>
+<body class="academy-page">
+  <a class="academy-skip" href="#academy-main">К содержанию</a>
+  <header class="academy-header academy-shell">
+    <a class="logo" href="index.html" aria-label="Луми — главная">Луми<span aria-hidden="true">☾✦</span></a>
+    <nav class="academy-nav" aria-label="Основная навигация">
+      <a class="academy-current" href="#academy-main" aria-current="page">Академия Луми</a>
+      <a class="academy-home-link" href="index.html"><span aria-hidden="true">←</span> На главную</a>
+    </nav>
+  </header>
+  <main id="academy-main" class="academy-shell" tabindex="-1">
+    <section class="academy-hero academy-frame" aria-labelledby="academy-title">
+      <div class="academy-hero-copy">
+        <div class="academy-ornament" aria-hidden="true"><span></span></div>
+        <h1 id="academy-title">Добро пожаловать в Академию Луми!</h1>
+        <p class="academy-lead">Волшебная школа, где каждый день начинается с нового открытия.</p>
+        <a class="academy-button" href="#academy-ages">Начать обучение <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="academy-stage">
+        <picture>
+          <source media="(max-width: 740px)" srcset="academy/assets/school-small.webp">
+          <img class="academy-school" src="academy/assets/school.webp" alt="Волшебная школа с лавандовыми башнями и цветущим садом" width="1320" height="880" fetchpriority="high">
+        </picture>
+        <img class="academy-host" src="academy/assets/lumi-key.png" alt="Луми встречает гостей Академии" width="403" height="480">
+        <span class="academy-light academy-light-one" aria-hidden="true"></span>
+        <span class="academy-light academy-light-two" aria-hidden="true"></span>
+        <span class="academy-light academy-light-three" aria-hidden="true"></span>
+      </div>
+    </section>
+    <aside class="academy-greeting" aria-label="Приветствие Луми">
+      <img src="enchanted-library/assets/lumi-welcome.png" alt="" width="640" height="625" decoding="async">
+      <p>Привет, мой друг! Я так рад, что ты пришёл! В нашей Академии мы будем считать, узнавать буквы, разгадывать загадки и открывать удивительные секреты. Выбирай свой возраст — и отправимся учиться вместе!</p>
+    </aside>
+
+    <section class="academy-section" id="academy-ages" tabindex="-1" aria-labelledby="academy-ages-title">
+      <div class="academy-section-heading">
+        <div class="academy-ornament" aria-hidden="true"><span></span></div>
+        <h2 id="academy-ages-title">Выбери свою волшебную дверь</h2>
+        <p>За каждой дверью тебя ждут новые знания и открытия.</p>
+      </div>
+      <ul class="academy-doors">
+        <li class="academy-tone-3-4">
+          <a id="door-3-4" class="academy-door" href="academy/age-3-4.html">
+            <img src="academy/assets/door-3-4.webp" alt="" width="762" height="506" loading="lazy" decoding="async">
+            <span class="academy-door-label">
+              <span class="academy-age">3–4 года</span>
+              <span class="academy-door-name">Первые открытия</span>
+            </span>
+            <span class="academy-door-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="academy-tone-4-5">
+          <a id="door-4-5" class="academy-door" href="academy/age-4-5.html">
+            <img src="academy/assets/door-4-5.webp" alt="" width="762" height="506" loading="lazy" decoding="async">
+            <span class="academy-door-label">
+              <span class="academy-age">4–5 лет</span>
+              <span class="academy-door-name">Маленькие исследователи</span>
+            </span>
+            <span class="academy-door-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="academy-tone-5-6">
+          <a id="door-5-6" class="academy-door" href="academy/age-5-6.html">
+            <img src="academy/assets/door-5-6.webp" alt="" width="762" height="506" loading="lazy" decoding="async">
+            <span class="academy-door-label">
+              <span class="academy-age">5–6 лет</span>
+              <span class="academy-door-name">Юные ученики</span>
+            </span>
+            <span class="academy-door-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="academy-tone-6-7">
+          <a id="door-6-7" class="academy-door" href="academy/age-6-7.html">
+            <img src="academy/assets/door-6-7.webp" alt="" width="762" height="506" loading="lazy" decoding="async">
+            <span class="academy-door-label">
+              <span class="academy-age">6–7 лет</span>
+              <span class="academy-door-name">Будущие школьники</span>
+            </span>
+            <span class="academy-door-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="academy-section academy-subjects academy-frame" aria-labelledby="academy-subjects-title">
+      <div class="academy-section-heading">
+        <div class="academy-ornament" aria-hidden="true"><span></span></div>
+        <h2 id="academy-subjects-title">Чему мы будем учиться?</h2>
+        <p>Совсем скоро в Академии появятся увлекательные занятия, которые помогут детям узнавать новое шаг за шагом.</p>
+      </div>
+      <ul class="academy-subject-grid">
+        <li>
+          <img src="academy/assets/subject-math.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Математика</h3>
+        </li>
+        <li>
+          <img src="academy/assets/subject-speech.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Развитие речи</h3>
+        </li>
+        <li>
+          <img src="academy/assets/subject-literacy.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Обучение грамоте</h3>
+        </li>
+        <li>
+          <img src="academy/assets/subject-logic.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Логика и мышление</h3>
+        </li>
+        <li>
+          <img src="academy/assets/subject-memory.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Внимание и память</h3>
+        </li>
+        <li>
+          <img src="academy/assets/subject-writing.webp" alt="" width="320" height="320" loading="lazy" decoding="async">
+          <h3>Подготовка руки к письму</h3>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="academy-footer" data-lumi-analytics-footer>
+    <p>Луми — мир маленьких открытий <span aria-hidden="true">✦</span></p>
+  </footer>
+</body>
+</html>
