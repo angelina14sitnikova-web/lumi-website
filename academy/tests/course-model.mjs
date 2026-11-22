@@ -17,6 +17,12 @@ const subjects = [
   ['logic-3-4', 7, 42],
   ['memory-3-4', 6, 36],
   ['writing-3-4', 6, 36],
+  ['math-4-5', 10, 60],
+  ['speech-4-5', 10, 60],
+  ['literacy-4-5', 6, 36],
+  ['logic-4-5', 7, 42],
+  ['memory-4-5', 6, 36],
+  ['writing-4-5', 6, 36],
 ];
 for (const [courseId, modules, lessons] of subjects) {
   const subject = findCourse(courseId);
@@ -35,7 +41,7 @@ for (const [courseId, modules, lessons] of subjects) {
     }
   }
 }
-assert.equal(urls.size, 288);
+assert.equal(urls.size, 558);
 assert.deepEqual(findLesson(course, 'missing', 'missing'), { module: undefined, lesson: undefined });
 
 const module = { id: 'fixture-module' };
@@ -51,4 +57,4 @@ assert(!isComplete(course, module, lesson));
 assert(saveCompletion(course, module, lesson, ['right', 'right']));
 assert(isComplete(course, module, lesson));
 
-console.log('PASS: 288 unique lesson routes and completion requires all practice answers');
+console.log('PASS: 558 unique lesson routes and completion requires all practice answers');

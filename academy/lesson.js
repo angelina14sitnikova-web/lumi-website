@@ -175,7 +175,9 @@ function showReward() {
 }
 
 if (course) {
-  document.querySelector('#academy-main').dataset.courseTheme = course.theme;
+  const main = document.querySelector('#academy-main');
+  main.classList.replace('academy-tone-3-4', course.ageTone);
+  main.dataset.courseTheme = course.theme;
   context.textContent = course.title + ' · ' + course.age;
   returnLink.href = programUrl(course, module);
 }

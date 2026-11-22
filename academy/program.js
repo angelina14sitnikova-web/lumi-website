@@ -87,7 +87,9 @@ if (course) {
   const count = document.querySelector('#course-count');
   count.textContent = 'Модулей: ' + counts.modules + ' · Уроков: ' + counts.lessons;
   count.hidden = false;
-  document.querySelector('#academy-main').dataset.courseTheme = course.theme;
+  const main = document.querySelector('#academy-main');
+  main.classList.replace('academy-tone-3-4', course.ageTone);
+  main.dataset.courseTheme = course.theme;
   const art = document.querySelector('#course-room-art');
   art.alt = course.room.alt;
   art.width = course.room.width;
@@ -95,6 +97,8 @@ if (course) {
   art.src = course.room.image;
   document.querySelector('#course-room').hidden = false;
   document.querySelector('.academy-return').href = course.agePage;
+  const [ages] = course.age.split(' ');
+  document.querySelector('#program-back-label').textContent = 'К предметам для ' + ages + ' лет';
   document.title = course.title + ' · ' + course.age + ' — Академия Луми';
 }
 updateCatalog();

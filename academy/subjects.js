@@ -2,10 +2,11 @@ import { courses } from './data/courses.js';
 import { courseCounts, programUrl } from './course-model.js';
 
 const list = document.querySelector('#subjects');
+const agePage = location.pathname.split('/').pop();
 let moduleTotal = 0;
 let lessonTotal = 0;
 
-for (const course of courses.filter(item => item.agePage === 'age-3-4.html')) {
+for (const course of courses.filter(item => item.agePage === agePage)) {
   const counts = courseCounts(course);
   moduleTotal += counts.modules;
   lessonTotal += counts.lessons;
