@@ -21,7 +21,7 @@ const mathModules = [
     ['colors-7', 'Сортируем предметы по цвету'],
   ],
   [
-    { id: 'color-world', title: 'Цвета вокруг нас', cover: 'assets/module-3.webp' },
+    { id: 'color-world', title: 'Цвета вокруг нас', cover: 'assets/module-3.webp', reward: 'Радужный значок Луми' },
     ['color-world-1', 'Найди предмет нужного цвета'],
     ['color-world-2', 'Одинаковый цвет — разные предметы'],
     ['color-world-3', 'Один предмет — разные цвета'],
@@ -31,7 +31,7 @@ const mathModules = [
     ['color-world-7', 'Повторяем изученные цвета'],
   ],
   [
-    { id: 'sizes', title: 'Большой и маленький', cover: 'assets/module-4.webp' },
+    { id: 'sizes', title: 'Большой и маленький', cover: 'assets/module-4.webp', reward: 'Медаль мастера сравнений' },
     ['sizes-1', 'Большой и маленький'],
     ['sizes-2', 'Выбираем самый большой из двух'],
     ['sizes-3', 'Выбираем маленький предмет'],

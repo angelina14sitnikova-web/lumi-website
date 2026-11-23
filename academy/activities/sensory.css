@@ -1,0 +1,168 @@
+.sensory-lesson { text-align: center; }
+.sensory-lesson .lesson-part { scroll-margin-top: 1rem; }
+.sensory-board {
+  --piece: clamp(2.65rem, 10vw, 6.6rem);
+  min-height: 9rem;
+  align-content: center;
+}
+.sensory-demo {
+  min-height: clamp(11rem, 33vw, 25rem);
+  padding-inline-start: clamp(3.5rem, 21%, 13rem);
+}
+.sensory-row {
+  display: flex;
+  width: min(100%, 45rem);
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: clamp(.3rem, 1.35vw, .8rem);
+  padding: clamp(.25rem, 1.35vw, .72rem);
+  border-radius: .85rem;
+  background: #fff7e6d8;
+}
+.sensory-row[hidden] { display: none; }
+.sensory-row[data-setting="shelves"] {
+  background: #f9e7c9ed;
+  border-bottom: .35rem solid #aa7453;
+}
+.sensory-row[data-setting="odd"] {
+  background: repeating-linear-gradient(75deg, #fff4d6e8 0 4px, #e7c998ed 4px 6px);
+  border: .2rem solid #aa7453;
+}
+.sensory-card, .sensory-target {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  flex: 0 1 var(--piece);
+  min-width: 2.75rem;
+  min-height: max(2.75rem, var(--piece));
+  border: 2px solid #c4add2;
+  border-radius: clamp(.55rem, 2vw, 1rem);
+  background: #fffaf0;
+  padding: .08rem;
+}
+.sensory-targets { background: #f6e6cfde; }
+.sensory-target {
+  appearance: none;
+  border-color: #9a7357;
+  background: #fff9e7;
+  flex: 1 1 var(--piece);
+  max-width: 11rem;
+  color: #4e355d;
+  touch-action: manipulation;
+}
+button.sensory-target { cursor: pointer; }
+.sensory-choices, .sensory-targets { align-items: stretch; }
+.sensory-picture {
+  display: block;
+  width: var(--piece);
+  max-width: 100%;
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.sensory-picture[data-size="small"] { width: calc(var(--piece) * .49); }
+.sensory-picture[data-size="middle"] { width: calc(var(--piece) * .72); }
+.sensory-picture[data-shape="chip"] { width: calc(var(--piece) * .66); }
+.sensory-picture > svg { width: 100%; height: 100%; max-width: none; }
+.sensory-emphasis {
+  outline: 3px solid #795499;
+  outline-offset: 1px;
+  background: #f7edff;
+}
+.sensory-sample {
+  display: flex;
+  align-items: center;
+  min-height: var(--piece);
+  padding: 0 .75rem;
+  gap: .18rem;
+  border-radius: 1.2rem;
+  background: #fffaf1;
+  font-weight: 700;
+  color: #543c65;
+  box-shadow: 0 .22rem .35rem #33263d24;
+}
+.sensory-slot-figure {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: min(100%, var(--piece));
+  min-height: var(--piece);
+}
+.sensory-mark {
+  position: absolute;
+  top: .14rem;
+  right: .14rem;
+  width: clamp(.85rem, 2.2vw, 1.65rem);
+  aspect-ratio: 1;
+  background: var(--sample);
+  border: 2px solid #51405a;
+  border-radius: 50%;
+}
+.sensory-contents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  min-height: .17rem;
+}
+.sensory-contents > .sensory-picture { width: min(32%, 2.8rem); }
+.sensory-target:has(.sensory-place) { max-width: none; }
+.sensory-target .sensory-card {
+  --piece: clamp(2.8rem, 7vw, 4.8rem);
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  max-width: 100%;
+}
+.sensory-target .sensory-card[hidden] { display: none; }
+.sensory-place { min-height: 2.75rem; min-width: 2.75rem; margin-top: .27rem; }
+.sensory-moved > .sensory-picture { visibility: hidden; }
+.sensory-paint-base, .sensory-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+.sensory-overlay { z-index: 1; }
+.sensory-wrong { outline: 2px dashed #9e4b5f; border-radius: .5rem; }
+.sensory-target:focus-visible, .sensory-place:focus-visible {
+  outline: 3px solid #55327b;
+  outline-offset: 2px;
+}
+.sensory-card[data-hint], .sensory-target[data-hint] {
+  outline: 3px dashed #63398b;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 .22rem #ffe395;
+}
+.sensory-doors {
+  position: absolute;
+  inset: 12% 10% 9% 24%;
+  display: flex;
+  overflow: hidden;
+  border-radius: 1rem 1rem .5rem .5rem;
+  pointer-events: none;
+}
+.sensory-doors span {
+  width: 50%;
+  border: 3px solid #b48551;
+  background: linear-gradient(135deg, #fff1bb, #f4c8b8 36%, #d9c9ff 75%, #badfde);
+  box-shadow: inset 0 0 0 .5rem #fff6d9;
+}
+@media (max-width: 560px) {
+  .sensory-board { --piece: clamp(2.9rem, 14vw, 4.35rem); }
+  .sensory-demo { padding-inline-start: 3.35rem; }
+}
+.sensory-contents > .sensory-picture[data-size="small"] { width: min(18%, 1.4rem); }
+.sensory-contents > .sensory-picture[data-size="middle"] { width: min(24%, 2rem); }
+.sensory-direction {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  margin-block: -.2rem;
+  background: #fff7e5;
+  border-radius: 50%;
+  color: #694686;
+  font-size: 1.35rem;
+  font-weight: 800;
+}

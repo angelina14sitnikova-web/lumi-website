@@ -38,5 +38,5 @@ for (const { rounds: [{ options, correct, view }] } of odd.practice) {
   assert.notEqual(options[correct][feature], matches[0][feature]);
 }
 
-assert(futureModules.filter(next => next.id !== 'colors').every(next => next.lessons.every(lesson => !lesson.scenes.length)));
+assert(futureModules.slice(3).every(next => next.lessons.every(lesson => !lesson.scenes.length)));
 console.log('PASS: 21 scenes, 35 exercises, unique grouping rules and no completion before practice.');

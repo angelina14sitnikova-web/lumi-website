@@ -43,14 +43,14 @@ function updateCatalog() {
     const count = element('span', 'course-module-count', 'Уроков: ' + module.lessons.length);
     summary.append(cover, name, count);
     const colorModule = module.lessons.some(lesson => lesson.format === 'colors');
-    if (colorModule || module.lessons.some(lesson => lesson.format === 'comparison')) {
+    if (module.reward || colorModule || module.lessons.some(lesson => lesson.format === 'comparison')) {
       const stars = moduleStars(course, module);
       const progress = element('div', 'cmp-module-progress');
       const badge = element('span', stars === module.lessons.length ? 'cmp-medal' : 'cmp-module-star', '★');
       badge.setAttribute('aria-hidden', 'true');
       const text = element('div', '');
       text.append(element('strong', '', 'Звёздочки: ' + stars + ' из ' + module.lessons.length));
-      if (stars === module.lessons.length) text.append(element('p', '', colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя'));
+      if (stars === module.lessons.length) text.append(element('p', '', module.reward || (colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя')));
       progress.append(badge, text);
       details.append(summary, progress);
     } else {
@@ -73,7 +73,7 @@ function updateCatalog() {
         const ready = practiceIsReady(lesson);
         const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : ready ? (['comparison', 'colors'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
+            : ready ? (['comparison', 'colors', 'sensory'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');

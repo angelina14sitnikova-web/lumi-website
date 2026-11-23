@@ -3,6 +3,8 @@ import { comparisonAnswer, comparisonReady } from './activities/comparison-model
 
 import { colorsAnswer, colorsReady } from './activities/colors-model.js';
 
+import { sensoryAnswer, sensoryReady } from './activities/sensory-model.js';
+
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
 
@@ -37,6 +39,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['sensory', { isReady: sensoryReady, check: sensoryAnswer }],
   ['colors', { isReady: colorsReady, check: colorsAnswer }],
   ['comparison', { isReady: comparisonReady, check: comparisonAnswer }],
   ['choice', {
