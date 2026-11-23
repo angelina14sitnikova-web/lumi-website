@@ -1,6 +1,8 @@
 import { palette } from './colors-model.js';
 import { toy, toyName } from './colors-art.js';
 
+import { geometryMarkup, geometryName } from './geometry-art.js';
+
 const props = {
   chip: ['Цветовой образец', '<rect x="18" y="18" width="64" height="64" rx="15"/><path d="M27 37v-6q0-4 5-4h10" stroke="#fff" stroke-width="4" fill="none" opacity=".65"/>'],
   gift: ['Подарок', '<rect x="20" y="38" width="60" height="48" rx="7"/><rect x="14" y="33" width="72" height="18" rx="5"/><path d="M50 34C16 30 29 9 43 22l7 12c32-4 21-25 7-12Z" fill="#ffedd0"/><path d="M49 36v49" stroke="#fff3d9" stroke-width="9"/>'],
@@ -20,19 +22,19 @@ const props = {
 
 const sizeNames = { small: 'маленький размер', middle: 'средний размер', large: 'большой размер' };
 export function sensoryName(piece) {
-  const prop = props[piece.shape];
-  const name = prop ? palette[piece.color].name + ' · ' + prop[0].toLowerCase() : toyName(piece);
+  const prop = props[piece.shape] || [geometryName(piece.shape)];
+  const name = prop[0] ? palette[piece.color].name + ' · ' + prop[0].toLowerCase() : toyName(piece);
   return piece.size ? name + ' · ' + sizeNames[piece.size] : name;
 }
 
 export function sensoryArt(piece) {
-  const basis = props[piece.shape];
+  const basis = props[piece.shape]?.[1] || geometryMarkup(piece.shape);
   if (!basis) return toy(piece);
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('viewBox', '0 0 100 100');
   svg.setAttribute('aria-hidden', 'true');
   svg.classList.add('color-toy');
   svg.style.setProperty('--toy-color', palette[piece.color].paint);
-  svg.innerHTML = '<g>' + basis[1] + '</g>';
+  svg.innerHTML = '<g>' + basis + '</g>';
   return svg;
 }

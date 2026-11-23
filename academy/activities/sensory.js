@@ -38,6 +38,11 @@ function picture(piece) {
   const frame = node('span', 'sensory-picture');
   frame.dataset.size = piece.size || 'default';
   frame.dataset.shape = piece.shape;
+  if (piece.axis) {
+    frame.dataset.axis = piece.axis;
+    frame.style.setProperty('--extent', [.44, .71, 1][piece.value - 1]);
+  }
+  if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
   frame.append(sensoryArt(piece));
   return frame;
 }
@@ -67,6 +72,11 @@ function mark(piece) {
   label.style.setProperty('--sample', palette[piece.color].paint);
   return label;
 }
+function layout(row, pieces) {
+  if (pieces.every(piece => piece.axis === 'length')) row.dataset.measure = 'length';
+  if (pieces.every(piece => piece.axis === 'height')) row.dataset.measure = 'height';
+  if (pieces.every(piece => piece.axis === 'width')) row.dataset.measure = 'width';
+}
 function slot(piece, interactive) {
   const el = node(interactive ? 'button' : 'div', 'sensory-target');
   if (interactive) {
@@ -84,11 +94,13 @@ function travel(piece, source, target, delay = 0, overlay = false) {
   const before = source.querySelector('.sensory-picture').getBoundingClientRect();
   const destination = target.querySelector(overlay ? '.sensory-slot-figure' : '.sensory-contents');
   const moving = picture(piece);
-  if (overlay) {
+  if (overlay || target.closest('.sensory-assembly')) {
     moving.classList.add('sensory-overlay');
     const top = moving.querySelector('svg');
-    top.style.stroke = '#fffdf4';
-    top.style.strokeDasharray = '5 2';
+    if (!target.closest('[data-effect="drive"], .sensory-assembly')) {
+      top.style.stroke = '#fffdf4';
+      top.style.strokeDasharray = '5 2';
+    }
   }
   destination.append(moving);
   source.classList.add('sensory-moved');
@@ -101,6 +113,10 @@ function travel(piece, source, target, delay = 0, overlay = false) {
     { transform: 'translate(' + dx * .5 + 'px,' + (dy * .45 - 18) + 'px) scale(' + Math.max(1, ratio * .7) + ')', offset: .55 },
     { transform: 'none' },
   ], { duration: 580, delay, easing: 'ease-in-out' });
+  if (target.closest('[data-effect="drive"]')) {
+    animate(moving.firstChild, [{ translate: '-22px 0' }, { translate: '22px 0' }, { translate: '0 0' }],
+      { duration: 1000, delay: delay + 580, easing: 'ease-in-out' });
+  }
   if (delay && !reduced()) {
     source.classList.remove('sensory-moved');
     source.querySelector('.sensory-picture').animate([
@@ -117,6 +133,7 @@ function illustrate(room, scene) {
   stage.setAttribute('role', 'img');
   stage.setAttribute('aria-label', scene.text);
   const pieces = node('div', 'sensory-row');
+  layout(pieces, scene.pieces);
   const props = scene.pieces.map(piece => {
     const el = node('div', 'sensory-card');
     el.append(picture(piece));
@@ -128,6 +145,7 @@ function illustrate(room, scene) {
 
   if (scene.targets) {
     const row = node('div', 'sensory-row sensory-targets');
+    if (scene.effect === 'assemble') row.classList.add('sensory-assembly');
     const targets = scene.targets.map(piece => slot(piece, false));
     row.append(...targets);
     stage.append(row);
@@ -139,7 +157,7 @@ function illustrate(room, scene) {
       if (!stage.isConnected) return;
       scene.matches.forEach((to, from) => {
         if (scene.starts?.[from] === to) return;
-        travel(scene.pieces[from], props[from], targets[to], 370 + from * 570, scene.effect === 'overlay');
+        travel(scene.pieces[from], props[from], targets[to], 370 + from * 570, scene.effect === 'overlay' || scene.effect === 'drive');
       });
       if (scene.effect === 'mistake') {
         const wrong = targets[0].querySelector('.sensory-contents').lastChild;
@@ -147,6 +165,27 @@ function illustrate(room, scene) {
         animate(wrong, [{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: 2090 });
       }
     });
+  } else if (scene.effect === 'trace') {
+    const svg = props[0].querySelector('svg');
+    const shape = svg.querySelector('g').firstElementChild;
+    const trace = shape.cloneNode();
+    trace.setAttribute('fill', 'none');
+    trace.setAttribute('stroke', '#45275f');
+    trace.setAttribute('stroke-width', '5');
+    trace.setAttribute('pathLength', '100');
+    trace.setAttribute('stroke-dasharray', '100');
+    svg.append(trace);
+    animate(trace, [{ strokeDashoffset: 100 }, { strokeDashoffset: 0 }], { duration: 1400, delay: 200 });
+  } else if (scene.effect === 'align') {
+    props.forEach((prop, index) => animate(prop.firstChild, [
+      { transform: scene.pieces[0].axis === 'height' ? 'translateY(' + (index * -14) + 'px)' : 'translateX(' + (index * 18) + 'px)' },
+      { transform: 'none' },
+    ], { duration: 820, delay: 240, easing: 'ease-in-out' }));
+    if (scene.focus !== undefined) {
+      const focus = props[scene.focus];
+      focus.classList.add('sensory-emphasis');
+      animate(focus, [{ outlineColor: 'transparent' }, { outlineColor: '#795499' }], { duration: 420, delay: 1040 });
+    }
   } else if (scene.effect === 'paint') {
     props.forEach((prop, index) => {
       const previous = picture({ ...scene.pieces[index], color: scene.before?.[index] || 'white' });
@@ -244,8 +283,12 @@ export function mountSensory(content, course, module, lesson) {
     const heading = node('h2', 'lesson-part', 'Практика');
     const stage = board(lesson.room);
     const row = node('div', 'sensory-row sensory-choices');
+    layout(row, round.pieces);
     row.dataset.setting = round.setting || '';
-    const guide = node('p', 'color-guide', task.guide);
+    const axisGuide = { length: 'Сравни по длине.', height: 'Сравни по высоте.', width: 'Сравни по ширине.' };
+    const dimension = round.pieces[0].axis;
+    const guide = node('p', 'color-guide', round.align ? 'Нажми на стрелку, чтобы начала лент совпали.'
+      : dimension ? axisGuide[dimension] + ' ' + task.guide : task.guide);
     guide.id = 'sensory-guide';
     stage.setAttribute('aria-describedby', guide.id);
     const feedback = node('p', 'color-feedback');
@@ -291,7 +334,27 @@ export function mountSensory(content, course, module, lesson) {
       return el;
     });
     const targetRow = node('div', 'sensory-row sensory-targets');
+    if (round.assembly) targetRow.classList.add('sensory-assembly');
     targetRow.append(...targets);
+    if (round.align) {
+      const alignment = button('↤ Совместить начала', () => {
+        row.dataset.aligned = 'true';
+        buttons.forEach((control, index) => {
+          control.disabled = false;
+          animate(control.firstChild, [{ transform: 'translateX(' + index * 14 + 'px)' }, { transform: 'none' }],
+            { duration: 420, easing: 'ease-out' });
+        });
+        alignment.hidden = true;
+        buttons[0].focus();
+      });
+      if (!steps.length) {
+        buttons.forEach((control, index) => {
+          control.disabled = true;
+          control.firstChild.style.setProperty('--offset', index * 14 + 'px');
+        });
+        stage.append(alignment);
+      }
+    }
     if (round.sample) stage.append(sample(round.sample));
     if (round.starts) {
       buttons.forEach((el, index) => targets[round.starts[index]].querySelector('.sensory-contents').append(el));
@@ -323,7 +386,8 @@ export function mountSensory(content, course, module, lesson) {
         { transform: 'translateX(-4px)' }, { transform: 'none' }], { duration: 250 });
       if (mistakes >= 2) {
         const step = remaining().find(answer => answer.from === selected);
-        const hint = step ? targets[step.to] : buttons[remaining()[0].from];
+        const ordered = round.ordered ? remaining().sort((a, b) => a.to - b.to)[0] : remaining()[0];
+        const hint = step ? targets[step.to] : buttons[ordered.from];
         hint.dataset.hint = 'true';
       }
     }
@@ -338,6 +402,10 @@ export function mountSensory(content, course, module, lesson) {
         return;
       }
       if (selected !== null) buttons[selected].setAttribute('aria-pressed', 'false');
+      if (round.ordered && remaining().sort((a, b) => a.to - b.to)[0].from !== index) {
+        wrong(buttons[index]);
+        return;
+      }
       selected = index;
       buttons[index].setAttribute('aria-pressed', 'true');
       clearHint();
@@ -404,6 +472,7 @@ export function mountSensory(content, course, module, lesson) {
     const stars = moduleStars(course, module);
     const medal = stars === module.lessons.length;
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', '★');
+    if (medal) icon.dataset.medal = module.id;
     icon.setAttribute('aria-hidden', 'true');
     panel.append(icon, heading);
     if (medal) panel.append(node('h3', '', module.reward));

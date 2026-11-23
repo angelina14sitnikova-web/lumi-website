@@ -166,3 +166,42 @@ button.sensory-target { cursor: pointer; }
   font-size: 1.35rem;
   font-weight: 800;
 }
+.sensory-picture > svg { rotate: var(--turn, 0deg); }
+.sensory-picture[data-axis="length"] > svg {
+  transform: scaleX(var(--extent));
+  transform-origin: 10% center;
+}
+.sensory-picture[data-axis="height"] > svg {
+  transform: scaleY(var(--extent));
+  transform-origin: center 86%;
+}
+.sensory-picture[data-axis="width"] > svg { transform: scaleY(var(--extent)); }
+.sensory-row[data-measure="length"] {
+  --piece: clamp(6.5rem, 32vw, 13rem);
+  display: grid;
+  justify-items: start;
+}
+.sensory-row[data-measure="length"] .sensory-card {
+  width: var(--piece);
+  min-height: 2.75rem;
+  height: clamp(2.75rem, 7vw, 4rem);
+  overflow: hidden;
+  border-inline-start: 3px solid #a47bba;
+}
+.sensory-row[data-measure="length"] .sensory-picture { translate: var(--offset, 0) 0; }
+.sensory-row[data-aligned="true"] .sensory-picture { translate: none; }
+.sensory-row[data-measure="height"] .sensory-card { border-bottom: 4px solid #a36142; }
+.sensory-row[data-measure="width"] { --piece: clamp(3rem, 15vw, 8rem); }
+.sensory-assembly .sensory-slot-figure > .sensory-picture:first-child { opacity: .42; }
+.sensory-assembly .sensory-overlay { filter: none; }
+.sensory-assembly:has(> :nth-child(3):last-child) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(2.75rem, var(--piece)));
+  grid-template-areas: ". roof ." ". wall window";
+}
+.sensory-assembly:has(> :nth-child(3):last-child) > :nth-child(1) { grid-area: roof; }
+.sensory-assembly:has(> :nth-child(3):last-child) > :nth-child(2) { grid-area: wall; }
+.sensory-assembly:has(> :nth-child(3):last-child) > :nth-child(3) { grid-area: window; }
+.sensory-reward:has([data-medal="dimensions"]) .cmp-medal { background: radial-gradient(circle,#fff3bb,#ddae65); }
+.sensory-reward:has([data-medal="shapes"]) .cmp-medal { background: radial-gradient(circle,#fff3bb,#cba7ec); }
+.sensory-picture[data-axis="height"][data-shape="house"] > svg { transform-origin: center 85%; }
