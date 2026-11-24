@@ -244,3 +244,30 @@ button.sensory-target { cursor: pointer; }
 .world-road { position:absolute;inset:auto -80% .16rem;height:.35rem;background:#a97f64;border-radius:.4rem; }
 .sensory-reward [data-medal="shape-world"] { background:radial-gradient(circle,#fff2af,#88c6e5); }
 .sensory-reward [data-medal="quantity"] { background:radial-gradient(circle,#fff2af,#91ce91); }
+.lesson-map {
+  position:relative;width:min(100%,34rem);height:clamp(15rem,38vw,20rem);
+  background:linear-gradient(145deg,#f7e7c8ee,#fff8e8d6);border-radius:1rem;
+  border:2px solid #d0ac7f;isolation:isolate;--piece:clamp(2.75rem,9vw,4.5rem);
+}
+.lesson-map[data-kind="distance"]::before {
+  content:"";position:absolute;left:15%;top:74%;width:82%;height:.55rem;
+  transform:rotate(-25deg);transform-origin:left center;
+  border-top:3px dashed #9e7c57;z-index:-1;
+}
+.lesson-map > .sensory-card,.lesson-map > .sensory-target,.lesson-map > .lesson-anchor {
+  position:absolute;translate:-50% -50%;width:var(--piece);
+}
+.lesson-map .sensory-target { min-height:2.75rem; }
+.lesson-map-arrow { position:absolute;left:62%;top:46%;color:#62417f;font-size:1.55rem;font-weight:800; }
+.balance-demo { display:grid;justify-items:center;width:min(100%,35rem); }
+.balance-demo > .sensory-picture { width:3rem; }
+.event-sequence > .sensory-target { flex:1 1 3rem;position:relative; }
+.event-sequence > .sensory-target:not(:last-child)::after {
+  content:'➜';position:absolute;right:-.85em;top:42%;color:#795499;z-index:2;
+}
+.event-sequence .sensory-slot-figure { border:2px dashed #bba4cd;border-radius:.5rem;min-height:2.75rem; }
+.event-sequence .sensory-contents > .sensory-picture { width:min(100%,3.8rem); }
+.sensory-reward [data-medal="pairs"] { background:radial-gradient(circle,#fff1ab,#8bca92); }
+.sensory-reward [data-medal="space"] { background:radial-gradient(circle,#fff5b3,#96c7e9); }
+.sensory-reward [data-medal="time"] { background:radial-gradient(circle,#fff5b3,#bd9ae0); }
+.sensory-reward [data-medal="review"] { background:radial-gradient(circle,#fff9bb,#efb94f); }

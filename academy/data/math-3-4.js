@@ -81,7 +81,7 @@ const mathModules = [
     ['quantity-7', 'Где предметов больше?'],
   ],
   [
-    { id: 'pairs', title: 'Поровну или не поровну', cover: 'assets/module-9.webp' },
+    { id: 'pairs', title: 'Поровну или не поровну', cover: 'assets/module-9.webp', reward: 'Медаль дружных пар' },
     ['pairs-1', 'Составляем пары'],
     ['pairs-2', 'Каждому предмету — пара'],
     ['pairs-3', 'Столько же'],
@@ -91,7 +91,7 @@ const mathModules = [
     ['pairs-7', 'Делаем поровну: добавляем или убираем один предмет'],
   ],
   [
-    { id: 'space', title: 'Где находится предмет?', cover: 'assets/module-10.webp' },
+    { id: 'space', title: 'Где находится предмет?', cover: 'assets/module-10.webp', reward: 'Медаль следопыта' },
     ['space-1', 'Впереди и сзади'],
     ['space-2', 'Сверху и снизу'],
     ['space-3', 'Справа и слева от себя'],
@@ -101,7 +101,7 @@ const mathModules = [
     ['space-7', 'Помогаем Луми ориентироваться'],
   ],
   [
-    { id: 'time', title: 'Когда это происходит?', cover: 'assets/module-11.webp' },
+    { id: 'time', title: 'Когда это происходит?', cover: 'assets/module-11.webp', reward: 'Медаль хранителя времени' },
     ['time-1', 'Утро'],
     ['time-2', 'День'],
     ['time-3', 'Вечер'],
@@ -111,7 +111,7 @@ const mathModules = [
     ['time-7', 'Раньше и позже'],
   ],
   [
-    { id: 'review', title: 'Математические открытия Луми', cover: 'assets/module-12.webp' },
+    { id: 'review', title: 'Математические открытия Луми', cover: 'assets/module-12.webp', reward: 'Золотая медаль Академии Луми' },
     ['review-1', 'Найди пару по цвету'],
     ['review-2', 'Найди пару по форме'],
     ['review-3', 'Найди пару по размеру'],

@@ -309,3 +309,12 @@
   .subject-card { transition: none; }
   .subject-card:hover, .subject-card:active { transform: none; }
 }
+.course-celebration {
+  text-align:center;position:relative;isolation:isolate;overflow:hidden;
+  min-height:80vh;display:grid;place-content:center;justify-items:center;gap:1rem;
+  color:#55357e;padding:2rem 1rem;background:radial-gradient(ellipse,#fff9e6,#e7d9fa);
+}
+.academy-confetti {position:absolute;inset:0;pointer-events:none;z-index:-1;}
+.academy-confetti span {position:absolute;left:var(--position);top:15%;color:hsl(var(--hue) 62% 52%);animation:academy-stars 2.5s var(--delay) both ease-out;}
+@keyframes academy-stars {from{transform:translateY(-14vh) rotate(0deg);opacity:0;} 40%{opacity:1;} to{transform:translateY(58vh) rotate(290deg);opacity:.52;}}
+@media(prefers-reduced-motion:reduce){.academy-confetti span{animation:none;}}

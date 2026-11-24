@@ -1,3 +1,4 @@
+import { courseCompleted, celebrationUrl } from './activities/celebration.js';
 import { canOpen, courseCounts, findCourse, isComplete, lessonUrl, moduleStars, practiceIsReady } from './course-model.js';
 
 const catalog = document.querySelector('#modules');
@@ -86,6 +87,11 @@ function updateCatalog() {
     list.append(card);
   });
   catalog.replaceChildren(list);
+  if (courseCompleted(course)) {
+    const celebration = element('a', 'academy-button', 'Праздник открытий ✨');
+    celebration.href = celebrationUrl;
+    catalog.prepend(celebration);
+  }
 }
 
 function openModuleFromHash() {

@@ -4,13 +4,13 @@ import { checkAnswer, findCourse, moduleStars, practiceIsReady, saveCompletion }
 const store = new Map();
 globalThis.localStorage = { getItem: key => store.get(key), setItem: (key, value) => store.set(key, value) };
 const course = findCourse();
-for (const module of course.modules.slice(2, 8)) {
+for (const module of course.modules.slice(2)) {
   assert.equal(module.lessons.length, 7);
   assert(module.reward);
   assert.equal(moduleStars(course, module), 0);
   for (const [index, lesson] of module.lessons.entries()) {
     assert.equal(lesson.scenes.length, 3);
-    assert(lesson.scenes.every(scene => scene.text && scene.pieces.length));
+    assert(lesson.scenes.every(scene => scene.text && (scene.pieces.length || scene.place)));
     assert.equal(lesson.practice.length, 5);
     assert(practiceIsReady(lesson));
     const responses = lesson.practice.map(task => {
@@ -36,5 +36,5 @@ for (const module of course.modules.slice(2, 8)) {
     assert.equal(moduleStars(course, module), index + 1);
   }
 }
-assert(course.modules.slice(8).every(module => module.lessons.every(lesson => lesson.scenes.length === 0)));
-console.log('PASS: 42 lessons, 126 scenes, 210 exercises and 6 separate rewards.');
+assert.equal(course.modules.length, 12);
+console.log('PASS: 70 sensory lessons, 210 scenes, 350 exercises and 10 separate rewards.');

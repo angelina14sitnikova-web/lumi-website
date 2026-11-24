@@ -11,5 +11,7 @@ import { shapesLessons } from './shapes-3-4.js';
 import { shapeWorldLessons } from './shape-world-3-4.js';
 import { quantityLessons } from './quantity-3-4.js';
 
+import { finalLessons } from './final-3-4.js';
+
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons };
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons };

@@ -3,7 +3,7 @@ import { comparisonAnswer, comparisonReady } from '../activities/comparison-mode
 import { findCourse, practiceIsReady, saveCompletion } from '../course-model.js';
 
 const course = findCourse('math-3-4');
-const [module, ...futureModules] = course.modules;
+const [module] = course.modules;
 assert.equal(module.id, 'compare');
 assert.equal(module.lessons.length, 7);
 
@@ -38,5 +38,4 @@ for (const { rounds: [{ options, correct, view }] } of odd.practice) {
   assert.notEqual(options[correct][feature], matches[0][feature]);
 }
 
-assert(futureModules.slice(7).every(next => next.lessons.every(lesson => !lesson.scenes.length)));
 console.log('PASS: 21 scenes, 35 exercises, unique grouping rules and no completion before practice.');
