@@ -9,7 +9,9 @@ const walk=(begin,steps)=>steps.reduce((path,step)=>{
 export const routeRound=(actor,begin,steps,barriers=[],free=false)=>{
  const path=walk(begin,steps),goal=path.at(-1);
  return steps.map((dir,index)=>pick(arrows,directions.indexOf(dir),null,{
-  route:{actor,at:path[index],next:path[index+1],goal,steps:steps.slice(index),barriers,free}
+  route:{actor,at:path[index],next:path[index+1],goal,steps:steps.slice(index),
+    barriers:free ? Array.from({length:25},(_,cell)=>[cell%5,Math.floor(cell/5)])
+      .filter(([x,y])=>!path.slice(index).some(([px,py])=>px===x && py===y)) : barriers,free}
  }));
 };
 export const routeTask=(prompt,actor,begin,steps,barriers=[],free=false)=>exercise(prompt,'Посмотри на стрелки и проведи героя.',

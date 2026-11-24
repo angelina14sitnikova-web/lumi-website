@@ -310,3 +310,14 @@ button.sensory-target { cursor: pointer; }
 .route-player {position:absolute;translate:-50% -50%;z-index:2;filter:drop-shadow(0 1px 2px #49314b);}
 .math45-command-card {display:flex;align-items:center;min-width:0;gap:.1rem;justify-content:center;max-width:100%;aspect-ratio:auto;min-height:2.75rem;width:auto;background:#fff9e9;border-radius:.5rem;}
 .math45-command-card svg {width:clamp(1.25rem,5vw,2.5rem);max-width:100%;}
+.sensory-reward [data-medal^="math-45-"] {
+  --piece:clamp(2.5rem,9vw,4.6rem);
+  background:radial-gradient(circle,#fff4ba,#f2c66d);
+  display:grid;place-items:center;
+}
+.sensory-reward [data-medal="math-45-module-4"],
+.sensory-reward [data-medal="math-45-module-8"] {background:radial-gradient(circle,#fff4bc,#adbfeb);}
+.sensory-reward [data-medal="math-45-module-5"],
+.sensory-reward [data-medal="math-45-module-6"],
+.sensory-reward [data-medal="math-45-module-9"] {background:radial-gradient(circle,#fff4bc,#d8a9e4);}
+.sensory-reward [data-medal="math-45-module-10"] {background:radial-gradient(circle,#fff4bc,#e6a93d);}

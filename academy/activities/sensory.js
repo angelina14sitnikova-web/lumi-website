@@ -173,6 +173,18 @@ function sample(piece) {
   el.append(picture(piece), node('span', '', 'Образец'));
   return el;
 }
+const math45Poses = {
+  'color-workshop':'lumi-thinking.png', 'treasure-valley':'lumi-happy.png',
+  'treasure-shop':'lumi-thinking.png','rail-station':'lumi-welcome.png',
+  'geometry-castle':'lumi-reading.png','mosaic-workshop':'lumi-thinking.png',
+  'size-kingdom':'lumi-reading.png','route-island':'lumi-welcome.png',
+  'calendar-tower':'lumi-clock.png','math-archipelago':'lumi-reward.png',
+};
+const math45Medals = [
+  ['chip','orange'],['star','yellow'],['block','sky'],['wagon','green'],['house','pink'],
+  ['triangle','blue'],['tower','paleGreen'],['arrowright','blue'],['todayDay','pink'],['treasure','yellow'],
+];
+
 function board(room, demo = false) {
   const el = node('div', 'color-board sensory-board' + (demo ? ' sensory-demo' : ''));
   const bg = node('img', 'color-room');
@@ -181,7 +193,7 @@ function board(room, demo = false) {
   el.append(bg);
   if (demo) {
     const lumi = node('img', 'color-lumi');
-    lumi.src = '../enchanted-library/assets/lumi-reading.png';
+    lumi.src = '../enchanted-library/assets/' + (math45Poses[room] || 'lumi-reading.png');
     lumi.alt = '';
     el.append(lumi);
   }
@@ -779,7 +791,13 @@ export function mountSensory(content, course, module, lesson) {
     const stars = moduleStars(course, module);
     const medal = stars === module.lessons.length;
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
-    if (medal) icon.dataset.medal = module.id;
+    if (medal) {
+      icon.dataset.medal = module.id;
+      if (course.id === 'math-4-5') {
+        const [shape,color] = math45Medals[course.modules.indexOf(module)];
+        icon.replaceChildren(picture({shape,color}));
+      }
+    }
     icon.setAttribute('aria-hidden', 'true');
     panel.append(icon, heading);
     if (medal) panel.append(node('h3', '', module.reward));

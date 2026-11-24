@@ -15,7 +15,7 @@ if (panel) {
   panel.querySelector('a').href = 'program.html?course=' + course.id;
   const stars = course.modules.reduce((sum,module)=>sum+moduleStars(course,module),0);
   if (courseCompleted(course)) {
-    panel.querySelector('h1').textContent = 'Ты прошёл математику с Луми!';
+    panel.querySelector('h1').textContent = course.id === 'math-4-5' ? 'Мир чисел и фигур пройден!' : 'Ты прошёл математику с Луми!';
     panel.querySelector('p').textContent = course.id === 'math-4-5' ? stars + ' звёзд · 10 завершённых модулей · 10 медалей' : stars + ' звезды · 12 завершённых модулей · 12 медалей';
     const confetti = document.createElement('div');
     confetti.className = 'academy-confetti';
