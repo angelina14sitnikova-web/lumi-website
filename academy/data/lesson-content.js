@@ -42,5 +42,5 @@ import { time56 } from './math56/time.js';
 // Add completed scene and practice definitions by their permanent lesson IDs.
 import { numberPortals } from './math67/numbers.js';
 import { numberHouses } from './math67/parts.js';
-import { addition } from './math67/arithmetic.js';
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition };
+import { addition, subtraction } from './math67/arithmetic.js';
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction };

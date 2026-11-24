@@ -24,7 +24,7 @@ export default [
     ['math-67-lesson-3-5', 'Складываем в пределах 10 с опорой на предметы'],
     ['math-67-lesson-3-6', 'Решаем задачи на сложение'],
   ],
-  [{ id: 'math-67-module-4', title: 'Вычитание', cover: 'assets/module-8.webp' },
+  [{ id: 'math-67-module-4', title: 'Вычитание', reward: "Медаль хранителя математических секретов", cover: 'assets/module-8.webp' },
     ['math-67-lesson-4-1', 'Убираем часть предметов'],
     ['math-67-lesson-4-2', 'Знак минус'],
     ['math-67-lesson-4-3', 'Составляем примеры на вычитание'],

@@ -39,6 +39,11 @@ function animate(el, frames, options) {
   if (!reduced()) el.animate(frames, { fill: 'both', ...options });
 }
 function picture(piece) {
+  if (piece.pictureSequence67) {
+    const sequence = node('span', 'math67-arithmetic-row');
+    sequence.append(...piece.pictureSequence67.map(picture));
+    return sequence;
+  }
   const frame = node('span', 'sensory-picture');
   frame.dataset.size = piece.size || 'default';
   frame.dataset.shape = piece.shape;
@@ -200,6 +205,7 @@ function sample(piece) {
 }
 const math45Poses = {
   'arithmetic-alchemy':'lumi-thinking.png',
+  'vanishing-vault':'lumi-welcome.png',
   'number-houses':'lumi-thinking.png',
   'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
@@ -251,7 +257,7 @@ function slot(piece, interactive) {
   const el = node(interactive ? 'button' : 'div', 'sensory-target');
   if (interactive) {
     el.type = 'button';
-    el.setAttribute('aria-label', sensoryName(piece));
+    el.setAttribute('aria-label', piece.pictureSequence67 ? piece.pictureSequence67.map(sensoryName).join(', ') : sensoryName(piece));
   }
   const visual = node('span', 'sensory-slot-figure');
   const marker = picture(piece);
@@ -579,7 +585,7 @@ export function mountSensory(content, course, module, lesson) {
       const el = node('button', 'color-choice sensory-card');
       el.type = 'button';
       el.dataset.from = String(index);
-      el.setAttribute('aria-label', sensoryName(piece));
+      el.setAttribute('aria-label', piece.pictureSequence67 ? piece.pictureSequence67.map(sensoryName).join(', ') : sensoryName(piece));
       el.setAttribute('aria-pressed', 'false');
       el.append(picture(piece));
       el.addEventListener('click', () => choose(index));
@@ -772,6 +778,14 @@ export function mountSensory(content, course, module, lesson) {
       example.classList.add('math56-map-example');
       example.setAttribute('aria-label','Образец расположения фигур');
       stage.append(example);
+    }
+    if (round.demo67) {
+      const replay = button('Повторить показ', () => {
+        display.replaceChildren(arithmeticDemo(round.demo67, animate));
+      });
+      const display = node('div', 'math67-arithmetic');
+      display.append(arithmeticDemo(round.demo67, animate));
+      stage.append(display, replay);
     }
     if (round.sample) stage.append(sample(round.sample));
     if (round.cues) {

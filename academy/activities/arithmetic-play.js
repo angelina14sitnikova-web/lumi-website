@@ -22,18 +22,44 @@ function items(tag,n,delta=0){
  for(let i=0;i<n;i++) row.append(art(tag,i>=n-delta));
  return row;
 }
-export function arithmeticDemo(model,animate){
- const {a,b,tag,sign}=model;
+export function arithmeticDemo(model, animate) {
+ const {a,b,tag,sign,track,frame}=model;
+ const addition=sign===plus;
  const panel=create('div','math67-arithmetic');
- const before=create('div','math67-arithmetic-row');
- before.append(items(tag,a),create('b',null,sign),items(tag,b,b));
- const after=items(tag,total(model),sign===plus?b:0);
- after.setAttribute('aria-label','Количество после действия');
- const record=create('span','math67-expression',a+' '+sign+' '+b+' = '+total(model));
- panel.append(before,after);
- if(model.show)panel.append(record);
- animate(after,[{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{duration:750,delay:700,fill:'both'});
- if(model.show)animate(record,[{opacity:0},{opacity:1}],{duration:500,delay:1430,fill:'both'});
+ const stage=items(tag,addition?a+b:a,addition?b:0);
+ const delay=650;
+ const motion=320;
+ if(track){
+  stage.replaceChildren();
+  stage.className='math67-number-track';
+  for(let number=0;number<=10;number++){
+   const step=create('span',number===total(model)?'here':null,number);
+   if(number===total(model)) animate(step,[{background:'#fdf2db',color:'#163255'},{background:'#5e4290',color:'#fff'}],{delay:delay+b*motion,duration:160,fill:'both'});
+   else {
+    const distance=addition?number-a:a-number;
+    if(distance>=0 && distance<b) animate(step,[{background:'#5e4290',color:'#fff'},{background:'#fdf2db',color:'#163255',offset:.99}],{delay:delay+distance*motion,duration:motion});
+   }
+   stage.append(step);
+  }
+ }else{
+  if(frame){
+   stage.classList.add('math67-ten-frame');
+   for(let index=stage.children.length;index<10;index++)stage.append(create('span'));
+  }
+  const moving=[...stage.children].slice(a-(addition?0:b),addition?a+b:a);
+  moving.forEach((item,index)=>animate(item,addition
+   ?[{opacity:.35,transform:'translateY(-15px)'},{opacity:1,transform:'none'}]
+   :[{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-30px)'}],
+   {delay:delay+index*motion,duration:motion,fill:'both'}));
+  if(!addition && matchMedia('(prefers-reduced-motion: reduce)').matches) moving.forEach(item=>item.remove());
+ }
+ panel.append(stage);
+ if(model.show){
+  const text=a+' '+sign+' '+b+(model.show==='expression'?'':' = '+total(model));
+  const record=create('span','math67-expression',text);
+  panel.append(record);
+  animate(record,[{opacity:0},{opacity:1}],{duration:360,delay:delay+b*motion,fill:'both'});
+ }
  return panel;
 }
 function feedbackTools(feedback) {
