@@ -40,7 +40,7 @@ export default [
     ['math-45-lesson-5-5', 'Круг и овал'],
     ['math-45-lesson-5-6', 'Находим фигуры в окружающем мире'],
   ],
-  [{ id: 'math-45-module-6', title: 'Форма и сравнение', cover: 'assets/module-7.webp' },
+  [{ id: 'math-45-module-6', title: 'Форма и сравнение', reward: 'Медаль мастера мозаики', cover: 'assets/module-7.webp' },
     ['math-45-lesson-6-1', 'Подбираем предмет по форме'],
     ['math-45-lesson-6-2', 'Одинаковая форма — разный размер'],
     ['math-45-lesson-6-3', 'Разная форма — одинаковый цвет'],
