@@ -40,7 +40,7 @@ export default [
     ['math-56-lesson-5-5', 'Уравниваем две группы предметов'],
     ['math-56-lesson-5-6', 'Сравниваем соседние числа'],
   ],
-  [{ id: 'math-56-module-6', title: 'Состав числа из единиц', cover: 'assets/module-12.webp' },
+  [{ id: 'math-56-module-6', title: 'Состав числа из единиц', reward: 'Медаль архитектора числового города', cover: 'assets/module-12.webp' },
     ['math-56-lesson-6-1', 'Состав числа два'],
     ['math-56-lesson-6-2', 'Состав числа три'],
     ['math-56-lesson-6-3', 'Состав числа четыре'],
