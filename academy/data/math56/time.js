@@ -4,7 +4,7 @@ import {objects,count,groups,compare,balance} from '../math45/counting.js';
 import {measurePick,series} from '../math45/magnitude.js';
 import {token,choose,join,set,scene,exercise,connect,pick,stages} from '../math45/builders.js';
 import {num,match} from './digits.js';
-import {planRoute} from './spatial.js';
+import {planRoute,restore} from './spatial.js';
 const phases=[dawn,day,dusk,night];
 const weekdays=['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
 const months=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
@@ -56,6 +56,6 @@ export const time56=keyed56(10,'time-palace',[
  [[teach('На карте десять математических миров.',objects('crystal/sky',10)),teach('Вспомним формы, тела и мерки.',set('circle sphere cube square measureUnit')),teach('Вспомним маршруты и времена года.',[token('arrowup'),token('arrowright'),...seasons])],
  [stages('Врата чисел',count('Пересчитай десять кристаллов',objects('crystal/sky',10)),completeNumbers(),neighbor(7),compare10()),
  finishGeometry(),finishMeasure(),
- stages('Лабиринт картографа',join('Размести фигуры по образцам','triangle circle square','circle triangle square',[1,0,2]),planRoute('Проложи маршрут к сундуку',[0,2],['up','right','right','down'],[[1,2]])),
+ stages('Лабиринт картографа',restore('Размести фигуры по образцу',['triangle/blue','circle/sky','square/pink'],[0,4,2]),planRoute('Проложи маршрут к сундуку',[0,2],['up','right','right','down'],[[1,2]])),
  stages('Дворец времени',refer('Восстанови части суток',phases),refer('Восстанови дни недели',days),refer('Восстанови времена года',seasons))]],
 ]);

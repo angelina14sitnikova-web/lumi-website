@@ -23,7 +23,12 @@ const mark=(prompt,tag,index,indices=[0,1,2,3,4])=>{
 const paperPick=(prompt,tags,index,sample)=>{const map=place('paper',tags);
  return exercise(prompt,'Посмотри на лист.',pick(map.items,index,sample?token(sample):null,{place:map}));
 };
-const restore=(prompt,tags,positions)=>stages(prompt,...tags.map((tag,i)=>mark('Положи деталь на отмеченное место',tag,positions[i])));
+export const restore=(prompt,tags,positions)=>{
+ const indices=coords.map((_,i)=>i);
+ const map=place('paper',indices.map(()=>'spot'),indices);
+ return exercise(prompt,'Посмотри на образец и разложи фигуры.',
+   connect(tags.map(token),map.items,positions,{place:map,mapExample:place('paper',tags,positions)}));
+};
 const sideShow=(text,kind,anchor,first,second,focus)=>{
  const items = (kind==='between' ? [[49,54],[83,74]] : [[20,55],[78,55]]).map(([x,y],i)=>({...token(i?second:first),x,y}));
  return scene('locate',text,[],{place:{kind,items,anchor:{...token(anchor),x:kind==='between'?26:50,y:53},second:kind==='between'?{...token(anchor),x:70,y:53}:null,direction:kind==='front',focus}});

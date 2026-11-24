@@ -749,6 +749,12 @@ export function mountSensory(content, course, module, lesson) {
       stage.append(trace);
       row.hidden=true;
     }
+    if (round.mapExample) {
+      const example=spatialPanel(round.mapExample,round.mapExample.items.map(picture));
+      example.classList.add('math56-map-example');
+      example.setAttribute('aria-label','Образец расположения фигур');
+      stage.append(example);
+    }
     if (round.sample) stage.append(sample(round.sample));
     if (round.cues) {
       const cues = node('div', 'sensory-row');

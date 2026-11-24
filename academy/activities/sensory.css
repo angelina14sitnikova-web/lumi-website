@@ -420,3 +420,11 @@ button.sensory-target { cursor: pointer; }
 .math56-unit-track-art:is([data-axis="width"],[data-axis="height"]) .sensory-target .sensory-picture > svg {
   rotate:90deg;
 }
+
+.math56-map-example {
+  --piece:clamp(1.4rem,6vw,2.4rem);
+  width: min(80%, 12rem);
+  min-height:0;
+  aspect-ratio: 4/3;
+}
+.math56-map-example .sensory-picture {position:absolute;translate:-50% -50%;}
