@@ -197,6 +197,7 @@ function sample(piece) {
   return el;
 }
 const math45Poses = {
+  'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
   'number-observatory':'lumi-thinking.png','number-express':'lumi-welcome.png',
   'balance-kingdom':'lumi-thinking.png','unit-houses':'lumi-happy.png',
@@ -946,6 +947,7 @@ export function mountSensory(content, course, module, lesson) {
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) {
       icon.dataset.medal = module.id;
+      if (module.id==='math-67-module-1') icon.replaceChildren(picture({shape:'crystal',color:'blue'}));
       if (['math-4-5','math-5-6'].includes(course.id)) {
         const medals = course.id === 'math-5-6' ? math56Medals : math45Medals;
         const [shape,color] = medals[course.modules.indexOf(module)];

@@ -1,6 +1,6 @@
 // Порядок записей определяет видимую нумерацию. Идентификаторы постоянны.
 export default [
-  [{ id: 'math-67-module-1', title: 'Числа от 0 до 10', cover: 'assets/module-3.webp' },
+  [{ id: 'math-67-module-1', title: 'Числа от 0 до 10', reward: 'Медаль повелителя чисел', cover: 'assets/module-3.webp' },
     ['math-67-lesson-1-1', 'Повторяем числа от 0 до 5'],
     ['math-67-lesson-1-2', 'Числа от 6 до 10'],
     ['math-67-lesson-1-3', 'Цифры и количество'],
