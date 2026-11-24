@@ -32,7 +32,7 @@ export default [
     ['math-45-lesson-4-5', 'На каком месте предмет?'],
     ['math-45-lesson-4-6', 'Порядок предметов до пяти'],
   ],
-  [{ id: 'math-45-module-5', title: 'Геометрические фигуры', cover: 'assets/module-6.webp' },
+  [{ id: 'math-45-module-5', title: 'Геометрические фигуры', reward: 'Медаль хранителя геометрического замка', cover: 'assets/module-6.webp' },
     ['math-45-lesson-5-1', 'Вспоминаем круг, квадрат и треугольник'],
     ['math-45-lesson-5-2', 'Прямоугольник'],
     ['math-45-lesson-5-3', 'Овал'],
