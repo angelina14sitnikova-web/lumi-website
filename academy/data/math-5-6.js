@@ -56,7 +56,7 @@ export default [
     ['math-56-lesson-7-5', 'Собираем фигуру из частей'],
     ['math-56-lesson-7-6', 'Делим фигуру на части'],
   ],
-  [{ id: 'math-56-module-8', title: 'Величина и измерение', cover: 'assets/module-5.webp' },
+  [{ id: 'math-56-module-8', title: 'Величина и измерение', reward: 'Медаль исследователя величин', cover: 'assets/module-5.webp' },
     ['math-56-lesson-8-1', 'Выстраиваем ряд по длине'],
     ['math-56-lesson-8-2', 'Выстраиваем ряд по высоте'],
     ['math-56-lesson-8-3', 'Выстраиваем ряд по ширине'],
