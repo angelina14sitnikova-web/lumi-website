@@ -43,9 +43,38 @@ function picture(piece) {
     frame.style.setProperty('--extent', [.44, .71, 1][piece.value - 1]);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  frame.append(sensoryArt(piece));
+  if (piece.count !== undefined) {
+    frame.classList.add('quantity-picture');
+    const strip = (count, connected = 0) => {
+      const row = node('span', 'quantity-items');
+      for (let i = 0; i < count; i += 1) {
+        const item = node('span', i < connected ? 'quantity-paired' : '');
+        item.append(sensoryArt(piece));
+        row.append(item);
+      }
+      frame.append(row);
+    };
+    strip(piece.count, piece.other);
+    if (piece.other) strip(piece.other);
+  } else frame.append(sensoryArt(piece));
   return frame;
 }
+function pairDisplay(left, right) {
+  const pairs = node('div', 'quantity-pairs');
+  pairs.setAttribute('aria-label', 'Два ряда предметов. Предметы друг напротив друга образуют пару.');
+  for (let i = 0; i < Math.max(left.count, right.count); i += 1) {
+    const column = node('span', 'quantity-column');
+    column.append(i < left.count ? picture({...left, count: undefined}) : node('span', 'quantity-empty'));
+    const connector = node('span', 'quantity-connector');
+    if (i < Math.min(left.count, right.count)) connector.classList.add('quantity-linked');
+    column.append(connector, i < right.count ? picture({...right, count: undefined}) : node('span', 'quantity-empty'));
+    animate(column, [{opacity: .25, transform: 'translateY(-8px)'}, {opacity: 1, transform: 'none'}],
+      {duration: 450, delay: 200 + i * 180});
+    pairs.append(column);
+  }
+  return pairs;
+}
+
 function sample(piece) {
   const el = node('div', 'sensory-sample');
   el.setAttribute('role', 'img');
@@ -143,7 +172,27 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.targets) {
+  if (scene.effect === 'correspond') {
+    pieces.replaceWith(pairDisplay(...scene.pieces));
+  } else if (['spin', 'roll', 'face'].includes(scene.effect)) {
+    const prop = props[0].firstChild;
+    if (scene.pieces[0].shape === 'cube') {
+      const cube = node('span', 'world-cube');
+      for (let i = 0; i < 6; i += 1) cube.append(node('span', 'world-face'));
+      if (scene.effect === 'face') cube.classList.add('world-face-focus');
+      prop.replaceChildren(cube);
+      animate(cube, [{ transform: 'rotateX(-22deg) rotateY(24deg)' },
+        { transform: 'rotateX(-22deg) rotateY(384deg)' }], { duration: 2600 });
+    } else {
+      const art = prop.firstChild;
+      animate(art, [{ rotate: '0deg' }, { rotate: '360deg' }], {duration: 2200, easing: 'ease-in-out'});
+      if (scene.effect === 'roll') {
+        const road = node('span', 'world-road');
+        props[0].append(road);
+        animate(prop, [{translate: '-75% 0'}, {translate: '75% 0'}], {duration: 2200, easing: 'ease-in-out'});
+      }
+    }
+  } else if (scene.targets) {
     const row = node('div', 'sensory-row sensory-targets');
     if (scene.effect === 'assemble') row.classList.add('sensory-assembly');
     const targets = scene.targets.map(piece => slot(piece, false));
@@ -234,6 +283,7 @@ export function mountSensory(content, course, module, lesson) {
   let exerciseIndex = 0;
   let roundIndex = 0;
   let answers = [];
+  const transferred = new Map();
 
   function display(panel, heading, focus = true) {
     content.replaceChildren(panel);
@@ -333,6 +383,22 @@ export function mountSensory(content, course, module, lesson) {
       } else el.addEventListener('click', () => connect(index));
       return el;
     });
+    const roundKey = exerciseIndex + ':' + roundIndex;
+    let transferCount = transferred.get(roundKey) || 0;
+
+    if (round.pairCounts) {
+      const pairButton = button('↕ Составить пары', () => {
+
+        pairButton.replaceWith(pairDisplay(...round.pieces));
+        buttons.forEach(control => { control.disabled = false; });
+        buttons[0].focus();
+      });
+      if (!steps.length) {
+        buttons.forEach(control => { control.disabled = true; });
+        stage.append(pairButton);
+      }
+    }
+    if (round.recipient) stage.append(sample(round.recipient));
     const targetRow = node('div', 'sensory-row sensory-targets');
     if (round.assembly) targetRow.classList.add('sensory-assembly');
     targetRow.append(...targets);
@@ -415,8 +481,24 @@ export function mountSensory(content, course, module, lesson) {
     function connect(to) {
       if (!next.disabled) return;
       const step = remaining().find(answer => answer.from === selected && answer.to === to);
-      if (step) record(step);
-      else wrong(targets[to]);
+      if (!step) {
+        wrong(targets[to]);
+        return;
+      }
+      if (round.repeat && ++transferCount < round.repeat) {
+        transferred.set(roundKey, transferCount);
+        const source = buttons[step.from];
+        travel(round.pieces[step.from], source, targets[to]);
+        source.classList.remove('sensory-moved');
+        source.setAttribute('aria-pressed', 'false');
+        clearHint();
+        mistakes = 0;
+        selected = null;
+        feedback.textContent = 'Получилось! Возьми ещё один предмет.';
+        source.focus();
+        return;
+      }
+      record(step);
     }
     function showStep({ from, to }) {
       const el = buttons[from];
@@ -462,6 +544,10 @@ export function mountSensory(content, course, module, lesson) {
     if (task.rounds.length > 1) panel.append(dots(roundIndex, task.rounds.length, 'Часть задания'));
     panel.append(stage, feedback, nav);
     display(panel, heading);
+    if (round.repeat) {
+      const destination = targets[0].querySelector('.sensory-contents');
+      for (let i = 0; i < (steps.length ? round.repeat - 1 : transferCount); i += 1) destination.append(picture(round.pieces[0]));
+    }
     steps.forEach(showStep);
     update('');
   }
@@ -471,7 +557,7 @@ export function mountSensory(content, course, module, lesson) {
     const heading = node('h2', 'lesson-part', 'Урок пройден!');
     const stars = moduleStars(course, module);
     const medal = stars === module.lessons.length;
-    const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', '★');
+    const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) icon.dataset.medal = module.id;
     icon.setAttribute('aria-hidden', 'true');
     panel.append(icon, heading);
@@ -481,6 +567,7 @@ export function mountSensory(content, course, module, lesson) {
     nav.append(link('К модулю', moduleUrl), button('↻ Пройти ещё раз', () => {
       sceneIndex = exerciseIndex = roundIndex = 0;
       answers = [];
+      transferred.clear();
       explain();
     }));
     const nextLesson = module.lessons[module.lessons.indexOf(lesson) + 1];

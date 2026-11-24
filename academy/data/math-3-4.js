@@ -61,7 +61,7 @@ const mathModules = [
     ['shapes-7', 'Геометрическая мастерская Луми'],
   ],
   [
-    { id: 'shape-world', title: 'Фигуры вокруг нас', cover: 'assets/module-7.webp' },
+    { id: 'shape-world', title: 'Фигуры вокруг нас', cover: 'assets/module-7.webp', reward: 'Медаль исследователя форм' },
     ['shape-world-1', 'Находим круглые предметы'],
     ['shape-world-2', 'Находим квадратные предметы'],
     ['shape-world-3', 'Находим треугольные предметы'],
@@ -71,7 +71,7 @@ const mathModules = [
     ['shape-world-7', 'Сортируем предметы по форме'],
   ],
   [
-    { id: 'quantity', title: 'Один и много', cover: 'assets/module-8.webp' },
+    { id: 'quantity', title: 'Один и много', cover: 'assets/module-8.webp', reward: 'Медаль знатока количества' },
     ['quantity-1', 'Один предмет'],
     ['quantity-2', 'Много предметов'],
     ['quantity-3', 'Один или много?'],
