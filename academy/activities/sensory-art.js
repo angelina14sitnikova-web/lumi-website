@@ -26,6 +26,7 @@ const props = {
 
 const sizeNames = { small: 'маленький размер', middle: 'средний размер', large: 'большой размер' };
 export function sensoryName(piece) {
+  if (piece.numeral !== undefined) return 'Карточка ' + piece.numeral;
   const prop = props[piece.shape] || finalDesign(piece.shape) || worldDesign(piece.shape) || [geometryName(piece.shape)];
   const name = prop[0] ? palette[piece.color].name + ' · ' + prop[0].toLowerCase() : toyName(piece);
   return piece.size ? name + ' · ' + sizeNames[piece.size] : name;

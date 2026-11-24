@@ -1,3 +1,4 @@
+import { makeTrace } from './digit-trace.js';
 import { checkAnswer, lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 import { courseCompleted, celebrationUrl } from './celebration.js';
 import { palette } from './colors-model.js';
@@ -45,7 +46,10 @@ function picture(piece) {
     if (piece.extent) frame.style.setProperty('--cross-extent', piece.extent);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  if (piece.commands) {
+  if (piece.numeral !== undefined) {
+    frame.classList.add('math56-number');
+    frame.textContent=String(piece.numeral);
+  } else if (piece.commands) {
     frame.classList.add('math45-command-card');
     piece.commands.forEach(step => frame.append(sensoryArt({shape:'arrow'+step,color:'blue'})));
   } else if (piece.count !== undefined) {
@@ -216,7 +220,9 @@ function slot(piece, interactive) {
     el.setAttribute('aria-label', sensoryName(piece));
   }
   const visual = node('span', 'sensory-slot-figure');
-  visual.append(picture(piece));
+  const marker = picture(piece);
+  if (piece.marked) marker.classList.add('sensory-emphasis');
+  visual.append(marker);
   if (['box', 'basket', 'stall'].includes(piece.shape) && !piece.size) visual.append(mark(piece));
   el.append(visual, node('span', 'sensory-contents'));
   return el;
@@ -277,7 +283,9 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'route') {
+  if (scene.effect === 'digit-trace') {
+    pieces.replaceWith(makeTrace(scene.digit,null,null,true));
+  } else if (scene.effect === 'route') {
     pieces.replaceWith(drawRoute(scene.route,true).field);
   } else if (scene.effect === 'turn') {
     animate(props[0].firstChild,[{rotate:'0deg'},{rotate:'90deg'}],{duration:1400,delay:350});
@@ -608,6 +616,17 @@ export function mountSensory(content, course, module, lesson) {
         stage.append(alignment);
       }
     }
+    if (round.trace !== undefined) {
+      const digit = round.trace;
+      const trace = makeTrace(digit,()=>record({from:0}),()=>{
+        mistakes+=1;
+        feedback.dataset.state='retry';
+        feedback.textContent = mistakes>=2 ? 'Начни с жёлтой точки и иди за подсветкой.' : 'Попробуй следующую жёлтую точку.';
+        if (mistakes>=2) trace.classList.add('trace-hint');
+      },steps.length>0);
+      stage.append(trace);
+      row.hidden=true;
+    }
     if (round.sample) stage.append(sample(round.sample));
     if (round.cues) {
       const cues = node('div', 'sensory-row');
@@ -725,6 +744,7 @@ export function mountSensory(content, course, module, lesson) {
       el.setAttribute('aria-pressed', 'true');
       if (round.tally && !round.presses) el.setAttribute('aria-disabled', 'true');
       else el.disabled = true;
+      if (round.removePicked) el.hidden = true;
       if (round.targets) {
         travel(round.pieces[from], el, targets[to], 0, round.overlay);
         if (round.starts) el.hidden = true;

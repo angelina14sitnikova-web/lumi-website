@@ -331,3 +331,14 @@ button.sensory-target { cursor: pointer; }
 .sensory-row[data-arrangement="orbit"] > :nth-child(7){grid-area:d;}
 .sensory-row[data-arrangement="orbit"] .sensory-card {max-width:100%;}
 .math45-tally {flex-wrap:wrap;}
+.math56-trace {width:min(100%,17rem);aspect-ratio:1;background:#fffaf1;border-radius:1rem;touch-action:none;box-shadow:0 .3rem .8rem #49346238;}
+.math56-trace [data-trace-point] {cursor:pointer;}
+.math56-trace .trace-next {fill:#ffe082;stroke-width:2;}
+.math56-trace .trace-done {fill:#b78cdb;}
+.math56-number {font:800 clamp(1.7rem,7vw,4rem)/1 system-ui,sans-serif;display:grid;place-items:center;color:#503373;}
+.math56-trace.trace-hint .trace-next {stroke:#4f277f;stroke-width:4;}
+.math45-ordinal:has(> :nth-child(7)) {
+  justify-content:flex-start;overflow:auto;padding-block-start:1.6rem;
+}
+.math45-ordinal:has(> :nth-child(7))::before {top:.05rem;}
+.math45-ordinal:has(> :nth-child(7)) > * {flex:0 0 clamp(2.75rem,8vw,4rem);}

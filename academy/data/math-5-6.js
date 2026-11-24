@@ -8,7 +8,7 @@ export default [
     ['math-56-lesson-1-5', 'Считаем предметы до девяти'],
     ['math-56-lesson-1-6', 'Считаем предметы до десяти'],
   ],
-  [{ id: 'math-56-module-2', title: 'Цифры от 0 до 5', cover: 'assets/module-3.webp' },
+  [{ id: 'math-56-module-2', title: 'Цифры от 0 до 5', reward: 'Медаль хранителя первых цифр', cover: 'assets/module-3.webp' },
     ['math-56-lesson-2-1', 'Знакомимся с цифрой 1'],
     ['math-56-lesson-2-2', 'Цифры 2 и 3'],
     ['math-56-lesson-2-3', 'Цифры 4 и 5'],
