@@ -55,6 +55,7 @@ function picture(piece) {
     const {n,axis,offsets} = piece.unitDiagram;
     frame.classList.add('math56-unit-diagram');
     frame.dataset.axis = axis;
+    frame.style.setProperty('--units',n);
     frame.append(sensoryArt(piece));
     const marks = node('span','math56-measure-marks');
     marks.style.setProperty('--segments',n);
@@ -593,7 +594,9 @@ export function mountSensory(content, course, module, lesson) {
       const track = node('div','math56-unit-track');
       track.dataset.axis = axis;
       track.style.setProperty('--segments',n);
-      track.append(sensoryArt({shape,color}));
+      const subject = sensoryArt({shape,color});
+      subject.setAttribute('preserveAspectRatio','none');
+      track.append(subject);
       stage.append(track);
       track.classList.add('math56-unit-track-art');
       unitTrack = track;

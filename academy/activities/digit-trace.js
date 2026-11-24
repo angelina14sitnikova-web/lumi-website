@@ -42,6 +42,7 @@ export function makeTrace(digit, onFinish, onMistake, demonstration = false) {
   const markerPositions=Array.from({length:9},(_,i)=>shape.getPointAtLength(i*length/8));
   let completed=0;
   let drawing=false;
+  let initialProgress=0;
   const markers=markerPositions.map((point,index)=>{
     const circle=document.createElementNS(ns,'circle');
     circle.setAttribute('cx',point.x);
@@ -74,8 +75,16 @@ export function makeTrace(digit, onFinish, onMistake, demonstration = false) {
     const point=new DOMPoint(event.clientX,event.clientY).matrixTransform(matrix.inverse());
     if(Math.hypot(point.x-expected.x,point.y-expected.y)<=11) advance();
   }
-  svg.addEventListener('pointerdown',event=>{drawing=true;});
+  svg.addEventListener('pointerdown',event=>{
+    initialProgress=completed;
+    drawing=true;
+    track(event);
+  });
   svg.addEventListener('pointermove',event=>{if(drawing)track(event);});
-  for(const name of ['pointerup','pointercancel','pointerleave'])svg.addEventListener(name,()=>{drawing=false;});
+  svg.addEventListener('pointerup',event=>{
+    if (drawing && initialProgress===completed && completed<markers.length && event.target.dataset.tracePoint===undefined) onMistake();
+    drawing=false;
+  });
+  for(const name of ['pointercancel','pointerleave'])svg.addEventListener(name,()=>{drawing=false;});
   return svg;
 }

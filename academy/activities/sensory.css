@@ -377,8 +377,8 @@ button.sensory-target { cursor: pointer; }
 .math56-plan .math56-plan-commands { min-height:2.5rem; }
 .math56-plan .sensory-row .sensory-picture { width:2.2rem;height:2.2rem; }
 
-.sensory-lesson .color-choices,.sensory-lesson .sensory-row {min-width:0;max-width:100%;}
-.sensory-lesson .lesson-part {min-width:0;}
+.math56-lesson .color-choices,.math56-lesson .sensory-row {min-width:0;max-width:100%;}
+.math56-lesson .lesson-part {min-width:0;}
 .math56-unit-track-art {position:relative; height:auto; min-height:3rem; width:min(100%,calc(var(--segments) * 3rem));}
 .math56-unit-track-art > .color-toy {position:absolute; inset:0; opacity:.42; z-index:0;}
 .math56-unit-track-art .sensory-targets {position:relative;gap:0;flex-wrap:nowrap;justify-content:center;overflow:visible;}
@@ -397,3 +397,26 @@ button.sensory-target { cursor: pointer; }
 .lesson-map[data-kind="corners"] {width:min(100%,17rem);aspect-ratio:1;}
 .lesson-map[data-kind="corners"] .lesson-anchor {width:70%;height:70%;}
 .lesson-map[data-kind="corners"] .sensory-card {width:2.75rem;min-height:2.75rem;padding:0;}
+
+.math56-unit-diagram .math56-measure-marks {
+  --unit-size:clamp(.42rem,1.7vw,.9rem);
+  inset:45% auto auto 12%;
+  width:calc(var(--units) * var(--unit-size));
+  height:var(--unit-size);
+}
+.math56-unit-diagram:is([data-axis="width"],[data-axis="height"]) .math56-measure-marks {
+  inset:auto auto 10% 44%;
+  flex-direction:column;
+  width:var(--unit-size);
+  height:calc(var(--units) * var(--unit-size));
+}
+.math56-unit-diagram[data-axis="width"] .math56-measure-mark {transform:translateY(var(--offset));}
+.math56-unit-track-art:is([data-axis="width"],[data-axis="height"]) {
+  width:min(100%,9rem);
+}
+.math56-unit-track-art[data-axis="width"] .sensory-targets {
+  flex-direction:column;align-items:center;
+}
+.math56-unit-track-art:is([data-axis="width"],[data-axis="height"]) .sensory-target .sensory-picture > svg {
+  rotate:90deg;
+}
