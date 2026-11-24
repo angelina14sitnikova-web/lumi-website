@@ -320,3 +320,10 @@
 @media(prefers-reduced-motion:reduce){.academy-confetti span{animation:none;}}
 .academy-course-medals {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.45rem;width:min(100%,50rem);list-style:none;padding:0;}
 .academy-course-medals li {border:1px solid #d8b46e;border-radius:.7rem;padding:.6rem;background:#fff5d8;}
+
+.course-celebration.math56-celebration {
+  background:linear-gradient(#fff7ee6e,#fff8efd9),url('assets/sensory/math56-celebration.webp') center/cover;
+}
+.math56-celebration h1,.math56-celebration p {background:#fff8edeb;padding:.4rem .85rem;border-radius:.7rem;}
+
+.academy-tone-5-6 .lesson-header h1 {overflow-wrap:anywhere;}

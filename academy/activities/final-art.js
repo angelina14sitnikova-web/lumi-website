@@ -61,6 +61,7 @@ const designs = {
 };
 const pawDrawing='<path d="M24 60q0-9 8-15l11-8q7-5 14 0l11 8q8 6 8 15 0 14-15 10l-11-4-11 4Q24 74 24 60Z" fill="#e4b992"/><g fill="#e4b992"><circle cx="27" cy="34" r="8"/><circle cx="43" cy="22" r="8"/><circle cx="60" cy="22" r="8"/><circle cx="75" cy="34" r="8"/></g>';
 const shapeParts={
+ moon: ['Месяц','<path d="M68 17a34 34 0 1 0 15 51C53 73 42 36 68 17Z" fill="#e6d7a2"/>'],
  leftPaw:['Левая лапка',pawDrawing], rightPaw:['Правая лапка',pawDrawing],
  paperMap:['Лист бумаги','<rect x="12" y="17" width="76" height="66" rx="5" fill="#fff5dd"/>'],
  block:['Игрушечный кубик','<path d="M18 31 50 14l32 17v42L50 90 18 73Z"/><path d="m18 31 32 17 32-17M50 48v42" fill="none" stroke="#51326a"/>'],

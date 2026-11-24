@@ -72,7 +72,7 @@ export default [
     ['math-56-lesson-9-5', 'Двигаемся по схеме'],
     ['math-56-lesson-9-6', 'Составляем маршрут Луми'],
   ],
-  [{ id: 'math-56-module-10', title: 'Время и математическое повторение', cover: 'assets/module-11.webp' },
+  [{ id: 'math-56-module-10', title: 'Время и математическое повторение', reward: 'Золотая медаль математического исследователя', cover: 'assets/module-11.webp' },
     ['math-56-lesson-10-1', 'Части суток'],
     ['math-56-lesson-10-2', 'Дни недели'],
     ['math-56-lesson-10-3', 'Месяцы и времена года'],
