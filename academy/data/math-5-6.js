@@ -32,7 +32,7 @@ export default [
     ['math-56-lesson-4-5', 'Какое число идёт позже?'],
     ['math-56-lesson-4-6', 'Числа-соседи'],
   ],
-  [{ id: 'math-56-module-5', title: 'Сравниваем количество', cover: 'assets/module-8.webp' },
+  [{ id: 'math-56-module-5', title: 'Сравниваем количество', reward: 'Медаль хранителя равновесия', cover: 'assets/module-8.webp' },
     ['math-56-lesson-5-1', 'Больше, меньше, поровну'],
     ['math-56-lesson-5-2', 'Сравниваем группы до десяти'],
     ['math-56-lesson-5-3', 'Независимость количества от расположения'],
