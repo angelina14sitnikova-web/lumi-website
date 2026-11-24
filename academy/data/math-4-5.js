@@ -24,7 +24,7 @@ export default [
     ['math-45-lesson-3-5', 'Столько же, больше и меньше'],
     ['math-45-lesson-3-6', 'Проверяем количество пересчётом'],
   ],
-  [{ id: 'math-45-module-4', title: 'Порядковый счёт', cover: 'assets/module-3.webp' },
+  [{ id: 'math-45-module-4', title: 'Порядковый счёт', reward: 'Медаль начальника сказочной станции', cover: 'assets/module-3.webp' },
     ['math-45-lesson-4-1', 'Кто первый? Кто последний?'],
     ['math-45-lesson-4-2', 'Первый, второй и третий'],
     ['math-45-lesson-4-3', 'Четвёртый и пятый'],
