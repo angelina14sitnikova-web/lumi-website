@@ -361,21 +361,33 @@ function illustrate(room, scene) {
     pieces.replaceWith(pairDisplay(...scene.pieces));
   } else if (['spin', 'roll', 'face'].includes(scene.effect)) {
     const prop = props[0].firstChild;
+    const rotateStage = ['geometry-palace'].includes(room);
     if (scene.pieces[0].shape === 'cube') {
       const cube = node('span', 'world-cube');
       for (let i = 0; i < 6; i += 1) cube.append(node('span', 'world-face'));
       if (scene.effect === 'face') cube.classList.add('world-face-focus');
       prop.replaceChildren(cube);
-      animate(cube, [{ transform: 'rotateX(-22deg) rotateY(24deg)' },
-        { transform: 'rotateX(-22deg) rotateY(384deg)' }], { duration: 2600 });
+      const rotation = () => animate(cube, [{ transform: 'rotateX(-22deg) rotateY(24deg)' },
+        { transform: 'rotateX(-22deg) rotateY(384deg)' }], { duration: 1800 });
+      rotation();
+      if (rotateStage) stage.append(button('↻ Повернуть куб',rotation));
     } else {
       const art = prop.firstChild;
-      animate(art, [{ rotate: '0deg' }, { rotate: '360deg' }], {duration: 2200, easing: 'ease-in-out'});
-      if (scene.effect === 'roll') {
-        const road = node('span', 'world-road');
-        props[0].append(road);
-        animate(prop, [{translate: '-75% 0'}, {translate: '75% 0'}], {duration: 2200, easing: 'ease-in-out'});
-      }
+      const cylinder = scene.pieces[0].shape === 'cylinder';
+      const motion=()=>{
+        if (cylinder) {
+          animate(art, [{rotate:'0deg'}, {rotate:'-90deg',offset:.3}, {rotate:'270deg'}], {duration:2300,easing:'ease-in-out'});
+        } else {
+          animate(art, [{rotate:'0deg'}, {rotate:'360deg'}], {duration:2200,easing:'ease-in-out'});
+        }
+        if (scene.effect === 'roll') {
+          const from={translate:'-75% 0'};
+          animate(prop,cylinder?[from,{...from,offset:.3},{translate:'75% 0'}]:[from,{translate:'75% 0'}],{duration:2200,easing:'ease-in-out'});
+        }
+      };
+      if (scene.effect === 'roll') props[0].append(node('span','world-road'));
+      motion();
+      if (rotateStage) stage.append(button('↻ Прокатить',motion));
     }
   } else if (scene.targets) {
     const row = node('div', 'sensory-row sensory-targets');
@@ -401,16 +413,18 @@ function illustrate(room, scene) {
       }
     });
   } else if (scene.effect === 'trace') {
-    const svg = props[0].querySelector('svg');
-    const shape = svg.querySelector('g').firstElementChild;
-    const trace = shape.cloneNode();
-    trace.setAttribute('fill', 'none');
-    trace.setAttribute('stroke', '#45275f');
-    trace.setAttribute('stroke-width', '5');
-    trace.setAttribute('pathLength', '100');
-    trace.setAttribute('stroke-dasharray', '100');
-    svg.append(trace);
-    animate(trace, [{ strokeDashoffset: 100 }, { strokeDashoffset: 0 }], { duration: 1400, delay: 200 });
+    const drawn = room === 'geometry-palace' ? props : props.slice(0, 1);
+    drawn.forEach((prop,index)=>{
+      const svg = prop.querySelector('svg');
+      const trace = svg.querySelector('g').firstElementChild.cloneNode();
+      trace.setAttribute('fill', 'none');
+      trace.setAttribute('stroke', '#45275f');
+      trace.setAttribute('stroke-width', '5');
+      trace.setAttribute('pathLength', '100');
+      trace.setAttribute('stroke-dasharray', '100');
+      svg.append(trace);
+      animate(trace, [{ strokeDashoffset: 100 }, { strokeDashoffset: 0 }], { duration: 1100, delay: 200+index*750 });
+    });
   } else if (scene.effect === 'align') {
     props.forEach((prop, index) => animate(prop.firstChild, [
       { transform: scene.pieces[0].axis === 'height' ? 'translateY(' + (index * -14) + 'px)' : 'translateX(' + (index * 18) + 'px)' },
@@ -472,6 +486,7 @@ export function mountSensory(content, course, module, lesson) {
   const transferred = new Map();
 
   function display(panel, heading, focus = true) {
+    if (course.id === 'math-5-6') panel.classList.add('math56-lesson');
     content.replaceChildren(panel);
     if (!focus) return;
     heading.tabIndex = -1;
@@ -782,7 +797,8 @@ export function mountSensory(content, course, module, lesson) {
       if (mistakes >= 2) {
         const step = remaining().find(answer => answer.from === selected);
         const ordered = round.ordered ? remaining().sort((a, b) => a.to - b.to)[0] : remaining()[0];
-        const hint = step ? (round.interchangeable ? targets.find((_,index)=>!steps.some(answer=>answer.to===index)) : targets[step.to]) : buttons[ordered.from];
+        const unitTarget = round.unitTrack && targets[round.unitTrack.axis==='height' ? targets.length-1-steps.length : steps.length];
+        const hint = step && unitTarget ? unitTarget : step ? (round.interchangeable ? targets.find((_,index)=>!steps.some(answer=>answer.to===index)) : targets[step.to]) : buttons[ordered.from];
         hint.dataset.hint = 'true';
       }
     }

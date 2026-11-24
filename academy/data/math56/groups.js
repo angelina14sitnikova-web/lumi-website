@@ -1,6 +1,6 @@
 import {keyed56} from './counting.js';
 import {num,match} from './digits.js';
-import {objects,group,groups,count,countScene,pickGroup,gather,fill,compare,balance} from '../math45/counting.js';
+import {objects,group,groups,count,countScene,pickGroup,gather,compare,balance} from '../math45/counting.js';
 import {token,set,show,scene,exercise,pick,connect,choose,stages} from '../math45/builders.js';
 const tag='crystal/sky';
 const gs=(n,extras={})=>group(tag,n,extras);
@@ -50,8 +50,10 @@ export const comparing=keyed56(5,'balance-kingdom',[
 const home='unit-houses';
 const loot=set('star/yellow pearl/sky crystal/pink flower/green shell/pink');
 const build=(prompt,n,tag='crystal/sky')=>gather(prompt,objects(tag,n+1),n);
-const windows=(prompt,n,tag='crystal/sky')=>fill(prompt,tag,n,'house');
-const shift=(n)=>scene('move','Один предмет в каждом окошке.',objects(tag,n),{targets:[token('house')],matches:Array(n).fill(0)});
+const windowRow=n=>objects('window',n);
+const windows=(prompt,n,tag='crystal/sky')=>exercise(prompt,'Помести по одному предмету в каждое окошко.',
+ connect(objects(tag,n),windowRow(n),Array.from({length:n},(_,i)=>i),{sample:num(n),interchangeable:true}));
+const shift=(n)=>scene('move','Один предмет в каждом окошке.',objects(tag,n),{targets:windowRow(n),matches:Array.from({length:n},(_,i)=>i)});
 const assembled=(n)=>[countScene('У каждого предмета свой цвет и своё место.',loot.slice(0,n)),countScene('Соберём отдельные предметы в одну группу.',objects(tag,n)),shift(n)];
 export const unitHouses=keyed56(6,home,[
  ...[2,3,4,5].map(n=>[assembled(n),[

@@ -393,3 +393,7 @@ button.sensory-target { cursor: pointer; }
   display:grid;place-items:center;
   background:radial-gradient(circle,#fff7c4,#e8b553);
 }
+
+.lesson-map[data-kind="corners"] {width:min(100%,17rem);aspect-ratio:1;}
+.lesson-map[data-kind="corners"] .lesson-anchor {width:70%;height:70%;}
+.lesson-map[data-kind="corners"] .sensory-card {width:2.75rem;min-height:2.75rem;padding:0;}

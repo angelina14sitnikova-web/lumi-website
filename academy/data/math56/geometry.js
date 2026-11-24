@@ -1,5 +1,5 @@
 import {keyed56} from './counting.js';
-import {choose,join,move,scene,set,show,stages} from '../math45/builders.js';
+import {choose,join,scene,set,show,stages,exercise,pick,token} from '../math45/builders.js';
 const trace=(text,pieces)=>scene('trace',text,set(pieces));
 const turn=(text,piece)=>scene('turn',text,set(piece));
 const parts=(prompt,pieces,slots,mosaic,match=slots.split(' ').map((_,i)=>i))=>
@@ -9,12 +9,17 @@ const circle=()=>parts('Собери круг из половинок','halfTop/
 const square=()=>parts('Собери квадрат из треугольников','diagonalBottom/pink diagonalTop/blue','diagonalTop diagonalBottom','splitSquare',[1,0]);
 const rectangle=()=>join('Составь прямоугольник из квадратов','square/blue square/sky','square square',[0,1],{assembly:true,mosaic:'splitRectangle',interchangeable:true});
 const quarters=()=>parts('Собери фигуру из четырёх частей','quarterNW/blue quarterNE/pink quarterSW/yellow quarterSE/green','quarterNW quarterNE quarterSW quarterSE','splitFour');
+const corners=()=>{
+ const items=[[37,29],[63,29],[25,71],[75,71]].map(([x,y])=>({...token('spot'),x,y}));
+ const map={kind:'corners',items,anchor:{...token('trapezoid','blue'),x:50,y:50}};
+ return exercise('Коснись каждого уголка','Отметь четыре уголка контура.',pick(items,[0,1,2,3],null,{place:map,tally:true}));
+};
 const fillPicture=()=>parts('Собери мозаику из семи деталей','circle/blue oval/pink triangle/sky square/yellow rectangle/green triangle/pink circle/sky','triangle/sky square/yellow circle/blue rectangle/green oval/pink triangle/pink circle/sky','sevenTiles',[2,4,0,1,3,5,6]);
 export const geometry56=keyed56(7,'geometry-palace',[
  [[show('У круга и овала плавные контуры. У овала видна вытянутая форма.','circle/blue oval/blue'),trace('Проведём вдоль сторон и остановимся у уголков.','triangle/yellow square/sky rectangle/pink'),turn('Повернём треугольник. Его форма сохраняется.','triangle/yellow')],
  [choose('Найди все треугольники','triangle/sky square/blue triangle/yellow oval/pink',[0,2],'triangle'),choose('Отметь овалы среди кругов','circle/sky oval/pink circle/blue oval/sky',[1,3],'oval'),join('Подбери фигуры к контурам','oval/blue triangle/pink circle/sky','circle triangle oval',[2,1,0]),join('Разложи фигуры по форме','circle/sky/large triangle/pink/small square/green/large circle/yellow/small','triangle square circle',[2,0,1,2]),fillPicture()]],
  [[trace('У квадрата четыре стороны.','square/sky'),trace('У этих фигур тоже по четыре стороны и четыре угла.','rectangle/pink trapezoid/yellow square/sky'),show('У треугольника три стороны. У четырёхугольника четыре.','triangle/blue trapezoid/blue')],
- [choose('Найди фигуру с четырьмя сторонами','triangle/blue trapezoid/blue oval/blue',1),choose('Коснись каждого из четырёх уголков','vertex/blue vertex/blue vertex/blue vertex/blue',[0,1,2,3],'trapezoid'),choose('Отметь все четырёхугольники','trapezoid/blue triangle/blue square/blue rectangle/blue oval/blue',[0,2,3]),join('Раздели треугольники и четырёхугольники','square/blue triangle/pink trapezoid/blue triangle/yellow rectangle/green','triangle trapezoid',[1,0,1,0,1]),parts('Соедини четыре стороны квадрата','edgeTop/blue edgeRight/sky edgeBottom/blue edgeLeft/sky','edgeTop edgeRight edgeBottom edgeLeft','squareEdges')]],
+ [choose('Найди фигуру с четырьмя сторонами','triangle/blue trapezoid/blue oval/blue',1),corners(),choose('Отметь все четырёхугольники','trapezoid/blue triangle/blue square/blue rectangle/blue oval/blue',[0,2,3]),join('Раздели треугольники и четырёхугольники','square/blue triangle/pink trapezoid/blue triangle/yellow rectangle/green','triangle trapezoid',[1,0,1,0,1]),parts('Соедини четыре стороны квадрата','edgeTop/blue edgeRight/sky edgeBottom/blue edgeLeft/sky','edgeTop edgeRight edgeBottom edgeLeft','squareEdges')]],
  [[trace('У квадрата четыре равные стороны.','square/sky'),show('У вытянутого прямоугольника соседние стороны разной длины.','rectangle/sky strip/blue'),turn('Поворот сохраняет длины сторон.','rectangle/pink')],
  [choose('Найди фигуру с четырьмя равными сторонами и прямыми углами','rectangle/sky trapezoid/sky square/sky',2,'square'),choose('Выбери вытянутый прямоугольник','square/blue rectangle/blue triangle/blue',1,'rectangle'),stages('Сравни соседние стороны',choose('У какой фигуры соседние стороны равны?','rectangle/sky square/sky',1,'edgeTop'),choose('У какой фигуры соседние стороны разной длины?','square/sky rectangle/sky',1,'strip')),join('Подбери фигуры к контурам','rectangle/blue square/pink','square rectangle',[1,0]),stages('Собери квадрат и вытянутый прямоугольник',square(),rectangle())]],
  [[scene('roll','Шар катится: посмотри на метку на его поверхности.',set('sphere/sky')),scene('face','Куб повернулся. Видно несколько квадратных граней.',set('cube/blue')),scene('roll','Цилиндр стоит на круглом основании и катится на боку.',set('cylinder/green'))],
