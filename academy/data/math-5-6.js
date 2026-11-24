@@ -16,7 +16,7 @@ export default [
     ['math-56-lesson-2-5', 'Соотносим цифру и количество'],
     ['math-56-lesson-2-6', 'Находим цифры среди других знаков'],
   ],
-  [{ id: 'math-56-module-3', title: 'Цифры от 6 до 9', cover: 'assets/module-3.webp' },
+  [{ id: 'math-56-module-3', title: 'Цифры от 6 до 9', reward: 'Медаль звёздного знатока чисел', cover: 'assets/module-3.webp' },
     ['math-56-lesson-3-1', 'Знакомимся с цифрой 6'],
     ['math-56-lesson-3-2', 'Знакомимся с цифрой 7'],
     ['math-56-lesson-3-3', 'Знакомимся с цифрой 8'],
