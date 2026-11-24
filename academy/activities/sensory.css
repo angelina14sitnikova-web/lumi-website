@@ -460,3 +460,8 @@ button.sensory-target { cursor: pointer; }
 .math67-story-panel,.math67-story-field { display:grid; gap:.3rem; background:#fff9ebed; border-radius:.7rem; padding:.4rem; min-width:0; }
 .math67-story-field select { min-height:44px; }
 .math67-story-panels { align-items:stretch; }
+
+.math67-engineering .math67-measure { width: min(100%, 13rem); height: auto; vertical-align: middle; }
+.math67-engineering > svg { width: min(100%, 13rem); }
+.math67-engineering-demo:has(> .math67-measure) > .math67-measure { grid-area: 1 / 1; }
+.math67-engineering button .math67-measure { width: 6rem; display: block; }

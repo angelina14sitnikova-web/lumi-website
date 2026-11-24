@@ -1,3 +1,4 @@
+import { dimensionPicture, engineeringDemo, practiceEngineering } from './engineering67.js';
 import { showStory, practiceStory, constructStory } from './story-play.js';
 import { arithmeticDemo, buildExpression, practiceOperation } from './arithmetic-play.js';
 import { demonstrateParts, practiceParts } from './number-parts.js';
@@ -54,7 +55,9 @@ function picture(piece) {
     if (piece.extent) frame.style.setProperty('--cross-extent', piece.extent);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  if (piece.calendarLabel) {
+  if (piece.dimensions67) {
+    frame.append(dimensionPicture(piece.dimensions67,palette[piece.color].paint));
+  } else if (piece.calendarLabel) {
     frame.classList.add('math56-calendar-card');
     frame.append(sensoryArt(piece));
     if (piece.calendarIndex) frame.append(node('b','month-index',String(piece.calendarIndex)));
@@ -208,6 +211,7 @@ const math45Poses = {
   'arithmetic-alchemy':'lumi-thinking.png',
   'vanishing-vault':'lumi-welcome.png',
   'detective-office':'lumi-reading.png',
+  'engineering-lab':'lumi-thinking.png',
   'number-houses':'lumi-thinking.png',
   'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
@@ -325,7 +329,9 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'math67-story') {
+  if (scene.effect === 'math67-engineering') {
+    pieces.replaceWith(engineeringDemo(scene.engineering67,animate));
+  } else if (scene.effect === 'math67-story') {
     pieces.replaceWith(showStory(scene.story67,animate));
   } else if (scene.effect === 'math67-action') {
     pieces.replaceWith(arithmeticDemo(scene.arithmetic,animate));
@@ -757,6 +763,10 @@ export function mountSensory(content, course, module, lesson) {
       builder.append(route.field,commands,controls,undo,start);
       stage.append(builder);
       row.hidden = true;
+    }
+    if (round.engineering67) {
+      stage.append(practiceEngineering(round.engineering67,feedback,()=>record({from:0})));
+      row.hidden=true;
     }
     if (round.story67 || round.storyBuilder67 || round.solveOwnStory) {
       const complete = () => record({from:0});
