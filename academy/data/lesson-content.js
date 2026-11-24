@@ -19,6 +19,7 @@ import { countFive } from './math45/counting.js';
 import { quantityNumber } from './math45/quantity.js';
 import { ordinal } from './math45/ordinal.js';
 import { geometry, mosaic } from './math45/geometry.js';
+import { magnitude } from './math45/magnitude.js';
 
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic };
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude };

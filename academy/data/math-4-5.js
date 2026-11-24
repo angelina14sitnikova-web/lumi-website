@@ -48,7 +48,7 @@ export default [
     ['math-45-lesson-6-5', 'Составляем изображения из фигур'],
     ['math-45-lesson-6-6', 'Большая игра с фигурами'],
   ],
-  [{ id: 'math-45-module-7', title: 'Величина предметов', cover: 'assets/module-5.webp' },
+  [{ id: 'math-45-module-7', title: 'Величина предметов', reward: 'Медаль мастера величин', cover: 'assets/module-5.webp' },
     ['math-45-lesson-7-1', 'Длиннее и короче'],
     ['math-45-lesson-7-2', 'Выше и ниже'],
     ['math-45-lesson-7-3', 'Шире и уже'],
