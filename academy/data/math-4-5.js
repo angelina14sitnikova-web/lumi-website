@@ -56,7 +56,7 @@ export default [
     ['math-45-lesson-7-5', 'Сравниваем несколько предметов'],
     ['math-45-lesson-7-6', 'Располагаем предметы по величине'],
   ],
-  [{ id: 'math-45-module-8', title: 'Пространственные отношения', cover: 'assets/module-10.webp' },
+  [{ id: 'math-45-module-8', title: 'Пространственные отношения', reward: 'Медаль исследователя маршрутов', cover: 'assets/module-10.webp' },
     ['math-45-lesson-8-1', 'Вперёд и назад'],
     ['math-45-lesson-8-2', 'Вверх и вниз'],
     ['math-45-lesson-8-3', 'Налево и направо'],
