@@ -72,7 +72,7 @@ export default [
     ['math-45-lesson-9-5', 'Завтра'],
     ['math-45-lesson-9-6', 'Что было раньше и что будет потом?'],
   ],
-  [{ id: 'math-45-module-10', title: 'Математическое путешествие', cover: 'assets/module-12.webp' },
+  [{ id: 'math-45-module-10', title: 'Математическое путешествие', reward: 'Золотая медаль математического путешественника', cover: 'assets/module-12.webp' },
     ['math-45-lesson-10-1', 'Считаем до пяти'],
     ['math-45-lesson-10-2', 'Находим нужную фигуру'],
     ['math-45-lesson-10-3', 'Сравниваем предметы'],
