@@ -46,7 +46,25 @@ function picture(piece) {
     if (piece.extent) frame.style.setProperty('--cross-extent', piece.extent);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  if (piece.numeral !== undefined) {
+  if (piece.calendarLabel) {
+    frame.classList.add('math56-calendar-card');
+    frame.append(sensoryArt(piece));
+    if (piece.calendarIndex) frame.append(node('b','month-index',String(piece.calendarIndex)));
+    frame.append(node('span','calendar-label',piece.calendarLabel));
+  } else if (piece.unitDiagram) {
+    const {n,axis,offsets} = piece.unitDiagram;
+    frame.classList.add('math56-unit-diagram');
+    frame.dataset.axis = axis;
+    frame.append(sensoryArt(piece));
+    const marks = node('span','math56-measure-marks');
+    marks.style.setProperty('--segments',n);
+    for (let i = 0; i < n; i++) {
+      const mark = node('span','math56-measure-mark');
+      mark.style.setProperty('--offset', (offsets?.[i] || 0)*100 + '%');
+      marks.append(mark);
+    }
+    frame.append(marks);
+  } else if (piece.numeral !== undefined) {
     frame.classList.add('math56-number');
     frame.textContent=String(piece.numeral);
   } else if (piece.commands) {
@@ -178,6 +196,11 @@ function sample(piece) {
   return el;
 }
 const math45Poses = {
+  'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
+  'number-observatory':'lumi-thinking.png','number-express':'lumi-welcome.png',
+  'balance-kingdom':'lumi-thinking.png','unit-houses':'lumi-happy.png',
+  'geometry-palace':'lumi-welcome.png','measurement-lab':'lumi-thinking.png',
+  'secret-archipelago':'lumi-welcome.png','time-palace':'lumi-clock.png',
   'color-workshop':'lumi-thinking.png', 'treasure-valley':'lumi-happy.png',
   'treasure-shop':'lumi-thinking.png','rail-station':'lumi-welcome.png',
   'geometry-castle':'lumi-reading.png','mosaic-workshop':'lumi-thinking.png',
@@ -187,6 +210,11 @@ const math45Poses = {
 const math45Medals = [
   ['chip','orange'],['star','yellow'],['block','sky'],['wagon','green'],['house','pink'],
   ['triangle','blue'],['tower','paleGreen'],['arrowright','blue'],['todayDay','pink'],['treasure','yellow'],
+];
+
+const math56Medals = [
+  ['crystal','sky'],['book','pink'],['star','blue'],['wagon','green'],['basket','yellow'],
+  ['house','pink'],['cube','blue'],['measureUnit','yellow'],['arrowright','sky'],['treasure','yellow'],
 ];
 
 function board(room, demo = false) {
@@ -543,6 +571,18 @@ export function mountSensory(content, course, module, lesson) {
       } else el.addEventListener('click', () => connect(index));
       return el;
     });
+    let unitTrack;
+    if (round.unitTrack) {
+      const {axis,tag,n} = round.unitTrack;
+      const [shape,color='sky'] = tag.split('/');
+      const track = node('div','math56-unit-track');
+      track.dataset.axis = axis;
+      track.style.setProperty('--segments',n);
+      track.append(sensoryArt({shape,color}));
+      stage.append(track);
+      track.classList.add('math56-unit-track-art');
+      unitTrack = track;
+    }
     const roundKey = exerciseIndex + ':' + roundIndex;
     let transferCount = transferred.get(roundKey) || 0;
 
@@ -597,6 +637,7 @@ export function mountSensory(content, course, module, lesson) {
     if (round.mosaic) targetRow.dataset.mosaic = round.mosaic;
     if (round.matrix) targetRow.classList.add('math45-matrix');
     targetRow.append(...targets);
+    if (unitTrack) unitTrack.append(targetRow);
     if (round.align) {
       const alignment = button('↤ Совместить начала', () => {
         row.dataset.aligned = 'true';
@@ -615,6 +656,69 @@ export function mountSensory(content, course, module, lesson) {
         });
         stage.append(alignment);
       }
+    }
+    if (round.plan) {
+      const plan = round.plan;
+      const route = drawRoute(plan);
+      const builder = node('div','math56-plan');
+      const commands = node('div','sensory-row math56-plan-commands');
+      const controls = node('div','sensory-row');
+      const planned = [];
+      const deltas={right:[1,0],left:[-1,0],up:[0,-1],down:[0,1]};
+      const arrow = direction => picture({shape:'arrow'+direction,color:'blue'});
+      const redraw = () => commands.replaceChildren(...planned.map(arrow));
+      const input = Object.keys(deltas).map(direction=>{
+        const control = button('',()=>{
+          if (planned.length >= plan.maxSteps || !next.disabled) return;
+          planned.push(direction);
+          redraw();
+        });
+        control.dataset.planDirection = direction;
+        control.setAttribute('aria-label',sensoryName({shape:'arrow'+direction,color:'blue'}));
+        control.append(arrow(direction));
+        return control;
+      });
+      controls.append(...input);
+      const undo = button('↶ Убрать последнюю',()=>{planned.pop();redraw();});
+      const start = button('▶ Запустить',()=>{
+        if (!next.disabled) return;
+        const path = [plan.at];
+        let valid = planned.length > 0;
+        for (const direction of planned) {
+          const [x,y] = path.at(-1);
+          const [dx,dy] = deltas[direction];
+          const at = [x+dx,y+dy];
+          if (at.some(n=>n < 0 || n > 4) || plan.barriers.some(([a,b])=>a === at[0] && b === at[1])) {
+            valid=false;
+            break;
+          }
+          path.push(at);
+        }
+        const at = path.at(-1);
+        animate(route.actor,path.map(route.position),{duration:Math.max(1,path.length-1)*270,easing:'linear'});
+        if (valid && at.every((value,index)=>value===plan.goal[index])) {
+          Object.assign(route.actor.style,route.position(at));
+          undo.disabled=true;
+          start.disabled=true;
+          input.forEach(control=>control.disabled=true);
+          record({from:0});
+          return;
+        }
+        mistakes++;
+        feedback.dataset.state='retry';
+        feedback.textContent=mistakes>=2?'Посмотри на маршрут-подсказку.':'Попробуй перестроить маршрут.';
+        if (mistakes>=2 && !builder.querySelector('[data-hint]')) {
+          const hint=node('div','sensory-row');
+          hint.dataset.hint='';
+          hint.append(...plan.hint.map(arrow));
+          builder.append(hint);
+        }
+        planned.length=0;
+        redraw();
+      });
+      builder.append(route.field,commands,controls,undo,start);
+      stage.append(builder);
+      row.hidden = true;
     }
     if (round.trace !== undefined) {
       const digit = round.trace;
@@ -655,7 +759,7 @@ export function mountSensory(content, course, module, lesson) {
         targetRow.classList.add('event-sequence');
         targets.forEach(target => target.querySelector('.sensory-slot-figure').replaceChildren());
       }
-      stage.append(round.place ? spatialPanel(round.place,targets) : targetRow);
+      if (!unitTrack) stage.append(round.place ? spatialPanel(round.place,targets) : targetRow);
     }
 
     function remaining() {
@@ -715,6 +819,10 @@ export function mountSensory(content, course, module, lesson) {
     }
     function connect(to) {
       if (!next.disabled) return;
+      if (round.unitTrack && to !== (round.unitTrack.axis === 'height' ? targets.length - 1 - steps.length : steps.length)) {
+        wrong(targets[to]);
+        return;
+      }
       const step = round.interchangeable && selected !== null && !steps.some(answer=>answer.to === to)
         ? {from:selected,to} : remaining().find(answer=>answer.from===selected && answer.to===to &&
           (!round.interchangeable || !steps.some(used=>used.to===to)));
@@ -813,8 +921,9 @@ export function mountSensory(content, course, module, lesson) {
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) {
       icon.dataset.medal = module.id;
-      if (course.id === 'math-4-5') {
-        const [shape,color] = math45Medals[course.modules.indexOf(module)];
+      if (['math-4-5','math-5-6'].includes(course.id)) {
+        const medals = course.id === 'math-5-6' ? math56Medals : math45Medals;
+        const [shape,color] = medals[course.modules.indexOf(module)];
         icon.replaceChildren(picture({shape,color}));
       }
     }

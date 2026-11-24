@@ -342,3 +342,54 @@ button.sensory-target { cursor: pointer; }
 }
 .math45-ordinal:has(> :nth-child(7))::before {top:.05rem;}
 .math45-ordinal:has(> :nth-child(7)) > * {flex:0 0 clamp(2.75rem,8vw,4rem);}
+
+.sensory-assembly:is([data-mosaic="splitCircle"], [data-mosaic="splitSquare"], [data-mosaic="splitFour"], [data-mosaic="squareEdges"]) {
+  display:grid;
+  grid-template: 3rem 3rem / 3rem 3rem;
+  gap:0;
+}
+.sensory-assembly:is([data-mosaic="splitCircle"], [data-mosaic="splitSquare"], [data-mosaic="splitFour"], [data-mosaic="squareEdges"]) > .sensory-target {
+  width:100%; height:100%; min-width:0; min-height:0; padding:0; position:relative;
+}
+.sensory-assembly:is([data-mosaic="splitCircle"], [data-mosaic="splitSquare"], [data-mosaic="splitFour"], [data-mosaic="squareEdges"]) .sensory-picture {
+  position:absolute; width:6rem; height:6rem; max-width:none; left:0; top:0; pointer-events:none;
+}
+.sensory-assembly:is([data-mosaic="splitCircle"], [data-mosaic="splitSquare"]) > .sensory-target { grid-column:1 / 3; }
+.sensory-assembly[data-mosaic="splitCircle"] > :first-child .sensory-picture {top:0;}
+.sensory-assembly[data-mosaic="splitCircle"] > :nth-child(2) .sensory-picture {top:-3rem;}
+.sensory-assembly[data-mosaic="splitSquare"] > :nth-child(2) .sensory-picture {top:-3rem;}
+.sensory-assembly:is([data-mosaic="splitFour"], [data-mosaic="squareEdges"]) > :nth-child(even) .sensory-picture {left:-3rem;}
+.sensory-assembly:is([data-mosaic="splitFour"], [data-mosaic="squareEdges"]) > :nth-child(n+3) .sensory-picture {top:-3rem;}
+.sensory-assembly[data-mosaic="splitRectangle"] { grid-template-columns:repeat(2,minmax(2.75rem,var(--piece))); }
+
+.math56-unit-diagram { position:relative; }
+.math56-measure-marks { position:absolute; display:flex; inset:45% 10% auto; height:18%; }
+.math56-measure-mark { flex:1; background:#ffc47d; border:1px solid #693853; transform:translateX(var(--offset)); }
+.math56-unit-diagram[data-axis="height"] .math56-measure-marks {flex-direction:column; inset:10% 30%; width:40%; height:80%;}
+.math56-unit-diagram[data-axis="height"] .math56-measure-mark {transform:translateY(var(--offset));}
+.math56-unit-track-art { width:min(100%, calc(var(--segments) * 3rem)); height:3rem; margin:.25rem auto;}
+.math56-unit-track-art .color-toy {width:100%;height:100%;}
+
+.lesson-map[data-kind="paper"] {background:linear-gradient(90deg,#0000 49.8%,#aa9cc34a 50%,#0000 50.2%),linear-gradient(#0000 49.8%,#aa9cc34a 50%,#0000 50.2%),#fffaf1;border:3px solid #b3a6d1;}
+.lesson-map[data-kind="paper"] .lesson-anchor {visibility:hidden;}
+.math56-plan {text-align:center;}
+.math56-plan button[data-plan-direction] { width:3rem;height:3rem;display:grid;place-items:center; }
+.math56-plan .math56-plan-commands { min-height:2.5rem; }
+.math56-plan .sensory-row .sensory-picture { width:2.2rem;height:2.2rem; }
+
+.sensory-lesson .color-choices,.sensory-lesson .sensory-row {min-width:0;max-width:100%;}
+.sensory-lesson .lesson-part {min-width:0;}
+.math56-unit-track-art {position:relative; height:auto; min-height:3rem; width:min(100%,calc(var(--segments) * 3rem));}
+.math56-unit-track-art > .color-toy {position:absolute; inset:0; opacity:.42; z-index:0;}
+.math56-unit-track-art .sensory-targets {position:relative;gap:0;flex-wrap:nowrap;justify-content:center;overflow:visible;}
+.math56-unit-track-art .sensory-target {width:3rem;min-width:2.75rem; min-height:2.75rem;padding:0;}
+.math56-unit-track-art[data-axis="height"] .sensory-targets {flex-direction:column;align-items:center;}
+.math56-unit-track-art .sensory-target .sensory-picture {width:2.75rem;height:2.75rem;}
+.math56-calendar-card {position:relative;align-content:center;}
+.math56-calendar-card .calendar-label {display:block;font-size:.55rem;line-height:1;}
+.math56-calendar-card .month-index {position:absolute;right:0;top:0;color:#40294d;background:#fff7de;padding:.1rem .25rem;border-radius:.3rem;font-size:.8rem;}
+.sensory-reward [data-medal^="math-56-"] {
+  --piece:clamp(2.5rem,9vw,4.6rem);
+  display:grid;place-items:center;
+  background:radial-gradient(circle,#fff7c4,#e8b553);
+}

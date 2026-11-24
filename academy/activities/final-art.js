@@ -10,6 +10,7 @@ const arrows = {
 };
 const page = (name, mark) => icon(name,'<rect x="19" y="22" width="62" height="63" rx="8" fill="#fff3d9"/><path d="M20 39h60m-49-23v14m38-14v14" fill="none" stroke-width="5"/>'+mark);
 const designs = {
+  doubleTicket: icon('Билет с двумя отметками','<rect x="13" y="26" width="74" height="49" rx="6" fill="#e7c0e3"/><path d="m21 51 9 9 15-18m5 9 9 9 15-18" fill="none" stroke="#614283" stroke-width="6"/>'),
   crystal:icon('Кристалл','<path d="M50 8 76 34 72 67 50 92 28 67 24 34Z"/><path d="M50 8v84M24 34h52M28 67h44" fill="none" stroke="#e5f2fc" opacity=".7"/>'),
   markedCrystal:icon('Кристалл с отметкой','<path d="M50 8 76 34 72 67 50 92 28 67 24 34Z"/><path d="m34 49 12 12 21-26" stroke="#fff4d8" stroke-width="6" fill="none"/>'),
   lantern:icon('Фонарь','<path d="M34 29a16 16 0 0 1 32 0M22 38h56L67 85H33Z" fill="#e6ba72"/><path d="M31 45h38l-7 31H38Z" fill="#fff0ac"/><path d="M48 53v17" stroke="#f4ba57" stroke-width="6"/>'),
@@ -58,7 +59,48 @@ const designs = {
   grow: icon('Распустившийся цветок','<path d="M50 83V48m0 20q-11-12-17-9m17 6q9-12 17-10" stroke="#4e9c68" stroke-width="5" fill="none"/><path d="M50 27c-13-22-30 2-15 12-10 15 13 21 15 9 18 12 27-13 14-14 5-19-11-18-14-7Z" fill="#e68fb1"/><circle cx="51" cy="36" r="6" fill="#ffe58b"/>'),
   skyScene: icon('Вид полянки','<path d="M23 87V69h25v18Zm-4-18 16-15 17 15Z" fill="#d7a77a"/><path d="M72 87V67m-15 4 15-20 15 20Z" fill="#79a976"/>'),
 };
+const pawDrawing='<path d="M24 60q0-9 8-15l11-8q7-5 14 0l11 8q8 6 8 15 0 14-15 10l-11-4-11 4Q24 74 24 60Z" fill="#e4b992"/><g fill="#e4b992"><circle cx="27" cy="34" r="8"/><circle cx="43" cy="22" r="8"/><circle cx="60" cy="22" r="8"/><circle cx="75" cy="34" r="8"/></g>';
+const shapeParts={
+ leftPaw:['Левая лапка',pawDrawing], rightPaw:['Правая лапка',pawDrawing],
+ paperMap:['Лист бумаги','<rect x="12" y="17" width="76" height="66" rx="5" fill="#fff5dd"/>'],
+ block:['Игрушечный кубик','<path d="M18 31 50 14l32 17v42L50 90 18 73Z"/><path d="m18 31 32 17 32-17M50 48v42" fill="none" stroke="#51326a"/>'],
+
+ measureUnit: ['Условная мерка','<rect x="13" y="39" width="74" height="22" rx="4"/><path d="M22 46h56" stroke="#fff" opacity=".5"/>'],
+ cylinder: ['Цилиндр','<path d="M21 28h58v47a29 13 0 0 1-58 0Z"/><ellipse cx="50" cy="28" rx="29" ry="13" fill="var(--toy-color)"/><path d="M26 26a25 9 0 0 1 45-4M32 42v30" fill="none" stroke="#fff" opacity=".55"/>'],
+ tin: ['Банка','<path d="M22 29h56v49a28 12 0 0 1-56 0Z"/><path d="M23 44q27 13 54 0v22q-27 13-54 0Z" fill="#fff7d4"/><ellipse cx="50" cy="29" rx="28" ry="12" fill="#e3e1ed"/>'],
+ trapezoid: ['Трапеция','<path d="M30 20h40l18 60H12Z"/>'],
+ vertex: ['Угол','<path d="M24 74V24h50" fill="none" stroke-width="8"/>'],
+ halfTop: ['Верхняя половина круга','<path d="M10 50a40 40 0 0 1 80 0Z"/>'],
+ halfBottom: ['Нижняя половина круга','<path d="M10 50a40 40 0 0 0 80 0Z"/>'],
+ diagonalTop: ['Верхняя треугольная часть','<path d="M15 15h70L15 85Z"/>'],
+ diagonalBottom: ['Нижняя треугольная часть','<path d="M85 85H15L85 15Z"/>'],
+ quarterNW: ['Верхняя левая четверть','<path d="M50 50H10a40 40 0 0 1 40-40Z"/>'],
+ quarterNE: ['Верхняя правая четверть','<path d="M50 50V10a40 40 0 0 1 40 40Z"/>'],
+ quarterSW: ['Нижняя левая четверть','<path d="M50 50v40a40 40 0 0 1-40-40Z"/>'],
+ quarterSE: ['Нижняя правая четверть','<path d="M50 50h40a40 40 0 0 1-40 40Z"/>'],
+ edgeTop: ['Верхняя сторона','<path d="M15 15h70" fill="none" stroke-width="8"/>'],
+ edgeRight: ['Правая сторона','<path d="M85 15v70" fill="none" stroke-width="8"/>'],
+ edgeBottom: ['Нижняя сторона','<path d="M85 85H15" fill="none" stroke-width="8"/>'],
+ edgeLeft: ['Левая сторона','<path d="M15 85V15" fill="none" stroke-width="8"/>'],
+ equalCircle:['Круг с линией по центру','<circle cx="50" cy="50" r="38"/><path d="M12 50h76" stroke="#392747" stroke-width="4"/>'],
+ unequalCircle:['Круг с линией выше центра','<circle cx="50" cy="50" r="38"/><path d="M20 27h60" stroke="#392747" stroke-width="4"/>'],
+ equalSquare:['Квадрат с линией по центру','<path d="M14 14h72v72H14Z"/><path d="M50 14v72" stroke="#392747" stroke-width="4"/>'],
+ unequalSquare:['Квадрат с линией сбоку','<path d="M14 14h72v72H14Z"/><path d="M31 14v72" stroke="#392747" stroke-width="4"/>'],
+ equalRectangle:['Прямоугольник с линией по центру','<path d="M10 29h80v42H10Z"/><path d="M50 29v42" stroke="#392747" stroke-width="4"/>'],
+ unequalRectangle:['Прямоугольник с линией сбоку','<path d="M10 29h80v42H10Z"/><path d="M30 29v42" stroke="#392747" stroke-width="4"/>'],
+};
+const seasonArt = {
+ snowScene:['Зима','#b5dcf3','#eff8ff','#8099b5','<g fill="#fff"><circle cx="25" cy="22" r="3"/><circle cx="62" cy="31" r="3"/><circle cx="74" cy="19" r="2"/></g>'],
+ springScene:['Весна','#e5cdf4','#b4d78b','#e295b4','<g fill="#f19fc0"><circle cx="42" cy="44" r="6"/><circle cx="63" cy="42" r="5"/><circle cx="52" cy="33" r="6"/></g>'],
+ summerScene:['Лето','#a4e5fa','#8ed08b','#3b9b72','<circle cx="21" cy="26" r="9" fill="#ffe5a2"/>'],
+ autumnScene:['Осень','#eed6b3','#ecd39d','#da8c4f','<path d="m27 68 5 -4 5 4 -5 4zm40 -1 6 -5 5 4 -5 4Z" fill="#bc643b"/>']
+};
 export function finalDesign(shape) {
+  if (seasonArt[shape]) {
+    const [name,sky,ground,tree,detail]=seasonArt[shape];
+    return [name, '<rect x="4" y="7" width="92" height="86" rx="12" fill="'+sky+'"/><path d="M5 72Q22 61 41 74Q65 62 95 70V89H5Z" fill="'+ground+'"/><path d="M50 80V48" stroke="#916755" stroke-width="5"/><circle cx="50" cy="49" r="21" fill="'+tree+'"/>'+detail];
+  }
+  if (shapeParts[shape]) return shapeParts[shape];
   if (!arrows[shape]) return designs[shape];
   const [name,turn] = arrows[shape];
   return icon(name,'<path d="M15 42H60V27L87 50 60 73V58H15Z" transform="rotate('+turn+' 50 50)"/>');
