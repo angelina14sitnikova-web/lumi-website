@@ -15,5 +15,7 @@ import { finalLessons } from './final-3-4.js';
 
 import { properties } from './math45/properties.js';
 
+import { countFive } from './math45/counting.js';
+
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties };
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive };

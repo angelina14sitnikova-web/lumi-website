@@ -318,3 +318,5 @@
 .academy-confetti span {position:absolute;left:var(--position);top:15%;color:hsl(var(--hue) 62% 52%);animation:academy-stars 2.5s var(--delay) both ease-out;}
 @keyframes academy-stars {from{transform:translateY(-14vh) rotate(0deg);opacity:0;} 40%{opacity:1;} to{transform:translateY(58vh) rotate(290deg);opacity:.52;}}
 @media(prefers-reduced-motion:reduce){.academy-confetti span{animation:none;}}
+.academy-course-medals {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.45rem;width:min(100%,50rem);list-style:none;padding:0;}
+.academy-course-medals li {border:1px solid #d8b46e;border-radius:.7rem;padding:.6rem;background:#fff5d8;}

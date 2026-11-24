@@ -5,7 +5,25 @@ const dog = '<path d="M27 38Q16 34 18 58Q20 78 32 65M73 38Q84 34 82 58Q80 78 68 
 const face = '<ellipse cx="43" cy="48" rx="4" ry="6" fill="#4b96d1"/><ellipse cx="58" cy="48" rx="4" ry="6" fill="#4b96d1"/><ellipse cx="51" cy="58" rx="4" ry="3" fill="#6c4745"/>';
 const colors = {morning:'#f6c985',day:'#a7dcf8',evening:'#e9a3a4',night:'#484674',twilight:'#e5b0ac'};
 
+const arrows = {
+  arrowright: ['Вправо',0], arrowdown: ['Вниз',90], arrowleft: ['Влево',180], arrowup: ['Вверх',270],
+};
+const page = (name, mark) => icon(name,'<rect x="19" y="22" width="62" height="63" rx="8" fill="#fff3d9"/><path d="M20 39h60m-49-23v14m38-14v14" fill="none" stroke-width="5"/>'+mark);
 const designs = {
+  previousDay:page('Вчера','<path d="M66 56H42v-9L27 62l15 15v-9h24Z"/>'),
+  todayDay:page('Сегодня','<circle cx="50" cy="62" r="15" fill="#f6c366"/>'),
+  nextDay:page('Завтра','<path d="M32 56h24v-9l15 15-15 15v-9H32Z"/>'),
+  sprout:icon('Росток','<path d="M15 83q35-19 70 0" stroke="#a07755" stroke-width="9" fill="none"/><path d="M50 80V43q-21 0-23-20 24-2 23 20 11-15 26-12-3 20-26 23" stroke="#447a50" fill="#a4d580" stroke-width="4"/>'),
+  bread:icon('Ломтик хлеба','<path d="M21 44q-8-14 9-19h40q17 5 9 19l-5 33H26Z" fill="#f2bf79"/>'),
+  cheese:icon('Ломтик сыра','<path d="M14 73 29 35h54v38Z" fill="#f5c852"/><circle cx="38" cy="60" r="5" fill="#ffe6a3"/><circle cx="66" cy="47" r="6" fill="#ffe6a3"/>'),
+  sandwich:icon('Бутерброд','<path d="M14 59h72v16H14Z" fill="#d6a36c"/><path d="M13 56h74v11H13Z" fill="#edc256"/><path d="M15 56q12-19 36-19t34 19Z" fill="#e6b570"/>'),
+  lift: icon('Лифт','<rect x="21" y="13" width="58" height="77" rx="7" fill="#afaddd"/><path d="M28 30h44v52H28Zm22 3v46" fill="#f0e4fe"/><circle cx="50" cy="22" r="4" fill="#f8d16b"/>'),
+  treasure: icon('Сундук','<path d="M16 45q0-17 17-19h34q17 2 17 19v34H16Z" fill="#d1a06c"/><path d="M16 48h68M30 30v48m40-48v48" fill="none" stroke="#eebd61" stroke-width="5"/><rect x="44" y="48" width="12" height="15" rx="3" fill="#f4d87f"/>'),
+  wagon: icon('Вагон','<rect x="12" y="27" width="76" height="44" rx="8"/><path d="M20 34h17v17H20Zm23 0h17v17H43Zm23 0h14v17H66Z" fill="#fff3ce"/><circle cx="28" cy="76" r="10" fill="#4a3659"/><circle cx="73" cy="76" r="10" fill="#4a3659"/>'),
+  dogToy: icon('Щенок',dog+face),
+  markedCube: icon('Кубик с отметкой','<path d="M21 34 42 19h40v45L61 82H21Z" fill="#71a9da"/><path d="M21 34 42 19h40L61 34Z" fill="#bde8fb"/><path d="m30 56 6 7 16-16" stroke="#fff3ca" stroke-width="6" fill="none"/>'),
+  drum: icon('Барабан','<path d="M17 37v38q33 20 66 0V37Z" fill="#b781c9"/><ellipse cx="50" cy="37" rx="33" ry="13" fill="#ffedbd"/><path d="m23 53 14 25 13-23 14 23 13-25" fill="none" stroke="#ffdea4" stroke-width="4"/>'),
+  clap: icon('Хлопок','<path d="M22 81 14 56l6-10 10 10V28q0-9 7-9 6 0 6 8v23l6-7q8 0 9 8v22l-9 9Z" fill="#f1bc8b"/><path d="M79 75 88 51l-7-8-8 7V24q0-8-6-8-7 0-7 8v23l-7-6q-8 0-8 8v22l8 9Z" fill="#f1bc8b"/><path d="M50 16V7m-9 13-5-6m22 8 6-6" fill="none" stroke="#bf8e2f" stroke-width="3"/>'),
   hoop: icon('Обруч','<circle cx="50" cy="50" r="32" fill="none" stroke="var(--toy-color)" stroke-width="8"/>'),
   garage: icon('Гараж','<path d="M15 83V37L50 19 85 37V83Z"/><path d="M28 83V50H72V83Z" fill="#7764a0"/><path d="M30 57h40m-40 9h40" stroke="#eae3fa"/>'),
   bird: icon('Птица','<path d="M16 61q10-23 30-16 12-21 27-8l12 5-12 7Q66 72 43 73L18 78l7-13Z"/><circle cx="68" cy="42" r="2" fill="#30263f"/>'),
@@ -33,7 +51,11 @@ const designs = {
   grow: icon('Распустившийся цветок','<path d="M50 83V48m0 20q-11-12-17-9m17 6q9-12 17-10" stroke="#4e9c68" stroke-width="5" fill="none"/><path d="M50 27c-13-22-30 2-15 12-10 15 13 21 15 9 18 12 27-13 14-14 5-19-11-18-14-7Z" fill="#e68fb1"/><circle cx="51" cy="36" r="6" fill="#ffe58b"/>'),
   skyScene: icon('Вид полянки','<path d="M23 87V69h25v18Zm-4-18 16-15 17 15Z" fill="#d7a77a"/><path d="M72 87V67m-15 4 15-20 15 20Z" fill="#79a976"/>'),
 };
-export function finalDesign(shape) { return designs[shape]; }
+export function finalDesign(shape) {
+  if (!arrows[shape]) return designs[shape];
+  const [name,turn] = arrows[shape];
+  return icon(name,'<path d="M15 42H60V27L87 50 60 73V58H15Z" transform="rotate('+turn+' 50 50)"/>');
+}
 export function phaseMarkup(phase) {
   if (!phase) return '';
   const light = phase === 'night'

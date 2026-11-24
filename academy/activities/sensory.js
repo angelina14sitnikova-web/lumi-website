@@ -41,16 +41,22 @@ function picture(piece) {
   frame.dataset.shape = piece.shape;
   if (piece.axis) {
     frame.dataset.axis = piece.axis;
-    frame.style.setProperty('--extent', [.44, .71, 1][piece.value - 1]);
+    frame.style.setProperty('--extent', piece.directExtent ? piece.value : [.44, .71, 1][piece.value - 1]);
+    if (piece.extent) frame.style.setProperty('--cross-extent', piece.extent);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  if (piece.count !== undefined) {
+  if (piece.commands) {
+    frame.classList.add('math45-command-card');
+    piece.commands.forEach(step => frame.append(sensoryArt({shape:'arrow'+step,color:'blue'})));
+  } else if (piece.count !== undefined) {
     frame.classList.add('quantity-picture');
+    frame.dataset.arrangement = piece.arrangement || '';
     const strip = (count, connected = 0, shape = piece.shape) => {
       const row = node('span', 'quantity-items');
       for (let i = 0; i < count; i += 1) {
         const item = node('span', i < connected ? 'quantity-paired' : '');
         item.append(sensoryArt({...piece, shape}));
+        item.dataset.itemSize = shape === piece.otherShape ? piece.otherSize || '' : piece.size || '';
         row.append(item);
       }
       frame.append(row);
@@ -76,6 +82,55 @@ function pairDisplay(left, right) {
   return pairs;
 }
 
+function eventDisplay(events) {
+  const frame = node('div', 'math45-events');
+  const actor = picture({shape:events.action, color:'sky'});
+  const marks = node('div', 'math45-tally');
+  function replay() {
+    actor.getAnimations().forEach(animation => animation.cancel());
+    marks.replaceChildren();
+    for (let index = 0; index < events.n; index += 1) {
+      const mark = node('span');
+      marks.append(mark);
+      animate(mark,[{visibility:'hidden'},{visibility:'visible',offset:.03},{visibility:'visible'}],{duration:410,delay:index*660});
+    }
+    const frames = Array.from({length:events.n},()=>[{transform:'none'},{transform:'translateY(-13px) scale(1.12)'},{transform:'none'}]).flat();
+    animate(actor,frames,{duration:events.n*660});
+  }
+  frame.append(actor,marks,button('↻ Повтори показ',replay));
+  replay();
+  return frame;
+}
+
+function drawRoute(route, animated = false) {
+  const field = node('div','math45-route');
+  field.setAttribute('role','img');
+  field.setAttribute('aria-label','Игровое поле: путь Луми к сундуку');
+  for (let row=0;row<5;row+=1) {
+    for (let column=0;column<5;column+=1) {
+      const tile = node('span','route-tile');
+      const has = point => point[0]===column && point[1]===row;
+      if ((route.barriers || []).some(has)) {
+        tile.classList.add('route-barrier');
+        tile.append(picture({shape:'tree',color:'green'}));
+      }
+      if ((route.trail || []).some(has)) tile.classList.add('route-trail');
+      if (has(route.goal)) tile.append(picture({shape:'treasure',color:'yellow'}));
+      field.append(tile);
+    }
+  }
+  const actor = picture({shape:route.actor,color:'sky'});
+  actor.classList.add('route-player');
+  const position=([x,y])=>({left:(x*20+10)+'%',top:(y*20+10)+'%'});
+  Object.assign(actor.style,position(route.at));
+  field.append(actor);
+  if (route.path && animated) {
+    if (reduced()) Object.assign(actor.style,position(route.goal));
+    else animate(actor,route.path.map(position),{duration:750*route.steps.length,delay:350,easing:'linear'});
+  }
+  return {field,actor,position};
+}
+
 function balanceAfter(groups, action) {
   return [groups[0], {...groups[1], count: groups[1].count + (action === 'add' ? 1 : -1)}];
 }
@@ -93,6 +148,12 @@ function spatialPanel(place, pieces) {
   };
   position(anchor, place.anchor);
   map.append(anchor);
+  if (place.second) {
+    const other=picture(place.second);
+    other.classList.add('lesson-anchor');
+    position(other,place.second);
+    map.append(other);
+  }
   if (place.direction) {
     const arrow = node('span','lesson-map-arrow','➜');
     arrow.setAttribute('aria-label', 'Направление вперёд — вправо');
@@ -193,6 +254,8 @@ function illustrate(room, scene) {
   stage.setAttribute('aria-label', scene.text);
   const pieces = node('div', 'sensory-row');
   layout(pieces, scene.pieces);
+  if (scene.ordinal) pieces.classList.add('math45-ordinal');
+  if (scene.arrangement) pieces.dataset.arrangement = scene.arrangement;
   const props = scene.pieces.map(piece => {
     const el = node('div', 'sensory-card');
     el.append(picture(piece));
@@ -202,7 +265,34 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'locate') {
+  if (scene.effect === 'route') {
+    pieces.replaceWith(drawRoute(scene.route,true).field);
+  } else if (scene.effect === 'turn') {
+    animate(props[0].firstChild,[{rotate:'0deg'},{rotate:'90deg'}],{duration:1400,delay:350});
+  } else if (scene.effect === 'events') {
+    pieces.replaceWith(eventDisplay(scene.events));
+  } else if (scene.effect === 'counting') {
+    const markers = node('div','math45-tally');
+    props.forEach((prop,index) => {
+      const mark = node('span');
+      markers.append(mark);
+      animate(prop,[{outlineColor:'transparent'},{outlineColor:'#ca942a',offset:.25},{outlineColor:'transparent'}],
+        {duration:560,delay:index*590});
+      animate(mark,[{visibility:'hidden'},{visibility:'visible',offset:.04},{visibility:'visible'}],
+        {duration:490,delay:index*590});
+      if (scene.added && index===props.length-1) animate(prop,[{opacity:0},{opacity:1}],
+        {duration:450,delay:620});
+    });
+    if (scene.duplicate !== undefined) {
+      const extra = node('span', 'tally-extra');
+      markers.append(extra);
+      animate(extra,[{visibility:'hidden'},{visibility:'visible',offset:.03},{visibility:'visible'}],
+        {duration:460,delay:props.length*590});
+      animate(props[scene.duplicate],[{outlineColor:'transparent'},{outlineColor:'#b45663',offset:.2},{outlineColor:'transparent'}],
+        {duration:500,delay:props.length*590,fill:'none'});
+    }
+    stage.append(markers);
+  } else if (scene.effect === 'locate') {
     const cards = scene.place.items.map((piece, index) => {
       const el = node('div', 'sensory-card');
       if (index === scene.place.focus) el.classList.add('sensory-emphasis');
@@ -242,6 +332,7 @@ function illustrate(room, scene) {
   } else if (scene.targets) {
     const row = node('div', 'sensory-row sensory-targets');
     if (scene.effect === 'assemble') row.classList.add('sensory-assembly');
+    if (scene.mosaic) row.dataset.mosaic = scene.mosaic;
     const targets = scene.targets.map(piece => slot(piece, false));
     row.append(...targets);
     stage.append(row);
@@ -381,8 +472,10 @@ export function mountSensory(content, course, module, lesson) {
     const stage = board(lesson.room);
     const row = node('div', 'sensory-row sensory-choices');
     layout(row, round.pieces);
+    if (round.ordinal) row.classList.add('math45-ordinal');
+    if (round.arrangement) row.dataset.arrangement = round.arrangement;
     row.dataset.setting = round.setting || '';
-    const axisGuide = { length: 'Сравни по длине.', height: 'Сравни по высоте.', width: 'Сравни по ширине.' };
+    const axisGuide = { length: 'Сравни по длине.', height: 'Сравни по высоте.', width: 'Сравни по ширине.', thickness: 'Сравни по толщине.', overall: 'Сравни по размеру.' };
     const dimension = round.pieces[0].axis;
     const guide = node('p', 'color-guide', round.align ? 'Нажми на стрелку, чтобы начала лент совпали.'
       : dimension ? axisGuide[dimension] + ' ' + task.guide : task.guide);
@@ -455,13 +548,34 @@ export function mountSensory(content, course, module, lesson) {
     if (round.recipient && ['pair-meadow', 'discovery-hall'].includes(lesson.room)) {
       showDistribution(steps.length ? round.repeat : transferCount);
     } else if (round.recipient) stage.append(sample(round.recipient));
+    let presses = transferred.get(roundKey) || 0;
+    const tally = round.tally ? node('div','math45-tally') : null;
+    let routeView;
+    if (round.route) {
+      routeView=drawRoute(round.route);
+      stage.append(routeView.field);
+      if (!round.route.free && round.route.steps.length) {
+        stage.append(picture({shape:'arrowright',color:'blue',commands:round.route.steps}));
+      }
+    }
+    if (round.events) stage.append(eventDisplay(round.events));
+    if (tally) stage.append(tally);
+    function refreshTally() {
+      if (!tally) return;
+      const limit = round.presses || round.take || round.answers.length;
+      const number = round.presses ? (steps.length ? limit : presses) : steps.length;
+      tally.replaceChildren(...Array.from({length:limit},(_,index)=>node('span',index<number?'':'unmarked')));
+    }
     let balancePreview;
     if (round.balance) {
       balancePreview = pairDisplay(...round.balance);
       stage.append(balancePreview);
     }
     const targetRow = node('div', 'sensory-row sensory-targets');
+    if (round.ordinal) targetRow.classList.add('math45-ordinal');
     if (round.assembly) targetRow.classList.add('sensory-assembly');
+    if (round.mosaic) targetRow.dataset.mosaic = round.mosaic;
+    if (round.matrix) targetRow.classList.add('math45-matrix');
     targetRow.append(...targets);
     if (round.align) {
       const alignment = button('↤ Совместить начала', () => {
@@ -486,7 +600,12 @@ export function mountSensory(content, course, module, lesson) {
     if (round.cues) {
       const cues = node('div', 'sensory-row');
       cues.setAttribute('aria-label', 'Карточки-признаки');
-      round.cues.forEach(item => cues.append(picture(item)));
+      if (round.ordinal) cues.classList.add('math45-ordinal');
+      round.cues.forEach(item => {
+        const image = picture(item);
+        if (item.marked) image.classList.add('sensory-emphasis');
+        cues.append(image);
+      });
       stage.append(cues);
     }
     if (round.starts) {
@@ -509,6 +628,10 @@ export function mountSensory(content, course, module, lesson) {
     }
 
     function remaining() {
+      if (round.take) {
+        if (steps.length >= round.take) return [];
+        return round.pieces.flatMap((_,from) => steps.some(step=>step.from===from)?[]:[{from}]);
+      }
       return round.answers.filter(step => !steps.some(answer => answer.from === step.from));
     }
     function clearHint() {
@@ -524,14 +647,24 @@ export function mountSensory(content, course, module, lesson) {
       if (mistakes >= 2) {
         const step = remaining().find(answer => answer.from === selected);
         const ordered = round.ordered ? remaining().sort((a, b) => a.to - b.to)[0] : remaining()[0];
-        const hint = step ? targets[step.to] : buttons[ordered.from];
+        const hint = step ? (round.interchangeable ? targets.find((_,index)=>!steps.some(answer=>answer.to===index)) : targets[step.to]) : buttons[ordered.from];
         hint.dataset.hint = 'true';
       }
     }
     function choose(index) {
       if (!next.disabled) return;
+      if (round.tally && steps.some(step=>step.from===index)) {
+        wrong(buttons[index]);
+        return;
+      }
       if (!remaining().some(step => step.from === index) && (round.starts || !round.targets)) {
         wrong(buttons[index]);
+        return;
+      }
+      if (round.presses && ++presses < round.presses) {
+        transferred.set(roundKey,presses);
+        refreshTally();
+        animate(buttons[index].firstChild,[{transform:'scale(.92)'},{transform:'none'}],{duration:220});
         return;
       }
       if (!round.targets) {
@@ -551,7 +684,9 @@ export function mountSensory(content, course, module, lesson) {
     }
     function connect(to) {
       if (!next.disabled) return;
-      const step = remaining().find(answer => answer.from === selected && answer.to === to);
+      const step = round.interchangeable && selected !== null && !steps.some(answer=>answer.to === to)
+        ? {from:selected,to} : remaining().find(answer=>answer.from===selected && answer.to===to &&
+          (!round.interchangeable || !steps.some(used=>used.to===to)));
       if (!step) {
         wrong(targets[to]);
         return;
@@ -576,7 +711,8 @@ export function mountSensory(content, course, module, lesson) {
       const el = buttons[from];
       el.classList.add('color-found');
       el.setAttribute('aria-pressed', 'true');
-      el.disabled = true;
+      if (round.tally && !round.presses) el.setAttribute('aria-disabled', 'true');
+      else el.disabled = true;
       if (round.targets) {
         travel(round.pieces[from], el, targets[to], 0, round.overlay);
         if (round.starts) el.hidden = true;
@@ -587,9 +723,15 @@ export function mountSensory(content, course, module, lesson) {
     }
     function update(message) {
       const done = remaining().length === 0;
+      refreshTally();
       next.disabled = !done;
       feedback.dataset.state = done ? 'correct' : 'info';
       feedback.textContent = done ? round.result || 'Верно! Можно дальше.' : message;
+      if (done && routeView && round.route.next) {
+        const { actor, position }=routeView;
+        animate(actor,[position(round.route.at),position(round.route.next)],{duration:420});
+        Object.assign(actor.style,position(round.route.next));
+      }
       if (done && balancePreview) {
         const after = pairDisplay(...balanceAfter(round.balance,round.action));
         balancePreview.replaceWith(after);
@@ -650,7 +792,7 @@ export function mountSensory(content, course, module, lesson) {
       explain();
     }));
     const nextLesson = module.lessons[module.lessons.indexOf(lesson) + 1];
-    if (courseCompleted(course)) nav.prepend(link('Праздник открытий ✨', celebrationUrl, true));
+    if (courseCompleted(course)) nav.prepend(link('Праздник открытий ✨', celebrationUrl(course), true));
     if (nextLesson?.format === 'sensory') nav.append(link('Следующий урок →', lessonUrl(course, module, nextLesson), true));
     panel.append(nav);
     display(panel, heading);

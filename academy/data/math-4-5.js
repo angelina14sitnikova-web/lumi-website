@@ -8,7 +8,7 @@ export default [
     ['math-45-lesson-1-5', 'Сравниваем по трём признакам'],
     ['math-45-lesson-1-6', 'Описываем предмет по свойствам'],
   ],
-  [{ id: 'math-45-module-2', title: 'Считаем до пяти', cover: 'assets/module-3.webp' },
+  [{ id: 'math-45-module-2', title: 'Считаем до пяти', reward: 'Медаль пяти сокровищ', cover: 'assets/module-3.webp' },
     ['math-45-lesson-2-1', 'Один и два'],
     ['math-45-lesson-2-2', 'Число три'],
     ['math-45-lesson-2-3', 'Число четыре'],

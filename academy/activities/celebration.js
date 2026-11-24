@@ -1,18 +1,22 @@
 import { findCourse, moduleStars } from '../course-model.js';
 
-export const celebrationUrl = 'celebration.html';
+export const celebrationUrl = course => course.id === 'math-4-5' ? 'celebration.html?course=math-4-5' : 'celebration.html';
 export function courseCompleted(course) {
-  return course?.id === 'math-3-4' && course.modules.length === 12 &&
+  return ['math-3-4','math-4-5'].includes(course?.id) &&
+    course.modules.length === (course.id === 'math-3-4' ? 12 : 10) &&
     course.modules.every(module => moduleStars(course,module) === module.lessons.length);
 }
 
 const panel = globalThis.document?.querySelector('#course-celebration');
 if (panel) {
-  const course = findCourse('math-3-4');
+  const requested = new URLSearchParams(location.search).get('course');
+  const course = findCourse(requested === 'math-4-5' ? requested : 'math-3-4');
+  const total = course.modules.reduce((sum,module)=>sum+module.lessons.length,0);
+  panel.querySelector('a').href = 'program.html?course=' + course.id;
   const stars = course.modules.reduce((sum,module)=>sum+moduleStars(course,module),0);
   if (courseCompleted(course)) {
     panel.querySelector('h1').textContent = 'Ты прошёл математику с Луми!';
-    panel.querySelector('p').textContent = stars + ' звезды · 12 завершённых модулей · 12 медалей';
+    panel.querySelector('p').textContent = course.id === 'math-4-5' ? stars + ' звёзд · 10 завершённых модулей · 10 медалей' : stars + ' звезды · 12 завершённых модулей · 12 медалей';
     const confetti = document.createElement('div');
     confetti.className = 'academy-confetti';
     confetti.setAttribute('aria-hidden','true');
@@ -25,7 +29,17 @@ if (panel) {
       confetti.append(star);
     }
     panel.append(confetti);
+    if (course.id === 'math-4-5') {
+      const medals = document.createElement('ul');
+      medals.className = 'academy-course-medals';
+      for (const module of course.modules) {
+        const item = document.createElement('li');
+        item.textContent = module.reward;
+        medals.append(item);
+      }
+      panel.append(medals);
+    }
   } else {
-    panel.querySelector('p').textContent = 'Собери звёзды во всех модулях. Сейчас у тебя ' + stars + ' из 84.';
+    panel.querySelector('p').textContent = 'Собери звёзды во всех модулях. Сейчас у тебя ' + stars + ' из ' + total + '.';
   }
 }

@@ -89,7 +89,7 @@ function updateCatalog() {
   catalog.replaceChildren(list);
   if (courseCompleted(course)) {
     const celebration = element('a', 'academy-button', 'Праздник открытий ✨');
-    celebration.href = celebrationUrl;
+    celebration.href = celebrationUrl(course);
     catalog.prepend(celebration);
   }
 }

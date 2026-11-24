@@ -271,3 +271,42 @@ button.sensory-target { cursor: pointer; }
 .sensory-reward [data-medal="space"] { background:radial-gradient(circle,#fff5b3,#96c7e9); }
 .sensory-reward [data-medal="time"] { background:radial-gradient(circle,#fff5b3,#bd9ae0); }
 .sensory-reward [data-medal="review"] { background:radial-gradient(circle,#fff9bb,#efb94f); }
+.math45-tally {display:flex;gap:.42rem;justify-content:center;align-items:center;min-height:1.5rem;}
+.math45-tally > span {width:1rem;height:1rem;border-radius:50%;background:#e6a736;border:2px solid #a86e1d;}
+.math45-tally > span.unmarked {background:#fff4d5;border-color:#c7a979;}
+.sensory-demo[data-effect="counting"] .sensory-card {outline:3px solid transparent;}
+.math45-events {border-radius:1rem;background:#ffefd9e8;padding:.5rem;display:grid;justify-items:center;gap:.45rem;}
+.quantity-items [data-item-size="small"] svg {transform:scale(.65);}
+.quantity-items [data-item-size="middle"] svg {transform:scale(.83);}
+.math45-tally > .tally-extra {background:#d98991;}
+.sensory-row[data-arrangement="ring"],.quantity-picture[data-arrangement="ring"] .quantity-items {display:grid;grid-template-columns:repeat(3, minmax(0,1fr));justify-items:center;}
+[data-arrangement="ring"] :is(.sensory-card,.quantity-items > span):nth-child(1) {grid-column:2;grid-row:1;}
+[data-arrangement="ring"] :is(.sensory-card,.quantity-items > span):nth-child(2) {grid-column:3;grid-row:2;}
+[data-arrangement="ring"] :is(.sensory-card,.quantity-items > span):nth-child(3) {grid-column:2;grid-row:3;}
+[data-arrangement="ring"] :is(.sensory-card,.quantity-items > span):nth-child(4) {grid-column:1;grid-row:2;}
+[data-arrangement="loose"] :is(.sensory-card,.quantity-items > span):nth-child(even) {translate:0 .5rem;}
+.math45-ordinal {position:relative;margin-top:1.3rem;flex-wrap:nowrap;gap:.2rem;}
+.math45-ordinal::before {content:'● ➜';position:absolute;left:.7rem;top:-1.43rem;color:#71479b;font-weight:900;font-size:1.12rem;background:#fff7e5;border-radius:.45rem;padding:0 .28rem;}
+.math45-ordinal .sensory-card,.math45-ordinal .sensory-target {min-width:44px;flex-shrink:1;}
+.math45-ordinal .quantity-picture {min-width:0;}
+.math45-matrix {display:grid;grid-template-columns:repeat(2,minmax(2.75rem,1fr));max-width:32rem;align-items:stretch;}
+.math45-matrix .sensory-target {max-width:none;}
+.sensory-assembly[data-mosaic] {display:grid;grid-template-columns:repeat(3,minmax(2.75rem,var(--piece)));grid-template-areas:none;justify-content:center;}
+.sensory-assembly[data-mosaic] > .sensory-target {grid-area:auto;}
+.sensory-assembly[data-mosaic="house"] > .sensory-target {grid-column:2;}
+.sensory-assembly[data-mosaic="car"] {border-top:.9rem solid #b988a2;}
+.sensory-assembly[data-mosaic="rocket"] > :first-child {grid-column:2;}
+.sensory-assembly[data-mosaic="rocket"] > :nth-child(2) {grid-column:1;}
+.sensory-assembly[data-mosaic="picture"] > :first-child {grid-column:2;}
+.sensory-assembly[data-mosaic="picture"] > :nth-child(2) {grid-column:1;}
+.sensory-picture[data-axis="height"] > svg {transform:scale(var(--cross-extent,1),var(--extent));}
+.sensory-picture[data-axis="thickness"] > svg {transform:scaleY(var(--extent));}
+.sensory-picture[data-axis="overall"] > svg {transform:scale(var(--extent));}
+.math45-route {position:relative;display:grid;grid-template-columns:repeat(5,1fr);width:min(100%,20rem);aspect-ratio:1;--piece:clamp(1.5rem,9vw,3.5rem);background:#ead6af;border-radius:.7rem;overflow:hidden;border:2px solid #b98764;}
+.route-tile {display:grid;place-content:center;border:1px solid #bc987166;background:#fff3cb;}
+.route-tile:nth-child(even) {background:#fae4af;}
+.route-tile.route-barrier {background:#d3dfac;}
+.route-tile.route-trail {background:#e5c5f4;}
+.route-player {position:absolute;translate:-50% -50%;z-index:2;filter:drop-shadow(0 1px 2px #49314b);}
+.math45-command-card {display:flex;align-items:center;min-width:0;gap:.1rem;justify-content:center;max-width:100%;aspect-ratio:auto;min-height:2.75rem;width:auto;background:#fff9e9;border-radius:.5rem;}
+.math45-command-card svg {width:clamp(1.25rem,5vw,2.5rem);max-width:100%;}
