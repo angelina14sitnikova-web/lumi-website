@@ -64,7 +64,7 @@ export default [
     ['math-45-lesson-8-5', 'Двигаемся по указанию'],
     ['math-45-lesson-8-6', 'Маршрут Луми'],
   ],
-  [{ id: 'math-45-module-9', title: 'Время и последовательность', cover: 'assets/module-11.webp' },
+  [{ id: 'math-45-module-9', title: 'Время и последовательность', reward: 'Медаль хранителя календаря', cover: 'assets/module-11.webp' },
     ['math-45-lesson-9-1', 'Утро, день, вечер и ночь'],
     ['math-45-lesson-9-2', 'Что происходит утром и вечером?'],
     ['math-45-lesson-9-3', 'Вчера'],
