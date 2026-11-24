@@ -35,7 +35,8 @@ import { geometry56 } from './math56/geometry.js';
 
 import { measurement } from './math56/measure.js';
 
+import { spatial56 } from './math56/spatial.js';
 
 
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement };
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56 };
