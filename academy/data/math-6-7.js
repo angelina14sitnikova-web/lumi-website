@@ -32,7 +32,7 @@ export default [
     ['math-67-lesson-4-5', 'Связь сложения и вычитания'],
     ['math-67-lesson-4-6', 'Решаем задачи на вычитание'],
   ],
-  [{ id: 'math-67-module-5', title: 'Арифметические задачи', cover: 'assets/module-12.webp' },
+  [{ id: 'math-67-module-5', title: 'Арифметические задачи', reward: 'Медаль математического детектива', cover: 'assets/module-12.webp' },
     ['math-67-lesson-5-1', 'Что известно в задаче?'],
     ['math-67-lesson-5-2', 'О чём спрашивает задача?'],
     ['math-67-lesson-5-3', 'Выбираем действие'],

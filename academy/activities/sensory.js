@@ -1,3 +1,4 @@
+import { showStory, practiceStory, constructStory } from './story-play.js';
 import { arithmeticDemo, buildExpression, practiceOperation } from './arithmetic-play.js';
 import { demonstrateParts, practiceParts } from './number-parts.js';
 import { makeTrace } from './digit-trace.js';
@@ -206,6 +207,7 @@ function sample(piece) {
 const math45Poses = {
   'arithmetic-alchemy':'lumi-thinking.png',
   'vanishing-vault':'lumi-welcome.png',
+  'detective-office':'lumi-reading.png',
   'number-houses':'lumi-thinking.png',
   'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
@@ -323,7 +325,9 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'math67-action') {
+  if (scene.effect === 'math67-story') {
+    pieces.replaceWith(showStory(scene.story67,animate));
+  } else if (scene.effect === 'math67-action') {
     pieces.replaceWith(arithmeticDemo(scene.arithmetic,animate));
   } else if (scene.effect === 'math67-split') {
     pieces.replaceWith(demonstrateParts(scene.total,scene.lefts,animate));
@@ -499,6 +503,7 @@ export function mountSensory(content, course, module, lesson) {
   let exerciseIndex = 0;
   let roundIndex = 0;
   let answers = [];
+  let ownStory;
   const transferred = new Map();
 
   function display(panel, heading, focus = true) {
@@ -753,6 +758,21 @@ export function mountSensory(content, course, module, lesson) {
       stage.append(builder);
       row.hidden = true;
     }
+    if (round.story67 || round.storyBuilder67 || round.solveOwnStory) {
+      const complete = () => record({from:0});
+      let field;
+      if (round.story67) field = practiceStory(round.story67,feedback,complete);
+      else if (round.storyBuilder67) {
+        const spec = {...round.storyBuilder67};
+        if (spec.saveStory) spec.onBuild = story => { ownStory = story; };
+        field = constructStory(spec,feedback,complete);
+      } else {
+        const sign = ownStory.kind === 'join' ? '+' : '−';
+        field = practiceOperation({...ownStory,sign},feedback,complete);
+      }
+      stage.append(field);
+      row.hidden = true;
+    }
     if (round.expression67 || round.operation67) {
       const field=round.expression67 ? buildExpression(round.expression67,feedback,()=>record({from:0})) : practiceOperation(round.operation67,feedback,()=>record({from:0}));
       stage.append(field);
@@ -995,6 +1015,7 @@ export function mountSensory(content, course, module, lesson) {
     nav.append(link('К модулю', moduleUrl), button('↻ Пройти ещё раз', () => {
       sceneIndex = exerciseIndex = roundIndex = 0;
       answers = [];
+    ownStory = undefined;
       transferred.clear();
       explain();
     }));

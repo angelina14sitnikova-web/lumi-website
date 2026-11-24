@@ -456,3 +456,7 @@ button.sensory-target { cursor: pointer; }
 .math67-number-track .here { background:#5e4290; color:white; }
 .math67-arithmetic button { min-height:44px; min-width:44px; }
 .math67-operation { max-width:100%; }
+
+.math67-story-panel,.math67-story-field { display:grid; gap:.3rem; background:#fff9ebed; border-radius:.7rem; padding:.4rem; min-width:0; }
+.math67-story-field select { min-height:44px; }
+.math67-story-panels { align-items:stretch; }
