@@ -10,6 +10,13 @@ const arrows = {
 };
 const page = (name, mark) => icon(name,'<rect x="19" y="22" width="62" height="63" rx="8" fill="#fff3d9"/><path d="M20 39h60m-49-23v14m38-14v14" fill="none" stroke-width="5"/>'+mark);
 const designs = {
+  crystal:icon('Кристалл','<path d="M50 8 76 34 72 67 50 92 28 67 24 34Z"/><path d="M50 8v84M24 34h52M28 67h44" fill="none" stroke="#e5f2fc" opacity=".7"/>'),
+  markedCrystal:icon('Кристалл с отметкой','<path d="M50 8 76 34 72 67 50 92 28 67 24 34Z"/><path d="m34 49 12 12 21-26" stroke="#fff4d8" stroke-width="6" fill="none"/>'),
+  lantern:icon('Фонарь','<path d="M34 29a16 16 0 0 1 32 0M22 38h56L67 85H33Z" fill="#e6ba72"/><path d="M31 45h38l-7 31H38Z" fill="#fff0ac"/><path d="M48 53v17" stroke="#f4ba57" stroke-width="6"/>'),
+  pearl:icon('Жемчужина','<circle cx="50" cy="50" r="30" fill="#edebfd"/><ellipse cx="39" cy="41" rx="12" ry="9" fill="#fffdf4"/><path d="M29 64q25 12 44-5" fill="none" stroke="#c1b0e7"/>'),
+  mushroom:icon('Гриб','<path d="M41 54h18l6 34H35Z" fill="#f4ddbe"/><path d="M12 59Q17 17 50 17t38 42Z"/><circle cx="38" cy="39" r="7" fill="#fff1da"/><circle cx="62" cy="48" r="6" fill="#fff1da"/>'),
+  firefly:icon('Светлячок','<ellipse cx="33" cy="43" rx="16" ry="11" fill="#c4e6fb"/><ellipse cx="67" cy="43" rx="16" ry="11" fill="#c4e6fb"/><ellipse cx="50" cy="55" rx="19" ry="26" fill="#f8d268"/><circle cx="50" cy="37" r="13" fill="#794e60"/><path d="M34 80l-9 9m41-9 9 9" stroke="#e6ad52" stroke-width="4"/>'),
+  shell:icon('Ракушка','<path d="M47 84Q7 69 14 42q-4-14 15-18 6-15 21-9 15-6 21 9 19 4 15 18 7 27-33 42Z"/><path d="M50 78 28 31m22 47V19m0 59 22-47" fill="none" stroke="#fff1df" stroke-width="4"/>'),
   previousDay:page('Вчера','<path d="M66 56H42v-9L27 62l15 15v-9h24Z"/>'),
   todayDay:page('Сегодня','<circle cx="50" cy="62" r="15" fill="#f6c366"/>'),
   nextDay:page('Завтра','<path d="M32 56h24v-9l15 15-15 15v-9H32Z"/>'),

@@ -321,3 +321,13 @@ button.sensory-target { cursor: pointer; }
 .sensory-reward [data-medal="math-45-module-6"],
 .sensory-reward [data-medal="math-45-module-9"] {background:radial-gradient(circle,#fff4bc,#d8a9e4);}
 .sensory-reward [data-medal="math-45-module-10"] {background:radial-gradient(circle,#fff4bc,#e6a93d);}
+.sensory-row[data-arrangement="orbit"] {display:grid;grid-template-columns:repeat(5,minmax(2.75rem,1fr));grid-template-areas:". a b c ." "d . . . e" ". f . g .";}
+.sensory-row[data-arrangement="orbit"] > :nth-child(1){grid-area:a;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(2){grid-area:b;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(3){grid-area:c;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(4){grid-area:e;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(5){grid-area:g;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(6){grid-area:f;}
+.sensory-row[data-arrangement="orbit"] > :nth-child(7){grid-area:d;}
+.sensory-row[data-arrangement="orbit"] .sensory-card {max-width:100%;}
+.math45-tally {flex-wrap:wrap;}
