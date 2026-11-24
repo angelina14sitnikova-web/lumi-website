@@ -16,7 +16,7 @@ export default [
     ['math-45-lesson-2-5', 'Пересчитываем предметы до пяти'],
     ['math-45-lesson-2-6', 'Считаем звуки и движения'],
   ],
-  [{ id: 'math-45-module-3', title: 'Количество и число', cover: 'assets/module-8.webp' },
+  [{ id: 'math-45-module-3', title: 'Количество и число', reward: 'Медаль мастера счёта', cover: 'assets/module-8.webp' },
     ['math-45-lesson-3-1', 'Отсчитываем нужное количество'],
     ['math-45-lesson-3-2', 'Считаем предметы разного размера'],
     ['math-45-lesson-3-3', 'Считаем предметы разной формы'],
