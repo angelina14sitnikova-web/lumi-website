@@ -24,7 +24,7 @@ export default [
     ['math-56-lesson-3-5', 'Записываем число десять: 10'],
     ['math-56-lesson-3-6', 'Числа и цифры до десяти'],
   ],
-  [{ id: 'math-56-module-4', title: 'Счёт и порядок', cover: 'assets/module-9.webp' },
+  [{ id: 'math-56-module-4', title: 'Счёт и порядок', reward: 'Медаль капитана числового экспресса', cover: 'assets/module-9.webp' },
     ['math-56-lesson-4-1', 'Количественный счёт до десяти'],
     ['math-56-lesson-4-2', 'Порядковый счёт до десяти'],
     ['math-56-lesson-4-3', 'Первый, последний и между ними'],
