@@ -428,3 +428,20 @@ button.sensory-target { cursor: pointer; }
   aspect-ratio: 4/3;
 }
 .math56-map-example .sensory-picture {position:absolute;translate:-50% -50%;}
+
+.math67-parts-scene,.math67-split-task { width:min(100%,32rem); min-width:0; }
+.math67-parts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.35rem; margin:.3rem auto; }
+.math67-part {
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); align-content:center;
+  min-height:2.4rem; padding:.24rem; border:2px solid #8b9cbd; border-radius:.65rem;
+  background:#eef2fff2;
+}
+.math67-part:nth-child(2) { background:#ffedf2f2; border-color:#c08ca4; }
+.math67-parts[data-grid] { display:block; width:min(100%,13rem); }
+.math67-parts[data-grid] .math67-part { display:contents; }
+.math67-parts[data-grid] { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.15rem; }
+.math67-parts[data-grid] svg { outline:1px solid #aa91b5; border-radius:.35rem; }
+.math67-part svg { width:100%; max-width:2.1rem; aspect-ratio:1; }
+.math67-split-task button { min-height:44px; margin:.2rem; }
+.math67-parts-found { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; gap:.35rem; padding:0; }
+.math67-parts-found li { background:#fff4cf; border-radius:.7rem; padding:.25rem .55rem; }

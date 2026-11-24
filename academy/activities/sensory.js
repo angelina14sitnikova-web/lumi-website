@@ -1,3 +1,4 @@
+import { demonstrateParts, practiceParts } from './number-parts.js';
 import { makeTrace } from './digit-trace.js';
 import { checkAnswer, lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 import { courseCompleted, celebrationUrl } from './celebration.js';
@@ -197,6 +198,7 @@ function sample(piece) {
   return el;
 }
 const math45Poses = {
+  'number-houses':'lumi-thinking.png',
   'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
   'number-observatory':'lumi-thinking.png','number-express':'lumi-welcome.png',
@@ -313,7 +315,9 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'digit-trace') {
+  if (scene.effect === 'math67-split') {
+    pieces.replaceWith(demonstrateParts(scene.total,scene.lefts,animate));
+  } else if (scene.effect === 'digit-trace') {
     pieces.replaceWith(makeTrace(scene.digit,null,null,true));
   } else if (scene.effect === 'route') {
     pieces.replaceWith(drawRoute(scene.route,true).field);
@@ -739,6 +743,10 @@ export function mountSensory(content, course, module, lesson) {
       stage.append(builder);
       row.hidden = true;
     }
+    if (round.split67) {
+      stage.append(practiceParts(round.split67,feedback,()=>record({from:0}),steps.length>0));
+      row.hidden=true;
+    }
     if (round.trace !== undefined) {
       const digit = round.trace;
       const trace = makeTrace(digit,()=>record({from:0}),()=>{
@@ -947,6 +955,7 @@ export function mountSensory(content, course, module, lesson) {
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) {
       icon.dataset.medal = module.id;
+      if (module.id==='math-67-module-2') icon.replaceChildren(picture({shape:'house',color:'pink'}));
       if (module.id==='math-67-module-1') icon.replaceChildren(picture({shape:'crystal',color:'blue'}));
       if (['math-4-5','math-5-6'].includes(course.id)) {
         const medals = course.id === 'math-5-6' ? math56Medals : math45Medals;

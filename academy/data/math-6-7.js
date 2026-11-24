@@ -8,7 +8,7 @@ export default [
     ['math-67-lesson-1-5', 'Предыдущее и следующее число'],
     ['math-67-lesson-1-6', 'Сравниваем числа в пределах 10'],
   ],
-  [{ id: 'math-67-module-2', title: 'Состав числа', cover: 'assets/module-9.webp' },
+  [{ id: 'math-67-module-2', title: 'Состав числа', reward: 'Медаль великого архитектора чисел', cover: 'assets/module-9.webp' },
     ['math-67-lesson-2-1', 'Состав числа 2 и 3'],
     ['math-67-lesson-2-2', 'Состав числа 4 и 5'],
     ['math-67-lesson-2-3', 'Состав числа 6'],
