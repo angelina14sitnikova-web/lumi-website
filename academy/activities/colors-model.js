@@ -1,4 +1,8 @@
 export const palette = {
+  orange: { name: 'оранжевый', paint: '#f18224' },
+  brown: { name: 'коричневый', paint: '#81503b' },
+  paleGreen: { name: 'светло-зелёный', paint: '#a6d767' },
+  deepGreen: { name: 'тёмно-зелёный', paint: '#155339' },
   red: { name: 'красный', paint: '#d32f39' },
   yellow: { name: 'жёлтый', paint: '#ffc928' },
   blue: { name: 'синий', paint: '#2051bb' },

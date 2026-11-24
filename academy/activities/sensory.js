@@ -483,6 +483,12 @@ export function mountSensory(content, course, module, lesson) {
       }
     }
     if (round.sample) stage.append(sample(round.sample));
+    if (round.cues) {
+      const cues = node('div', 'sensory-row');
+      cues.setAttribute('aria-label', 'Карточки-признаки');
+      round.cues.forEach(item => cues.append(picture(item)));
+      stage.append(cues);
+    }
     if (round.starts) {
       buttons.forEach((el, index) => targets[round.starts[index]].querySelector('.sensory-contents').append(el));
     } else {

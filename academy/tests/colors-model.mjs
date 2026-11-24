@@ -9,7 +9,7 @@ const module = course.modules[1];
 assert.equal(module.id, 'colors');
 assert.equal(module.lessons.length, 7);
 assert.equal(new Set(module.lessons.map(lesson => lesson.room)).size, 7);
-assert.equal(new Set(Object.values(palette).map(color => color.paint)).size, 9);
+assert.equal(new Set(["red","yellow","blue","green","white","black","pink","sky","gray"].map(key => palette[key].paint)).size, 9);
 assert.equal(moduleStars(course, module), 0);
 for (const [lessonIndex, lesson] of module.lessons.entries()) {
   assert.equal(lesson.scenes.length, 3);

@@ -1,4 +1,8 @@
 const paths = {
+  pumpkin: ['Тыква','M50 34C18 19 10 48 22 69Q34 91 50 81Q66 91 78 69C90 48 82 19 50 34Z','<path d="M50 34q0-13 8-15m-19 19q-14 21 0 39m22-39q14 21 0 39" fill="none" stroke="#90512c" stroke-width="4"/>'],
+  orangeFruit: ['Апельсин','M50 19a32 32 0 1 1 0 64a32 32 0 1 1 0-64Z','<path d="M50 24q12-19 26-11-6 14-26 11Z" fill="#5fa55d"/>'],
+  acorn: ['Жёлудь','M25 41h50v17c0 14-12 26-25 28-13-2-25-14-25-28Z','<path d="M18 45q0-21 32-22 32 1 32 22Z" fill="#c79364"/><path d="M49 23l7-10" fill="none" stroke-width="5"/>'],
+  chocolate: ['Шоколад','M22 14h56v72H22Z','<path d="M28 22h17v17H28Zm27 0h17v17H55ZM28 45h17v17H28Zm27 0h17v17H55Z" fill="#aa7658"/>'],
   ribbon: ['Лента', 'M10 43H90L80 50L90 57H10Z'],
   pencil: ['Карандаш', 'M10 43H77L90 50L77 57H10Z', '<path d="M21 43v14m55-14v14" fill="none"/>'],
   road: ['Дорожка', 'M10 35H90V65H10Z', '<path d="M15 50H86" fill="none" stroke="#fff9e5" stroke-width="3" stroke-dasharray="6 7"/>'],
