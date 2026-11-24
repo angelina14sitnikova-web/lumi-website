@@ -445,3 +445,14 @@ button.sensory-target { cursor: pointer; }
 .math67-split-task button { min-height:44px; margin:.2rem; }
 .math67-parts-found { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; gap:.35rem; padding:0; }
 .math67-parts-found li { background:#fff4cf; border-radius:.7rem; padding:.25rem .55rem; }
+
+.math67-arithmetic { width:min(100%,32rem); display:grid; gap:.45rem; justify-items:center; min-width:0; }
+.math67-arithmetic-row { display:flex; flex-wrap:wrap; gap:.3rem; justify-content:center; align-items:center; }
+.math67-arithmetic-items,.math67-number-track { display:flex; flex-wrap:wrap; justify-content:center; padding:.3rem; gap:.17rem; background:#fff8e8ed; border-radius:.65rem; min-height:2.3rem; }
+.math67-arithmetic-items svg,.math67-ten-frame span { width:clamp(1rem,4vw,2.2rem); height:clamp(1rem,4vw,2.2rem); }
+.math67-ten-frame { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); }
+.math67-ten-frame > * { outline:1px solid #b69aca; border-radius:.25rem; }
+.math67-expression,.math67-expression-slot,.math67-number-track span { background:#fdf2db; border:1px solid #9575b0; border-radius:.44rem; padding:.23rem .37rem; font-weight:800; }
+.math67-number-track .here { background:#5e4290; color:white; }
+.math67-arithmetic button { min-height:44px; min-width:44px; }
+.math67-operation { max-width:100%; }

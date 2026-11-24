@@ -16,7 +16,7 @@ export default [
     ['math-67-lesson-2-5', 'Состав чисел 8 и 9'],
     ['math-67-lesson-2-6', 'Состав числа 10'],
   ],
-  [{ id: 'math-67-module-3', title: 'Сложение', cover: 'assets/module-8.webp' },
+  [{ id: 'math-67-module-3', title: 'Сложение', reward: 'Медаль мастера сложения', cover: 'assets/module-8.webp' },
     ['math-67-lesson-3-1', 'Объединяем две группы предметов'],
     ['math-67-lesson-3-2', 'Знак плюс'],
     ['math-67-lesson-3-3', 'Знак равно'],

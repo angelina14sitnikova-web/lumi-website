@@ -1,3 +1,4 @@
+import { arithmeticDemo, buildExpression, practiceOperation } from './arithmetic-play.js';
 import { demonstrateParts, practiceParts } from './number-parts.js';
 import { makeTrace } from './digit-trace.js';
 import { checkAnswer, lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
@@ -198,6 +199,7 @@ function sample(piece) {
   return el;
 }
 const math45Poses = {
+  'arithmetic-alchemy':'lumi-thinking.png',
   'number-houses':'lumi-thinking.png',
   'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
@@ -315,7 +317,9 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'math67-split') {
+  if (scene.effect === 'math67-action') {
+    pieces.replaceWith(arithmeticDemo(scene.arithmetic,animate));
+  } else if (scene.effect === 'math67-split') {
     pieces.replaceWith(demonstrateParts(scene.total,scene.lefts,animate));
   } else if (scene.effect === 'digit-trace') {
     pieces.replaceWith(makeTrace(scene.digit,null,null,true));
@@ -743,6 +747,11 @@ export function mountSensory(content, course, module, lesson) {
       stage.append(builder);
       row.hidden = true;
     }
+    if (round.expression67 || round.operation67) {
+      const field=round.expression67 ? buildExpression(round.expression67,feedback,()=>record({from:0})) : practiceOperation(round.operation67,feedback,()=>record({from:0}));
+      stage.append(field);
+      row.hidden=true;
+    }
     if (round.split67) {
       stage.append(practiceParts(round.split67,feedback,()=>record({from:0}),steps.length>0));
       row.hidden=true;
@@ -955,6 +964,7 @@ export function mountSensory(content, course, module, lesson) {
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) {
       icon.dataset.medal = module.id;
+      if (module.id==='math-67-module-3') icon.replaceChildren(picture({shape:'chip',numeral:'+',color:'sky'}));
       if (module.id==='math-67-module-2') icon.replaceChildren(picture({shape:'house',color:'pink'}));
       if (module.id==='math-67-module-1') icon.replaceChildren(picture({shape:'crystal',color:'blue'}));
       if (['math-4-5','math-5-6'].includes(course.id)) {
