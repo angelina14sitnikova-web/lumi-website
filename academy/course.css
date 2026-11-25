@@ -374,3 +374,15 @@
 .course-celebration.math67-celebration {
   background:linear-gradient(#f4f8ff75,#f4f8ffdb),url('assets/sensory/math-academy-hall.webp') center/cover;
 }
+
+#academy-main[data-course-theme="memory"] .mem-album-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 10px 0;
+  padding: 10px;
+  background: #e8f2ec;
+  border-radius: 14px;
+}
+.mem-album-page img { object-fit: contain; border-radius: 10px; max-width: 100%; }

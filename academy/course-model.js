@@ -1,4 +1,5 @@
 import { courses } from './data/courses.js';
+import { memoryAnswer, memoryReady } from './memory/model.js';
 import { comparisonAnswer, comparisonReady } from './activities/comparison-model.js';
 
 import { colorsAnswer, colorsReady } from './activities/colors-model.js';
@@ -6,6 +7,7 @@ import { colorsAnswer, colorsReady } from './activities/colors-model.js';
 import { sensoryAnswer, sensoryReady } from './activities/sensory-model.js';
 
 const graduationKey67 = 'lumi.academy.math67.graduated.v1';
+const memoryGraduationKey = 'lumi.academy.memory34.graduated.v1';
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
 
@@ -40,6 +42,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['memory34', { isReady: memoryReady, check: memoryAnswer }],
   ['sensory', { isReady: sensoryReady, check: sensoryAnswer }],
   ['colors', { isReady: colorsReady, check: colorsAnswer }],
   ['comparison', { isReady: comparisonReady, check: comparisonAnswer }],
@@ -88,8 +91,16 @@ export function passPractice(lesson, answers) {
 }
 
 export function completionDate67() {
+  return readCompletionDate(graduationKey67);
+}
+
+export function memoryCompletionDate() {
+  return readCompletionDate(memoryGraduationKey);
+}
+
+function readCompletionDate(key) {
   try {
-    const value = globalThis.localStorage.getItem(graduationKey67);
+    const value = globalThis.localStorage.getItem(key);
     return value && Number.isFinite(Date.parse(value)) ? value : null;
   } catch {
     return null;
@@ -112,6 +123,14 @@ export function saveCompletion(course, module, lesson, answers) {
       if (!completionDate67()) globalThis.localStorage.setItem(graduationKey67, new Date().toISOString());
     } catch {
       // The lesson remains complete if the optional date cannot be stored.
+    }
+  }
+  if (course.id === 'memory-3-4' && firstCompletion && course.modules.every(entry =>
+    entry.lessons.every(lesson => practiceIsReady(lesson) && saved.has(keyFor(course, entry, lesson))))) {
+    try {
+      if (!memoryCompletionDate()) globalThis.localStorage.setItem(memoryGraduationKey,new Date().toISOString());
+    } catch {
+      // The completed lessons remain saved if the optional date cannot be stored.
     }
   }
   return true;

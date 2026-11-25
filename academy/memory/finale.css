@@ -1,0 +1,42 @@
+.mem-finale {
+  width: min(94%,980px);
+  margin: 32px auto;
+  padding: 16px clamp(9px,3vw,32px) 32px;
+  text-align: center;
+  color: #244f61;
+  background: #f8f3e4;
+  border-radius: 26px;
+}
+.mem-finale-banner {
+  height: clamp(185px,44vw,390px);
+  border-radius: 18px;
+  background: url('./media/island.webp') center / cover no-repeat;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  overflow: hidden;
+}
+.mem-finale-banner img { width: auto; max-width: 60%; max-height: 82%; object-fit: contain; animation: mem-album-rise 1.05s ease-out both; }
+@keyframes mem-album-rise { from { opacity: .65; transform: translateY(10px) } to { opacity: 1; transform: none } }
+.mem-finale-stars { margin: 18px auto; display: grid; grid-template-columns: repeat(9,1fr); gap: 2px; width: min(75%,445px); color: #b7862f; font-size: clamp(1rem,3.3vw,1.7rem); }
+.mem-album { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; background: #d6c5ae; border: 3px solid #b68f6b; border-radius: 23px; padding: 12px; }
+.mem-album-leaf { position: relative; margin: 0; padding: 8px; background: #fff7e7; border-radius: 12px; }
+.mem-album-leaf img:first-child { width: 100%; aspect-ratio: 16/9; border-radius: 9px; object-fit: cover; }
+.mem-album-leaf img:nth-child(2) { width: 29%; display: block; margin: -19px auto 7px; position: relative; object-fit: contain; aspect-ratio: 1; }
+.mem-album-leaf figcaption { line-height: 1.25; padding: 4px; font-size: clamp(.85rem,2vw,1.1rem); }
+.mem-finale-links { justify-content: center; }
+.mem-certificate { margin: 28px auto 0; display: block; max-width: 815px; }
+.mem-certificate label { display: block; margin: 12px auto; }
+.mem-certificate label input { display: block; border: 1px solid #91afa8; border-radius: 12px; width: min(90%,295px); padding: 10px; margin: 6px auto; }
+.mem-certificate canvas { display: block; width: 100%; height: auto; margin: 12px auto; border-radius: 10px; }
+.mem-certificate button { margin: 4px; }
+@media(max-width: 600px) { .mem-album { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(prefers-reduced-motion:reduce) { .mem-finale-banner img { animation: none; } }
+@media print {
+  body:has(.mem-certificate) { background: white !important; }
+  .mem-finale { margin: 0; padding: 0; width: 100%; background: white; }
+  .mem-finale > :not(.mem-certificate), .mem-certificate > :not(canvas),
+  body:has(.mem-certificate) > footer { display: none !important; }
+  .mem-certificate { margin: 0 !important; max-width: 100% !important; border: 0 !important; padding: 0 !important; }
+  .mem-certificate canvas { margin: 0; border-radius: 0; }
+}
