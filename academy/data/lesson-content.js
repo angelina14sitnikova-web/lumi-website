@@ -63,4 +63,19 @@ import { clouds } from './writing34/clouds.js';
 import { patterns } from './writing34/patterns.js';
 import { artists } from './writing34/artists.js';
 
-export const lessonContent = { ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+import { forest } from './literacy34/forest.js';
+import { city } from './literacy34/city.js';
+
+import { echo as literacyEcho } from './literacy34/echo.js';
+
+import { rhythm as literacyRhythm } from './literacy34/rhythm.js';
+
+import { island as literacyIsland } from './literacy34/island.js';
+
+const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:literacyEcho,rhythm:literacyRhythm,island:literacyIsland}).flatMap(([world,program]) =>
+  Object.entries(program.lessons).map(([id, lesson]) => [
+    id, { ...lesson, format: 'literacy34', world,
+      practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
+  ])));
+
+export const lessonContent = { ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };

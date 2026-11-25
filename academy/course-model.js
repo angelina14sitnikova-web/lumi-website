@@ -1,4 +1,5 @@
 import { courses } from './data/courses.js';
+import { checkListeningTask, readyListeningTask } from './literacy/listening-round.js';
 import { writingAnswer, writingReady } from './writing/model.js';
 import { memoryAnswer, memoryReady } from './memory/model.js';
 import { comparisonAnswer, comparisonReady } from './activities/comparison-model.js';
@@ -10,6 +11,7 @@ import { sensoryAnswer, sensoryReady } from './activities/sensory-model.js';
 const graduationKey67 = 'lumi.academy.math67.graduated.v1';
 const memoryGraduationKey = 'lumi.academy.memory34.graduated.v1';
 const writingGraduationKey = 'lumi.academy.writing34.graduated.v1';
+const literacyGraduationKey = 'lumi.academy.literacy34.graduated.v1';
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
 
@@ -44,6 +46,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['literacy34', { isReady: readyListeningTask, check: checkListeningTask }],
   ['writing34', { isReady: writingReady, check: writingAnswer }],
   ['memory34', { isReady: memoryReady, check: memoryAnswer }],
   ['sensory', { isReady: sensoryReady, check: sensoryAnswer }],
@@ -105,6 +108,10 @@ export function writingCompletionDate() {
   return readCompletionDate(writingGraduationKey);
 }
 
+export function literacyCompletionDate() {
+  return readCompletionDate(literacyGraduationKey);
+}
+
 function readCompletionDate(key) {
   try {
     const value = globalThis.localStorage.getItem(key);
@@ -146,6 +153,14 @@ export function saveCompletion(course, module, lesson, answers) {
       if (!writingCompletionDate()) globalThis.localStorage.setItem(writingGraduationKey,new Date().toISOString());
     } catch {
       // Saving the optional date does not affect the completed lesson.
+    }
+  }
+  if (course.id === 'literacy-3-4' && firstCompletion && course.modules.every(entry =>
+    entry.lessons.every(lesson => practiceIsReady(lesson) && saved.has(keyFor(course, entry, lesson))))) {
+    try {
+      if (!literacyCompletionDate()) globalThis.localStorage.setItem(literacyGraduationKey, new Date().toISOString());
+    } catch {
+      // The optional date is independent of the saved lesson.
     }
   }
   return true;
