@@ -1,3 +1,11 @@
+import { shopPractice } from './shop67.js';
+import { clockFace, clockDemo, clockPractice, clockLayout } from './clock67.js';
+import { spatialDemo, practiceSpatial } from './spatial67.js';
+import { geometryDemo, practiceGeometry } from './geometry67.js';
+import { dimensionPicture, engineeringDemo, practiceEngineering } from './engineering67.js';
+import { showStory, practiceStory, constructStory } from './story-play.js';
+import { arithmeticDemo, buildExpression, practiceOperation } from './arithmetic-play.js';
+import { demonstrateParts, practiceParts } from './number-parts.js';
 import { makeTrace } from './digit-trace.js';
 import { checkAnswer, lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 import { courseCompleted, celebrationUrl } from './celebration.js';
@@ -37,6 +45,11 @@ function animate(el, frames, options) {
   if (!reduced()) el.animate(frames, { fill: 'both', ...options });
 }
 function picture(piece) {
+  if (piece.pictureSequence67) {
+    const sequence = node('span', 'math67-arithmetic-row');
+    sequence.append(...piece.pictureSequence67.map(picture));
+    return sequence;
+  }
   const frame = node('span', 'sensory-picture');
   frame.dataset.size = piece.size || 'default';
   frame.dataset.shape = piece.shape;
@@ -46,7 +59,11 @@ function picture(piece) {
     if (piece.extent) frame.style.setProperty('--cross-extent', piece.extent);
   }
   if (piece.turn) frame.style.setProperty('--turn', piece.turn + 'deg');
-  if (piece.calendarLabel) {
+  if (piece.clock67) {
+    frame.append(clockFace(...piece.clock67));
+  } else if (piece.dimensions67) {
+    frame.append(dimensionPicture(piece.dimensions67,palette[piece.color].paint));
+  } else if (piece.calendarLabel) {
     frame.classList.add('math56-calendar-card');
     frame.append(sensoryArt(piece));
     if (piece.calendarIndex) frame.append(node('b','month-index',String(piece.calendarIndex)));
@@ -66,7 +83,7 @@ function picture(piece) {
     }
     frame.append(marks);
   } else if (piece.numeral !== undefined) {
-    frame.classList.add('math56-number');
+    frame.classList.add(piece.word67 ? 'math67-word' : 'math56-number');
     frame.textContent=String(piece.numeral);
   } else if (piece.commands) {
     frame.classList.add('math45-command-card');
@@ -197,6 +214,15 @@ function sample(piece) {
   return el;
 }
 const math45Poses = {
+  'arithmetic-alchemy':'lumi-thinking.png',
+  'vanishing-vault':'lumi-welcome.png',
+  'detective-office':'lumi-reading.png',
+  'engineering-lab':'lumi-thinking.png',
+  'geometry-temple':'lumi-reading.png',
+  'cartographers-guild':'lumi-welcome.png',
+  'time-observatory':'lumi-clock.png','math-academy-hall':'lumi-reward.png',
+  'number-houses':'lumi-thinking.png',
+  'number-portals':'lumi-welcome.png',
   'ten-crystals':'lumi-happy.png','number-library':'lumi-reading.png',
   'number-observatory':'lumi-thinking.png','number-express':'lumi-welcome.png',
   'balance-kingdom':'lumi-thinking.png','unit-houses':'lumi-happy.png',
@@ -216,6 +242,12 @@ const math45Medals = [
 const math56Medals = [
   ['crystal','sky'],['book','pink'],['star','blue'],['wagon','green'],['basket','yellow'],
   ['house','pink'],['cube','blue'],['measureUnit','yellow'],['arrowright','sky'],['treasure','yellow'],
+];
+
+const math67Medals = [
+  ['crystal','sky'],['house','pink'],['chip','sky','+'],['chip','blue','−'],
+  ['book','pink'],['measureUnit','yellow'],['triangle','blue'],['arrowright','sky'],
+  ['todayDay','pink'],['star','yellow'],
 ];
 
 function board(room, demo = false) {
@@ -246,7 +278,7 @@ function slot(piece, interactive) {
   const el = node(interactive ? 'button' : 'div', 'sensory-target');
   if (interactive) {
     el.type = 'button';
-    el.setAttribute('aria-label', sensoryName(piece));
+    el.setAttribute('aria-label', piece.pictureSequence67 ? piece.pictureSequence67.map(sensoryName).join(', ') : sensoryName(piece));
   }
   const visual = node('span', 'sensory-slot-figure');
   const marker = picture(piece);
@@ -312,7 +344,33 @@ function illustrate(room, scene) {
   if (scene.sample) stage.append(sample(scene.sample));
   stage.append(pieces);
 
-  if (scene.effect === 'digit-trace') {
+  if (scene.effect === 'math67-recap') {
+    const recap = node('div', 'math67-recap');
+    for (const panel of scene.panels) {
+      if (panel.arithmetic) recap.append(arithmeticDemo(panel.arithmetic, animate));
+      if (panel.geometry67) recap.append(geometryDemo(panel.geometry67, animate));
+      if (panel.engineering67) recap.append(engineeringDemo(panel.engineering67, animate));
+      if (panel.spatial67) recap.append(spatialDemo(panel.spatial67, animate));
+      if (panel.clock67) recap.append(clockDemo(panel.clock67, animate));
+    }
+    if (scene.pieces.length) recap.append(pieces);
+    else pieces.remove();
+    stage.append(recap);
+  } else if (scene.effect === 'math67-clock') {
+    pieces.replaceWith(clockDemo(scene.clock67,animate));
+  } else if (scene.effect === 'math67-space') {
+    pieces.replaceWith(spatialDemo(scene.spatial67,animate));
+  } else if (scene.effect === 'math67-geometry') {
+    pieces.replaceWith(geometryDemo(scene.geometry67,animate));
+  } else if (scene.effect === 'math67-engineering') {
+    pieces.replaceWith(engineeringDemo(scene.engineering67,animate));
+  } else if (scene.effect === 'math67-story') {
+    pieces.replaceWith(showStory(scene.story67,animate));
+  } else if (scene.effect === 'math67-action') {
+    pieces.replaceWith(arithmeticDemo(scene.arithmetic,animate));
+  } else if (scene.effect === 'math67-split') {
+    pieces.replaceWith(demonstrateParts(scene.total,scene.lefts,animate));
+  } else if (scene.effect === 'digit-trace') {
     pieces.replaceWith(makeTrace(scene.digit,null,null,true));
   } else if (scene.effect === 'route') {
     pieces.replaceWith(drawRoute(scene.route,true).field);
@@ -484,6 +542,7 @@ export function mountSensory(content, course, module, lesson) {
   let exerciseIndex = 0;
   let roundIndex = 0;
   let answers = [];
+  let ownStory;
   const transferred = new Map();
 
   function display(panel, heading, focus = true) {
@@ -570,7 +629,7 @@ export function mountSensory(content, course, module, lesson) {
       const el = node('button', 'color-choice sensory-card');
       el.type = 'button';
       el.dataset.from = String(index);
-      el.setAttribute('aria-label', sensoryName(piece));
+      el.setAttribute('aria-label', piece.pictureSequence67 ? piece.pictureSequence67.map(sensoryName).join(', ') : sensoryName(piece));
       el.setAttribute('aria-pressed', 'false');
       el.append(picture(piece));
       el.addEventListener('click', () => choose(index));
@@ -738,6 +797,54 @@ export function mountSensory(content, course, module, lesson) {
       stage.append(builder);
       row.hidden = true;
     }
+    if (round.shop67) {
+      stage.append(shopPractice(round.shop67,feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.clockLayout67) {
+      stage.append(clockLayout(feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.clock67) {
+      stage.append(clockPractice(round.clock67,feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.spatial67) {
+      stage.append(practiceSpatial(round.spatial67,feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.geometry67) {
+      stage.append(practiceGeometry(round.geometry67,feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.engineering67) {
+      stage.append(practiceEngineering(round.engineering67,feedback,()=>record({from:0})));
+      row.hidden=true;
+    }
+    if (round.story67 || round.storyBuilder67 || round.solveOwnStory) {
+      const complete = () => record({from:0});
+      let field;
+      if (round.story67) field = practiceStory(round.story67,feedback,complete);
+      else if (round.storyBuilder67) {
+        const spec = {...round.storyBuilder67};
+        if (spec.saveStory) spec.onBuild = story => { ownStory = story; };
+        field = constructStory(spec,feedback,complete);
+      } else {
+        const sign = ownStory.kind === 'join' ? '+' : '−';
+        field = practiceOperation({...ownStory,sign},feedback,complete);
+      }
+      stage.append(field);
+      row.hidden = true;
+    }
+    if (round.expression67 || round.operation67) {
+      const field=round.expression67 ? buildExpression(round.expression67,feedback,()=>record({from:0})) : practiceOperation(round.operation67,feedback,()=>record({from:0}));
+      stage.append(field);
+      row.hidden=true;
+    }
+    if (round.split67) {
+      stage.append(practiceParts(round.split67,feedback,()=>record({from:0}),steps.length>0));
+      row.hidden=true;
+    }
     if (round.trace !== undefined) {
       const digit = round.trace;
       const trace = makeTrace(digit,()=>record({from:0}),()=>{
@@ -754,6 +861,14 @@ export function mountSensory(content, course, module, lesson) {
       example.classList.add('math56-map-example');
       example.setAttribute('aria-label','Образец расположения фигур');
       stage.append(example);
+    }
+    if (round.demo67) {
+      const replay = button('Повторить показ', () => {
+        display.replaceChildren(arithmeticDemo(round.demo67, animate));
+      });
+      const display = node('div', 'math67-arithmetic');
+      display.append(arithmeticDemo(round.demo67, animate));
+      stage.append(display, replay);
     }
     if (round.sample) stage.append(sample(round.sample));
     if (round.cues) {
@@ -946,6 +1061,10 @@ export function mountSensory(content, course, module, lesson) {
     const icon = node('span', medal && module.id === 'color-world' ? 'color-medal' : medal ? 'cmp-medal' : 'cmp-reward-star', medal && module.id === 'shape-world' ? '◆' : medal && module.id === 'quantity' ? '✿' : '★');
     if (medal) {
       icon.dataset.medal = module.id;
+      if (course.id === 'math-6-7') {
+        const [shape,color,numeral] = math67Medals[course.modules.indexOf(module)];
+        icon.replaceChildren(picture({shape,color,numeral}));
+      }
       if (['math-4-5','math-5-6'].includes(course.id)) {
         const medals = course.id === 'math-5-6' ? math56Medals : math45Medals;
         const [shape,color] = medals[course.modules.indexOf(module)];
@@ -960,6 +1079,7 @@ export function mountSensory(content, course, module, lesson) {
     nav.append(link('К модулю', moduleUrl), button('↻ Пройти ещё раз', () => {
       sceneIndex = exerciseIndex = roundIndex = 0;
       answers = [];
+      ownStory = undefined;
       transferred.clear();
       explain();
     }));

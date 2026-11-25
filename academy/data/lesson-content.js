@@ -40,4 +40,13 @@ import { spatial56 } from './math56/spatial.js';
 import { time56 } from './math56/time.js';
 
 // Add completed scene and practice definitions by their permanent lesson IDs.
-export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56 };
+import { numberPortals } from './math67/numbers.js';
+import { numberHouses } from './math67/parts.js';
+import { addition, subtraction } from './math67/arithmetic.js';
+import { detectives } from './math67/stories.js';
+import { engineering } from './math67/engineering.js';
+import { geometry67 } from './math67/geometry.js';
+import { spatial67 } from './math67/spatial.js';
+import { time67 } from './math67/time.js';
+import { workshop67 } from './math67/workshop.js';
+export const lessonContent = { ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };

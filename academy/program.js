@@ -103,7 +103,7 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').replaceChildren((course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : course.title) + ' ',
+  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : course.title) + ' ',
     element('span', 'course-age-label', '· ' + course.age));
   const counts = courseCounts(course);
   const count = document.querySelector('#course-count');
