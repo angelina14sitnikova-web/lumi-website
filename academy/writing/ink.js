@@ -31,7 +31,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
   const canvas=el('canvas','write-ink-canvas ym-hide-content');
   canvas.setAttribute('aria-label','Холст для рисования');
   const overlay=svg('svg',{class:'write-pad-overlay',viewBox,'aria-hidden':'true'});
-  const border=svg('g'), guides=svg('g'), permanent=svg('g'), moving=svg('g'), demo=svg('g');
+  const border=svg('g'), guides=svg('g'), permanent=svg('g'), revealLayer=svg('g'), moving=svg('g'), demo=svg('g');
   const instructions=el('p','write-status');
   instructions.setAttribute('role','status');
   const toolbar=el('div','write-controls write-toolbar');
@@ -47,7 +47,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
   let routed=null,frame,step=0,sampleIndex=0,playing=null,assist=false,ink,complete=false;
   let selectedPaper=spec.paper??'plain';
   pad.style.background=paperColors[selectedPaper]??paperColors.plain;
-  backdrop.append(border,guides,permanent);
+  backdrop.append(border,revealLayer,guides,permanent);
   overlay.append(demo,moving);
   pad.append(backdrop,canvas,overlay);
   scene.append(pad,instructions,toolbar);
@@ -79,6 +79,14 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       guides.append(polyline(path,{stroke:'#eee5d9','stroke-width':spec.width*1.68}));
   }
   guide();
+  function reveal(){
+    if(!spec.reveal)return;
+    pad.classList.add('write-reveal');
+    const closed=targets.filter(t=>t.closed).map(t=>polyline(t.points,{fill:'#cadfc4','fill-opacity':'.78'}));
+    const rewards=(spec.rewardItems??[]).map(({name,x,y,size})=>mark(name,x,y,size));
+    revealLayer.replaceChildren(...closed,...rewards);
+    if(!reduced())revealLayer.animate([{opacity:0},{opacity:1}],{duration:680});
+  }
   function change(lines){
     if(example||complete)return;
     onChange(lines);
@@ -103,7 +111,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       if(marks>=spec.count){
         complete=true;
         if(spec.reveal){
-          pad.classList.add('write-reveal');
+          reveal();
           if(!reduced())permanent.animate([{opacity:.55},{opacity:1}],700);
         }
         finish?.();
@@ -115,7 +123,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
     instructions.textContent=lines.length&&!completed.every(Boolean)?'Продолжи линию. Подсказка рядом.':'';
     if(completed.every(Boolean)){
       complete=true;
-      if(spec.reveal)pad.classList.add('write-reveal');
+      reveal();
       finish?.();
     }
   }

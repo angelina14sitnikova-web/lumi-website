@@ -15,6 +15,7 @@ const cloud=path('M-33 18Q-49 12-40-2Q-34-12-26-10Q-22-30-7-28Q3-31 13-17Q32-21 
 const sun=circle(0,0,28,'#f3c966')+circle(-8,-8,7,'#fff0ae');
 const balloon=ellipse(0,-3,25,32,'#a3d6de')+ellipse(-7,-14,6,10,'#d8eff1')+path('M0 25l-7 13h14Z','#6abac9');
 const pics={
+  ball:circle(0,0,30,'#efb563')+path('M-30-2Q-4 26 30 8','none','#cf7991',7)+ellipse(-10,-12,8,4,'#fff2b0'),
   flower:petals(),flowerGold:petals('#f6cc79'),sun,balloon,star,apple,wheel,cloud,house,
   garage:rect(-35,-4,70,45,'#9fc3a8',7)+path('M-38 0L0-30L38 0Z','#84a59c')+rect(-23,7,46,34,'#5e7482',7)+path('M-15 18H15M-15 26H15','none','#a5c0c3',2),
   leaf:path('M-36 20Q-33-32 34-24Q19 30-35 22Z',leaf)+path('M-32 23Q-3-6 26-19','none','#c6e0b0',3),
