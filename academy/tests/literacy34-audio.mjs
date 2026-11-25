@@ -27,7 +27,7 @@ function fixture({ failFirst = false } = {}) {
       const source = {
         connect(gain) { this.gain = gain; },
         disconnect() { this.disconnected = true; },
-        start(time) { this.time = time; },
+        start(time, offset, duration) { Object.assign(this, { time, offset, duration }); },
         stop() { this.stopped = true; },
       };
       sources.push(source);
@@ -112,4 +112,19 @@ test('unavailable sounds are reported and can be fetched again', async () => {
   sources[0].onended();
   assert.deepEqual(await play, { status: 'finished' });
   await assert.rejects(audio.play(['unknown']), { code: 'unknown-sound' });
+});
+
+
+test('speech excerpts start at their markers and advance by their segment lengths', async () => {
+  const {audio, sources} = fixture();
+  const listening = audio.play([
+    {sound: 'bell', offset: .14, duration: .11},
+    {sound: 'bell', offset: .32, duration: .15},
+  ], {gap: .03});
+  await tick();
+  assert.deepEqual(sources.map(({offset,duration}) => [offset,duration]), [[.14,.11],[.32,.15]]);
+  assert.ok(Math.abs(sources[1].time - sources[0].time - .14) < .0001);
+  sources.at(-1).onended();
+  assert.equal((await listening).status,'finished');
+  await assert.rejects(audio.play([{sound:'bell',offset:.7,duration:.1}]),{code:'invalid-segment'});
 });

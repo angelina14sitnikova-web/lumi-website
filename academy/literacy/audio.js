@@ -78,7 +78,7 @@ export function createLessonAudio(manifest, {
     return { unavailable: ids.filter((_, index) => results[index].status === 'rejected') };
   }
 
-  function scheduleClip(session, clip, buffer, startTime, duration) {
+  function scheduleClip(session, clip, buffer, startTime, offset, duration) {
     const source = context.createBufferSource();
     // An empty buffer advances the transport for listening exercises with silence.
     source.buffer = buffer ?? context.createBuffer(1, Math.ceil(duration * context.sampleRate), context.sampleRate);
@@ -92,7 +92,7 @@ export function createLessonAudio(manifest, {
     gain.gain.linearRampToValueAtTime(0, startTime + duration);
     source.connect(gain);
     gain.connect(output);
-    source.start(startTime);
+    source.start(startTime, offset, duration);
     session.nodes.push(source);
     session.gains.push(gain);
   }
@@ -122,7 +122,12 @@ export function createLessonAudio(manifest, {
       const safeGap = Number.isFinite(gap) ? Math.max(0, gap) : 0.32;
       clips.forEach((clip, index) => {
         const buffer = buffers[index];
-        const duration = buffer?.duration ?? SILENCE_SECONDS;
+        const offset = clip.offset ?? 0;
+        const available = (buffer?.duration ?? SILENCE_SECONDS) - offset;
+        const duration = Math.min(clip.duration ?? available, available);
+        if (!Number.isFinite(offset) || offset < 0 || !Number.isFinite(duration) || duration <= 0) {
+          throw new LessonAudioError('invalid-segment', clip.sound);
+        }
         if (onClip && windowRef) {
           const elapsed = (startTime - context.currentTime) * 1000;
           const timer = windowRef.setTimeout(() => {
@@ -130,7 +135,7 @@ export function createLessonAudio(manifest, {
           }, elapsed);
           session.timers.push(timer);
         }
-        scheduleClip(session, clip, buffer, startTime, duration);
+        scheduleClip(session, clip, buffer, startTime, offset, duration);
         startTime += duration + safeGap;
       });
       session.nodes.at(-1).onended = () => {
