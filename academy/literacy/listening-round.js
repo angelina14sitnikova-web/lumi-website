@@ -1,5 +1,5 @@
 const orderedKinds = new Set(['sequence', 'match', 'sort', 'move-stop']);
-const singleKinds = new Set(['choice', 'discovery', 'compare', 'detect']);
+const singleKinds = new Set(['choice', 'discovery', 'compare', 'detect', 'repeat']);
 
 export function shuffled(values, random = Math.random) {
   const result = [...values];
@@ -11,10 +11,13 @@ export function shuffled(values, random = Math.random) {
 }
 
 export function roundAnswer(kind, round, selected) {
+  if (kind === 'repeat') return (round.accepts ?? [round.answer]).includes(selected);
+  if (kind === 'rhythm') return Array.isArray(selected) && round.answer.length === selected.length && round.answer.every((id,i)=>selected[i]===id);
+  if (kind === 'compose') return Array.isArray(selected) && selected.length===round.answer.length && selected.every(id=>round.options.includes(id));
   if (singleKinds.has(kind)) return round.answer === selected;
   if (!Array.isArray(round.answer) || !Array.isArray(selected) || selected.length !== round.answer.length) return false;
   if (orderedKinds.has(kind)) return round.answer.every((item, index) => selected[index] === item);
-  if (kind === 'multi') {
+  if (kind === 'multi' || kind === 'explore') {
     return new Set(selected).size === selected.length && round.answer.every(item => selected.includes(item));
   }
   return false;
@@ -77,6 +80,14 @@ export function createListeningRound(kind, round, random = Math.random) {
     }
     if (!sampleHeard) return { status: 'wait' };
     if (singleKinds.has(kind)) return attempt(option);
+    if (kind === 'explore') {
+      if (!selection.includes(option)) selection.push(option);
+      return selection.length === round.answer.length ? attempt([...selection]) : {status:'picking'};
+    }
+    if (kind === 'compose' || kind === 'rhythm') {
+      if(selection.length < (round.answer.length + (kind==='rhythm'?2:0))) selection.push(option);
+      return {status:'picking'};
+    }
     if (kind === 'multi') {
       const index = selection.indexOf(option);
       if (index === -1) selection.push(option);
@@ -102,7 +113,7 @@ export function createListeningRound(kind, round, random = Math.random) {
     finishListening() { sampleHeard = true; },
     select,
     selection: () => [...selection],
-    submit: () => kind === 'multi' ? attempt([...selection]) : { status: 'wait' },
+    submit: () => ['multi','rhythm','compose'].includes(kind) ? attempt([...selection]) : { status: 'wait' },
     resetSelection: () => { selection.length = 0; },
   };
 }

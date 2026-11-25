@@ -127,3 +127,18 @@
 }
 .literacy-reward { text-align:center; }
 .literacy-reward img { display:block; margin:.85rem auto; height:180px; object-fit:contain; }
+.literacy-object { width:100%; height:auto; max-height:145px; object-fit:contain; }
+.literacy-card svg { display:block; width:100%; height:auto; max-width:116px; margin:auto; }
+.literacy-choice-group { display:flex; flex-direction:column; align-items:stretch; gap:.45rem; }
+.literacy-choice-group button { min-height:48px; }
+.literacy-progress { min-height:1.2em; color:#657e9a; letter-spacing:.35em; }
+.literacy-performing { animation:literacy-gesture .72s ease both; }
+.literacy-action-sleep { transform:rotate(-12deg); }
+.literacy-action-hop.literacy-performing,.literacy-action-fly.literacy-performing { animation:literacy-jump .72s ease both; }
+.literacy-action-run.literacy-performing,.literacy-action-swim.literacy-performing { animation:literacy-travel .72s ease both; }
+.literacy-action-roll.literacy-performing { animation:literacy-roll .72s ease both; }
+@keyframes literacy-gesture { 50% { transform:rotate(-9deg) scale(1.05) } }
+@keyframes literacy-jump { 50% { transform:translateY(-15%) } }
+@keyframes literacy-travel { 40% { transform:translateX(11%) } 65% { transform:translateX(-7%) } }
+@keyframes literacy-roll { to { transform:rotate(140deg) translateX(9%) } }
+@media (prefers-reduced-motion:reduce) { .literacy-performing{animation:none;} }

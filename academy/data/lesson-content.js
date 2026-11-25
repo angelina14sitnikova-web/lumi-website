@@ -64,10 +64,12 @@ import { patterns } from './writing34/patterns.js';
 import { artists } from './writing34/artists.js';
 
 import { forest } from './literacy34/forest.js';
+import { city } from './literacy34/city.js';
 
-const listeningLessons = Object.fromEntries(Object.entries(forest.lessons).map(([id, lesson]) => [
-  id, { ...lesson, format: 'literacy34', world: 'forest',
-    practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
-]));
+const listeningLessons = Object.fromEntries(Object.entries({forest,city}).flatMap(([world,program]) =>
+  Object.entries(program.lessons).map(([id, lesson]) => [
+    id, { ...lesson, format: 'literacy34', world,
+      practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
+  ])));
 
 export const lessonContent = { ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };

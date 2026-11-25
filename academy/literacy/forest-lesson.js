@@ -1,5 +1,7 @@
 import { createLessonAudio } from './audio.js';
 import { createListeningRound } from './listening-round.js';
+import {speech,recordings} from './speech-index.js';
+import {artLabel,canIllustrate,literacyArt} from './art.js';
 
 const labels = {
   cat: 'Кошка', dog: 'Собака', cow: 'Корова', duck: 'Утка', bird: 'Птица',
@@ -8,6 +10,8 @@ const labels = {
   audible: 'Был звук', quiet: 'Было тихо', move: 'Двигаться', stop: 'Замереть',
   first: 'Первый', second: 'Второй', third: 'Третий', softer: 'Тише', stronger: 'Громче',
   animals: 'Животные', nature: 'Природа', objects: 'Предметы',
+  ready:'Готово',skip:'Пропустить повторение',human:'Голос человека',other:'Другой звук',same:'Похожи',different:'Разные',
+  clap:'Хлопнуть',tap:'Ударить в барабан',beat:'Сыграть',blue:'Голубой огонёк',gold:'Золотистый огонёк',pink:'Розовый огонёк',
 };
 const illustrated = new Set(['cat', 'dog', 'cow', 'duck', 'bird', 'rain', 'stream', 'leaves', 'bell', 'drum', 'paper', 'rattle']);
 const indexed = ['first', 'second', 'third'];
@@ -42,14 +46,15 @@ function sprite(path, className = '') {
 
 function soundId(clip) { return typeof clip === 'string' ? clip : clip.sound; }
 
-function makeStage({ objects = [], pose = 'lumi-listen' } = {}) {
+function makeStage({ objects = [], pose = 'lumi-listen', world = 'forest' } = {}) {
   const stage = element('div', 'literacy-stage');
-  stage.style.backgroundImage = 'url("' + imageFor('forest') + '")';
+  stage.style.backgroundImage = 'url("' + (world==='forest'?imageFor('forest'):new URL('./media/'+world+'/cover.webp',import.meta.url).href) + '")';
   const lumi = sprite(new URL('../../images/lumi-transparent.png', import.meta.url).href, 'literacy-lumi');
   lumi.dataset.pose = pose;
   const contents = element('div', 'literacy-objects');
   const icons = objects.map(id => {
-    const image = sprite(imageFor(id), 'literacy-object');
+    const image = illustrated.has(id)?sprite(imageFor(id),'literacy-object'):literacyArt(id);
+    image.classList.add('literacy-object');
     image.dataset.object = id;
     return image;
   });
@@ -71,7 +76,18 @@ const shake = [{ transform: 'rotate(0)' }, { transform: 'rotate(-8deg)' }, { tra
 export function mountForestLesson(root, lesson, {
   saved = null, save = () => {}, finish = () => {}, createAudio = createLessonAudio,
 } = {}) {
-  const audio = createAudio(manifest);
+  const world=lesson.world??'forest';
+  const audioManifest={...manifest};
+  for(const [id,link] of Object.entries(recordings))audioManifest[id]=new URL(link,import.meta.url).href;
+  if(speech[world])audioManifest.speech=new URL('./media/'+world+'/speech.mp3',import.meta.url).href;
+  const audio = createAudio(audioManifest);
+  function clipsFor(clips){
+    return clips.map(clip=>{
+      if(!clip?.voice)return clip;
+      const values=speech[world]?.[(clip.variant??'clear')+'|'+clip.voice];
+      return values?{sound:'speech',offset:values[0],duration:values[1],gain:clip.gain}:{sound:'missing-voice'};
+    });
+  }
   const taskAnswers = Array.isArray(saved?.answers) ? saved.answers : [];
   let sceneIndex = Math.min(Math.max(saved?.scene ?? 0, 0), 2);
   let taskIndex = Math.min(Math.max(saved?.task ?? 0, 0), 4);
@@ -102,7 +118,7 @@ export function mountForestLesson(root, lesson, {
   async function play(clips, status, options) {
     const id = viewId;
     try {
-      const result = await audio.play(clips, options);
+      const result = await audio.play(clipsFor(clips), options);
       return viewId === id && result.status === 'finished';
     } catch (error) {
       if (viewId === id) status.textContent = error.code === 'muted' ? adultWarning :
@@ -116,7 +132,7 @@ export function mountForestLesson(root, lesson, {
     audio.stop();
     const scene = lesson.scenes[sceneIndex];
     save({ mode: 'scene', scene: sceneIndex, task: taskIndex, answers: taskAnswers });
-    const { stage, lumi, icons } = makeStage({ objects: scene.objects });
+    const { stage, lumi, icons } = makeStage({ objects: scene.objects,world });
     const heading = element('h2', 'lesson-part', 'Объяснение Луми');
     const count = element('p', 'course-kicker lesson-count', 'Сцена ' + (sceneIndex + 1) + ' из 3');
     const caption = element('p', 'literacy-caption', scene.text);
@@ -138,7 +154,8 @@ export function mountForestLesson(root, lesson, {
         onClip(index, sound) {
           if (scene.action === 'listen' || (scene.action === 'listen-after' && sound === 'silence')) move(lumi, listen);
           const mayReveal = scene.action !== 'reveal-last' || index === scene.sounds.length - 1;
-          const icon = icons.find(piece => piece.dataset.object === sound);
+          const icon = (sound==='speech'?icons[Math.min(index,icons.length-1)]:null)??icons.find(piece => piece.dataset.object === sound);
+          if(scene.action==='actions'&&icon)icon.classList.add('literacy-performing');
           if (mayReveal && icon) {
             icon.classList.remove('literacy-veiled');
             move(icon, scene.action === 'play' || scene.action === 'switch' ? shake : hop);
@@ -150,7 +167,7 @@ export function mountForestLesson(root, lesson, {
     if (sceneIndex) controls.append(control('Предыдущая сцена', () => { sceneIndex--; showScene(); }));
     controls.append(replay, next);
     view.replaceChildren(heading, count, stage, caption, controls, status);
-    void audio.preload(scene.sounds.map(soundId));
+    void audio.preload(clipsFor(scene.sounds).map(soundId));
   }
 
   function showPractice() {
@@ -173,9 +190,13 @@ export function mountForestLesson(root, lesson, {
     const controls = element('div', 'lesson-actions literacy-actions');
     const isSleeping = task.name === 'Луми спит';
     const stage = ['move-stop', 'discovery'].includes(kind) || isSleeping
-      ? makeStage({ pose: isSleeping ? 'lumi-sleep' : 'lumi-listen' }) : null;
+      ? makeStage({ pose: isSleeping ? 'lumi-sleep' : 'lumi-listen',world }) : null;
     const heard = new Set();
     const choices = new Map();
+    let playingChoice=false;
+    const auditions=new Set();
+    const progress=element('div','literacy-progress');
+    progress.setAttribute('aria-hidden','true');
     let answered = false;
     let moveAnimation;
     let audioRequest = 0;
@@ -201,6 +222,7 @@ export function mountForestLesson(root, lesson, {
     const next = control('Дальше', advance, true);
     next.hidden = true;
     function showOutcome(result) {
+      progress.textContent = ['rhythm','compose','sequence'].includes(kind) ? '● '.repeat(state.selection().length) : '';
       for (const [id, choice] of choices) {
         choice.classList.toggle('literacy-selected', state.selection().includes(id) && kind === 'multi');
         if (kind === 'multi') choice.setAttribute('aria-pressed', String(state.selection().includes(id)));
@@ -257,41 +279,67 @@ export function mountForestLesson(root, lesson, {
       });
     }
 
+    function preview(id){
+      const clip=round.choices?.[id];
+      if(!clip)return Promise.resolve(true);
+      return play([clip],status).then(done=>{if(done)auditions.add(id);return done;});
+    }
     for (const id of state.options) {
-      const art = illustrated.has(id);
-      const choice = control(labels[id] ?? id, () => {
+      const art = illustrated.has(id)||(!round.listenChoices&&canIllustrate(id));
+      const choice = control(labels[id] ?? (round.listenChoices?'Выбрать карточку '+(choices.size+1):artLabel(id)), async () => {
         if (answered) return;
         if (perItem && !heard.has(state.selection().length)) {
           status.textContent = 'Послушай следующую карточку.';
           return;
         }
+        if(playingChoice)return;
+        if((round.listenChoices&&!auditions.has(id))||(!round.listenChoices&&round.choices?.[id])){
+          playingChoice=true;
+          choices.forEach(node=>node.disabled=true);
+          const heardChoice=await preview(id);
+          playingChoice=false;
+          if(!answered)choices.forEach(node=>node.disabled=false);
+          if(!heardChoice)return;
+        }
         showOutcome(state.select(id));
+        if(['compose','rhythm','sequence','discovery','choice'].includes(kind))choice.querySelector('.literacy-action')?.classList.add('literacy-performing');
       });
       choice.dataset.choice = id;
       choice.classList.add('literacy-card');
-      if (art) choice.prepend(sprite(imageFor(id)));
+      if (art) choice.prepend(illustrated.has(id)?sprite(imageFor(id)):literacyArt(id));
       if ((kind === 'compare' || kind === 'multi') && indexed.includes(id)) {
         const token = element('span', 'literacy-token', '●'.repeat(indexed.indexOf(id) + 1));
         token.setAttribute('aria-hidden', 'true');
         choice.prepend(token);
       }
       choices.set(id, choice);
-      buttons.append(choice);
+      if(round.listenChoices){
+        const group=element('div','literacy-choice-group');
+        const audition=control('Слушать карточку '+choices.size,()=>void preview(id));
+        audition.dataset.preview=id;
+        group.append(audition,choice);buttons.append(group);
+      }else buttons.append(choice);
     }
 
     const sampleButton = control('Послушать', () => openSound(0, true), true);
     sampleButton.classList.add('literacy-sample-ready');
     controls.append(sampleButton);
-    if (kind === 'multi') controls.append(control('Проверить', () => showOutcome(state.submit())));
-    if (['sequence', 'match', 'sort', 'multi'].includes(kind)) controls.append(control('Сбросить выбор', () => {
+    if(speech[world]?.['clear|'+task.instruction])controls.append(control('Послушать инструкцию',()=>{void play([{voice:task.instruction}],status);}));
+    if(['explore','compose'].includes(kind)){state.finishListening();sampleButton.dataset.ready='yes';}
+    if (kind === 'multi'||kind==='rhythm') controls.append(control('Проверить', () => showOutcome(state.submit())));
+    if(kind==='compose')controls.append(control('Проиграть оркестр',async()=>{
+      if(state.selection().length!==round.answer.length){status.textContent='Выбери три звука.';return;}
+      if(await play(state.selection().map(id=>round.choices[id]),status))showOutcome(state.submit());
+    }));
+    if (['sequence', 'match', 'sort', 'multi', 'compose', 'rhythm'].includes(kind)) controls.append(control('Сбросить выбор', () => {
       state.resetSelection();
       status.textContent = '';
       showOutcome({ status: 'picking' });
       status.textContent = '';
     }));
     controls.append(next);
-    view.replaceChildren(heading, counter, instruction, ...(stage ? [stage.stage] : []), samples, buttons, controls, status);
-    void audio.preload([...state.sample.map(soundId), 'success']);
+    view.replaceChildren(heading, counter, instruction, ...(stage ? [stage.stage] : []), samples, buttons, progress, controls, status);
+    void audio.preload([...clipsFor([...state.sample,...Object.values(round.choices??{})]).map(soundId), 'success']);
   }
 
   if (saved?.mode === 'practice') showPractice();
