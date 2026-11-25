@@ -1,8 +1,14 @@
-const memoryKeys = new Set(['find','pair','set','detail','difference','track']);
+const memoryKeys = new Set([
+  'find','pair','set','detail','difference','track','recall','memory-set','missing','layouts','arrange','changed','paint',
+]);
 
 export function memoryRoundAnswer(round, answer) {
   if (!memoryKeys.has(round.kind)) return false;
   if (!Array.isArray(round.answer)) return round.answer === answer;
+  if (['arrange','paint'].includes(round.kind)) {
+    return Array.isArray(answer) && answer.length === round.answer.length &&
+      round.answer.every((id,index)=>id===answer[index]);
+  }
   return Array.isArray(answer) && answer.length === round.answer.length &&
     new Set(answer).size === answer.length && round.answer.every(id => answer.includes(id));
 }

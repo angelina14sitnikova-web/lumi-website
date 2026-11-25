@@ -1,6 +1,7 @@
 import { artTitle, picture, regions } from './art.js';
 import { memoryRoundAnswer, restoringProgress, shuffleOptions } from './model.js';
 import { createLessonAudio } from './audio.js';
+import { makeRecallBoard, visualRecallKinds } from './recall-board.js';
 import { lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 
 const media = new URL('./media/', import.meta.url);
@@ -186,7 +187,11 @@ function demo(scene, playSound) {
   let notes;
   const box = element('div','mem-demo-board');
   const explanation = element('p','mem-prompt',scene.text);
-  if (round.kind==='track') {
+  if (visualRecallKinds.has(round.kind)) {
+    const lesson=makeRecallBoard(round,{example:true});
+    box.append(lesson.view);
+    play=()=>lesson.replayExample();
+  } else if (round.kind==='track') {
     const moving = route(round, null, ()=>{ notes.textContent='Луми проследил за предметом.'; });
     box.append(moving.lane,moving.controls);
     play = ()=>moving.watch.click();
@@ -289,7 +294,8 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const scene = lesson.scenes[sceneIndex];
     const top = element('div','mem-location');
     top.style.backgroundImage='url("'+new URL(lesson.world+'.webp',media)+'")';
-    top.append(image(scene.example.lens?'lumi-lens':'lumi-point','mem-lumi','Луми'));
+    const pose = lesson.world==='castle'?'lumi-chest':scene.example.lens?'lumi-lens':'lumi-point';
+    top.append(image(pose,'mem-lumi','Луми'));
     const view = demo(scene,()=>{
       say(scene.text);
       registerMotion(top.firstElementChild,[{transform:'rotate(0)'},{transform:'rotate(4deg)'},{transform:'rotate(0)'}]);
@@ -314,6 +320,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     let tried=0;
     let done=false;
     let pairing=round.kind!=='pair';
+    let recallBoard;
     const advance=button('Дальше',()=>{
       if (!done) return;
       if (roundAnswers.length===task.rounds.length) {
@@ -336,11 +343,13 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         status.textContent='Получилось!';
         advance.hidden=false;
         for (const group of options.values()) group.forEach(node=>node.disabled=true);
+        recallBoard?.finish();
         void sound.play(['reward']).catch(()=>{});
       } else {
         tried++;
         status.textContent=tried>=2?'Попробуй ещё раз. Посмотри на подсказку.':'Попробуй ещё раз.';
         noRepeat.clear();
+        recallBoard?.clearResult();
         for (const group of options.values()) group.forEach(node=>node.classList.remove('mem-selected'));
         if (tried>=2) {
           const hint = [].concat(round.answer).find(id=>!groupFound(round,id)) ?? [].concat(round.answer)[0];
@@ -370,7 +379,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         mark(id,'mem-found');
         if (noRepeat.size===targets.length) check([...noRepeat]);
         else status.textContent='Нашлось! Есть ещё отличие.';
-      } else if (round.kind==='set') {
+      } else if (round.kind==='set' || round.kind==='memory-set') {
         if (noRepeat.has(id)) {
           noRepeat.delete(id);
           options.get(id).forEach(node=>node.classList.remove('mem-selected'));
@@ -382,7 +391,12 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
       } else check(id);
     }
 
-    if (round.kind==='detail' || round.kind==='difference') {
+    if (visualRecallKinds.has(round.kind)) {
+      recallBoard=makeRecallBoard(round,{
+        answer:check,choose,options,announce:text=>{status.textContent=text;},reset:()=>noRepeat.clear(),
+      });
+      display.append(recallBoard.view);
+    } else if (round.kind==='detail' || round.kind==='difference') {
       const diagrams=element('div','mem-diagrams');
       const pictureIds=round.kind==='detail'?[round.picture]:[round.left,round.right];
       pictureIds.forEach(id=>{
@@ -435,7 +449,8 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const summary = element('p','',saved?'Звёзды модуля: '+stars+' из '+module.lessons.length:
       'На этом устройстве не удалось сохранить звезду.');
     if (stars===module.lessons.length) {
-      piece.append(image('observer-medal','mem-medal',module.reward));
+      const medal=module.memoryAlbum.medal.split('/').at(-1).replace('.webp','');
+      piece.append(image(medal,'mem-medal',module.reward));
       piece.append(element('p','',module.reward+' и страница альбома открыты.'));
     }
     const next=module.lessons[module.lessons.indexOf(lesson)+1];

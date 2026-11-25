@@ -1,4 +1,4 @@
-const tones = { blue:'#5caddb', pink:'#dd819d', gold:'#efb952', green:'#77aa78', red:'#e47968' };
+const tones = { blue:'#5caddb', pink:'#dd819d', gold:'#efb952', green:'#77aa78', red:'#e47968', neutral:'#c2becb' };
 const svg = 'http://www.w3.org/2000/svg';
 const gold = tones.gold;
 const dark = '#384465';
@@ -8,7 +8,7 @@ export const titles = {
   cup:'чашка', apple:'яблоко', pear:'груша', plum:'слива', jug:'кувшин', plate:'тарелка', spoon:'ложка',
   butterfly:'бабочка', house:'домик', flower:'цветок', star:'звезда', firefly:'светлячок',
   leaf:'лист', bell:'колокольчик', basket:'корзинка', mat:'коврик', garage:'гараж', window:'окошко',
-  desk:'стол', fair:'полянка',
+  desk:'стол', fair:'полянка', lemon:'лимон', balloon:'воздушный шарик',
   ears:'ушки', paws:'лапки', bow:'бантик', wheels:'колёса', light:'фары', roof:'крыша',
   door:'дверь', center:'серединка', body:'кузов', tree:'дерево',
 };
@@ -38,6 +38,8 @@ const draw = {
   apple: () => path('M60 45q-28 -17 -39 8q-13 28 14 49q11 9 25 3q23 5 35 -23q11 -29 -11 -40q-11 -5 -24 3z',tones.red)+line('M60 46q2 -13 -2 -20','#875d4a',4)+leaves(62,39)+shine(38,58,7,10),
   pear: () => path('M60 28q16 0 21 30q28 10 21 32q-5 17 -41 18q-36 -1 -43 -18q-7 -19 21 -32q5 -30 21 -30z','#97b96a')+line('M60 32q-4 -10 4 -15','#896443',4)+leaves(62,28)+shine(52,67,7,12),
   plum: () => ellipse(60,67,31,38,'#8769ae')+path('M66 33Q80 75 56 103Q90 98 91 69Q93 46 66 33Z','#6a4a91')+leaves(60,34)+shine(48,53,7,9),
+  lemon: () => path('M19 62Q29 33 61 31Q93 30 99 54Q113 58 105 67Q94 90 66 95Q35 98 21 78Q9 73 19 62Z','#eaca55')+shine(50,50,13,6)+leaves(82,37),
+  balloon: c => ellipse(60,48,29,33,c)+path('M60 76l-7 12h14z',c)+line('M60 86q16 12 -2 24','#997d89',2)+shine(49,34,6,11),
   duck: () => ellipse(57,78,34,24,'#efb953')+circle(74,48,20,'#f5cc64')+ellipse(63,77,17,9,'#f8d875')+circle(78,45,3,dark)+path('M89 49l21 6l-21 7z','#e7955b')+rect(42,99,20,5,'#e7955b',3),
   doll: () => path('M60 60l30 42H30Z','#b388c5')+circle(60,43,20,'#b97750')+circle(60,48,16,'#f6cbac')+face(60,46)+ribbon(tones.blue)+rect(40,103,14,7,'#754e82',4)+rect(67,103,14,7,'#754e82',4),
   stack: () => rect(28,86,64,17,'#79ab80',8)+rect(34,70,52,17,'#81b7d8',8)+rect(41,54,38,17,'#dc92b0',8)+rect(48,38,24,17,'#efb65d',8)+circle(60,31,9,'#f4d98b'),

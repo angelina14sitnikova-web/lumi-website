@@ -161,3 +161,79 @@
 @media(prefers-reduced-motion:reduce) {
   .is-moving .mem-racer { transition: none; }
 }
+
+.mem-recall-stage {
+  position: relative;
+  padding: 12px;
+  background: #f3ebf5;
+  border: 1px solid #dfcfdf;
+  border-radius: 18px;
+  margin-block: 10px;
+}
+.mem-recall-original {
+  min-height: 116px;
+  transition: opacity 210ms ease;
+}
+.mem-recall-stage:has(.mem-curtain-closed) .mem-recall-original { opacity: 0; }
+.mem-curtain {
+  position: absolute;
+  height: 105px;
+  top: 8px;
+  inset-inline: 9px;
+  border-radius: 12px;
+  background: repeating-linear-gradient(90deg,#a274ae 0%,#bb8dbb 13%,#b583b6 16%);
+  transform-origin: top;
+  transform: scaleY(0);
+  pointer-events: none;
+  transition: transform 220ms ease-in-out,opacity 160ms linear;
+  opacity: 0;
+}
+.mem-curtain.mem-curtain-closed { transform: scaleY(1); opacity: 1; }
+.mem-recall-answers { position: relative; min-height: 90px; }
+.mem-recall-answers > .mem-button { margin-block: 8px; }
+.mem-phase { text-align: center; font-weight: 650; margin: 4px 0 8px; }
+.mem-recall-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: end;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px auto 12px;
+  padding: 5px;
+  max-width: min(100%,450px);
+  border-radius: 12px;
+}
+.mem-slot { width: clamp(53px,19vw,112px); }
+.mem-setting-shelf { background: #e3cdab; border-bottom: 8px solid #b18467; }
+.mem-setting-basket { background: #efd1a4; border-bottom: 8px solid #b88355; }
+.mem-setting-chest { background: #dfc9e8; border: 2px solid #ad7bb6; border-bottom-width: 6px; }
+.mem-setting-picnic {
+  background: #d8e8cb;
+  border: 1px solid #a2b99c;
+}
+.mem-setting-picnic .mem-slot:first-child { border: 2px solid #bb8a57; border-radius: 7% 7% 26% 26%; background: #efd1a4; }
+.mem-empty-slot { border: 2px dashed #8f7f9e; min-height: 52px; aspect-ratio: 1; background: #fff8; }
+.mem-layout-option {
+  padding: 5px;
+  border: 2px solid #ad94b3;
+  border-radius: 12px;
+  background: #faf6fd;
+  cursor: pointer;
+}
+.mem-layout-option .mem-slot { width: clamp(49px,15vw,79px); }
+.mem-recall-palette { padding: 6px; }
+.mem-color::before {
+  content: '';
+  display: block;
+  width: 64%;
+  aspect-ratio: 1;
+  background: var(--paint);
+  border: 2px solid #fff; border-radius: 50%;
+  box-shadow: 0 0 0 1px #806882;
+}
+.mem-paint-focus { outline: 3px solid #9a6ca6; outline-offset: 4px; }
+.mem-compare { width: auto; padding: 4px 9px; }
+.mem-symbol { font-size: 1.8rem; line-height: 1; }
+@media(prefers-reduced-motion:reduce) {
+  .mem-recall-original,.mem-curtain { transition: none; }
+}

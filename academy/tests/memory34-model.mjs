@@ -61,3 +61,28 @@ test('partial practice can be resumed only with valid task answers',()=>{
   assert.deepEqual(restoringProgress(lesson,snapshot),snapshot);
   assert.equal(restoringProgress(lesson,{...snapshot,roundAnswers:['door']}),null);
 });
+
+test('the castle covers all six visual memory lessons and preserves sample positions',()=>{
+  const lessons=course.modules[1].lessons;
+  assert.equal(lessons.flatMap(lesson=>lesson.scenes).length,18);
+  assert.equal(lessons.flatMap(lesson=>lesson.practice).length,30);
+  for(const lesson of lessons){
+    assert.ok(practiceIsReady(lesson),lesson.title);
+    for(const task of lesson.practice){
+      assert.ok(memoryAnswer(task,task.rounds.map(round=>round.answer)),task.title);
+      for(const round of task.rounds){
+        for(const item of round.sample) assert.ok(!painting(item).includes('undefined'),item);
+        if(round.kind==='missing'){
+          assert.deepEqual(round.after,round.sample.map((value,index)=>index===round.slot?null:value));
+          assert.equal(round.sample[round.slot],round.answer);
+        }
+        if(['arrange','paint'].includes(round.kind)&&new Set(round.answer).size>1){
+          assert.equal(memoryRoundAnswer(round,[...round.answer].reverse()),false);
+        }
+        if(round.kind==='memory-set'){
+          assert.equal(memoryRoundAnswer(round,[...round.answer].reverse()),true);
+        }
+      }
+    }
+  }
+});
