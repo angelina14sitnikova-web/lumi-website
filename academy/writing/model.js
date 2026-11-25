@@ -12,8 +12,8 @@ export function writingBoardReady(board){
     return objects.has(board.object)&&Number.isInteger(board.count)&&board.count>0&&board.count<=5&&
       (board.object!=='keys'||(board.pattern?.length>0&&board.pattern.every(i=>Number.isInteger(i)&&i>=0&&i<board.count)));
   }
-  if(board.kind==='ink') return ['trace','route','free'].includes(board.mode)&&(
-    board.mode==='free'||(board.mode==='trace'&&board.targets?.length>0&&board.targets.every(target=>
+  if(board.kind==='ink') return ['trace','route','free','marks'].includes(board.mode)&&(
+    board.mode==='free'||(board.mode==='marks'&&Number.isInteger(board.count)&&board.count>0&&board.area)||(board.mode==='trace'&&board.targets?.length>0&&board.targets.every(target=>
       target.tolerance>0&&target.points?.length>=2&&target.points.every(isPoint)))||
     (board.mode==='route'&&isPoint(board.start)&&isPoint(board.end)));
   return false;

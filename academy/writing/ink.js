@@ -38,6 +38,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
   const palette=el('div','write-controls write-palette');
   const routeMode=spec.mode==='route';
   const drawingMode=spec.mode==='free';
+  const markMode=spec.mode==='marks';
   const landmarks=spec.items??[];
   const corridors=spec.corridors??[];
   const targets=spec.targets??[];
@@ -89,6 +90,26 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       return;
     }
     if(drawingMode){return;}
+    if(markMode){
+      const {x,y,w,h}=spec.area;
+      const within=p=>p.x>=x-14&&p.x<=x+w+14&&p.y>=y-14&&p.y<=y+h+14;
+      const marks=lines.filter(stroke=>{
+        const first=stroke.points[0],last=stroke.points.at(-1);
+        if(stroke.tool==='eraser'||!first||!last)return false;
+        const dx=Math.abs(last.x-first.x),dy=Math.abs(last.y-first.y);
+        return within(first)&&within(last)&&dy>=22&&dy<=132&&dy>=dx*(assist?.75:1.22);
+      }).length;
+      instructions.textContent=marks?'Капельки появляются под облаком.':'Нарисуй короткие штрихи под облаком.';
+      if(marks>=spec.count){
+        complete=true;
+        if(spec.reveal){
+          pad.classList.add('write-reveal');
+          if(!reduced())permanent.animate([{opacity:.55},{opacity:1}],700);
+        }
+        finish?.();
+      }
+      return;
+    }
     const completed=targets.map(target=>traceProgress(lines,target,assist));
     guide(completed);
     instructions.textContent=lines.length&&!completed.every(Boolean)?'Продолжи линию. Подсказка рядом.':'';
