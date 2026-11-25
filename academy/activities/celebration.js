@@ -1,9 +1,9 @@
 import { mountDiploma } from './diploma67.js';
-import { findCourse, moduleStars, completionDate67, memoryCompletionDate } from '../course-model.js';
+import { findCourse, moduleStars, completionDate67, memoryCompletionDate, writingCompletionDate } from '../course-model.js';
 
 export const celebrationUrl = course => course.id === 'math-3-4' ? 'celebration.html' : 'celebration.html?course=' + course.id;
 export function courseCompleted(course) {
-  const expected = { 'math-3-4':12, 'math-4-5':10, 'math-5-6':10, 'math-6-7':10, 'memory-3-4':6 };
+  const expected = { 'math-3-4':12, 'math-4-5':10, 'math-5-6':10, 'math-6-7':10, 'memory-3-4':6, 'writing-3-4':6 };
   return course?.modules.length === expected[course?.id] && Boolean(expected[course?.id]) &&
     course.modules.every(module => moduleStars(course,module) === module.lessons.length);
 }
@@ -11,8 +11,12 @@ export function courseCompleted(course) {
 const panel = globalThis.document?.querySelector('#course-celebration');
 if (panel) {
   const requested = new URLSearchParams(location.search).get('course');
-  const course = findCourse(['math-4-5','math-5-6','math-6-7','memory-3-4'].includes(requested) ? requested : 'math-3-4');
-  if(course.id==='memory-3-4') {
+  const course = findCourse(['math-4-5','math-5-6','math-6-7','memory-3-4','writing-3-4'].includes(requested) ? requested : 'math-3-4');
+  if(course.id==='writing-3-4') {
+    const {mountWritingFinale}=await import('../writing/finale.js');
+    const stars=course.modules.reduce((sum,module)=>sum+moduleStars(course,module),0);
+    mountWritingFinale(panel,course,courseCompleted(course),stars,writingCompletionDate());
+  } else if(course.id==='memory-3-4') {
     const {mountMemoryFinale}=await import('../memory/finale.js');
     const stars=course.modules.reduce((sum,module)=>sum+moduleStars(course,module),0);
     mountMemoryFinale(panel,course,courseCompleted(course),stars,memoryCompletionDate());

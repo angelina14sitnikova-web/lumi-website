@@ -1,0 +1,88 @@
+.write-lesson { max-width: 920px; margin-inline: auto; color: #47384a; }
+.write-lesson .course-kicker, .write-lesson h2, .write-prompt { text-align: center; }
+.write-location {
+  display: grid; place-items: end center; height: clamp(135px,32vw,285px);
+  background: #f4e8d4 center / cover no-repeat; border-radius: 21px; overflow: hidden;
+}
+.write-location img { height: 93%; max-width: 80%; object-fit: contain; }
+.write-prompt { font-size: clamp(1.01rem,2.5vw,1.15rem); margin: .55rem auto .9rem; max-width: 37rem; }
+.write-controls { display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin:.7rem 0; }
+.write-controls button, .write-controls a { min-height:48px; min-width:48px; }
+.write-lesson [hidden] { display: none !important; }
+.write-hand-board, .write-objects {
+  text-align: center; padding: .7rem; background: #fffaf0;
+  border: 2px solid #eadbbf; border-radius: 20px;
+}
+.write-hand-board > svg { display:block; width:min(100%,350px); margin:auto; }
+.write-motion-title { font-weight: 700; margin: .2rem 0; min-height: 1.4em; }
+.write-feedback, .write-status { min-height:1.4em; margin:.2rem 0; text-align:center; color:#3e6470; }
+.write-hand-board circle[data-finger] { cursor:pointer; }
+.write-hand-board circle[data-finger]:focus-visible { opacity:1; stroke:#3b5885; stroke-width:3; }
+.write-gesture svg { display:block; width:65px; margin:auto; }
+.write-items,.write-slots {
+  display:flex; justify-content:center; margin: .4rem auto; gap:clamp(4px,1vw,12px);
+}
+.write-items button,.write-slots button {
+  display:grid; place-items:center; flex: 0 1 84px; min-width:44px; min-height:54px;
+  padding:.2rem; background:#fff8e7; border:2px solid #e8d7bb;
+  border-radius:13px; position:relative;
+}
+.write-items button { touch-action:none; z-index:2; }
+.write-items button:active { z-index:3; }
+.write-items button:disabled { opacity:.43; }
+.write-slots button:disabled { opacity:1; }
+.write-items svg,.write-slots svg { display:block; width:100%; max-width:72px; }
+.write-items .is-picked, .write-hint {
+  border-color:#aa7132 !important; outline:3px solid #eccd86; outline-offset:-3px;
+}
+.write-reward { text-align:center; }
+.write-reward img { display:block; width:min(210px,60vw); margin:auto; }
+.write-book-stage { display:grid; width:min(100%,350px); margin:auto; }
+.write-book-stage > svg { grid-area:1/1; width:100%; }
+.write-book-stage > svg:not(.write-book) { opacity:0; transform:translateY(18px) scale(.8); }
+.write-book-stage > svg { transition:opacity .65s ease,transform .65s ease; }
+.is-unfolded .write-book-stage > svg:not(.write-book) { opacity:1; transform:none; }
+.is-unfolded .write-book { opacity:.25; transform:translateY(30px) scale(.9); }
+.write-hand-accent { transition:transform .65s ease; }
+@media (prefers-reduced-motion:reduce) {
+  .write-book-stage > svg,.write-hand-accent { transition:none; }
+}
+.write-pad {
+  position:relative; isolation:isolate; width:min(100%,780px); margin:.5rem auto;
+  aspect-ratio:640 / 430; border:2px solid #ddd2c5; border-radius:18px; overflow:hidden;
+}
+.write-pad > canvas,.write-pad > svg { position:absolute; inset:0; display:block; width:100%; height:100%; }
+.write-pad > svg { pointer-events:none; }
+.write-pad-overlay { z-index:2; }
+.write-pad.write-reveal { background:#ebf8ee !important; }
+.write-toolbar { max-width:780px; margin-inline:auto; }
+.write-swatch,.write-width { background:#fffaf1; border:2px solid #d4c2af; border-radius:14px; }
+.write-swatch::before,.write-width::before { display:block; content:""; margin:auto; border-radius:50%; background:var(--swatch,#493a65); width:var(--size,23px); height:var(--size,23px); }
+.write-swatch[aria-pressed="true"],.write-width[aria-pressed="true"] { outline:3px solid #7b95ac; outline-offset:1px; }
+.write-gallery { margin:2rem auto; max-width:850px; }
+.write-gallery-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:.8rem; }
+.write-gallery-card { border:2px solid #e9d8b9; background:#fff8e6; border-radius:16px; padding:.6rem; }
+.write-gallery-card img { display:block; width:100%; aspect-ratio:640/430; object-fit:contain; border-radius:10px; }
+.write-gallery-note { text-align:center; font-size:.9rem; }
+.write-print-preview { display:none; }
+@media print {
+  body:has(> .write-print-preview) > :not(.write-print-preview) { display:none !important; }
+  body > .write-print-preview { display:block; margin:0 auto; }
+  .write-print-preview img { width:100%; }
+}
+.write-finale { width:min(94%,1000px); margin:1.4rem auto; padding:clamp(9px,3vw,29px); border-radius:23px; background:#fbf2e4; color:#4f3e5a; text-align:center; }
+.write-finale-hero { height:clamp(160px,42vw,350px); background:#f5ddba url('./media/exhibition.webp') center 55% / cover; border-radius:17px; display:flex; align-items:end; justify-content:center; overflow:hidden; }
+.write-finale-hero img { max-width:65%; height:87%; width:auto; object-fit:contain; animation:write-rise .8s ease both; }
+@keyframes write-rise { from {opacity:.55;transform:translateY(13px)} to {opacity:1;transform:none} }
+.write-stars { display:grid; grid-template-columns:repeat(9,minmax(0,1fr)); max-width:340px; margin:1rem auto; color:#aa7722; font-size:clamp(1rem,3vw,1.6rem); }
+.write-medals { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; margin:1rem auto; }
+.write-medal { margin:0; padding:.65rem; background:#fff9eb; border:1px solid #e1d1b9; border-radius:14px; }
+.write-medal > img { display:block; margin:auto; width:min(75%,100px); height:auto; object-fit:contain; }
+.write-finale-paint { width:25px; height:25px; margin:.3rem auto; border-radius:14px; background:var(--paint,transparent); }
+.write-finale-paint > img { width:100%; height:100%; }
+.write-diploma { max-width:760px; margin:1.2rem auto; }
+.write-diploma canvas { display:block; width:100%; height:auto; border-radius:13px; margin:1rem auto; }
+.write-diploma input { display:block; min-height:45px; width:min(88%,285px); margin:.35rem auto; border:1px solid #c3afa8; border-radius:11px; font-size:1.03rem; padding:.35rem .6rem; }
+.write-diploma button { margin:.45rem; }
+@media (max-width:600px) { .write-medals { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (prefers-reduced-motion:reduce) { .write-finale-hero img { animation:none; } }

@@ -54,6 +54,13 @@ function updateCatalog() {
       if (stars === module.lessons.length) text.append(element('p', '', module.reward || (colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя')));
       progress.append(badge, text);
       details.append(summary, progress);
+      if (module.writingMedal && stars === module.lessons.length) {
+        const medal = element('img', 'course-module-cover');
+        medal.src = module.writingMedal;
+        medal.alt = module.reward;
+        medal.width = medal.height = 80;
+        details.append(medal, element('p', '', 'Волшебная краска · ' + module.writingPaint));
+      }
       if (module.memoryAlbum && stars === module.lessons.length) {
         const entry = element('figure', 'mem-album-page');
         const art = element('img');
@@ -91,7 +98,7 @@ function updateCatalog() {
         const ready = practiceIsReady(lesson);
         const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : ready ? (['comparison', 'colors', 'sensory', 'memory34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
+            : ready ? (['comparison', 'colors', 'sensory', 'memory34', 'writing34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');
@@ -104,8 +111,13 @@ function updateCatalog() {
     list.append(card);
   });
   catalog.replaceChildren(list);
+  if (course.id === 'writing-3-4') {
+    const studio = element('a', 'academy-button', 'Свободная мастерская');
+    studio.href = 'writing-studio.html';
+    catalog.prepend(studio);
+  }
   if (courseCompleted(course)) {
-    const celebration = element('a', 'academy-button', course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : 'Праздник открытий ✨');
+    const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
     catalog.prepend(celebration);
   }
@@ -120,7 +132,7 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : course.id === 'memory-3-4' ? course.nameForCourse : course.title) + ' ',
+  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : ['memory-3-4', 'writing-3-4'].includes(course.id) ? course.nameForCourse : course.title) + ' ',
     element('span', 'course-age-label', '· ' + course.age));
   const counts = courseCounts(course);
   const count = document.querySelector('#course-count');

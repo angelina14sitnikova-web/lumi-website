@@ -56,4 +56,11 @@ import { railway } from './memory34/railway.js';
 import { town } from './memory34/town.js';
 import { island } from './memory34/island.js';
 
-export const lessonContent = { ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+import { makers } from './writing34/makers.js';
+import { garden } from './writing34/garden.js';
+import { pencils } from './writing34/pencils.js';
+import { clouds } from './writing34/clouds.js';
+import { patterns } from './writing34/patterns.js';
+import { artists } from './writing34/artists.js';
+
+export const lessonContent = { ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
