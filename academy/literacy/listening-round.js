@@ -1,5 +1,5 @@
 const orderedKinds = new Set(['sequence', 'match', 'sort', 'move-stop']);
-const singleKinds = new Set(['choice', 'discovery', 'compare', 'detect', 'repeat']);
+const singleKinds = new Set(['choice', 'discovery', 'compare', 'detect', 'repeat', 'theatre']);
 
 export function shuffled(values, random = Math.random) {
   const result = [...values];
@@ -11,7 +11,7 @@ export function shuffled(values, random = Math.random) {
 }
 
 export function roundAnswer(kind, round, selected) {
-  if (kind === 'repeat') return (round.accepts ?? [round.answer]).includes(selected);
+  if (kind === 'repeat' || kind === 'theatre') return (round.accepts ?? [round.answer]).includes(selected);
   if (kind === 'rhythm') return Array.isArray(selected) && round.answer.length === selected.length && round.answer.every((id,i)=>selected[i]===id);
   if (kind === 'compose') return Array.isArray(selected) && selected.length===round.answer.length && selected.every(id=>round.options.includes(id));
   if (singleKinds.has(kind)) return round.answer === selected;

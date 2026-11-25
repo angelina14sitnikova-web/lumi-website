@@ -11,7 +11,7 @@ const labels = {
   first: 'Первый', second: 'Второй', third: 'Третий', softer: 'Тише', stronger: 'Громче',
   animals: 'Животные', nature: 'Природа', objects: 'Предметы',
   ready:'Готово',skip:'Пропустить повторение',human:'Голос человека',other:'Другой звук',same:'Похожи',different:'Разные',
-  clap:'Хлопнуть',tap:'Ударить в барабан',beat:'Сыграть',blue:'Голубой огонёк',gold:'Золотистый огонёк',pink:'Розовый огонёк',
+  clap:'Хлопнуть',rest:'Пауза',one:'Один хлопок',two:'Два хлопка',three:'Три хлопка',tap:'Ударить в барабан',beat:'Сыграть',blue:'Голубой огонёк',gold:'Золотистый огонёк',pink:'Розовый огонёк',
 };
 const illustrated = new Set(['cat', 'dog', 'cow', 'duck', 'bird', 'rain', 'stream', 'leaves', 'bell', 'drum', 'paper', 'rattle']);
 const indexed = ['first', 'second', 'third'];
@@ -222,7 +222,7 @@ export function mountForestLesson(root, lesson, {
     const next = control('Дальше', advance, true);
     next.hidden = true;
     function showOutcome(result) {
-      progress.textContent = ['rhythm','compose','sequence'].includes(kind) ? '● '.repeat(state.selection().length) : '';
+      if(kind!=='theatre')progress.textContent = ['rhythm','compose','sequence'].includes(kind) ? '● '.repeat(state.selection().length) : '';
       for (const [id, choice] of choices) {
         choice.classList.toggle('literacy-selected', state.selection().includes(id) && kind === 'multi');
         if (kind === 'multi') choice.setAttribute('aria-pressed', String(state.selection().includes(id)));
@@ -282,7 +282,7 @@ export function mountForestLesson(root, lesson, {
     function preview(id){
       const clip=round.choices?.[id];
       if(!clip)return Promise.resolve(true);
-      return play([clip],status).then(done=>{if(done)auditions.add(id);return done;});
+      return play([].concat(clip),status).then(done=>{if(done)auditions.add(id);return done;});
     }
     for (const id of state.options) {
       const art = illustrated.has(id)||(!round.listenChoices&&canIllustrate(id));
@@ -300,6 +300,17 @@ export function mountForestLesson(root, lesson, {
           playingChoice=false;
           if(!answered)choices.forEach(node=>node.disabled=false);
           if(!heardChoice)return;
+        }
+        if(kind==='theatre'){
+          progress.replaceChildren();
+          const selected={ 'story-lad':'hands-clap','story-sor':'magpie','story-water':'wash' }[id];
+          const enact=control('Оживить сценку',()=>{
+            progress.querySelector('.literacy-action')?.classList.add('literacy-performing');
+            showOutcome(state.select(id));
+          });
+          enact.dataset.enact=id;
+          progress.append(literacyArt(selected),enact);
+          return;
         }
         showOutcome(state.select(id));
         if(['compose','rhythm','sequence','discovery','choice'].includes(kind))choice.querySelector('.literacy-action')?.classList.add('literacy-performing');
@@ -325,11 +336,11 @@ export function mountForestLesson(root, lesson, {
     sampleButton.classList.add('literacy-sample-ready');
     controls.append(sampleButton);
     if(speech[world]?.['clear|'+task.instruction])controls.append(control('Послушать инструкцию',()=>{void play([{voice:task.instruction}],status);}));
-    if(['explore','compose'].includes(kind)){state.finishListening();sampleButton.dataset.ready='yes';}
+    if(['explore','compose','theatre'].includes(kind)){state.finishListening();sampleButton.dataset.ready='yes';}
     if (kind === 'multi'||kind==='rhythm') controls.append(control('Проверить', () => showOutcome(state.submit())));
     if(kind==='compose')controls.append(control('Проиграть оркестр',async()=>{
       if(state.selection().length!==round.answer.length){status.textContent='Выбери три звука.';return;}
-      if(await play(state.selection().map(id=>round.choices[id]),status))showOutcome(state.submit());
+      if(await play(state.selection().flatMap(id=>[].concat(round.choices[id])),status))showOutcome(state.submit());
     }));
     if (['sequence', 'match', 'sort', 'multi', 'compose', 'rhythm'].includes(kind)) controls.append(control('Сбросить выбор', () => {
       state.resetSelection();
@@ -339,7 +350,7 @@ export function mountForestLesson(root, lesson, {
     }));
     controls.append(next);
     view.replaceChildren(heading, counter, instruction, ...(stage ? [stage.stage] : []), samples, buttons, progress, controls, status);
-    void audio.preload([...clipsFor([...state.sample,...Object.values(round.choices??{})]).map(soundId), 'success']);
+    void audio.preload([...clipsFor([...state.sample,...Object.values(round.choices??{}).flat()]).map(soundId), 'success']);
   }
 
   if (saved?.mode === 'practice') showPractice();
