@@ -270,3 +270,37 @@
 .mem-lamp { display: block; width: 45px; height: 45px; border: 2px solid #6995a3; border-radius: 50%; background: #c2dbe0; }
 .mem-lamp.lit { background: #f7d977; border-color: #b69448; }
 .mem-sound-board .mem-options > .mem-picture { flex-basis: min(80%,286px); }
+
+.mem-order-board {
+  text-align: center;
+  border-radius: 18px;
+  padding: 12px;
+  background: #faeddb;
+  border: 1px solid #e8c4ac;
+}
+.mem-order-stage {
+  max-width: 240px;
+  margin: 5px auto 8px;
+  border-radius: 14px;
+  background: #fff9ec;
+  padding: 6px;
+}
+.mem-order-stage:empty { min-height: 0; }
+.mem-event-tile { position: relative; width: 100%; aspect-ratio: 1.1; }
+.mem-event-tile > svg, .mem-event-tile > img { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.mem-event-object,.mem-event-primary { position: absolute; width: 74%; bottom: 3%; }
+.mem-event-object { left: 0; bottom: 0; opacity: .8; }
+.mem-event-primary { right: 0; }
+.mem-event-object svg,.mem-event-primary svg { width: 100%; display: block; }
+.mem-order-actions,.mem-order-slots { display: flex; justify-content: center; gap: 9px; flex-wrap: wrap; margin-block: 8px; }
+.mem-order-slot {
+  width: clamp(62px,18vw,121px);
+  min-height: 66px;
+  aspect-ratio: 1.2;
+  border: 2px dashed #a98371;
+  background: #fff5e9;
+  border-radius: 12px;
+  padding: 3px;
+}
+.mem-order-variant { display: inline-flex; gap: 3px; padding: 4px; }
+.mem-order-variant .mem-event-tile { width: clamp(42px,9vw,78px); }

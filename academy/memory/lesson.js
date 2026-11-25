@@ -3,6 +3,7 @@ import { memoryRoundAnswer, restoringProgress, shuffleOptions } from './model.js
 import { createLessonAudio } from './audio.js';
 import { makeRecallBoard, visualRecallKinds } from './recall-board.js';
 import { makeSoundBoard, namedSounds } from './sound-board.js';
+import { makeOrderBoard } from './order-board.js';
 import { lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 
 const media = new URL('./media/', import.meta.url);
@@ -192,6 +193,10 @@ function demo(scene, playSound, playClips) {
     const lesson=makeSoundBoard(round,{example:true,play:playClips});
     box.append(lesson.view);
     play=()=>lesson.listen();
+  } else if (round.kind==='order') {
+    const lesson=makeOrderBoard(round,{example:true});
+    box.append(lesson.part);
+    play=()=>lesson.play();
   } else if (visualRecallKinds.has(round.kind)) {
     const lesson=makeRecallBoard(round,{example:true});
     box.append(lesson.view);
@@ -318,7 +323,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const scene = lesson.scenes[sceneIndex];
     const top = element('div','mem-location');
     top.style.backgroundImage='url("'+new URL(lesson.world+'.webp',media)+'")';
-    const pose = {castle:'lumi-chest',valley:'lumi-bell'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
+    const pose = {castle:'lumi-chest',valley:'lumi-bell',railway:'lumi-train'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
     top.append(image(pose,'mem-lumi','Луми'));
     const view = demo(scene,()=>{
       registerMotion(top.firstElementChild,[{transform:'rotate(0)'},{transform:'rotate(4deg)'},{transform:'rotate(0)'}]);
@@ -346,6 +351,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     let pairing=round.kind!=='pair';
     let recallBoard;
     let soundBoard;
+    let orderBoard;
     const advance=button('Дальше',()=>{
       if (!done) return;
       if (roundAnswers.length===task.rounds.length) {
@@ -370,6 +376,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         for (const group of options.values()) group.forEach(node=>node.disabled=true);
         recallBoard?.finish();
         soundBoard?.finish();
+        orderBoard?.finish();
         void sound.play(['reward']).catch(()=>{});
       } else {
         tried++;
@@ -425,6 +432,10 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
       display.append(soundBoard.view);
       const toPreload=round.clips.map(clip=>clip?.voice?'speech':typeof clip==='string'?clip:clip.sound);
       void sound.preload(toPreload);
+    } else if (round.kind==='order') {
+      orderBoard=makeOrderBoard(round,{answer:check,options});
+      display.append(orderBoard.part);
+      if (round.family==='moves') display.append(element('p','mem-sound-note','Можно повторять движения вместе с Луми.'));
     } else if (visualRecallKinds.has(round.kind)) {
       recallBoard=makeRecallBoard(round,{
         answer:check,choose,options,announce:text=>{status.textContent=text;},reset:()=>noRepeat.clear(),

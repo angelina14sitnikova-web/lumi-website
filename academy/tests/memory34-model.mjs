@@ -119,3 +119,28 @@ test('the sound valley provides six full lessons with recorded cues and checks s
     assert.ok(sameSource.every(clip=>clip.gain===.32||clip.gain===.76));
   }
 });
+
+test('the rail missions cover all six lessons and enforce order consistently',async()=>{
+  const {narration}=await import('../memory/voice.js');
+  const {events}=await import('../data/memory34/railway.js');
+  const lessons=course.modules[3].lessons;
+  assert.equal(lessons.flatMap(lesson=>lesson.scenes).length,18);
+  assert.equal(lessons.flatMap(lesson=>lesson.practice).length,30);
+  for(const event of Object.values(events)){
+    for(const art of [event.art,event.object]) assert.ok(!painting(art).includes('undefined'),art);
+  }
+  for(const lesson of lessons){
+    assert.ok(practiceIsReady(lesson),lesson.title);
+    for(const scene of lesson.scenes) assert.ok(narration[lesson.id][scene.text],scene.text);
+    for(const task of lesson.practice) {
+      assert.ok(memoryAnswer(task,task.rounds.map(round=>round.answer)),task.title);
+      for(const round of task.rounds){
+        assert.ok(narration[lesson.id][round.prompt],round.prompt);
+        if(Array.isArray(round.answer)&&round.answer.length>1&&new Set(round.answer).size>1) {
+          assert.equal(memoryRoundAnswer(round,[...round.answer].reverse()),false);
+        }
+        if(round.variants) assert.deepEqual(round.variants[round.answer],round.sample);
+      }
+    }
+  }
+});

@@ -11,6 +11,8 @@ export const titles = {
   desk:'стол', fair:'полянка', lemon:'лимон', balloon:'воздушный шарик',
   drum:'барабан', rattle:'погремушка', cat:'кошка', dog:'собака', bird:'птица',
   hat:'шапка', boot:'сапог', scarf:'шарф', coat:'куртка',
+  box:'коробка', faucet:'кран', towel:'полотенце', watering:'лейка', plant:'цветок в горшке',
+  hands:'лапки', book:'книга', paper:'лист бумаги', seed:'зёрнышко', circle:'круг', square:'квадрат',
   ears:'ушки', paws:'лапки', bow:'бантик', wheels:'колёса', light:'фары', roof:'крыша',
   door:'дверь', center:'серединка', body:'кузов', tree:'дерево',
 };
@@ -59,6 +61,24 @@ const draw = {
   boot: () => path('M41 29h44v42q0 16 18 17v16H31q-18 0 -16 -15q2 -11 26 -13z','#c8956c')+rect(37,29,51,12,'#dbb08e',6)+line('M18 97h83','#8e6b57',4),
   scarf: () => path('M23 41h74v18H78v43H61V59H23Z','#73a8c5')+line('M28 45h65m-27 40v13','#a7cbe1',3),
   coat: () => path('M39 29l21 -7l21 7l19 25l-13 10l-7 -8v48H40V56l-7 8l-13 -10z','#e2a47d')+line('M60 33v68m-15 -21h12m6 0h13','#976953',3),
+  box: (_,parts) => rect(21,50,78,47,'#bd8fb6',6)+rect(22,47,77,13,'#ae7db0',4)+(parts.includes('open')?path('M20 51l8-27l66-11l5 34z','#d3bad7'):rect(17,39,86,16,'#c5a2c5',6))+rect(54,59,12,14,'#d5a558',3),
+  faucet: () => rect(30,72,15,24,'#94a5ac',4)+line('M37 78V58Q37 39 58 39h20v10','#8ca6ab',10)+line('M42 47v-17m-9 3h17','#81949f',7)+line('M78 59v21m-7 -17v17m13 -13v13','#65b3d5',3),
+  towel: () => rect(24,27,72,72,'#78adab',7)+rect(28,35,64,8,'#b7d6c4',3)+rect(28,85,64,8,'#b7d6c4',3)+line('M30 48h59m-59 5h59','#77a496',2),
+  watering: () => line('M84 48q39 1 20 34q-6 10-17 13','#79a7c0',7)+path('M37 68L17 48L8 55L34 89Z','#84b7cd')+rect(30,55,65,44,'#73a9c3',13)+ellipse(63,57,32,7,'#c2e2e8'),
+  plant: () => path('M37 71h47l-7 30H44z','#c88a6b')+line('M60 76V37','#84a77c',5)+leaves(55,60)+circle(60,31,13,'#dda3b3')+circle(60,31,6,'#f3d276'),
+  water: () => [34,61,86].map((x,i)=>path(`M${x} ${34+i*4}q-18 23-15 32q3 10 15 11q12-1 15-11q2-10-15-32z`,'#74bedb')).join(''),
+  hands: () => ellipse(41,60,22,20,'#dca77b')+ellipse(79,60,22,20,'#dca77b')+ellipse(41,62,12,9,'#ecc19e')+ellipse(79,62,12,9,'#ecc19e'),
+  book: (_,parts) => parts.includes('open')
+    ? path('M12 40q21-13 47 3q25-15 49-3v47q-24-12-48 2q-26-15-48-1z','#e8d4aa')+line('M60 43v46m-36-33 24 4m-24 5 24 4m24-9 24-4m-24 13 24-4','#b29470',2)
+    : rect(31,23,57,77,'#ac80ae',6)+rect(30,26,9,68,'#8f668d',4)+sparkle(62,60,14),
+  paper: () => path('M31 21h53l10 12v66H31z','#f5e8c9')+path('M84 21v12h10z','#e3d0a8'),
+  paint: () => line('M36 96l40-55','#9a7154',8)+path('M72 43q-2-17 15-25q9 12-4 26z','#c083a0'),
+  seed: () => ellipse(60,64,16,24,'#b58b63')+line('M57 77q7-16 7-26','#d8b586',3),
+  circle:c=>circle(60,60,37,c),
+  square:c=>rect(24,24,72,72,c,7),
+  open: () => rect(30,24,62,77,'#c39671',7)+rect(37,32,48,69,'#716174',4)+path('M43 35l27-10v63l-27 12z','#ddb48e')+circle(63,65,3,'#e1b457'),
+  garden: () => rect(10,36,100,67,'#dcecf4',9)+path('M10 73q54-16 100 0v30H10z','#a7c790')+sub('flower-pink',15,52,44)+sub('flower-gold',62,58,40),
+  welcome: () => path('M19 63l30-22v14h42v17H49v15z','#83ae9e'),
   flower: c => line('M60 105V61','#70a679',5)+leaves(61,88)+[0,1,2,3,4].map(i=>circle(60+20*Math.cos(i*1.2566),50+20*Math.sin(i*1.2566),12,c)).join('')+circle(60,50,11,gold),
   star: () => sparkle(60,57,41)+sparkle(55,51,14,'#ffedb3'),
   firefly: () => ellipse(60,66,13,22,'#e7c33e')+ellipse(44,52,18,9,'#b1d9d8')+ellipse(76,52,18,9,'#b1d9d8')+circle(60,45,10,'#697f6f')+circle(60,73,8,'#f8ec8a'),
@@ -72,6 +92,7 @@ const draw = {
 
 export function painting(id) {
   const [name,...parts] = id.split('-');
+  if(id==='open-box') return painting('box-open');
   const color = tones[parts[0]] ?? ({ball:tones.red,car:tones.red,cup:'#7bab90',house:tones.blue}[name] ?? gold);
   return shadow + draw[name]?.(color,parts);
 }

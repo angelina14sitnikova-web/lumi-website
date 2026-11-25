@@ -85,7 +85,7 @@ export function makeSoundBoard(round,{play,answer,options=new Map(),announce=()=
   async function audition(id) {
     if(!ready||finished) return;
     const request=++busy;
-    const result=await play([round.demos[id]]);
+    const result=await play([].concat(round.demos[id]));
     if(request!==busy||result!=='finished') return;
     heard.add(id);
     triggerOptions();
