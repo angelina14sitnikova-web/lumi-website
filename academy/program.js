@@ -54,6 +54,13 @@ function updateCatalog() {
       if (stars === module.lessons.length) text.append(element('p', '', module.reward || (colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя')));
       progress.append(badge, text);
       details.append(summary, progress);
+      if (module.literacyMedal && stars === module.lessons.length) {
+        const medal = element('img', 'course-module-cover');
+        medal.src = module.literacyMedal;
+        medal.alt = module.reward;
+        medal.width = medal.height = 80;
+        details.append(medal);
+      }
       if (module.writingMedal && stars === module.lessons.length) {
         const medal = element('img', 'course-module-cover');
         medal.src = module.writingMedal;
@@ -98,7 +105,7 @@ function updateCatalog() {
         const ready = practiceIsReady(lesson);
         const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : ready ? (['comparison', 'colors', 'sensory', 'memory34', 'writing34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
+            : ready ? (['comparison', 'colors', 'sensory', 'memory34', 'writing34', 'literacy34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');
@@ -132,7 +139,7 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : ['memory-3-4', 'writing-3-4'].includes(course.id) ? course.nameForCourse : course.title) + ' ',
+  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : ['memory-3-4', 'writing-3-4', 'literacy-3-4'].includes(course.id) ? course.nameForCourse : course.title) + ' ',
     element('span', 'course-age-label', '· ' + course.age));
   const counts = courseCounts(course);
   const count = document.querySelector('#course-count');

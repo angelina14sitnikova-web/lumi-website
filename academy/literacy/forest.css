@@ -1,0 +1,129 @@
+.literacy-lesson {
+  --forest-ink: #294239;
+  --forest-frame: #b9cdb4;
+  --forest-card: #fffef5;
+  --forest-action: #eaf4e5;
+  color: var(--forest-ink);
+}
+
+.literacy-view { min-inline-size: 0; }
+.literacy-stage {
+  position: relative;
+  overflow: hidden;
+  min-block-size: 180px;
+  max-block-size: 340px;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  background: #c5d7a7 center / cover no-repeat;
+}
+.literacy-lumi {
+  position: absolute;
+  inset: auto auto 8% 9%;
+  block-size: min(57%, 190px);
+  max-inline-size: 40%;
+  object-fit: contain;
+  object-position: bottom left;
+}
+.literacy-objects {
+  position: absolute;
+  inset: 25% 5% 9% 40%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+}
+.literacy-object {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  max-block-size: 70%;
+  flex: 1 1 0;
+  object-fit: contain;
+  object-position: bottom;
+}
+.literacy-veiled {
+  visibility: hidden;
+}
+.literacy-caption {
+  color: inherit;
+  font-size: clamp(1rem, 2.15vw, 1.25rem);
+  line-height: 1.45;
+  margin: 12px 0;
+}
+.literacy-cards,
+.literacy-samples,
+.literacy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-block: 12px;
+}
+.literacy-card {
+  flex: 1 1 clamp(90px, 22%, 150px);
+  max-inline-size: 210px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  min-block-size: 64px;
+  min-inline-size: 0;
+  background: var(--forest-card);
+  border-color: var(--forest-frame);
+  color: var(--forest-ink);
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+  touch-action: manipulation;
+}
+.literacy-card img {
+  width: 100%;
+  height: clamp(52px, 15vw, 100px);
+  object-fit: contain;
+  pointer-events: none;
+}
+.literacy-card.literacy-selected {
+  background: var(--forest-action);
+  outline: 2px solid #4f725e;
+}
+.literacy-card.literacy-hint {
+  outline: 3px dashed #9f732b;
+  outline-offset: 2px;
+}
+.literacy-token {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+}
+.literacy-actions button,
+.literacy-samples button {
+  min-block-size: 48px;
+  touch-action: manipulation;
+}
+.literacy-message {
+  min-block-size: 1.4em;
+  color: var(--forest-ink);
+}
+.literacy-settings {
+  margin-block-start: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--forest-frame);
+  border-radius: 14px;
+  background: var(--forest-action);
+  font-size: 0.94rem;
+}
+.literacy-settings summary { cursor: pointer; }
+.literacy-settings input[type='range'] {
+  inline-size: min(100%, 360px);
+  min-block-size: 44px;
+  accent-color: #476c56;
+}
+.literacy-settings [role='status']:empty { display: none; }
+.literacy-lesson [hidden] { display: none !important; }
+
+@media (max-width: 420px) {
+  .literacy-stage { border-radius: 16px; }
+  .literacy-actions { gap: 6px; }
+  .literacy-card { flex-basis: 44%; }
+}
+.literacy-reward { text-align:center; }
+.literacy-reward img { display:block; margin:.85rem auto; height:180px; object-fit:contain; }
