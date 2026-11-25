@@ -64,6 +64,7 @@ export function createDrawing(canvas,{strokes=[],change=()=>{}}={}) {
     const density=window.devicePixelRatio||1;
     const width=Math.max(1,Math.round(rect.width*density)), height=Math.max(1,Math.round(rect.height*density));
     if(width!==canvas.width||height!==canvas.height) {
+      if(active) finish({pointerId:active.id},false);
       canvas.width=width;canvas.height=height;
       render();
     }

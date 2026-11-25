@@ -2,6 +2,7 @@ import { programUrl,saveCompletion,moduleStars,lessonUrl } from '../course-model
 import {readWritingProgress} from './model.js';
 import {handBoard} from './hand.js';
 import {objectsBoard} from './objects.js';
+import {inkBoard} from './ink.js';
 import {el,button} from './ui.js';
 
 const media=new URL('./media/',import.meta.url);
@@ -12,7 +13,9 @@ function link(label,href){
   const item=el('a','academy-button',label);item.href=href;return item;
 }
 function boardFor(spec,settings){
-  return spec.kind==='hand'?handBoard(spec,settings):objectsBoard(spec,settings);
+  if(spec.kind==='hand')return handBoard(spec,settings);
+  if(spec.kind==='ink')return inkBoard(spec,settings);
+  return objectsBoard(spec,settings);
 }
 
 export function startWritingLesson({root,course,module,lesson}){
@@ -21,7 +24,7 @@ export function startWritingLesson({root,course,module,lesson}){
   document.head.append(css);
   root.classList.add('write-lesson');
   const key='lumi.academy.writing34.lesson.'+lesson.id;
-  let scene=0,answers=[],rounds=[],stage='scene',view,back;
+  let scene=0,answers=[],rounds=[],stage='scene',view,back,draft=[];
   const status=el('p','write-feedback');
   status.setAttribute('role','status');
   const pause=button('Сделать паузу',()=>{
@@ -30,7 +33,7 @@ export function startWritingLesson({root,course,module,lesson}){
     replace(el('h2','','Перерыв'),button('Продолжить',resume,true),link('К урокам',programUrl(course,module)));
   });
   function store(){
-    try{localStorage.setItem(key,JSON.stringify({scene,answers,rounds,stage}));}
+    try{localStorage.setItem(key,JSON.stringify({scene,answers,rounds,stage,draft}));}
     catch{status.textContent='Браузер не сохранил этап. Можно продолжать урок на этой странице.';}
   }
   function replace(...children){
@@ -50,7 +53,7 @@ export function startWritingLesson({root,course,module,lesson}){
     const info=lesson.scenes[scene];
     const hero=el('div','write-location');
     hero.style.backgroundImage=`url("${new URL(lesson.world+'.webp',media)}")`;
-    hero.append(art('lumi-'+lesson.world,'Луми'));
+    hero.append(art(lesson.world==='garden'&&scene===1?'lumi-watch':'lumi-'+lesson.world,'Луми'));
     replace(el('p','course-kicker','Сцена '+(scene+1)+' из 3'),hero,
       el('h2','lesson-part',info.title),el('p','write-prompt',info.description));
     view=boardFor(info.board,{example:true});
@@ -68,6 +71,7 @@ export function startWritingLesson({root,course,module,lesson}){
     let finished=false;
     const next=button('Дальше',()=>{
       if(!finished)return;
+      draft=[];
       rounds.push(spec.kind);
       if(rounds.length===task.rounds.length){answers.push(rounds);rounds=[];}
       if(answers.length===lesson.practice.length)showReward();
@@ -77,7 +81,7 @@ export function startWritingLesson({root,course,module,lesson}){
     pause.hidden=false;
     replace(el('p','course-kicker','Упражнение '+(answers.length+1)+' из 5'),el('h2','lesson-part',task.title),
       el('p','write-prompt',task.instruction));
-    view=boardFor(spec,{finish(){
+    view=boardFor(spec,{strokes:draft,onChange(lines){draft=lines;store();},finish(){
       if(finished)return;
       finished=true;
       status.textContent=spec.kind==='hand'&&!spec.fingers&&!spec.actions?'Можно переходить дальше.':'Получилось!';
@@ -102,12 +106,15 @@ export function startWritingLesson({root,course,module,lesson}){
     replace(header,reward,actionNav(
       ...(moduleNext?.scenes?.length?[link('Следующий урок',lessonUrl(course,module,moduleNext))]:[]),
       link('К урокам',programUrl(course,module)),button('Повторить урок',()=>{
-        answers=[];rounds=[];scene=0;showScene();
+        answers=[];rounds=[];draft=[];scene=0;showScene();
       })));
   }
   try{
     const saved=readWritingProgress(lesson,JSON.parse(localStorage.getItem(key)));
-    if(saved)({scene,answers,rounds,stage}=saved);
+    if(saved){
+      ({scene,answers,rounds,stage}=saved);
+      if(Array.isArray(saved.draft))draft=saved.draft;
+    }
   }catch{}
   resume();
 }
