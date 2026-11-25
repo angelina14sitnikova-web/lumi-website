@@ -1,11 +1,16 @@
 export default {
   id: 'memory-3-4',
   title: 'Внимание и память',
+  nameForCourse: 'Луми и тайны волшебных воспоминаний',
   theme: 'memory',
   icon: 'assets/subject-memory.webp',
   room: { image: 'assets/memory-classroom.webp', alt: 'Кабинет наблюдений с лупой и парными карточками', width: 600, height: 600 },
   modules: [
-    [{ id: 'memory-1', title: 'Учимся быть внимательными' },
+    [{ id: 'memory-1', title: 'Учимся быть внимательными',
+      cover: 'memory/media/academy.webp',
+      reward: 'Медаль внимательного исследователя',
+      memoryAlbum: { title: 'Академия юных наблюдателей', image: 'memory/media/academy.webp', medal: 'memory/media/observer-medal.webp' },
+    },
       ['memory-lesson-1-1', 'Посмотри внимательно'],
       ['memory-lesson-1-2', 'Найди знакомый предмет'],
       ['memory-lesson-1-3', 'Найди такой же рисунок'],

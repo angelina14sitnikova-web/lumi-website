@@ -54,6 +54,23 @@ function updateCatalog() {
       if (stars === module.lessons.length) text.append(element('p', '', module.reward || (colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя')));
       progress.append(badge, text);
       details.append(summary, progress);
+      if (module.memoryAlbum && stars === module.lessons.length) {
+        const entry = element('figure', 'mem-album-page');
+        const art = element('img');
+        art.src = module.memoryAlbum.image;
+        art.alt = '';
+        art.loading = 'lazy';
+        art.width = 160;
+        art.height = 90;
+        const medal = element('img');
+        medal.src = module.memoryAlbum.medal;
+        medal.alt = module.reward;
+        medal.loading = 'lazy';
+        medal.width = 60;
+        medal.height = 60;
+        entry.append(art, medal, element('figcaption', '', 'Страница альбома · ' + module.memoryAlbum.title));
+        details.append(entry);
+      }
     } else {
       details.append(summary);
     }
@@ -74,7 +91,7 @@ function updateCatalog() {
         const ready = practiceIsReady(lesson);
         const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : ready ? (['comparison', 'colors', 'sensory'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
+            : ready ? (['comparison', 'colors', 'sensory', 'memory34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');
@@ -103,7 +120,7 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : course.title) + ' ',
+  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : course.id === 'memory-3-4' ? course.nameForCourse : course.title) + ' ',
     element('span', 'course-age-label', '· ' + course.age));
   const counts = courseCounts(course);
   const count = document.querySelector('#course-count');
