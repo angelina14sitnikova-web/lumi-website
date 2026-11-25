@@ -88,7 +88,7 @@ export function engineeringDemo(spec, animate) {
     panel.append(measure({...spec,unit:1}),measure({...spec,unit:2}));
     return panel;
   } else if(spec.name==='mass') {
-    for(let i=0;i<=spec.weights;i++) panel.append(scale(spec.left,spec.right,i));
+    for(let i=0;i<=(spec.weights ?? 0);i++) panel.append(scale(spec.left,spec.right,i));
     if(!spec.weights) panel.prepend(scale([],[]));
   } else if(spec.name==='liquid') {
     for(let i=0;i<=spec.amount;i++) panel.append(vessels(spec,i));

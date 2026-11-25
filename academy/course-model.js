@@ -5,6 +5,7 @@ import { colorsAnswer, colorsReady } from './activities/colors-model.js';
 
 import { sensoryAnswer, sensoryReady } from './activities/sensory-model.js';
 
+const graduationKey67 = 'lumi.academy.math67.graduated.v1';
 const storageKey = 'lumi.academy.completed.v1';
 const keyFor = (course, module, lesson) => JSON.stringify([course.id, module.id, lesson.id]);
 
@@ -86,14 +87,32 @@ export function passPractice(lesson, answers) {
     lesson.practice.every((task, index) => checkAnswer(task, answers[index]));
 }
 
+export function completionDate67() {
+  try {
+    const value = globalThis.localStorage.getItem(graduationKey67);
+    return value && Number.isFinite(Date.parse(value)) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
 export function saveCompletion(course, module, lesson, answers) {
   if (!passPractice(lesson, answers)) return false;
   const saved = readProgress();
+  const firstCompletion = !saved.has(keyFor(course, module, lesson));
   saved.add(keyFor(course, module, lesson));
   try {
     globalThis.localStorage.setItem(storageKey, JSON.stringify([...saved]));
-    return true;
   } catch {
     return false;
   }
+  if (course.id === 'math-6-7' && firstCompletion && course.modules.every(entry =>
+    entry.lessons.every(lesson => practiceIsReady(lesson) && saved.has(keyFor(course, entry, lesson))))) {
+    try {
+      if (!completionDate67()) globalThis.localStorage.setItem(graduationKey67, new Date().toISOString());
+    } catch {
+      // The lesson remains complete if the optional date cannot be stored.
+    }
+  }
+  return true;
 }

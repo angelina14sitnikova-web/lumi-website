@@ -327,3 +327,50 @@
 .math56-celebration h1,.math56-celebration p {background:#fff8edeb;padding:.4rem .85rem;border-radius:.7rem;}
 
 .academy-tone-5-6 .lesson-header h1 {overflow-wrap:anywhere;}
+
+.academy-diploma {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.academy-diploma label {
+  display: grid;
+  gap: .5rem;
+}
+
+.academy-diploma input {
+  min-height: 3rem;
+  font: inherit;
+  padding: .5rem;
+}
+
+.academy-diploma canvas {
+  width: 100%;
+  height: auto;
+}
+
+@media print {
+  #course-celebration:has(.academy-diploma) > :not(.academy-diploma),
+  .academy-diploma > :not(canvas),
+  .academy-page:has(.academy-diploma) .academy-footer {
+    display: none;
+  }
+
+  #course-celebration:has(.academy-diploma) {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .academy-diploma canvas {
+    break-inside: avoid;
+    width: 100%;
+    max-height: 95vh;
+    object-fit: contain;
+  }
+}
+.course-celebration.math67-celebration {
+  background:linear-gradient(#f4f8ff75,#f4f8ffdb),url('assets/sensory/math-academy-hall.webp') center/cover;
+}
