@@ -251,7 +251,9 @@ export function mountForestLesson(root, lesson, {
         status.textContent = 'Получилось!';
         next.hidden = false;
         if (stage && kind === 'discovery') move(stage.lumi, hop);
-        void play(['success'], element('span', ''));
+        if (!['rhythm', 'sequence', 'compose'].includes(kind) || !round.choices) {
+          void play(['success'], element('span', ''));
+        }
       }
     }
 
@@ -294,7 +296,8 @@ export function mountForestLesson(root, lesson, {
           return;
         }
         if(playingChoice)return;
-        if((round.listenChoices&&!auditions.has(id))||(!round.listenChoices&&round.choices?.[id])){
+        const waitForPreview = (round.listenChoices && !auditions.has(id)) || kind === 'theatre';
+        if (waitForPreview) {
           playingChoice=true;
           choices.forEach(node=>node.disabled=true);
           const heardChoice=await preview(id);
@@ -312,6 +315,9 @@ export function mountForestLesson(root, lesson, {
           enact.dataset.enact=id;
           progress.append(literacyArt(selected),enact);
           return;
+        }
+        if (!waitForPreview && !round.listenChoices && round.choices?.[id] && sampleButton.dataset.ready === 'yes') {
+          void preview(id);
         }
         showOutcome(state.select(id));
         if(['compose','rhythm','sequence','discovery','choice'].includes(kind))choice.querySelector('.literacy-action')?.classList.add('literacy-performing');
