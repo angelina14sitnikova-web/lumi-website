@@ -70,7 +70,9 @@ import { echo as literacyEcho } from './literacy34/echo.js';
 
 import { rhythm as literacyRhythm } from './literacy34/rhythm.js';
 
-const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:literacyEcho,rhythm:literacyRhythm}).flatMap(([world,program]) =>
+import { island as literacyIsland } from './literacy34/island.js';
+
+const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:literacyEcho,rhythm:literacyRhythm,island:literacyIsland}).flatMap(([world,program]) =>
   Object.entries(program.lessons).map(([id, lesson]) => [
     id, { ...lesson, format: 'literacy34', world,
       practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },

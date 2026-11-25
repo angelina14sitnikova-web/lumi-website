@@ -1,4 +1,5 @@
 import { checkAnswer, moduleStars, programUrl, saveCompletion, lessonUrl } from '../course-model.js';
+import { celebrationUrl, courseCompleted } from '../activities/celebration.js';
 import { button,el } from '../writing/ui.js';
 import { mountForestLesson } from './forest-lesson.js';
 
@@ -35,6 +36,7 @@ export function startListeningLesson({root,course,module,lesson}){
     const nav=el('div','lesson-actions');
     const next=module.lessons[module.lessons.indexOf(lesson)+1];
     if(next?.scenes?.length)nav.append(link('Следующий урок',lessonUrl(course,module,next)));
+    if (courseCompleted(course)) nav.append(link('Открыть праздник звуков', celebrationUrl(course)));
     nav.append(link('К урокам',programUrl(course,module)),button('Повторить урок',()=>{saved=null;start();}));
     current.append(el('h2','lesson-part','Урок завершён!'),art,
       el('p','',completed?'Звёздочки: '+stars+' из '+module.lessons.length:'Браузер не сохранил звёздочку.'),nav);

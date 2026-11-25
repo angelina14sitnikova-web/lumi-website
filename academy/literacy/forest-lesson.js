@@ -196,7 +196,8 @@ export function mountForestLesson(root, lesson, {
     let playingChoice=false;
     const auditions=new Set();
     const progress=element('div','literacy-progress');
-    progress.setAttribute('aria-hidden','true');
+    if (kind === 'theatre') progress.classList.add('literacy-theatre');
+    else progress.setAttribute('aria-hidden','true');
     let answered = false;
     let moveAnimation;
     let audioRequest = 0;
@@ -334,7 +335,7 @@ export function mountForestLesson(root, lesson, {
 
     const sampleButton = control('Послушать', () => openSound(0, true), true);
     sampleButton.classList.add('literacy-sample-ready');
-    controls.append(sampleButton);
+    if (kind !== 'theatre') controls.append(sampleButton);
     if(speech[world]?.['clear|'+task.instruction])controls.append(control('Послушать инструкцию',()=>{void play([{voice:task.instruction}],status);}));
     if(['explore','compose','theatre'].includes(kind)){state.finishListening();sampleButton.dataset.ready='yes';}
     if (kind === 'multi'||kind==='rhythm') controls.append(control('Проверить', () => showOutcome(state.submit())));

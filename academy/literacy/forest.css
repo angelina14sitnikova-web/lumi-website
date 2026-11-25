@@ -142,3 +142,6 @@
 @keyframes literacy-travel { 40% { transform:translateX(11%) } 65% { transform:translateX(-7%) } }
 @keyframes literacy-roll { to { transform:rotate(140deg) translateX(9%) } }
 @media (prefers-reduced-motion:reduce) { .literacy-performing{animation:none;} }
+
+.literacy-theatre { display: flex; align-items: center; justify-content: center; gap: .7rem; letter-spacing: normal; }
+.literacy-theatre svg { width: min(28%, 7rem); height: auto; }
