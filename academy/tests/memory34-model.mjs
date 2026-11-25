@@ -86,3 +86,36 @@ test('the castle covers all six visual memory lessons and preserves sample posit
     }
   }
 });
+
+test('the sound valley provides six full lessons with recorded cues and checks sound order',async()=>{
+  const {narration}=await import('../memory/voice.js');
+  const available=new Set(['bell','drum','rattle','cat','dog','duck','bird']);
+  const lessons=course.modules[2].lessons;
+  assert.equal(lessons.flatMap(lesson=>lesson.scenes).length,18);
+  assert.equal(lessons.flatMap(lesson=>lesson.practice).length,30);
+  for(const lesson of lessons) {
+    assert.ok(practiceIsReady(lesson),lesson.title);
+    for(const task of lesson.practice) assert.ok(memoryAnswer(task,task.rounds.map(round=>round.answer)),task.title);
+    const inspect=round=>{
+      assert.equal(round.kind,'audio');
+      assert.ok(narration[lesson.id][round.prompt],round.prompt);
+      for(const clip of [...round.clips,...Object.values(round.demos??{})]) {
+        if(clip.voice) assert.ok(narration[lesson.id][clip.voice],clip.voice);
+        else assert.ok(available.has(typeof clip==='string'?clip:clip.sound));
+      }
+      if(Array.isArray(round.answer)&&new Set(round.answer).size>1) {
+        assert.equal(memoryRoundAnswer(round,[...round.answer].reverse()),false);
+      }
+    };
+    for(const scene of lesson.scenes) {
+      assert.ok(narration[lesson.id][scene.text],scene.text);
+      inspect(scene.example);
+    }
+    for(const task of lesson.practice) for(const round of task.rounds) inspect(round);
+  }
+  for(const task of lessons[1].practice) for(const round of task.rounds){
+    const sameSource=[...round.clips,...Object.values(round.demos??{})];
+    assert.equal(new Set(sameSource.map(clip=>clip.sound)).size,1);
+    assert.ok(sameSource.every(clip=>clip.gain===.32||clip.gain===.76));
+  }
+});

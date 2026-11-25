@@ -2,6 +2,7 @@ import { artTitle, picture, regions } from './art.js';
 import { memoryRoundAnswer, restoringProgress, shuffleOptions } from './model.js';
 import { createLessonAudio } from './audio.js';
 import { makeRecallBoard, visualRecallKinds } from './recall-board.js';
+import { makeSoundBoard, namedSounds } from './sound-board.js';
 import { lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
 
 const media = new URL('./media/', import.meta.url);
@@ -181,13 +182,17 @@ function route(round, onChoose, complete) {
   return {lane, controls, buttons, watch};
 }
 
-function demo(scene, playSound) {
+function demo(scene, playSound, playClips) {
   const round = scene.example;
   let play;
   let notes;
   const box = element('div','mem-demo-board');
   const explanation = element('p','mem-prompt',scene.text);
-  if (visualRecallKinds.has(round.kind)) {
+  if (round.kind==='audio') {
+    const lesson=makeSoundBoard(round,{example:true,play:playClips});
+    box.append(lesson.view);
+    play=()=>lesson.listen();
+  } else if (visualRecallKinds.has(round.kind)) {
     const lesson=makeRecallBoard(round,{example:true});
     box.append(lesson.view);
     play=()=>lesson.replayExample();
@@ -227,7 +232,15 @@ function demo(scene, playSound) {
       });
     };
   }
-  const watch = button('Смотреть и слушать',()=>{ playSound(); void play(); },primary);
+  const watch = button('Смотреть и слушать',async()=>{
+    if (round.kind==='audio') {
+      const result=await playSound();
+      if(box.isConnected && result==='finished') await play();
+    } else {
+      void playSound();
+      void play();
+    }
+  },primary);
   notes = element('p','mem-feedback');
   box.append(watch,notes);
   return {box,explanation};
@@ -247,7 +260,8 @@ function saveProgress(lesson,progress) {
 export async function startMemoryLesson({ root, course, module, lesson }) {
   const speech = await import('./voice.js');
   const index = speech.narration[lesson.id];
-  const sound = createLessonAudio({ speech: new URL(lesson.id+'.mp3',media), reward:new URL('reward.mp3',media) });
+  const recordings = Object.fromEntries(namedSounds.map(id=>[id,new URL('sounds/'+id+'.mp3',media)]));
+  const sound = createLessonAudio({ ...recordings,speech:new URL(lesson.id+'.mp3',media),reward:new URL('reward.mp3',media) });
   const saved = loadProgress(lesson);
   let sceneIndex = saved?.scene ?? 0;
   const answers = saved?.answers ?? [];
@@ -272,13 +286,23 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
   root.replaceChildren(box);
   void sound.preload(['speech','reward']);
 
+  async function playClips(clips) {
+    try {
+      const list=clips.map(clip=>{
+        if(!clip?.voice) return clip;
+        const range=index?.[clip.voice];
+        if(!range) throw new Error('Missing speech');
+        return {sound:'speech',offset:range[0],duration:range[1]};
+      });
+      return (await sound.play(list)).status;
+    } catch(error) {
+      if(error.code!=='muted') status.textContent='Звук не загрузился. Можно попробовать ещё раз.';
+      return error.code==='muted'?'muted':'error';
+    }
+  }
   function say(text) {
-    const clip = index?.[text];
-    if (!clip) return;
     status.textContent='';
-    void sound.play([{sound:'speech',offset:clip[0],duration:clip[1]}]).catch(error=>{
-      if (error.code!=='muted') status.textContent='Звук не загрузился. Можно повторить или попросить взрослого прочитать задание.';
-    });
+    return playClips([{voice:text}]);
   }
   function render(...children) {
     sound.stop();
@@ -294,12 +318,12 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const scene = lesson.scenes[sceneIndex];
     const top = element('div','mem-location');
     top.style.backgroundImage='url("'+new URL(lesson.world+'.webp',media)+'")';
-    const pose = lesson.world==='castle'?'lumi-chest':scene.example.lens?'lumi-lens':'lumi-point';
+    const pose = {castle:'lumi-chest',valley:'lumi-bell'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
     top.append(image(pose,'mem-lumi','Луми'));
     const view = demo(scene,()=>{
-      say(scene.text);
       registerMotion(top.firstElementChild,[{transform:'rotate(0)'},{transform:'rotate(4deg)'},{transform:'rotate(0)'}]);
-    });
+      return say(scene.text);
+    },playClips);
     const controls = element('div','lesson-actions mem-controls');
     if (sceneIndex>0) controls.append(button('Назад',()=>{sceneIndex--;showScene();}));
     controls.append(button(sceneIndex+1<lesson.scenes.length?'Следующая сцена':'Перейти к играм',()=>{
@@ -321,6 +345,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     let done=false;
     let pairing=round.kind!=='pair';
     let recallBoard;
+    let soundBoard;
     const advance=button('Дальше',()=>{
       if (!done) return;
       if (roundAnswers.length===task.rounds.length) {
@@ -344,6 +369,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         advance.hidden=false;
         for (const group of options.values()) group.forEach(node=>node.disabled=true);
         recallBoard?.finish();
+        soundBoard?.finish();
         void sound.play(['reward']).catch(()=>{});
       } else {
         tried++;
@@ -391,7 +417,15 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
       } else check(id);
     }
 
-    if (visualRecallKinds.has(round.kind)) {
+    if (round.kind==='audio') {
+      soundBoard=makeSoundBoard(round,{
+        play:playClips,answer:check,options,
+        hotZones:round.picture?select=>pictureBoard(round.picture,select):null,
+      });
+      display.append(soundBoard.view);
+      const toPreload=round.clips.map(clip=>clip?.voice?'speech':typeof clip==='string'?clip:clip.sound);
+      void sound.preload(toPreload);
+    } else if (visualRecallKinds.has(round.kind)) {
       recallBoard=makeRecallBoard(round,{
         answer:check,choose,options,announce:text=>{status.textContent=text;},reset:()=>noRepeat.clear(),
       });

@@ -51,5 +51,6 @@ import { time67 } from './math67/time.js';
 import { workshop67 } from './math67/workshop.js';
 import { observers } from './memory34/observers.js';
 import { castle } from './memory34/castle.js';
+import { valley } from './memory34/valley.js';
 
-export const lessonContent = { ...observers, ...castle, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+export const lessonContent = { ...observers, ...castle, ...valley, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
