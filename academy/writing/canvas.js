@@ -20,7 +20,13 @@ export function paintStroke(ctx,stroke) {
   ctx.save();
   ctx.globalAlpha=brush.opacity;
   if(stroke.tool==='eraser') ctx.globalCompositeOperation='destination-out';
-  ctx.strokeStyle=ctx.fillStyle=stroke.color;
+  let pigment=stroke.color;
+  if(pigment==='rainbow'){
+    const gradient=ctx.createLinearGradient(Math.max(0,first.x-55),Math.max(0,first.y-30),Math.min(BOARD.width,first.x+168),Math.min(BOARD.height,first.y+94));
+    ['#cf678a','#dc9c55','#c5a022','#67a098','#658dd4','#9673b6'].forEach((color,i)=>gradient.addColorStop(i/5,color));
+    pigment=gradient;
+  }
+  ctx.strokeStyle=ctx.fillStyle=pigment;
   ctx.lineWidth=width;
   ctx.lineCap=ctx.lineJoin='round';
   ctx.beginPath();
@@ -44,7 +50,7 @@ export function paintStroke(ctx,stroke) {
 
 export function createDrawing(canvas,{strokes=[],change=()=>{}}={}) {
   const ctx=canvas.getContext('2d');
-  let committed=structuredClone(strokes), undone=[], active=null, pending=0;
+  let committed=structuredClone(strokes), undone=[], active=null, pending=0, resizeFrame=0;
   let style={tool:'brush',color:'#4a8dc4',width:13};
   canvas.style.touchAction='none';
   canvas.style.aspectRatio=BOARD.width+' / '+BOARD.height;
@@ -95,7 +101,8 @@ export function createDrawing(canvas,{strokes=[],change=()=>{}}={}) {
     const point=position(event);
     if(!Number.isFinite(point.x)||!Number.isFinite(point.y))return;
     event.preventDefault();
-    active={id:event.pointerId,stroke:{...style,points:[point]}};
+    const pressure=event.pointerType==='pen'&&event.pressure>0?(.82+Math.min(1,event.pressure)*.36):1;
+    active={id:event.pointerId,stroke:{...style,width:style.width*pressure,points:[point]}};
     try{ canvas.setPointerCapture(event.pointerId); }catch{}
     invalidate();
   }
@@ -110,9 +117,12 @@ export function createDrawing(canvas,{strokes=[],change=()=>{}}={}) {
   const up=e=>finish(e,true), cancel=e=>finish(e,false);
   const handlers={pointerdown:down,pointermove:move,pointerup:up,pointercancel:cancel,lostpointercapture:cancel};
   for(const [name,handler] of Object.entries(handlers)) canvas.addEventListener(name,handler);
-  const observer=new ResizeObserver(resize);
+  function scheduleResize(){
+    if(!resizeFrame) resizeFrame=requestAnimationFrame(()=>{resizeFrame=0;resize();});
+  }
+  const observer=new ResizeObserver(scheduleResize);
   observer.observe(canvas);
-  window.addEventListener('resize',resize);
+  window.addEventListener('resize',scheduleResize);
   resize();
   function updated(){invalidate();change(committed);}
   function endActive(){if(active) finish({pointerId:active.id},false);}
@@ -126,8 +136,9 @@ export function createDrawing(canvas,{strokes=[],change=()=>{}}={}) {
     exportInk(){render();return canvas;},
     destroy(){
       if(pending) cancelAnimationFrame(pending);
+      if(resizeFrame) cancelAnimationFrame(resizeFrame);
       observer.disconnect();
-      window.removeEventListener('resize',resize);
+      window.removeEventListener('resize',scheduleResize);
       for(const [name,handler] of Object.entries(handlers)) canvas.removeEventListener(name,handler);
     },
   };

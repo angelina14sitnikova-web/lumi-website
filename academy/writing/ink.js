@@ -24,13 +24,14 @@ function addMarkers(layer,path,kind){
   }
 }
 
-export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},exportControls}={}){
+export function inkBoard(spec,{finish,resetResult=()=>{},example=false,strokes=[],onChange=()=>{},exportControls}={}){
   const scene=el('section','write-ink');
   const pad=el('div','write-pad ym-hide-content');
   const backdrop=svg('svg',{class:'write-pad-bg',viewBox,'aria-hidden':'true'});
   const canvas=el('canvas','write-ink-canvas ym-hide-content');
   canvas.setAttribute('aria-label','Холст для рисования');
   const overlay=svg('svg',{class:'write-pad-overlay',viewBox,'aria-hidden':'true'});
+  const paperArt=svg('g');
   const border=svg('g'), guides=svg('g'), permanent=svg('g'), revealLayer=svg('g'), moving=svg('g'), demo=svg('g');
   const instructions=el('p','write-status');
   instructions.setAttribute('role','status');
@@ -47,7 +48,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
   let routed=null,frame,step=0,sampleIndex=0,playing=null,assist=false,ink,complete=false;
   let selectedPaper=spec.paper??'plain';
   pad.style.background=paperColors[selectedPaper]??paperColors.plain;
-  backdrop.append(border,revealLayer,guides,permanent);
+  backdrop.append(paperArt,border,revealLayer,guides,permanent);
   overlay.append(demo,moving);
   pad.append(backdrop,canvas,overlay);
   scene.append(pad,instructions,toolbar);
@@ -59,9 +60,15 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       permanent.append(circle(obstacle,obstacle.r,'#dbe3c4'),mark(obstacle.name??'rock',obstacle.x,obstacle.y,obstacle.r*1.52));
     }
   }
-  if(spec.paper==='clouds')permanent.append(mark('cloud',94,73,110),mark('cloud',537,87,100));
-  if(spec.paper==='garden')permanent.append(mark('flowerGold',550,352,77),mark('leaf',605,382,71),mark('flower',72,357,70));
-  if(spec.paper==='sunshine')permanent.append(mark('sun',526,85,113),mark('cloud',143,87,93));
+  function setPaper(name){
+    selectedPaper=paperColors[name]?name:'plain';
+    pad.style.background=paperColors[selectedPaper];
+    paperArt.replaceChildren();
+    if(selectedPaper==='clouds')paperArt.append(mark('cloud',94,73,110),mark('cloud',537,87,100));
+    if(selectedPaper==='garden')paperArt.append(mark('flowerGold',550,352,77),mark('leaf',605,382,71),mark('flower',72,357,70));
+    if(selectedPaper==='sunshine')paperArt.append(mark('sun',526,85,113),mark('cloud',143,87,93));
+  }
+  setPaper(selectedPaper);
   for(const {name,x,y,size} of landmarks)permanent.append(mark(name,x,y,size));
   for(const outline of spec.outlines??[])border.append(polyline(outline,{'stroke':spec.outlineColor??'#d7aebd','stroke-width':spec.area?14:9}));
   if(spec.sampleDivider)border.append(polyline(spec.sampleDivider,{stroke:'#d6c2c0','stroke-width':3,'stroke-dasharray':'9 11'}));
@@ -89,10 +96,19 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
     if(!reduced())revealLayer.animate([{opacity:0},{opacity:1}],{duration:680});
   }
   function change(lines){
-    if(example||complete)return;
+    if(example)return;
     onChange(lines);
+    if(complete){
+      complete=false;
+      resetResult();
+      pad.classList.remove('write-reveal');
+      revealLayer.replaceChildren();
+    }
+    if(playing?.success)stopMotion();
     demo.replaceChildren();
     if(routeMode){
+      actorMark.removeAttribute('visibility');
+      moving.replaceChildren();
       routed=drawnRoute(lines,{...spec,width:spec.width*(assist?1.22:1)});
       go.hidden=!routed;
       instructions.textContent=routed?'Путь готов. Запусти героя.':lines.length?'Можно продолжить дорожку.':'';
@@ -204,7 +220,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       const moreColors=spec.extraColors??[];
       for(const [color,name] of [...colors,...moreColors]){
         const choice=button('',()=>select(swatches.children,choice,{color,tool:'brush'}));
-        choice.style.setProperty('--swatch',color);
+        choice.style.setProperty('--swatch',color==='rainbow'?'linear-gradient(115deg,#cf678a,#e5b74a,#77ac9b,#698fcd,#9673b6)':color);
         choice.setAttribute('aria-label',name);
         choice.className='write-swatch';
         swatches.append(choice);
@@ -226,7 +242,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
       }
       palette.append(sizes);
       toolbar.append(button('Повторить штрих',()=>ink.redo()));
-      if(finish)toolbar.append(button('Готово',finish,true));
+      if(finish)toolbar.append(button('Готово',()=>{complete=true;finish();},true));
     }
     ink.setStyle(styles);
     if(strokes.length&&!drawingMode)queueMicrotask(()=>{if(scene.isConnected)change(strokes);});
@@ -234,7 +250,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
     canvas.hidden=true;
   }
   exportControls?.({toolbar,pad,backdrop,ink,
-    setPaper(name){selectedPaper=name;pad.style.background=paperColors[name];},
+    setPaper,
     readPaper:()=>selectedPaper});
   return {view:scene,destroy(){stopMotion();ink?.destroy();}};
 }

@@ -3,6 +3,9 @@ import {readWritingProgress} from './model.js';
 import {handBoard} from './hand.js';
 import {objectsBoard} from './objects.js';
 import {inkBoard} from './ink.js';
+import {unlockedPaints} from './paints.js';
+import {installDrawingExport} from './export.js';
+import {courseCompleted,celebrationUrl} from '../activities/celebration.js';
 import {el,button} from './ui.js';
 
 const media=new URL('./media/',import.meta.url);
@@ -53,7 +56,8 @@ export function startWritingLesson({root,course,module,lesson}){
     const info=lesson.scenes[scene];
     const hero=el('div','write-location');
     hero.style.backgroundImage=`url("${new URL(lesson.world+'.webp',media)}")`;
-    hero.append(art(lesson.world==='garden'&&scene===1?'lumi-watch':'lumi-'+lesson.world,'Луми'));
+    const pose=lesson.world==='garden'&&scene===1?'lumi-watch':lesson.world==='artists'&&scene===1?'lumi-frame':'lumi-'+lesson.world;
+    hero.append(art(pose,'Луми'));
     replace(el('p','course-kicker','Сцена '+(scene+1)+' из 3'),hero,
       el('h2','lesson-part',info.title),el('p','write-prompt',info.description));
     view=boardFor(info.board,{example:true});
@@ -81,7 +85,9 @@ export function startWritingLesson({root,course,module,lesson}){
     pause.hidden=false;
     replace(el('p','course-kicker','Упражнение '+(answers.length+1)+' из 5'),el('h2','lesson-part',task.title),
       el('p','write-prompt',task.instruction));
-    view=boardFor(spec,{strokes:draft,onChange(lines){draft=lines;store();},finish(){
+    view=boardFor({...spec,extraColors:spec.mode==='free'?unlockedPaints(course):undefined},{
+      strokes:draft,exportControls:spec.exportable?value=>installDrawingExport(value,{items:spec.items}):null,
+      onChange(lines){draft=lines;store();},resetResult(){finished=false;next.hidden=true;pause.hidden=false;status.textContent='';},finish(){
       if(finished)return;
       finished=true;
       status.textContent=spec.kind==='hand'&&!spec.fingers&&!spec.actions?'Можно переходить дальше.':'Получилось!';
@@ -105,6 +111,7 @@ export function startWritingLesson({root,course,module,lesson}){
     if(completed)reward.append(el('p','','Открыты '+module.reward.toLowerCase()+' и '+module.writingPaint+' краска.'));
     replace(header,reward,actionNav(
       ...(moduleNext?.scenes?.length?[link('Следующий урок',lessonUrl(course,module,moduleNext))]:[]),
+      ...(courseCompleted(course)?[link('Открыть выставку',celebrationUrl(course))]:[]),
       link('К урокам',programUrl(course,module)),button('Повторить урок',()=>{
         answers=[];rounds=[];draft=[];scene=0;showScene();
       })));

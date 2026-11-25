@@ -32,3 +32,44 @@ test('writing lessons use the Academy star store and can be replayed without ext
   assert.equal(moduleStars(course,module),1);
   assert.ok(JSON.parse(values.get('lumi.academy.completed.v1')).includes(math));
 });
+
+test('all 36 writing lessons have valid activities, rewards and a unique completion date',async()=>{
+  const {writingCompletionDate}=await import('../course-model.js');
+  const {drawnRoute,traceProgress}=await import('../writing/geometry.js');
+  const course=findCourse('writing-3-4');
+  const values=new Map;
+  globalThis.localStorage={getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)};
+  const all=course.modules.flatMap(module=>module.lessons);
+  assert.equal(all.length,36);
+  assert.equal(all.flatMap(lesson=>lesson.scenes).length,108);
+  assert.equal(all.flatMap(lesson=>lesson.practice).length,180);
+  assert.equal(new Set(all.map(lesson=>lesson.id)).size,36);
+  assert.equal(new Set(course.modules.map(module=>module.writingPaint)).size,6);
+  assert.equal(writingCompletionDate(),null);
+  for(const module of course.modules){
+    for(const lesson of module.lessons){
+      assert.equal(practiceIsReady(lesson),true);
+      assert.equal(lesson.scenes.length,3);
+      assert.equal(lesson.practice.length,5);
+      for(const board of [...lesson.scenes.map(s=>s.board),...lesson.practice.flatMap(task=>task.rounds)]){
+        assert.ok(writingBoardReady(board));
+        if(board.mode==='route'){
+          const routes=board.corridors.length?board.corridors:board.demoPaths;
+          for(const path of routes)assert.ok(drawnRoute([{tool:'brush',points:path}],board),lesson.title);
+        }
+        if(board.mode==='trace'){
+          const strokes=board.targets.map(t=>({tool:'brush',points:t.points}));
+          for(const target of board.targets)assert.equal(traceProgress(strokes,target),true,lesson.title);
+        }
+      }
+      assert.equal(saveCompletion(course,module,lesson,lesson.practice.map(task=>task.rounds.map(round=>round.kind))),true);
+    }
+    assert.equal(moduleStars(course,module),6);
+  }
+  assert.ok(Number.isFinite(Date.parse(writingCompletionDate())));
+  const recorded=writingCompletionDate();
+  const module=course.modules.at(-1), lesson=module.lessons.at(-1);
+  assert.equal(saveCompletion(course,module,lesson,lesson.practice.map(task=>task.rounds.map(round=>round.kind))),true);
+  assert.equal(moduleStars(course,module),6);
+  assert.equal(writingCompletionDate(),recorded);
+});
