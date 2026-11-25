@@ -64,6 +64,7 @@ export function inkBoard(spec,{finish,example=false,strokes=[],onChange=()=>{},e
   if(spec.paper==='sunshine')permanent.append(mark('sun',526,85,113),mark('cloud',143,87,93));
   for(const {name,x,y,size} of landmarks)permanent.append(mark(name,x,y,size));
   for(const outline of spec.outlines??[])border.append(polyline(outline,{'stroke':spec.outlineColor??'#d7aebd','stroke-width':spec.area?14:9}));
+  if(spec.sampleDivider)border.append(polyline(spec.sampleDivider,{stroke:'#d6c2c0','stroke-width':3,'stroke-dasharray':'9 11'}));
   for(const sample of spec.samples??[])border.append(polyline(sample,{stroke:'#a66e90','stroke-width':13}));
   function guide(active=[]){
     guides.replaceChildren();
