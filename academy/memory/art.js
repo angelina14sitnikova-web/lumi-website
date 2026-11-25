@@ -13,6 +13,7 @@ export const titles = {
   hat:'шапка', boot:'сапог', scarf:'шарф', coat:'куртка',
   box:'коробка', faucet:'кран', towel:'полотенце', watering:'лейка', plant:'цветок в горшке',
   hands:'лапки', book:'книга', paper:'лист бумаги', seed:'зёрнышко', circle:'круг', square:'квадрат',
+  rabbit:'зайчик', berry:'ягода', wheel:'колесо', ear:'ушко', lamp:'лампа', 'wing-spot':'пятнышки',
   ears:'ушки', paws:'лапки', bow:'бантик', wheels:'колёса', light:'фары', roof:'крыша',
   door:'дверь', center:'серединка', body:'кузов', tree:'дерево',
 };
@@ -34,9 +35,9 @@ const ribbon = (color) => path('M58 75Q40 61 41 83Q45 90 58 81Q72 90 79 83Q81 61
 
 const draw = {
   ball: (c, parts) => circle(60,58,41,c)+path('M22 52Q51 84 96 63Q93 80 88 85Q48 104 27 76Z','#31457227')+shine(45,36,13,7)+(parts.includes('star')?sparkle(63,60,18):''),
-  car: (c, parts) => rect(24,62,76,27,c,10)+path('M35 62l13 -23h35l13 23z',c)+path('M42 60l10 -16h26l10 16z','#daeef8')+line('M65 44v16',c,3)+circle(36,87,12,dark)+circle(86,87,12,dark)+circle(36,87,5,'#dbe9f0')+circle(86,87,5,'#dbe9f0')+rect(91,68,8,8,'#fff1b0',3)+(parts.includes('star')?sparkle(60,74,9):''),
-  bear: (c, parts) => ellipse(60,83,24,25,'#ba8664')+circle(37,31,13,'#bb8864')+circle(83,31,13,'#bb8864')+circle(37,31,7,'#f1cfab')+circle(83,31,7,'#f1cfab')+circle(60,54,28,'#dca77b')+ellipse(60,63,15,11,'#f4d1a7')+face(60,56)+circle(60,63,3,dark)+ellipse(35,86,12,9,'#dca77b')+ellipse(85,86,12,9,'#dca77b')+ellipse(47,104,11,6,'#ebba91')+ellipse(73,104,11,6,'#ebba91')+(parts.includes('plain')?'':parts.includes('scarf')?rect(41,73,38,11,'#58a3bd',6)+rect(69,75,9,24,'#58a3bd',4):ribbon(parts.includes('blue')?tones.blue:tones.pink)),
-  house: (c, parts) => rect(28,49,64,54,'#f3dca9',4)+path('M17 52L60 17L103 52Q102 57 96 57H24Q18 56 17 52Z',c)+rect(54,73,18,30,'#b88468',8)+circle(66,89,2,'#f9db94')+rect(34,63,14,15,parts.includes('shut')?'#9b7499':'#84bdd6',4)+line('M41 64v13m-6 -6h12','#f9f1db',1.4),
+  car: (c, parts) => rect(24,62,76,27,c,10)+path('M35 62l13 -23h35l13 23z',c)+path('M42 60l10 -16h26l10 16z','#daeef8')+line('M65 44v16',c,3)+circle(36,87,12,dark)+(parts.includes('wheeloff')?'':circle(86,87,12,dark)+circle(86,87,5,'#dbe9f0'))+circle(36,87,5,'#dbe9f0')+rect(91,68,8,8,'#fff1b0',3)+(parts.includes('star')?sparkle(60,74,9):''),
+  bear: (c, parts) => ellipse(60,83,24,25,'#ba8664')+circle(37,31,13,'#bb8864')+(parts.includes('earoff')?'':circle(83,31,13,'#bb8864')+circle(83,31,7,'#f1cfab'))+circle(37,31,7,'#f1cfab')+circle(60,54,28,'#dca77b')+ellipse(60,63,15,11,'#f4d1a7')+face(60,56)+circle(60,63,3,dark)+ellipse(35,86,12,9,'#dca77b')+ellipse(85,86,12,9,'#dca77b')+ellipse(47,104,11,6,'#ebba91')+ellipse(73,104,11,6,'#ebba91')+(parts.includes('plain')?'':parts.includes('scarf')?rect(41,73,38,11,'#58a3bd',6)+rect(69,75,9,24,'#58a3bd',4):ribbon(parts.includes('blue')?tones.blue:tones.pink)),
+  house: (c, parts) => rect(28,49,64,54,'#f3dca9',4)+path('M17 52L60 17L103 52Q102 57 96 57H24Q18 56 17 52Z',c)+(parts.includes('dooroff')?'':rect(54,73,18,30,'#b88468',8)+circle(66,89,2,'#f9db94'))+(parts.includes('windowoff')?'':rect(34,63,14,15,parts.includes('shut')?'#9b7499':'#84bdd6',4)+line('M41 64v13m-6 -6h12','#f9f1db',1.4)),
   butterfly: (c, parts) => path('M57 57Q31 17 17 29Q6 53 28 70Q11 100 40 94Q53 90 59 69Z',c)+path('M63 57Q89 17 103 29Q114 53 92 70Q109 100 80 94Q67 90 61 69Z',c)+ellipse(60,65,5,22,dark)+line('M57 46q-5 -12 -13 -11m19 11q5 -12 13 -11',dark,2)+(parts.includes('spot')?circle(33,47,9,'#fff4d0')+circle(87,47,9,'#fff4d0'):''),
   cup: (c, parts) => line('M85 42q26 -2 21 19q-3 11 -20 13',c,8)+path('M24 41h65l-7 38q-2 12 -14 12H44q-12 0 -14 -12Z',c)+ellipse(56,42,33,9,'#e4eff2')+ellipse(56,42,25,5,'#b5ced8')+shine(40,62,5,12)+(parts.includes('star')?sparkle(61,66,12):''),
   apple: () => path('M60 45q-28 -17 -39 8q-13 28 14 49q11 9 25 3q23 5 35 -23q11 -29 -11 -40q-11 -5 -24 3z',tones.red)+line('M60 46q2 -13 -2 -20','#875d4a',4)+leaves(62,39)+shine(38,58,7,10),
@@ -87,12 +88,35 @@ const draw = {
   garage: c => path('M15 50l45 -28l45 28v46H15Z',c)+rect(32,55,56,41,'#cce0e4',10)+rect(36,59,48,37,'#536d7a',8),
   window: c => rect(27,25,66,75,c,17)+rect(34,32,52,61,'#dcebf4',12)+line('M60 35v55M37 61h46',c,4),
   desk: () => rect(4,17,112,83,'#edce99',12)+rect(11,24,98,69,'#f8e4b5',8)+sub('apple',14,22,28)+sub('cup',46,16,28)+sub('leaf',78,22,27)+sub('ball',27,55,30)+sub('bell',70,54,28),
-  fair: (c, parts) => rect(2,15,116,92,'#e1f1f4',14)+path('M2 78q36 -17 63 -3q20 7 53 -6v30q0 8 -8 8H10q-8 0 -8 -8Z','#a5c592')+sub(parts.includes('changed')?'house-pink':'house-blue',8,32,52)+sub(parts.includes('changed')?'ball-blue':'ball',40,74,29)+rect(88,56,8,32,'#996f50',4)+circle(92,49,20,parts.includes('changed')?'#d5a569':'#71a078'),
+  rabbit: () => ellipse(38,36,10,24,'#d2beb5')+ellipse(75,34,10,23,'#d2beb5')+ellipse(38,38,5,17,'#edb6ba')+ellipse(75,34,5,17,'#edb6ba')+circle(59,59,24,'#e1cebf')+ellipse(59,88,25,18,'#cfb9af')+face(58,58),
+  berry: () => circle(59,66,34,'#ab5a85')+leaves(52,34)+shine(50,57,8,6),
+  wheel: () => circle(60,60,34,dark)+circle(60,60,19,'#c3d3db')+circle(60,60,9,'#7190a1'),
+  ear: () => circle(60,59,26,'#b98564')+circle(60,59,15,'#f0c1a0'),
+  bow: () => '<g transform="translate(-22 -77) scale(1.35)">'+ribbon(tones.pink)+'</g>',
+  roof: () => path('M22 75l38-40l38 40z','#78a9ca'),
+  door: () => rect(38,29,44,67,'#b78768',10)+circle(72,65,4,'#efd287'),
+  wing: () => circle(35,60,13,'#dec683')+circle(85,60,13,'#dec683'),
+  lamp: (_,parts) => line('M60 95V54','#986f69',7)+ellipse(60,97,19,6,'#986f69')+path('M30 59l16-28h28l16 28z',parts.includes('blue')?'#7fabca':'#d89aaa'),
+  room: (_,parts) => rect(2,13,116,95,'#f4daca',12)+rect(4,82,112,26,'#debda7',8)+sub('desk',4,35,61)+sub(parts.includes('changed')?'lamp-blue':'lamp',67,26,46)+sub(parts.includes('changed')?'ball-blue':'ball',63,76,29),
+  hide: (_,parts) => hiding(parts[0]),
+  fair: (c, parts) => rect(2,15,116,92,'#e1f1f4',14)+path('M2 78q36 -17 63 -3q20 7 53 -6v30q0 8 -8 8H10q-8 0 -8 -8Z','#a5c592')+sub(parts.includes('changed')?'house-pink':'house-blue',8,32,52)+(parts.includes('no')?'':sub(parts.includes('changed')?'ball-blue':'ball',40,74,29))+rect(88,56,8,32,'#996f50',4)+circle(92,49,20,parts.includes('changed')?'#d5a569':'#71a078'),
 };
+
+function hiding(place) {
+  const lawn=rect(2,14,116,94,'#e9ebd8',12)+rect(2,73,116,35,'#b3c695',10);
+  const shrub=(x,y)=>circle(x,y,17,'#75a384')+circle(x+13,y+6,16,'#89b189')+circle(x-13,y+7,15,'#89b189');
+  const crate=(x,y)=>rect(x,y,40,26,'#d5ad80',6)+line('M'+(x+4)+' '+(y+6)+'h32m-32 12h32','#b58e68',3);
+  if(place==='bush') return lawn+sub('rabbit',33,23,63)+shrub(64,65)+sub('flower-gold',11,63,28)+sub('leaf',93,58,24);
+  if(place==='box') return lawn+sub('cat',54,26,60)+crate(60,53)+sub('plant',6,42,38)+sub('ball',31,74,24);
+  if(place==='forest') return lawn+sub('rabbit',6,24,48)+sub('cat',64,32,54)+shrub(31,60)+crate(68,57)+sub('flower-pink',47,51,25);
+  if(place==='garden') return lawn+sub('dog',24,30,76)+rect(40,57,45,34,'#d7b697',5)+sub('leaf',7,64,26)+sub('flower-pink',89,65,24);
+  return lawn+sub('duck',7,45,54)+sub('bird',74,25,43)+crate(6,67)+shrub(81,62)+sub('flower-gold',46,70,25);
+}
 
 export function painting(id) {
   const [name,...parts] = id.split('-');
   if(id==='open-box') return painting('box-open');
+  if(id.endsWith('-left')) return `<g transform="translate(120 0) scale(-1 1)">${painting(id.slice(0,-5))}</g>`;
   const color = tones[parts[0]] ?? ({ball:tones.red,car:tones.red,cup:'#7bab90',house:tones.blue}[name] ?? gold);
   return shadow + draw[name]?.(color,parts);
 }
@@ -112,6 +136,12 @@ export const regions = {
   house:{ roof:[[50,34]], door:[[52,75]], window:[[34,59]] },
   ball:{ center:[[53,51]], edges:[[23,47],[74,52]] },
   desk:{ apple:[[23,31]],cup:[[50,27]],leaf:[[76,31]],ball:[[35,58]],bell:[[69,57]] },
+  'hide-bush':{rabbit:[[51,36]],flower:[[19,73]],leaf:[[84,72]]},
+  'hide-box':{cat:[[70,39]],plant:[[20,61]],ball:[[35,75]]},
+  'hide-forest':{rabbit:[[21,33]],cat:[[79,42]],flower:[[50,62]]},
+  'hide-garden':{dog:[[55,37]],leaf:[[16,70]],flower:[[86,73]]},
+  'hide-market':{duck:[[30,55]],bird:[[84,35]],flower:[[47,77]]},
+  room:{lamp:[[75,44]],ball:[[65,73]],desk:[[26,56]]},
   fair:{ roof:[[28,41]],ball:[[46,73]],tree:[[77,45]],door:[[31,64]] },
 };
 export const artTitle = id => titles[id] ?? titles[id.split('-')[0]] ?? id;

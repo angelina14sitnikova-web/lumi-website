@@ -144,3 +144,33 @@ test('the rail missions cover all six lessons and enforce order consistently',as
     }
   }
 });
+
+test('the town contains stable pictures, meaningful hotspots and six complete lessons',async()=>{
+  const {narration}=await import('../memory/voice.js');
+  const lessons=course.modules[4].lessons;
+  assert.equal(lessons.flatMap(lesson=>lesson.scenes).length,18);
+  assert.equal(lessons.flatMap(lesson=>lesson.practice).length,30);
+  for(const lesson of lessons) {
+    assert.ok(practiceIsReady(lesson));
+    for(const scene of lesson.scenes) assert.ok(narration[lesson.id][scene.text],scene.text);
+    for(const task of lesson.practice) {
+      assert.ok(memoryAnswer(task,task.rounds.map(round=>round.answer)));
+      for(const round of task.rounds) {
+        assert.ok(narration[lesson.id][round.prompt],round.prompt);
+        const {picture,left,right,options,sample,after}=round;
+        const visuals=[picture,left,right,...(sample??[]),...(after??[])];
+        if(['repair','find','set','recall'].includes(round.kind)) visuals.push(...options);
+        for (const id of visuals.filter(Boolean)) assert.ok(!painting(id).includes('undefined'),id);
+        if(round.kind==='repair') assert.notEqual(painting(picture),painting(sample[0]));
+        if(['hidden','detail'].includes(round.kind)) {
+          const map=regions[picture]??regions[picture.split('-')[0]];
+          assert.ok([].concat(round.answer).every(key=>map[key]?.length));
+        }
+      }
+    }
+  }
+  for(const task of lessons[2].practice) for(const round of task.rounds) {
+    assert.equal(round.sample.filter(Boolean).length+1,round.after.filter(Boolean).length);
+    assert.ok(round.sample.every((id,index)=>id===null||id===round.after[index]));
+  }
+});

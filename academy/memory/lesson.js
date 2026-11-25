@@ -67,7 +67,7 @@ function pictureBoard(id, choose, hintId, activeLens = false) {
   const board = element('div','mem-picture');
   const base = picture(id);
   board.append(base);
-  const spots = regions[id.split('-')[0]] ?? {};
+  const spots = regions[id] ?? regions[id.split('-')[0]] ?? {};
   let lensView = null;
   if (activeLens) {
     lensView = element('div','mem-lens');
@@ -205,9 +205,9 @@ function demo(scene, playSound, playClips) {
     const moving = route(round, null, ()=>{ notes.textContent='Луми проследил за предметом.'; });
     box.append(moving.lane,moving.controls);
     play = ()=>moving.watch.click();
-  } else if (round.kind==='detail' || round.kind==='difference') {
+  } else if (['detail','difference','hidden','repair','compare-images'].includes(round.kind)) {
     const diagrams = element('div','mem-diagrams');
-    const canvases = round.kind==='detail'?[round.picture]:[round.left,round.right];
+    const canvases = round.kind==='repair'?[round.sample[0],round.picture]:round.picture?[round.picture]:[round.left,round.right];
     const views = canvases.map(id=>pictureBoard(id,null,null,round.lens));
     views.forEach(view=>diagrams.append(view.board));
     box.append(diagrams);
@@ -216,6 +216,18 @@ function demo(scene, playSound, playClips) {
     let run = 0;
     play = async()=>{
       const ownRun=++run;
+      if(round.kind==='repair'){
+        views[1].board.firstElementChild.replaceWith(picture(round.picture));
+        registerMotion(views[1].board,[{opacity:.65},{opacity:1}]);
+        if(!reduced()) await new Promise(resolve=>setTimeout(resolve,540));
+        if(run===ownRun&&views[1].board.isConnected) views[1].board.firstElementChild.replaceWith(picture(round.sample[0]));
+        return;
+      }
+      if(round.kind==='compare-images'){
+        diagrams.classList.add('mem-mark');
+        registerMotion(diagrams,[{opacity:.65},{opacity:1}]);
+        return;
+      }
       for (const view of views) for (const spots of view.hotSpots.values()) spots.forEach(spot=>spot.classList.remove('mem-mark'));
       for (const part of parts) {
         if (run!==ownRun || !diagrams.isConnected) return;
@@ -323,7 +335,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const scene = lesson.scenes[sceneIndex];
     const top = element('div','mem-location');
     top.style.backgroundImage='url("'+new URL(lesson.world+'.webp',media)+'")';
-    const pose = {castle:'lumi-chest',valley:'lumi-bell',railway:'lumi-train'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
+    const pose = {castle:'lumi-chest',valley:'lumi-bell',railway:'lumi-train',town:'lumi-detective'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
     top.append(image(pose,'mem-lumi','Луми'));
     const view = demo(scene,()=>{
       registerMotion(top.firstElementChild,[{transform:'rotate(0)'},{transform:'rotate(4deg)'},{transform:'rotate(0)'}]);
@@ -352,6 +364,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     let recallBoard;
     let soundBoard;
     let orderBoard;
+    let repairTarget;
     const advance=button('Дальше',()=>{
       if (!done) return;
       if (roundAnswers.length===task.rounds.length) {
@@ -370,6 +383,10 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
       if (memoryRoundAnswer(round,answer)) {
         done=true;
         pause.hidden=true;
+        if(repairTarget) {
+          repairTarget.replaceChildren(picture(round.sample[0]));
+          registerMotion(repairTarget,[{transform:'scale(.94)'},{transform:'scale(1)'}]);
+        }
         roundAnswers.push(Array.isArray(answer)?[...answer]:answer);
         status.textContent='Получилось!';
         advance.hidden=false;
@@ -399,7 +416,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         status.textContent='Сначала нажми на рисунок в верхней рамке.';
         return;
       }
-      if (round.kind==='difference') {
+      if (round.kind==='difference' || round.kind==='hidden') {
         if (noRepeat.has(id)) return;
         const targets=round.answer;
         if (!targets.includes(id)) {
@@ -411,7 +428,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         noRepeat.add(id);
         mark(id,'mem-found');
         if (noRepeat.size===targets.length) check([...noRepeat]);
-        else status.textContent='Нашлось! Есть ещё отличие.';
+        else status.textContent=round.kind==='hidden'?'Нашёлся! Посмотри, кто ещё спрятался.':'Нашлось! Есть ещё отличие.';
       } else if (round.kind==='set' || round.kind==='memory-set') {
         if (noRepeat.has(id)) {
           noRepeat.delete(id);
@@ -441,9 +458,10 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         answer:check,choose,options,announce:text=>{status.textContent=text;},reset:()=>noRepeat.clear(),
       });
       display.append(recallBoard.view);
-    } else if (round.kind==='detail' || round.kind==='difference') {
+    } else if (['detail','difference','hidden'].includes(round.kind)) {
       const diagrams=element('div','mem-diagrams');
-      const pictureIds=round.kind==='detail'?[round.picture]:[round.left,round.right];
+      const pictureIds=round.picture?[round.picture]:[round.left,round.right];
+      if(round.sample) display.append(gallery(round.sample,'mem-visible-sample'));
       pictureIds.forEach(id=>{
         const piece=pictureBoard(id,choose,null,round.lens);
         for (const [key,spots] of piece.hotSpots) options.set(key,[...(options.get(key)??[]),...spots]);
@@ -455,7 +473,17 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
       for (const [key,nodes] of game.buttons) options.set(key,nodes);
       display.append(game.lane,game.controls);
     } else {
-      if (round.kind==='pair') {
+      if (round.kind==='repair' || round.kind==='compare-images') {
+        const diagrams=element('div','mem-diagrams');
+        const ids=round.kind==='repair'?[round.sample[0],round.picture]:[round.left,round.right];
+        ids.forEach(id=>{
+          const panel=element('div','mem-picture');
+          panel.append(picture(id));
+          diagrams.append(panel);
+        });
+        if(round.kind==='repair') repairTarget=diagrams.children[1];
+        display.append(diagrams);
+      } else if (round.kind==='pair') {
         const pairStart = button('',()=>{
           pairing=true;
           pairStart.classList.add('mem-selected');
@@ -474,7 +502,10 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
         const choice=button('',()=>choose(id),'mem-card');
         choice.setAttribute('aria-label',artTitle(id));
         choice.dataset.choice=id;
-        choice.append(picture(id));
+        if(round.kind==='compare-images') {
+          choice.setAttribute('aria-label',id==='same'?'Одинаковые картинки':'Разные картинки');
+          choice.append(element('span','mem-symbol',id==='same'?'=':'≠'));
+        } else choice.append(picture(id));
         cards.append(choice);
         options.set(id,[choice]);
       });

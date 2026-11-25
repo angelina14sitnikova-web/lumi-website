@@ -1,5 +1,6 @@
 const memoryKeys = new Set([
   'find','pair','set','detail','difference','track','recall','memory-set','missing','layouts','arrange','changed','paint','audio','order',
+  'hidden','repair','compare-images',
 ]);
 
 export function memoryRoundAnswer(round, answer) {
