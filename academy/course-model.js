@@ -1,4 +1,5 @@
 import { courses } from './data/courses.js';
+import { writingAnswer, writingReady } from './writing/model.js';
 import { memoryAnswer, memoryReady } from './memory/model.js';
 import { comparisonAnswer, comparisonReady } from './activities/comparison-model.js';
 
@@ -42,6 +43,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['writing34', { isReady: writingReady, check: writingAnswer }],
   ['memory34', { isReady: memoryReady, check: memoryAnswer }],
   ['sensory', { isReady: sensoryReady, check: sensoryAnswer }],
   ['colors', { isReady: colorsReady, check: colorsAnswer }],

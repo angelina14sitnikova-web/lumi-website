@@ -1,0 +1,49 @@
+.write-lesson { max-width: 920px; margin-inline: auto; color: #47384a; }
+.write-lesson .course-kicker, .write-lesson h2, .write-prompt { text-align: center; }
+.write-location {
+  display: grid; place-items: end center; height: clamp(135px,32vw,285px);
+  background: #f4e8d4 center / cover no-repeat; border-radius: 21px; overflow: hidden;
+}
+.write-location img { height: 93%; max-width: 80%; object-fit: contain; }
+.write-prompt { font-size: clamp(1.01rem,2.5vw,1.15rem); margin: .55rem auto .9rem; max-width: 37rem; }
+.write-controls { display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin:.7rem 0; }
+.write-controls button, .write-controls a { min-height:48px; min-width:48px; }
+.write-lesson [hidden] { display: none !important; }
+.write-hand-board, .write-objects {
+  text-align: center; padding: .7rem; background: #fffaf0;
+  border: 2px solid #eadbbf; border-radius: 20px;
+}
+.write-hand-board > svg { display:block; width:min(100%,350px); margin:auto; }
+.write-motion-title { font-weight: 700; margin: .2rem 0; min-height: 1.4em; }
+.write-feedback, .write-status { min-height:1.4em; margin:.2rem 0; text-align:center; color:#3e6470; }
+.write-hand-board circle[data-finger] { cursor:pointer; }
+.write-hand-board circle[data-finger]:focus-visible { opacity:1; stroke:#3b5885; stroke-width:3; }
+.write-gesture svg { display:block; width:65px; margin:auto; }
+.write-items,.write-slots {
+  display:flex; justify-content:center; margin: .4rem auto; gap:clamp(4px,1vw,12px);
+}
+.write-items button,.write-slots button {
+  display:grid; place-items:center; flex: 0 1 84px; min-width:44px; min-height:54px;
+  padding:.2rem; background:#fff8e7; border:2px solid #e8d7bb;
+  border-radius:13px; position:relative;
+}
+.write-items button { touch-action:none; z-index:2; }
+.write-items button:active { z-index:3; }
+.write-items button:disabled { opacity:.43; }
+.write-slots button:disabled { opacity:1; }
+.write-items svg,.write-slots svg { display:block; width:100%; max-width:72px; }
+.write-items .is-picked, .write-hint {
+  border-color:#aa7132 !important; outline:3px solid #eccd86; outline-offset:-3px;
+}
+.write-reward { text-align:center; }
+.write-reward img { display:block; width:min(210px,60vw); margin:auto; }
+.write-book-stage { display:grid; width:min(100%,350px); margin:auto; }
+.write-book-stage > svg { grid-area:1/1; width:100%; }
+.write-book-stage > svg:not(.write-book) { opacity:0; transform:translateY(18px) scale(.8); }
+.write-book-stage > svg { transition:opacity .65s ease,transform .65s ease; }
+.is-unfolded .write-book-stage > svg:not(.write-book) { opacity:1; transform:none; }
+.is-unfolded .write-book { opacity:.25; transform:translateY(30px) scale(.9); }
+.write-hand-accent { transition:transform .65s ease; }
+@media (prefers-reduced-motion:reduce) {
+  .write-book-stage > svg,.write-hand-accent { transition:none; }
+}
