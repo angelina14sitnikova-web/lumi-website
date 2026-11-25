@@ -105,7 +105,7 @@ function updateCatalog() {
   });
   catalog.replaceChildren(list);
   if (courseCompleted(course)) {
-    const celebration = element('a', 'academy-button', 'Праздник открытий ✨');
+    const celebration = element('a', 'academy-button', course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
     catalog.prepend(celebration);
   }

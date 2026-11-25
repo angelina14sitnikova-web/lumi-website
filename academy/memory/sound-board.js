@@ -111,7 +111,10 @@ export function makeSoundBoard(round,{play,answer,options=new Map(),announce=()=
       return;
     }
     chosen.push(id);
-    state.append(cardImage(id,'mem-example-glyph'));
+    const actionArt=round.audioMode==='command'&&id==='box'?'open-box':id;
+    const scene=cardImage(actionArt,'mem-example-glyph');
+    state.append(scene);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches) scene.animate([{opacity:.55},{opacity:1}],{duration:330});
     if(chosen.length===round.answer.length) {
       const completed=chosen.splice(0);
       if(!completed.every((choice,index)=>choice===round.answer[index])) state.replaceChildren();

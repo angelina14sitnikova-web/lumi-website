@@ -304,3 +304,7 @@
 }
 .mem-order-variant { display: inline-flex; gap: 3px; padding: 4px; }
 .mem-order-variant .mem-event-tile { width: clamp(42px,9vw,78px); }
+
+.mem-world-map { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px; margin: 12px 0; }
+.mem-world-map img { aspect-ratio: 16/9; width: 100%; border-radius: 9px; object-fit: cover; }
+.mem-examples { margin-block: 12px; padding: 8px 10px; border: 1px solid #b3c8cd; border-radius: 12px; }

@@ -5,6 +5,7 @@ import { makeRecallBoard, visualRecallKinds } from './recall-board.js';
 import { makeSoundBoard, namedSounds } from './sound-board.js';
 import { makeOrderBoard } from './order-board.js';
 import { lessonUrl, moduleStars, programUrl, saveCompletion } from '../course-model.js';
+import { celebrationUrl, courseCompleted } from '../activities/celebration.js';
 
 const media = new URL('./media/', import.meta.url);
 const css = new URL('./lesson.css', import.meta.url);
@@ -335,20 +336,37 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     const scene = lesson.scenes[sceneIndex];
     const top = element('div','mem-location');
     top.style.backgroundImage='url("'+new URL(lesson.world+'.webp',media)+'")';
-    const pose = {castle:'lumi-chest',valley:'lumi-bell',railway:'lumi-train',town:'lumi-detective'}[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
+    const poses={castle:'lumi-chest',valley:'lumi-bell',railway:'lumi-train',town:'lumi-detective',island:'lumi-album'};
+    const pose = poses[lesson.world] ?? (scene.example.lens?'lumi-lens':'lumi-point');
     top.append(image(pose,'mem-lumi','Луми'));
     const view = demo(scene,()=>{
       registerMotion(top.firstElementChild,[{transform:'rotate(0)'},{transform:'rotate(4deg)'},{transform:'rotate(0)'}]);
       return say(scene.text);
     },playClips);
     const controls = element('div','lesson-actions mem-controls');
+    const extras=[];
+    if(scene.extra?.length) {
+      const more=element('details','mem-examples');
+      more.append(element('summary','','Ещё пример'));
+      for(const round of scene.extra) {
+        const extra=demo({text:round.prompt,example:round},()=>say(round.prompt),playClips);
+        more.append(extra.explanation,extra.box);
+      }
+      extras.push(more);
+    }
+    if(lesson.id==='memory-lesson-6-6'&&sceneIndex===0) {
+      const map=element('div','mem-world-map');
+      map.setAttribute('aria-label','Шесть миров волшебного альбома');
+      map.append(...course.modules.map(module=>image(module.cover.split('/').at(-1).replace('.webp',''),'',module.memoryAlbum.title)));
+      extras.unshift(map);
+    }
     if (sceneIndex>0) controls.append(button('Назад',()=>{sceneIndex--;showScene();}));
     controls.append(button(sceneIndex+1<lesson.scenes.length?'Следующая сцена':'Перейти к играм',()=>{
       if (sceneIndex+1<lesson.scenes.length) {sceneIndex++;showScene();}
       else showPractice();
     },primary));
     render(element('p','course-kicker','Сцена '+(sceneIndex+1)+' из '+lesson.scenes.length),
-      top,view.explanation,view.box,controls);
+      top,view.explanation,view.box,...extras,controls);
   }
   function showPractice() {
     const task = lesson.practice[answers.length];
@@ -531,6 +549,7 @@ export async function startMemoryLesson({ root, course, module, lesson }) {
     }
     const next=module.lessons[module.lessons.indexOf(lesson)+1];
     const actions=element('div','lesson-actions mem-controls');
+    if (courseCompleted(course)) actions.append(link('Открыть волшебный альбом',celebrationUrl(course)));
     if (next?.scenes.length) actions.append(link('Следующий урок',lessonUrl(course,module,next)));
     actions.append(link('К учебной программе',programUrl(course,module)));
     render(heading,piece,summary,actions);

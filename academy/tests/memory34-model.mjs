@@ -174,3 +174,35 @@ test('the town contains stable pictures, meaningful hotspots and six complete le
     assert.ok(round.sample.every((id,index)=>id===null||id===round.after[index]));
   }
 });
+
+test('the complete course has 36 IDs, six awards, 108 scenes, 180 games and five three-phase finales',async()=>{
+  const {island}=await import('../data/memory34/island.js');
+  const {narration}=await import('../memory/voice.js');
+  const {courseCompleted}=await import('../activities/celebration.js');
+  const {memoryCompletionDate}=await import('../course-model.js');
+  const lessons=course.modules.flatMap(module=>module.lessons);
+  assert.deepEqual(course.modules[5].lessons.map(lesson=>lesson.id),Object.keys(island));
+  assert.equal(new Set(lessons.map(lesson=>lesson.id)).size,36);
+  assert.equal(course.modules.filter(module=>module.reward&&module.memoryAlbum).length,6);
+  assert.equal(lessons.flatMap(lesson=>lesson.scenes).length,108);
+  assert.equal(lessons.flatMap(lesson=>lesson.practice).length,180);
+  assert.deepEqual(lessons.at(-1).practice.map(task=>task.rounds.length),[3,3,3,3,3]);
+  const files=new Map();
+  globalThis.localStorage={getItem:key=>files.get(key)??null,setItem:(key,val)=>files.set(key,val)};
+  assert.equal(courseCompleted(course),false);
+  for(const module of course.modules){
+    for(const lesson of module.lessons){
+      assert.ok(practiceIsReady(lesson),lesson.title);
+      for(const scene of lesson.scenes) assert.ok(narration[lesson.id][scene.text],scene.text);
+      const correct=lesson.practice.map(task=>task.rounds.map(round=>round.answer));
+      assert.ok(saveCompletion(course,module,lesson,correct),lesson.title);
+    }
+  }
+  assert.equal(courseCompleted(course),true);
+  const date=memoryCompletionDate();
+  assert.ok(Number.isFinite(Date.parse(date)));
+  const last=lessons.at(-1);
+  assert.equal(saveCompletion(course,course.modules.at(-1),last,last.practice.map(task=>task.rounds.map(round=>round.answer))),true);
+  assert.equal(memoryCompletionDate(),date);
+  assert.equal(JSON.parse(files.get('lumi.academy.completed.v1')).length,36);
+});
