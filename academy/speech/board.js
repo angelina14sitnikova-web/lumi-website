@@ -131,6 +131,10 @@ export function mountRound(host,round,next){
   if(round.result){
    for(const item of [].concat(round.result))reply.append(graphic(item.art??item,item.label,item.action??'rise'));
   }
+  if(round.animateSelection&&selected!=null){
+   const item=round.cards.find(c=>c.id===selected);
+   if(item)reply.append(graphic(item.art,item.label,item.action??'rise'));
+  }
   const model=round.models?.[selected]??round.speechModel;
   reply.append(el('p','speech-model',model));
   if(round.partner)reply.append(el('p','speech-partner',round.partner));
@@ -145,7 +149,7 @@ export function mountRound(host,round,next){
   const move=placed.indexOf(id);
   if(mode!=='paint'&&move>=0)placed[move]=null;
   placed[index]=id;selected=null;status.textContent='';
-  if(placed.every(Boolean))finish([...placed]);else draw();
+  if(accepted(round,placed))finish([...placed]);else draw();
  }
  function showContext(){
   if(!round.context)return;

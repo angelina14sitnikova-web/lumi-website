@@ -19,6 +19,8 @@ const animal=(kind,f)=>e(93,121,44,32,f)+e(67,143,12,18,f)+e(111,143,12,18,f)+
  e(84,77,48,39,f)+e(81,92,25,15,milk)+c(67,72,4,ink)+c(99,72,4,ink)+e(82,90,7,4,oak)+
  (kind==='cow'?e(105,57,16,14,oak)+e(112,119,15,17,oak):'');
 const definitions={
+ paper:()=>x(31,28,116,125,'#fff8df',10)+p('M60 64q35-24 66 13m-62 13h41','none','#6da38e',5),
+ crayon:f=>p('M44 118l67-76 24 23-69 74-32 8z','#cf895f')+p('M107 49l20 22m-78 51 23 16','none','#7f5361',4),
  table:()=>legs(32,91)+p('M20 81h137l13 21H11z',oak)+x(16,72,147,21,'#d9a779',6),
  chair:()=>legs(49,108)+x(47,21,14,109,oak)+x(57,28,65,54,'#b78564')+x(48,100,84,17,'#daa679'),
  bed:()=>x(17,82,11,71,oak)+x(150,114,11,35,oak)+x(26,105,123,39,blue)+x(28,101,120,17,'#eecdb2')+e(56,96,31,10,milk)+x(74,90,79,42,blue),
@@ -96,6 +98,10 @@ export function render(id){
   }).join('');
  }
  const original=id??'question';
+ if(original==='lumi'){
+  const src=new URL('../../images/lumi-transparent.png',import.meta.url).href;
+  return '<image href="'+src+'" x="12" y="12" width="156" height="156" preserveAspectRatio="xMidYMid meet"/>';
+ }
  const target=aliases[original]??original;
  const [type,tone,size]=target.split(':');
  if(type==='lumi')return '';
