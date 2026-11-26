@@ -144,8 +144,13 @@ function updateCatalog() {
     workshop.href = 'logic-workshop.html';
     catalog.prepend(workshop);
   }
+  if (course.id === 'speech-3-4') {
+    const workshop = element('a','academy-button','Свободная речевая мастерская');
+    workshop.href = 'speech-workshop.html';
+    catalog.prepend(workshop);
+  }
   if (courseCompleted(course)) {
-    const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : 'Праздник открытий ✨');
+    const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : course.id === 'speech-3-4' ? 'Праздник слов' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
     catalog.prepend(celebration);
   }

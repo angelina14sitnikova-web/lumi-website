@@ -38,7 +38,7 @@ const affinities={
  car:'Это машинка. Она синяя. Я люблю катать машинку.',
  bear:'Это медвежонок. Он мягкий. Мне нравится его обнимать.',
 };
-const favorites=(instruction,extra={})=>retell(instruction,affinities.ball,describeToys,{chooseVisual:true,models:affinities,
+const favorites=(instruction,extra={})=>retell(instruction,affinities.ball,describeToys,{chooseVisual:true,allowReal:true,models:affinities,
  adultPrompt:'Ребёнок может показать настоящую любимую игрушку. Можно выбрать картинку только для опоры.',...extra});
 export const stories=lessons(9,[
  ['Замечать и называть персонажей картины.',[

@@ -2,7 +2,8 @@ import {lessons,scene,task,frame,panel,token,say,choose} from './builders.js';
 
 const room=(left='lumi',right='bunny',prop=null,move='wave')=>panel(
  [left,0,20,.63,move],[right,87,27,.50,'rise'],...(prop?[[prop,64,90,.36,'rise']]:[]));
-const meeting=room(),leaving=room('lumi','bunny',null,'walk');
+const meeting=room();
+const leaving=panel(['lumi',-4,48,.55,'wave'],['bunny',131,3,.28,'walk'],['house',103,1,.47]);
 const help=panel(['lumi',1,29,.65],['box',92,65,.47],['adult',112,12,.39]);
 const shelf=panel(['shelf',53,6,.79],['car',91,35,.32],['lumi',-6,71,.52]);
 const floor=panel(['lumi',1,22,.65],['bunny',58,40,.61],['ball',79,105,.36]);

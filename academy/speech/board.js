@@ -35,10 +35,10 @@ function audioControl(item,controls){
 }
 function ease(){return new Promise(resolve=>setTimeout(resolve,reduced()?90:620));}
 
-export function mountScene(host,scene,{next,last}){
+export function mountScene(host,scene,{next,last,nextLabel}){
  const stage=el('div','speech-demo'),ctrl=el('div','lesson-actions');
  const replay=button('Посмотреть ещё раз',()=>void play());
- const forward=button(last?'Перейти к практике':'Следующая сцена',next,true);
+ const forward=button(nextLabel??(last?'Перейти к практике':'Следующая сцена'),next,true);
  const stopAudio=audioControl(scene,ctrl);
  ctrl.append(replay,forward);
  const notes=adultPanel(scene,true);
@@ -135,7 +135,7 @@ export function mountRound(host,round,next){
    const item=round.cards.find(c=>c.id===selected);
    if(item)reply.append(graphic(item.art,item.label,item.action??'rise'));
   }
-  const model=round.models?.[selected]??round.speechModel;
+  const model=selected==='real'?'Это моя игрушка. Расскажи, какая она и как ты с ней играешь.':round.models?.[selected]??round.speechModel;
   reply.append(el('p','speech-model',model));
   const partner=round.replies?.[selected]??round.partner;
   if(partner)reply.append(el('p','speech-partner',partner));
@@ -215,12 +215,15 @@ export function mountRound(host,round,next){
   display.append(bank);
  }
  if(isSpoken(round)){
+  if(round.allowReal)controls.append(button('Моя настоящая игрушка',()=>{
+   selected='real';status.textContent='Расскажи про свою игрушку.';draw();
+  }));
   const cue=button(round.modeButton??(mode==='listen'?'Прочитали вместе':'Продолжить'),()=>{
    if(round.chooseVisual&&selected==null){status.textContent='Выбери картинку, чтобы показать свой вариант.';return;}
    spoken=true;cue.hidden=true;finish('continue');
   },true);
   if(!round.result&&!round.partner&&!round.chooseVisual){
-   controls.append(button('Рассказали вместе',()=>next('continue'),true));
+   controls.append(button(mode==='listen'?'Прочитали вместе':'Рассказали вместе',()=>next('continue'),true));
   }else controls.append(cue);
  }else{
   controls.append(button('Подсказка',hint));
