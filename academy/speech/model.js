@@ -12,9 +12,11 @@ export function accepted(round,response){
    response.every(id=>round.correct.includes(id));
  }
  if(['place','compose','paint','order'].includes(mode)){
-  return Array.isArray(response)&&response.length===round.slots.length&&
-   (mode==='paint'||new Set(response).size===response.length)&&
-   response.every((id,i)=>round.slots[i].accept.includes(id));
+  if(!Array.isArray(response)||response.length!==round.slots.length)return false;
+  const used=response.filter(id=>id!=null);
+  return used.length===(round.targetCount??round.slots.length)&&
+   (mode==='paint'||new Set(used).size===used.length)&&
+   response.every((id,i)=>id==null?round.targetCount!=null:round.slots[i].accept.includes(id));
  }
  return false;
 }
@@ -23,12 +25,13 @@ export function example(round){
  if(round.responseMode==='multi')return round.correct.slice(0,round.count??round.correct.length);
  if(['choose','parts'].includes(round.responseMode))return round.correct[0];
  const search=(slot,used)=>{
-  if(slot===round.slots.length)return [];
+  if(slot===round.slots.length)return round.targetCount==null||used.size===round.targetCount?[]:null;
   for(const id of round.slots[slot].accept){
    if(used.has(id)&&round.responseMode!=='paint')continue;
    const tail=search(slot+1,new Set([...used,id]));
    if(tail)return [id,...tail];
   }
+  if(round.targetCount!=null){const tail=search(slot+1,used);if(tail)return [null,...tail];}
   return null;
  };
  return search(0,new Set());
@@ -46,7 +49,7 @@ export function roundValid(round){
  if(isSpoken(round))return !round.correct&&!round.slots&&!round.count;
  if(!digitalModes.has(round.responseMode)||!ids.length)return false;
  if(round.slots){
-  if(!round.slots.length||round.slots.some(s=>!s.accept?.length||s.accept.some(id=>!ids.includes(id))))return false;
+  if(!round.slots.length||round.slots.some(s=>!Array.isArray(s.accept)||(!s.accept.length&&round.targetCount==null)||s.accept.some(id=>!ids.includes(id))))return false;
  }else{
   if(!round.correct?.length||round.correct.some(id=>!ids.includes(id)))return false;
   if(round.count!=null&&(!Number.isInteger(round.count)||round.count<1||round.count>round.correct.length))return false;

@@ -137,7 +137,8 @@ export function mountRound(host,round,next){
   }
   const model=round.models?.[selected]??round.speechModel;
   reply.append(el('p','speech-model',model));
-  if(round.partner)reply.append(el('p','speech-partner',round.partner));
+  const partner=round.replies?.[selected]??round.partner;
+  if(partner)reply.append(el('p','speech-partner',partner));
   status.textContent=isSpoken(round)?'Можно продолжать.':'Игровое действие выполнено. Можно сказать вместе.';
   proceed.hidden=false;
   if(isSpoken(round)&&spoken)proceed.focus({preventScroll:true});
