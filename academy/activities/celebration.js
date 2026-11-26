@@ -3,7 +3,7 @@ import { findCourse, moduleStars, completionDate67, memoryCompletionDate, writin
 
 export const celebrationUrl = course => course.id === 'math-3-4' ? 'celebration.html' : 'celebration.html?course=' + course.id;
 export function courseCompleted(course) {
-  const expected = { 'math-3-4':12, 'math-4-5':10, 'math-5-6':10, 'math-6-7':10, 'memory-3-4':6, 'writing-3-4':6, 'literacy-3-4':5, 'logic-3-4':7, 'speech-3-4':10 };
+  const expected = { 'math-3-4':12, 'math-4-5':10, 'math-5-6':10, 'math-6-7':10, 'memory-3-4':6, 'writing-3-4':6, 'literacy-3-4':5, 'logic-3-4':7, 'speech-3-4':10, 'speech-4-5':10 };
   return course?.modules.length === expected[course?.id] && Boolean(expected[course?.id]) &&
     course.modules.every(module => moduleStars(course,module) === module.lessons.length);
 }
@@ -11,11 +11,15 @@ export function courseCompleted(course) {
 const panel = globalThis.document?.querySelector('#course-celebration');
 if (panel) {
   const requested = new URLSearchParams(location.search).get('course');
-  const course = findCourse(['math-4-5','math-5-6','math-6-7','memory-3-4','writing-3-4','literacy-3-4','logic-3-4','speech-3-4'].includes(requested) ? requested : 'math-3-4');
+  const course = findCourse(['math-4-5','math-5-6','math-6-7','memory-3-4','writing-3-4','literacy-3-4','logic-3-4','speech-3-4','speech-4-5'].includes(requested) ? requested : 'math-3-4');
   if(course.id==='writing-3-4') {
     const {mountWritingFinale}=await import('../writing/finale.js');
     const stars=course.modules.reduce((sum,module)=>sum+moduleStars(course,module),0);
     mountWritingFinale(panel,course,courseCompleted(course),stars,writingCompletionDate());
+  } else if (course.id === 'speech-4-5') {
+    const { mountSpeech45Finale } = await import('../speech45/finale.js');
+    const stars = course.modules.reduce((sum,module) => sum + moduleStars(course,module),0);
+    mountSpeech45Finale(panel,course,courseCompleted(course),stars);
   } else if (course.id === 'speech-3-4') {
     const { mountSpeechFinale } = await import('../speech/finale.js');
     const stars = course.modules.reduce((sum,module) => sum + moduleStars(course,module),0);

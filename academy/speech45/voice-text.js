@@ -13,7 +13,7 @@ export function lessonPhrases(lessons){
   for(const item of [...lesson.scenes,...lesson.practice.flatMap(task=>task.rounds)]){
    add(item.instructionText,item.speechModel,item.partner,Object.values(item.replies??{}),
     Object.values(item.models??{}),item.samples?.map(sample=>sample.text));
-   if(item.frames)add(item.frames.map(frame=>frame.says));
+   if(item.frames)add(item.frames.map(frame=>[frame.says,frame.voice?.text]));
    if(item.audioPhrases)add(item.audioPhrases);
   }
  }

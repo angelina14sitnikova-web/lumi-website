@@ -16,7 +16,8 @@ function book(open){
  if(open)box.classList.add('speech-book-open');
  return box;
 }
-function diploma(course,stars){
+function diploma(course,stars,options){
+ const {certificate,recipient,rewardText,filename}=options;
  const area=el('section','academy-diploma speech-diploma ym-hide-content');
  const input=el('input','ym-disable-keys');input.maxLength=50;input.autocomplete='off';input.spellcheck=false;
  const label=el('label','','Имя на грамоте по желанию');label.append(input);
@@ -41,8 +42,8 @@ function diploma(course,stars){
    ctx.drawImage(mascot,325-w/2,635-h/2,w,h);
   }
   if(medal.naturalWidth)ctx.drawImage(medal,903,660,125,125);
-  text(input.value.trim().replace(/\s+/g,' ')||'Юный волшебник слов',970,518,'bold 48px Georgia',690);
-  text(stars+' звёзд · 10 медалей · 10 фонариков',970,604,'33px sans-serif',700);
+  text(input.value.trim().replace(/\s+/g,' ')||recipient,970,518,'bold 48px Georgia',690);
+  text(stars+' звёзд · 10 медалей · '+rewardText,970,604,'33px sans-serif',700);
   text('Памятная награда за прохождение игры',720,922,'29px sans-serif',1160);
  }
  input.addEventListener('input',paint);
@@ -52,7 +53,7 @@ function diploma(course,stars){
    if(!mascot.naturalWidth||!medal.naturalWidth){status.textContent='Дождитесь загрузки иллюстраций.';return;}
    paint();
    const blob=await toBlob(canvas);
-   if(print)await printDrawing(blob);else downloadImage(blob,'lumi-word-wizard.png');
+   if(print)await printDrawing(blob);else downloadImage(blob,filename);
    status.textContent='';
   }catch{status.textContent='Грамота пока не сохранилась. Можно попробовать ещё раз.';}
  }
@@ -61,24 +62,27 @@ function diploma(course,stars){
  area.append(el('h2','','Игровая грамота'),label,canvas,controls,status);paint();
  return area;
 }
-export function mountSpeechFinale(root,course,complete,stars){
+export function mountSpeechFinale(root,course,complete,stars,custom={}){
+ const options={title,certificate,storageKey,recipient:'Юный волшебник слов',rewardText:'10 фонариков',
+  filename:'lumi-word-wizard.png',incomplete:'Собери все фонарики.',prompt:'Зажги фонарики по очереди, чтобы открыть книгу.',
+  progress:count=>count+' из 10 фонариков горят.',showHero:hero,workshop:'speech-workshop.html',age:'age-3-4.html',...custom};
  style();
  root.classList.add('speech-lesson','speech-finale');
  document.body.classList.add('speech-finale-page');
- document.title=title+' · Академия Луми';
+ document.title=options.title+' · Академия Луми';
  const back=link('К урокам курса',programUrl(course));
  if(!complete){
-  root.replaceChildren(el('h1','',title),el('p','', 'Пройдено '+stars+' из 60 уроков. Собери все фонарики.'),back);
+  root.replaceChildren(el('h1','',options.title),el('p','', 'Пройдено '+stars+' из 60 уроков. '+options.incomplete),back);
   return;
  }
  let lit=0;
- try{lit=Math.max(0,Math.min(10,Number(localStorage.getItem(storageKey))||0));}catch{}
+ try{lit=Math.max(0,Math.min(10,Number(localStorage.getItem(options.storageKey))||0));}catch{}
  const area=el('div','speech-starlight'),lamps=el('div','speech-final-lights');
- const explanation=el('p','speech-model','Зажги фонарики по очереди, чтобы открыть книгу.');
+ const explanation=el('p','speech-model',options.prompt);
  const status=el('p','speech-status');status.setAttribute('role','status');
  const award=el('section');
  const navigation=el('div','lesson-actions');
- navigation.append(back,link('В речевую мастерскую','speech-workshop.html'),link('В Академию','age-3-4.html'));
+ navigation.append(back,link('В речевую мастерскую',options.workshop),link('В Академию',options.age));
  function show(){
   const complete=lit===course.modules.length;
   area.replaceChildren(book(complete));
@@ -87,8 +91,8 @@ export function mountSpeechFinale(root,course,complete,stars){
    const light=button('',()=>{
     if(i!==lit)return;
     lit++;
-    try{localStorage.setItem(storageKey,String(lit));}catch{}
-    status.textContent=lit+' из 10 фонариков горят.';
+    try{localStorage.setItem(options.storageKey,String(lit));}catch{}
+    status.textContent=options.progress(lit);
     show();
     lamps.querySelector('[data-lantern="'+lit+'"]')?.focus({preventScroll:true});
    });
@@ -107,8 +111,10 @@ export function mountSpeechFinale(root,course,complete,stars){
   for(let i=0;i<stars;i++){const star=el('span','','★');star.setAttribute('aria-hidden','true');starsRow.append(star);}
   const medals=el('div','speech-final-medals');
   medals.append(...course.modules.map(module=>graphic(module.speechMedal,module.reward)));
-  award.append(el('h2','','Книга открылась!'),friends,el('p','speech-model','Луми поздравляет тебя!'),
-   starsRow,medals,diploma(course,stars));
+  award.append(el('h2','','Книга открылась!'),friends,el('p','speech-model','Луми поздравляет тебя!'),starsRow,medals);
+  const showDiploma=()=>{if(!award.querySelector('canvas'))award.append(diploma(course,stars,options));};
+  if(options.mountStory)options.mountStory(award,showDiploma);
+  else showDiploma();
  }
- root.replaceChildren(hero(10),el('h1','',title),area,explanation,lamps,status,award,navigation);show();
+ root.replaceChildren(options.showHero(10),el('h1','',options.title),area,explanation,lamps,status,award,navigation);show();
 }

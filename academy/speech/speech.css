@@ -99,3 +99,12 @@
 @keyframes speech-race{from{transform:translateX(-50%)}to{transform:translateX(50%)}}
 @keyframes speech-steam{from{transform:translateY(3px);opacity:.55}to{transform:translateY(-9px);opacity:1}}
 @media(prefers-reduced-motion:reduce){.speech-fast,.speech-slow,.speech-steam{animation:none}}
+
+.story-library{max-width:54rem;margin:1rem auto}
+.story-library label{display:grid;gap:.35rem;margin:.65rem 0;text-align:left;color:#435262}
+.story-library input,.story-library select,.story-library textarea{font:inherit;color:inherit;width:100%;min-height:44px;border:1px solid #ac9ab9;border-radius:.65rem;background:#fffdfb;padding:.5rem}
+.story-page,.story-saved{margin:1rem auto;padding:clamp(.55rem,2vw,1rem);border:1px solid #d7c6df;border-radius:1rem;background:#fcf6ee}
+.story-page legend{padding:0 .5rem;font-weight:700}
+.story-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.55rem}
+.story-figures>*{width:min(23%,110px);height:auto;max-height:110px;object-fit:contain}
+.story-text{white-space:pre-line;overflow-wrap:anywhere}

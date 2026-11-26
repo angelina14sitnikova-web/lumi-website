@@ -144,13 +144,13 @@ function updateCatalog() {
     workshop.href = 'logic-workshop.html';
     catalog.prepend(workshop);
   }
-  if (course.id === 'speech-3-4') {
+  if (['speech-3-4','speech-4-5'].includes(course.id)) {
     const workshop = element('a','academy-button','Свободная речевая мастерская');
-    workshop.href = 'speech-workshop.html';
+    workshop.href = course.id === 'speech-4-5' ? 'speech45-workshop.html' : 'speech-workshop.html';
     catalog.prepend(workshop);
   }
   if (courseCompleted(course)) {
-    const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : course.id === 'speech-3-4' ? 'Праздник слов' : 'Праздник открытий ✨');
+    const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : course.id === 'speech-3-4' ? 'Праздник слов' : course.id === 'speech-4-5' ? 'Королевство живых историй' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
     catalog.prepend(celebration);
   }

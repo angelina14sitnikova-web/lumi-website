@@ -148,3 +148,26 @@ Object.assign(art45,{
   oval(57,115,18,14,'#8b78b6')+oval(119,100,18,14,'#8b78b6')],
  'factory-dance':['Танцует',()=>circle(90,45,15,gold)+path('M90 66 78 119m9-37-35-9m34 9 42-20m-49 56-36 20m36-20 38 27','none',mint,11)],
 });
+
+Object.assign(art45,{
+ 'theatre-one':['Первый образец',()=>circle(90,90,54,'#d6e4ef')+circle(90,91,9,'#5e7698')],
+ 'theatre-two':['Второй образец',()=>circle(90,90,54,'#dadcf0')+circle(70,91,9,'#8174a7')+circle(110,91,9,'#8174a7')],
+});
+
+Object.assign(art45,{
+ 'island-seed':['Посаженное семечко',()=>path('M27 113q62-41 126 0l-9 28H35z','#b78465')+oval(87,105,12,7,'#e1c193')+
+  path('M81 105q5-5 11-5','none','#9f724f',2)],
+ 'island-sprout':['Росток',()=>path('M33 121q50-31 115 0l-12 22H42z','#b78465')+path('M89 119q-3-38 6-52','none',mint,6)+
+  path('M92 90q-37 0-37-32 28-2 37 32m0-13q3-40 36-40 1 33-36 40','#89b68b')],
+ 'island-spill':['Рассыпанные кубики',()=>[[54,93,red,-15],[126,68,mint,20],[98,129,gold,15]].map(([a,b,f,rotation])=>
+  `<g transform="rotate(${rotation} ${a} ${b})">`+box(a-17,b-17,34,34,f,4)+path(`M${a-12} ${b-10}h23`,'none',cream,3)+'</g>').join('')],
+});
+
+Object.assign(art45,{
+ 'castle-crane':['Журавль',()=>oval(88,95,43,24,'#a5b4cb')+
+  path('M103 86q18-12 17-40m-27 68-1 38h12m13-40 12 36h14','none','#75869c',6)+circle(120,47,11,'#b9c5d8')+
+  path('M128 46 164 53l-36 4z',gold)+circle(124,46,2,ink)+path('M53 94 31 80l13 30z',blue)],
+ 'castle-rooster':['Петушок',()=>path('M81 106q-40-23-43-67 26 5 33 33-3-32 18-39 17 40-8 73z',mint)+
+  oval(94,100,39,29,'#d99d60')+circle(120,69,22,'#e9ac6e')+path('M107 55q-4-25 10-13 7-19 13-2 17-9 9 11z',red)+
+  path('M136 66 160 75l-23 4z',gold)+circle(125,67,3,ink)+path('M87 126l-4 19h-12m40-19 2 19h13','none',tan,5)],
+});

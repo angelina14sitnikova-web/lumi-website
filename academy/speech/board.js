@@ -52,7 +52,7 @@ export function mountScene(host,scene,{next,last,nextLabel,voice}){
  const replay=button('Посмотреть ещё раз',()=>void play());
  const forward=button(nextLabel??(last?'Перейти к практике':'Следующая сцена'),next,true);
  const stopAudio=voice?voice.stop:audioControl(scene,ctrl);
- if(voice)recordedControl(ctrl,voice,'Послушать объяснение',[scene.instructionText,...scene.frames.map(f=>f.says).filter(Boolean)],()=>{});
+ if(voice)recordedControl(ctrl,voice,'Послушать объяснение',[scene.instructionText,...scene.frames.map(f=>f.voice??f.says).filter(Boolean)],()=>{});
 
  ctrl.append(replay,forward);
  const notes=adultPanel(scene,true);
@@ -112,7 +112,7 @@ export function mountRound(host,round,next,{voice}={}){
  const status=el('p','speech-status');status.setAttribute('role','status');
  const controls=el('div','lesson-actions'),mode=round.responseMode;
  let selected=null,picks=[],placed=Array(round.slots?.length??0).fill(null),correct=false,attempts=0,spoken=false;
- let value;
+ let value,spokenCue;
  const notes=adultPanel(round,true);
  notes.open=(round.requiresAdult&&!round.audioSrc)||(round.audioIndex&&!voice);
  const proceed=button('Продолжить',()=>next(value),true);proceed.hidden=true;
@@ -122,7 +122,7 @@ export function mountRound(host,round,next,{voice}={}){
  const audition=round.samples?.length&&voice?button('Послушать образцы',async()=>{
   try{
    const result=await voice.play(...round.samples);
-   if(result.status==='finished'){listeningReady=true;status.textContent='Теперь выбери картинку.';draw();}
+   if(result.status==='finished'){listeningReady=true;status.textContent=isSpoken(round)?'Можно продолжать.':'Теперь выбери картинку.';draw();}
   }catch{listeningReady=true;notes.open=true;status.textContent='Прочитайте образцы вместе со взрослым.';draw();}
  }):null;
  if(audition)controls.append(audition);
@@ -188,6 +188,7 @@ export function mountRound(host,round,next,{voice}={}){
  }
  function draw(){
   display.replaceChildren();
+  if(spokenCue)spokenCue.disabled=!listeningReady;
   if(!listeningReady)return;
   if(round.review&&!isSpoken(round))display.append(button('Показать исходную картинку',()=>{
    const before=graphic(round.review,'Исходная картинка','rise');
@@ -248,13 +249,13 @@ export function mountRound(host,round,next,{voice}={}){
   if(round.allowReal)controls.append(button('Моя настоящая игрушка',()=>{
    selected='real';status.textContent='Расскажи про свою игрушку.';draw();
   }));
-  const cue=button(round.modeButton??(mode==='listen'?'Прочитали вместе':'Продолжить'),()=>{
+  spokenCue=button(round.modeButton??(mode==='listen'?'Прочитали вместе':'Продолжить'),()=>{
    if(round.chooseVisual&&selected==null){status.textContent='Выбери картинку, чтобы показать свой вариант.';return;}
-   spoken=true;cue.hidden=true;finish('continue');
+   spoken=true;spokenCue.hidden=true;finish('continue');
   },true);
   if(!voice&&!round.result&&!round.partner&&!round.chooseVisual){
    controls.append(button(mode==='listen'?'Прочитали вместе':'Рассказали вместе',()=>next('continue'),true));
-  }else controls.append(cue);
+  }else controls.append(spokenCue);
  }else{
   controls.append(button('Подсказка',hint));
   if(mode==='multi'){
