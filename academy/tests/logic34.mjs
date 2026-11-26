@@ -22,7 +22,7 @@ test('logic lesson content preserves catalogue routes, and all enabled rounds ar
    assert.equal(passPractice(lesson,[]),false);
   }
  }
- assert.ok(enabled>=6);
+ assert.equal(enabled,42);
 });
 test('correspondence is based on attributes and accepts every complete pairing',()=>{
  const pair=match(['car:red','bear:red'],['ball:red','top:red'],'color');
@@ -42,4 +42,26 @@ test('odd-one-out uses the requested property and excludes ambiguous groups',()=
  assert.equal(answer(r,1),true);
  assert.equal(answer(r,2),false);
  assert.equal(validRound(odd(['circle:red','square:red','triangle:blue'],'shape','Форма')),false);
+});
+
+test('story tasks accept every useful tool and reject unrelated objects',()=>{
+ const course=findCourse('logic-3-4');
+ const games=course.modules.at(-1).lessons.flatMap(lesson=>lesson.practice.flatMap(task=>task.rounds)).filter(r=>r.kind==='story');
+ assert.ok(games.length>=10);
+ const variants=games.find(r=>r.use==='cross');
+ assert.ok(answer(variants,{choice:variants.items.indexOf('bridge'),checked:true}));
+ assert.ok(answer(variants,{choice:variants.items.indexOf('plank'),checked:true}));
+ assert.equal(answer(variants,{choice:variants.items.indexOf('lid'),checked:true}),false);
+ for(const r of games){
+  const e=expected(r);
+  assert.ok(answer(r,e));
+  assert.equal(answer(r,{choice:e.choice,checked:false}),false);
+ }
+});
+test('a two-piece puzzle requires two distinct fragments and exact destinations',()=>{
+ const task=findCourse('logic-3-4').modules[4].lessons[0].practice[0].rounds[0];
+ assert.equal(task.layout,'twoVertical');
+ assert.ok(answer(task,[1,0]));
+ assert.equal(answer(task,[0,1]),false);
+ assert.equal(answer(task,[1,1]),false);
 });

@@ -268,7 +268,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
    instruction.append(...r.steps.map(s=>figure(visual(s.preview??s.choice),label(s.preview??s.choice))));stage.append(instruction);
    scene.append(visual(hits.length?r.steps[hits.length-1].preview??hits.at(-1):r.initial));
    stage.append(scene);
-   if(done)return;
+   if(done||hits.length===r.steps.length)return;
    const step=r.steps[hits.length];
    for(const id of step.options)row.append(answerTile(id,visual(id),label(id),()=>{
     if(id!==step.choice){miss();return;}

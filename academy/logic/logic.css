@@ -47,3 +47,42 @@
 .logic-motion{animation:logic-lift .58s ease both}
 @keyframes logic-lift{50%{transform:translateY(-6px)}}
 @media(prefers-reduced-motion:reduce){.logic-focus,.logic-motion{animation:none}}
+.logic-drive{position:absolute;left:2%;top:47%;width:41%;margin:0;transform:translateX(143%);animation:logic-drive 1.35s ease-in-out both}
+.logic-effect-comb,.logic-effect-wipe,.logic-effect-eat{animation:logic-apply .82s ease-in-out both}
+.logic-effect-collect,.logic-effect-close{animation:logic-place .58s ease-out both}
+.logic-water{width:27%;height:30%;position:absolute;left:40%;top:39%;border-radius:35%;background:radial-gradient(ellipse,#74bbe8 0 24%,transparent 28%) 0 0/14px 21px;transform:rotate(-30deg);animation:logic-pour 1.1s ease-out both}
+@keyframes logic-drive{from{transform:translateX(0)}to{transform:translateX(143%)}}
+@keyframes logic-apply{35%{transform:translate(32%,-8%) rotate(-12deg)}65%{transform:translate(56%,10%) rotate(7deg)}}
+@keyframes logic-place{from{transform:translateY(-42%);opacity:.55}to{transform:translateY(0);opacity:1}}
+@keyframes logic-pour{0%{opacity:.05}30%{opacity:1}100%{transform:rotate(-30deg) translateY(32%);opacity:.2}}
+@media(prefers-reduced-motion:reduce){.logic-drive,.logic-effect-comb,.logic-effect-wipe,.logic-effect-eat,.logic-effect-collect,.logic-effect-close,.logic-water{animation:none}}
+.logic-finale{max-width:58rem}
+.logic-final-chest{max-width:255px;margin:auto}
+.logic-chest-art svg{width:100%;height:auto}
+.logic-open{animation:logic-lift .6s ease}
+.logic-final-keys,.logic-final-locks,.logic-final-stars,.logic-workshop-options{display:flex;justify-content:center;flex-wrap:wrap;gap:.65rem;margin:1rem auto}
+.logic-lock{position:relative;border:1px solid #deccb3;border-radius:14px;background:#fff6de;width:clamp(46px,10%,69px);min-height:60px;cursor:pointer;padding:.23rem}
+.logic-lock svg{display:block;width:100%;height:auto}
+.logic-lock>img{position:absolute;left:30%;top:49%;width:39%;height:auto;margin:0}
+.logic-lock:disabled{opacity:.36}
+.logic-final-keys[hidden],.logic-final-locks[hidden]{display:none}
+.logic-final-keys button{width:clamp(54px,10%,95px)}
+.logic-final-keys img{width:100%;margin:0;object-fit:contain}
+.logic-final-stars{color:#ad7725;font-size:1.32rem;max-width:35rem;gap:.35rem}
+.logic-final-rewards{flex-wrap:wrap}
+.logic-final-rewards img{max-width:85px}
+.logic-diploma label{display:grid;gap:.28rem;max-width:22rem;margin:auto}
+.logic-diploma input{padding:.5rem;min-height:45px;font:inherit;border:1px solid #7b9697;border-radius:.45rem}
+.logic-diploma canvas{width:100%;height:auto;border:1px solid #d4bd9b;border-radius:.68rem;margin:1rem 0}
+.logic-workshop-options>button{display:flex;align-items:center;gap:.5rem;min-height:52px}
+.logic-workshop-options svg{width:38px;height:38px}
+.logic-finale-page .write-print-preview{display:none}
+@media(prefers-reduced-motion:reduce){.logic-open{animation:none}}
+@media print{
+ .logic-finale-page>*{display:none!important}
+ .logic-finale-page>.write-print-preview{display:block!important}
+ .logic-finale-page>.write-print-preview img{width:100%;height:auto}
+}
+.logic-hero-prop{position:absolute;z-index:1;left:56%;bottom:19%;width:clamp(38px,12%,92px);filter:drop-shadow(0 4px 4px #48352640)}
+.logic-hero-prop svg{width:100%;height:auto;display:block}
+@media(max-width:420px){.logic-pattern{gap:.22rem}.logic-pattern>*{min-width:0}.logic-pattern>.logic-tile{min-height:44px}}

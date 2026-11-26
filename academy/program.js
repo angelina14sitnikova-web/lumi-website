@@ -131,6 +131,11 @@ function updateCatalog() {
     studio.href = 'writing-studio.html';
     catalog.prepend(studio);
   }
+  if (course.id === 'logic-3-4') {
+    const workshop = element('a','academy-button','Мастерская головоломок');
+    workshop.href = 'logic-workshop.html';
+    catalog.prepend(workshop);
+  }
   if (courseCompleted(course)) {
     const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
@@ -156,7 +161,10 @@ if (course) {
   const main = document.querySelector('#academy-main');
   main.classList.replace('academy-tone-3-4', course.ageTone);
   main.dataset.courseTheme = course.theme;
-  if (course.id === 'logic-3-4') main.dataset.logicCourse = '';
+  if (course.id === 'logic-3-4') {
+    main.dataset.logicCourse = '';
+    document.querySelector('#course-room .academy-age-lumi').src = '../images/lumi-transparent.png';
+  }
   const art = document.querySelector('#course-room-art');
   art.alt = course.room.alt;
   art.width = course.room.width;
