@@ -4,8 +4,8 @@ export const visual=(...ids)=>panel(...ids.map((item,i)=>[item,Math.round(8+i*15
 export const step=(art,says,action='rise')=>frame(Array.isArray(art)?visual(...art):art,action,{says,reset:true});
 export const demo=(instruction,...steps)=>scene(instruction,steps.map(s=>s.says).join(' '),...steps);
 export const match=(instruction,model,pairs,distractors=[])=>place(instruction,model,
- [...distractors,...pairs.map(p=>p[1]).reverse()],pairs.map(([target,id,label])=>[target,id,label]));
-export const talk=(instruction,model,art,extra={})=>say(instruction,model,art.map((a,i)=>a?.props?token('picture-'+i,a):a),'speak',extra);
+ [...distractors,...pairs.map(p=>p[1]).reverse()],pairs.map(([target,id,label])=>[target,typeof id==='string'?id:id.id,label]));
+export const talk=(instruction,model,art,extra={})=>say(instruction,model,art.map((a,i)=>a&&typeof a==='object'&&!a.art?token('picture-'+i,a):a),'speak',extra);
 export function lessonSet(world,lessons){
  const audioSrc='speech45/media/voice-'+world+'.json';
  const record=item=>({...item,audioSrc,audioIndex:true});

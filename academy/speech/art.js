@@ -1,6 +1,7 @@
 import {drawing,image} from '../logic/art.js';
 import {colors,object} from '../logic/model.js';
 import {art45} from '../speech45/art.js';
+import {sensoryArt,shadeArt,scaleArt} from '../speech45/sensory-art.js';
 import {words} from './words.js';
 
 const p=(d,color,stroke='none',w=5)=>`<path d="${d}" fill="${color}" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
@@ -86,12 +87,13 @@ const aliases={kitten:'cat::small',puppy:'dog::small',duckling:'duck::small',cal
  read:'book',eat:'spoon',drink:'cup',sleep:'bed',wash:'soap',dry:'towel',write:'book',choose:'question',rest:'sofa'};
 export function caption(id){
  if(typeof id!=='string')return 'Сюжетная картинка';
- return art45[id.split(':')[0]]?.[0]??words[id.split(':')[0]]?.lemma??object(id)?.label??({
+ return art45[id.split(':')[0]]?.[0]??sensoryArt[id.split(':')[0]]?.[0]??words[id.split(':')[0]]?.lemma??object(id)?.label??({
   girl:'Девочка',boy:'Мальчик',adult:'Взрослый',arrow:'Следующее место',pocket:'Карман',sleeve:'Рукав',collar:'Воротник',lamp:'Фонарик',
  })[id]??id;
 }
 export function render(id){
  if(typeof id==='object'){
+  if(id.scale)return scaleArt(id.scale,render);
   return id.props.map((prop,i)=>{
    const val=typeof prop==='string'?[prop,24+i*40,23,.52]:prop;
    const [item,a,b,s,action]=val;
@@ -106,7 +108,9 @@ export function render(id){
  const target=aliases[original]??original;
  const [type,tone,size]=target.split(':');
  if(type==='lumi')return '';
- const newer=art45[type];
+ const shade=shadeArt(type,tone);
+ if(shade)return shade;
+ const newer=art45[type]??sensoryArt[type];
  if(newer)return newer[1](colors[tone]);
  if(definitions[type]){
   const shape=definitions[type](colors[tone]??({jacket:'#93aec1',dress:rose,bucket:'#87a798',girl:rose,boy:blue,adult:mint,screen:'#b991a9',
