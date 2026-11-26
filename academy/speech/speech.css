@@ -1,0 +1,87 @@
+.speech-lesson{--speech-ink:#334d5b;--speech-outline:#d9cbbb;text-align:center;color:var(--speech-ink)}
+.speech-hero{position:relative;isolation:isolate;display:grid;align-items:end;min-height:150px;aspect-ratio:4;overflow:hidden;border-radius:1.15rem;background:#f3e9d7;margin-bottom:.8rem}
+.speech-hero img{position:absolute;margin:0}
+.speech-hero img:first-child{inset:0;width:100%;height:100%;object-fit:cover;object-position:center 57%}
+.speech-hero img:nth-child(2){left:50%;bottom:13%;transform:translateX(-50%);width:38%;height:80%;object-fit:contain}
+.speech-hero p{position:relative;margin:0;padding:.35rem .55rem;background:#fffaeee8;font-weight:700}
+.speech-board,.speech-scene{background:#fffaf2;border:1px solid #dfd2be;border-radius:1rem;padding:clamp(.6rem,2vw,1.35rem);margin:.8rem auto;max-width:54rem}
+.speech-instruction,.speech-model{font-size:clamp(1.02rem,2.5vw,1.33rem);margin:.5rem auto;max-width:60ch}
+.speech-model{font-weight:700;color:#42685c}
+.speech-grown,.speech-status{font-size:.91rem;margin:.4rem auto;color:#576f65}
+.speech-demo,.speech-row,.speech-feedback{display:flex;align-items:center;justify-content:center;gap:clamp(.4rem,1.8vw,.84rem);flex-wrap:wrap;margin:.45rem auto}
+.speech-demo{min-height:130px}
+.speech-demo>.speech-graphic,.speech-row>.speech-graphic{width:clamp(60px,18vw,135px)}
+.speech-demo>.speech-graphic:has(svg g.speech-motion){width:min(84%,265px)}
+.speech-feedback>.speech-graphic{width:clamp(68px,20vw,152px)}
+.speech-feedback .speech-model,.speech-feedback .speech-partner{flex-basis:100%}
+.speech-graphic svg,.speech-graphic img{width:100%;height:auto;display:block;margin:0}
+.speech-graphic{display:block;pointer-events:none;transform-origin:center}
+.speech-card{display:grid;place-items:center;border:2px solid var(--speech-outline,#d9cbbb);border-radius:.9rem;background:#fffefb;width:clamp(62px,15vw,118px);min-height:60px;padding:.25rem;cursor:pointer;touch-action:manipulation}
+.speech-card>.speech-graphic{width:100%}
+.speech-card:focus-visible{outline:3px solid #397995;outline-offset:3px}
+.speech-selected{border-color:#588e82;background:#ebf6ed}
+.speech-hint{outline:3px solid #ba873c;outline-offset:1px}
+.speech-draggable{touch-action:none;user-select:none}
+.speech-ghost{position:fixed;transform:translate(-50%,-50%) rotate(-4deg);opacity:.85;z-index:1200;pointer-events:none}
+.speech-target{border-style:dashed;background:#f3efe8}
+.speech-context{width:min(100%,260px);margin:auto}
+.speech-map,.speech-diagram{position:relative;width:min(100%,270px);aspect-ratio:1;margin:auto;border:1px solid #dfd0bf;border-radius:1rem;background:#f5eddf;overflow:hidden}
+.speech-map>.speech-card,.speech-diagram>.speech-card{position:absolute;min-height:0;padding:0}
+.speech-diagram>.speech-graphic{width:100%;position:absolute;inset:0}
+.speech-hotspot{opacity:0}
+.speech-hotspot.speech-hint,.speech-hotspot.speech-selected,.speech-hotspot:focus-visible{opacity:1;background:#dce7e4bb}
+.speech-adult{max-width:60ch;text-align:left;padding:.55rem .75rem;border:1px solid #ded1bc;border-radius:.75rem;margin:.65rem auto;background:#f8f0df}
+.speech-adult summary{cursor:pointer;font-weight:650;min-height:28px}
+.speech-adult p{margin:.5rem auto}
+.speech-transcript{white-space:pre-line}
+.speech-animated,.speech-motion{transform-box:fill-box;transform-origin:center}
+.speech-show,.speech-rise{animation:speech-rise .48s ease both}
+.speech-roll,.speech-drive,.speech-walk,.speech-run,.speech-fly,.speech-swim{animation:speech-travel .85s ease both}
+.speech-jump,.speech-launch{animation:speech-jump .85s ease both}
+.speech-squeeze{animation:speech-squeeze .75s ease both}
+.speech-touch,.speech-wave,.speech-pour,.speech-wash,.speech-dry,.speech-draw,.speech-eat,.speech-drink,.speech-groom{animation:speech-touch .82s ease both}
+.speech-hide{animation:speech-hide .72s ease both}
+.speech-turn,.speech-open,.speech-close{animation:speech-turn .72s ease both}
+.speech-sleep,.speech-rest{transform:rotate(-12deg);animation:speech-sleep .82s ease both}
+.speech-walk .speech-legs,.speech-run .speech-legs{transform-box:fill-box;transform-origin:center top;animation:speech-walk .34s alternate 3}
+.speech-wave .speech-arm,.speech-draw .speech-arm{transform-box:fill-box;transform-origin:center;animation:speech-walk .25s alternate 4}
+.speech-card-motion :is(.speech-run,.speech-walk,.speech-jump,.speech-fly,.speech-swim,.speech-sleep,.speech-touch,.speech-pour){animation-iteration-count:2}
+@keyframes speech-rise{from{opacity:.2;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes speech-travel{from{transform:translateX(-14%)}to{transform:translateX(12%)}}
+@keyframes speech-jump{35%{transform:translateY(-25%)}70%{transform:translateY(3%)}}
+@keyframes speech-squeeze{50%{transform:scale(1.13,.68)}}
+@keyframes speech-touch{35%{transform:translate(13%,8%) rotate(-11deg)}72%{transform:translate(6%,-4%) rotate(6deg)}}
+@keyframes speech-hide{to{opacity:0;transform:translateY(14%)}}
+@keyframes speech-turn{50%{transform:rotate(-16deg) scale(.91)}}
+@keyframes speech-sleep{from{transform:none}to{transform:rotate(-12deg)}}
+@keyframes speech-walk{from{transform:rotate(-11deg)}to{transform:rotate(11deg)}}
+@media(prefers-reduced-motion:reduce){.speech-animated,.speech-motion,.speech-motion *{animation:none!important}.speech-hide{opacity:0}}
+.speech-lesson [hidden],.speech-board [hidden]{display:none!important}
+.speech-workshop-menu{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap;gap:.65rem;margin:1rem auto}
+.speech-menu-choice{display:flex;align-items:center;gap:.5rem;min-height:54px;max-width:100%;text-align:left}
+.speech-menu-choice svg{width:42px;height:42px;flex:none}
+#speech-workshop>.speech-board>svg{width:min(100%,180px)}
+.speech-stir{animation:speech-touch .82s ease both}
+.speech-finale{max-width:62rem}
+.speech-final-book{width:min(100%,280px);margin:.75rem auto}
+.speech-final-book svg{display:block;width:100%;height:auto}
+.speech-book-open{animation:speech-book .8s ease-out both}
+.speech-final-lights,.speech-final-medals,.speech-final-stars,.speech-final-friends{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;align-items:center;margin:.8rem auto}
+.speech-final-light{width:clamp(49px,12vw,90px);min-height:60px;cursor:pointer;background:#fff9e9;border:1px solid #d3c5a9;border-radius:12px;padding:.2rem}
+.speech-final-light:not(.speech-lit):disabled{opacity:.5}
+.speech-final-light img,.speech-final-medals img{display:block;width:100%;height:auto;margin:0}
+.speech-final-light.speech-lit{background:#fff1c2;box-shadow:inset 0 0 0 3px #f1d482}
+.speech-final-medals img,.speech-final-friends>*{width:clamp(49px,12vw,88px)}
+.speech-final-friends{animation:speech-book .92s ease-out both}
+.speech-final-stars{color:#ac742a;max-width:34rem;gap:.32rem;font-size:1.25rem}
+.speech-diploma label{display:grid;max-width:23rem;margin:auto;gap:.3rem}
+.speech-diploma input{min-height:44px;border:1px solid #8f9fa3;padding:.5rem;border-radius:.45rem;font:inherit}
+.speech-diploma canvas{width:100%;height:auto;margin:1rem auto;border-radius:.7rem}
+.speech-finale-page .write-print-preview{display:none}
+@keyframes speech-book{from{opacity:.3;transform:scale(.91) translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.speech-book-open,.speech-final-friends,.speech-stir{animation:none}}
+@media print{
+ .speech-finale-page>*{display:none!important}
+ .speech-finale-page>.write-print-preview{display:block!important}
+ .speech-finale-page>.write-print-preview img{display:block;width:100%;height:auto}
+}

@@ -1,3 +1,4 @@
+import {ready as speechReady,check as speechAnswer} from './speech/model.js';
 import {ready as logicReady,check as logicAnswer} from './logic/model.js';
 import { courses } from './data/courses.js';
 import { checkListeningTask, readyListeningTask } from './literacy/listening-round.js';
@@ -47,6 +48,7 @@ export function canOpen(lesson) {
 }
 
 const practiceTypes = new Map([
+  ['speech34', {isReady:speechReady,check:speechAnswer}],
   ['logic34', {isReady:logicReady,check:logicAnswer}],
   ['literacy34', { isReady: readyListeningTask, check: checkListeningTask }],
   ['writing34', { isReady: writingReady, check: writingAnswer }],

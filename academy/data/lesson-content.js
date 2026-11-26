@@ -1,3 +1,13 @@
+import { library as speechLibrary } from './speech34/library.js';
+import { stories as speechStories } from './speech34/stories.js';
+import { theatre as speechTheatre } from './speech34/theatre.js';
+import { talk as speechTalk } from './speech34/talk.js';
+import { train as speechTrain } from './speech34/train.js';
+import { village as speechVillage } from './speech34/village.js';
+import { actions as speechActions } from './speech34/actions.js';
+import { parts as speechParts } from './speech34/parts.js';
+import { traits as speechTraits } from './speech34/traits.js';
+import { town as speechTown } from './speech34/town.js';
 import { academy as logicAcademy } from './logic34/academy.js';
 import { railway as logicRailway } from './logic34/railway.js';
 import { castle as logicCastle } from './logic34/castle.js';
@@ -85,4 +95,4 @@ const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:lit
       practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
   ])));
 
-export const lessonContent = { ...logicAcademy, ...logicRailway, ...logicCastle, ...logicDetectives, ...logicGarden, ...logicFactory, ...museum, ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+export const lessonContent = { ...speechLibrary, ...speechStories, ...speechTheatre, ...speechTalk, ...speechTrain, ...speechVillage, ...speechActions, ...speechParts, ...speechTraits, ...speechTown, ...logicAcademy, ...logicRailway, ...logicCastle, ...logicDetectives, ...logicGarden, ...logicFactory, ...museum, ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };

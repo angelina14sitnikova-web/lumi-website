@@ -392,3 +392,8 @@
   [data-logic-course] .course-room { width: 100%; min-width: 0; }
   [data-logic-course] #course-title { overflow-wrap: anywhere; }
 }
+@media (max-width: 640px) {
+  [data-speech-course] .course-hero { grid-template-columns: minmax(0, 1fr); }
+  [data-speech-course] .course-room { width: 100%; min-width: 0; }
+  [data-speech-course] #course-title { overflow-wrap: anywhere; }
+}
