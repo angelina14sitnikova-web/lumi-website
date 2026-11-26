@@ -1,3 +1,4 @@
+import { factory as logicFactory } from './logic34/factory.js';
 import { museum } from './logic34/museum.js';
 import { comparisonLessons } from './comparison-3-4.js';
 
@@ -79,4 +80,4 @@ const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:lit
       practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
   ])));
 
-export const lessonContent = { ...museum, ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+export const lessonContent = { ...logicFactory, ...museum, ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
