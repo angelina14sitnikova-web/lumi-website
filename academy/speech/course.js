@@ -4,10 +4,11 @@ import {style,graphic,link,hero} from './ui.js';
 import {lessonUrl,programUrl,moduleStars,saveCompletion} from '../course-model.js';
 import {courseCompleted,celebrationUrl} from '../activities/celebration.js';
 import {el,button} from '../writing/ui.js';
+import {feedback} from '../speech45/voice-text.js';
 
-export function startSpeech({root,course,module,lesson}){
+export function startSpeech({root,course,module,lesson,voice,courseHero=hero}){
  style();
- const key='lumi.academy.speech34.lesson.'+lesson.id;
+ const key='lumi.academy.'+lesson.format+'.lesson.'+lesson.id;
  let data;
  try{data=JSON.parse(localStorage.getItem(key));}catch{}
  const answers=[];
@@ -27,7 +28,20 @@ export function startSpeech({root,course,module,lesson}){
  function screen(title,count,hasHero=false){
   board?.dispose();
   const wrapper=el('section','lesson-step speech-lesson');
-  if(hasHero)wrapper.append(hero(lesson.world));
+  if(hasHero)wrapper.append(courseHero(lesson.world));
+  if(voice){
+   const settings=el('div','speech-audio-settings');
+   const label=el('label','','Громкость');
+   const range=el('input');range.type='range';range.min='0';range.max='1';range.step='.05';
+   range.value=String(voice.getVolume());label.append(range);
+   const mute=button(voice.getVolume()?'Выключить звук':'Включить звук',()=>{
+    voice.mute(Boolean(voice.getVolume()));range.value=String(voice.getVolume());
+    mute.textContent=voice.getVolume()?'Выключить звук':'Включить звук';
+   });
+   range.addEventListener('input',()=>{voice.setVolume(Number(range.value));mute.textContent=voice.getVolume()?'Выключить звук':'Включить звук';});
+   settings.append(label,mute);wrapper.append(settings);
+  }else if(lesson.format==='speech45')wrapper.append(el('p','speech-grown','Режим со взрослым. Откройте подсказку и прочитайте реплики.'));
+
   const heading=el('h2','lesson-part',title);
   wrapper.append(heading,el('p','lesson-count',count));
   root.replaceChildren(wrapper);
@@ -45,7 +59,7 @@ export function startSpeech({root,course,module,lesson}){
   if(scene)nav.append(button('Предыдущая сцена',()=>{scene--;explanation();}));
   nav.append(button('Сделать паузу',()=>pause(explanation)));
   n.append(stage,nav);
-  board=mountScene(stage,lesson.scenes[scene],{last:scene===2,next:()=>{if(scene===2)practice();else{scene++;explanation();}}});
+  board=mountScene(stage,lesson.scenes[scene],{voice,last:scene===2,next:()=>{if(scene===2)practice();else{scene++;explanation();}}});
  }
  function practice(){
   persist('practice');
@@ -59,7 +73,7 @@ export function startSpeech({root,course,module,lesson}){
    answers.push(history);
    if(task+1===lesson.practice.length){finish();return;}
    task++;round=0;history=[];practice();
-  });
+  },{voice});
  }
  function finish(){
   const saved=saveCompletion(course,module,lesson,answers);
@@ -72,9 +86,10 @@ export function startSpeech({root,course,module,lesson}){
    }
    n.append(prizes,el('p','speech-model',module.reward+' · '+module.speechLanternName));
   }else n.append(el('p','speech-model',saved?'Ты получил звезду!':'Браузер не сохранил звезду.'));
+  if(voice)n.append(button('Послушать поздравление',()=>void voice.play(stars===module.lessons.length?feedback.world:feedback.star).catch(()=>{})));
   const nav=el('div','lesson-actions'),next=module.lessons[module.lessons.indexOf(lesson)+1];
   if(next?.scenes.length)nav.append(link('Следующий урок',lessonUrl(course,module,next)));
-  if(courseCompleted(course))nav.append(link('Праздник слов',celebrationUrl(course)));
+  if(courseCompleted(course))nav.append(link(lesson.format==='speech45'?'Королевство живых историй':'Праздник слов',celebrationUrl(course)));
   nav.append(link('К урокам',programUrl(course,module)),button('Повторить урок',()=>{
    scene=0;task=0;round=0;history=[];answers.length=0;explanation();
   }));

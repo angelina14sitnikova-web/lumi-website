@@ -35,7 +35,8 @@ const ageGroups = [
     label: '4–5 лет',
     programs: [
       { ...math, modules: math45 },
-      { ...speech, modules: speech45 },
+      { ...speech, modules: speech45, nameForCourse:'Луми и королевство живых историй',
+        room:{ image:'speech45/media/world-1.webp', alt:'Город говорящих вещей', width:392, height:392 } },
       { ...literacy, modules: literacy45 },
       { ...logic, modules: logic45 },
       { ...memory, modules: memory45 },

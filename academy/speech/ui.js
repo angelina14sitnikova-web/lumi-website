@@ -12,9 +12,9 @@ export function graphic(src,alt=''){
 export function link(title,href){
  const n=el('a','academy-button',title);n.href=href;return n;
 }
-export function hero(world){
+export function hero(world,{name=worlds[world-1],cover=new URL('./media/world-'+world+'.webp',import.meta.url)}={}){
  const n=el('div','speech-hero');
- n.append(graphic(new URL('./media/world-'+world+'.webp',import.meta.url)),graphic(new URL('../../images/lumi-transparent.png',import.meta.url),'Луми'));
- if(worlds[world-1])n.append(el('p','',worlds[world-1]));
+ n.append(graphic(cover),graphic(new URL('../../images/lumi-transparent.png',import.meta.url),'Луми'));
+ if(name)n.append(el('p','',name));
  return n;
 }

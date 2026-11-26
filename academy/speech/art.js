@@ -1,5 +1,6 @@
 import {drawing,image} from '../logic/art.js';
 import {colors,object} from '../logic/model.js';
+import {art45} from '../speech45/art.js';
 import {words} from './words.js';
 
 const p=(d,color,stroke='none',w=5)=>`<path d="${d}" fill="${color}" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
@@ -85,7 +86,7 @@ const aliases={kitten:'cat::small',puppy:'dog::small',duckling:'duck::small',cal
  read:'book',eat:'spoon',drink:'cup',sleep:'bed',wash:'soap',dry:'towel',write:'book',choose:'question',rest:'sofa'};
 export function caption(id){
  if(typeof id!=='string')return 'Сюжетная картинка';
- return words[id.split(':')[0]]?.lemma??object(id)?.label??({
+ return art45[id.split(':')[0]]?.[0]??words[id.split(':')[0]]?.lemma??object(id)?.label??({
   girl:'Девочка',boy:'Мальчик',adult:'Взрослый',arrow:'Следующее место',pocket:'Карман',sleeve:'Рукав',collar:'Воротник',lamp:'Фонарик',
  })[id]??id;
 }
@@ -105,6 +106,8 @@ export function render(id){
  const target=aliases[original]??original;
  const [type,tone,size]=target.split(':');
  if(type==='lumi')return '';
+ const newer=art45[type];
+ if(newer)return newer[1](colors[tone]);
  if(definitions[type]){
   const shape=definitions[type](colors[tone]??({jacket:'#93aec1',dress:rose,bucket:'#87a798',girl:rose,boy:blue,adult:mint,screen:'#b991a9',
    fox:'#d48452',mouse:'#9697a0',frog:mint,wolf:'#818fa2',napkin:rose,pillow:'#d783ac',pot:'#a9b9bf',fork:'#85929b',

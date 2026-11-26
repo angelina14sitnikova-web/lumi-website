@@ -1,6 +1,7 @@
 import {el,button,reduced} from '../writing/ui.js';
 import {accepted,example,isSpoken} from './model.js';
 import {picture,caption} from './art.js';
+import {feedback} from '../speech45/voice-text.js';
 
 function graphic(art,label,action='show'){
  const wrapper=el('div','speech-graphic');
@@ -19,9 +20,20 @@ function adultPanel(item,withTranscript=false){
  if(withTranscript&&item.transcript!==item.speechModel)notes.append(el('p','speech-transcript',item.transcript));
  return notes;
 }
-function audioControl(item,controls){
+function recordedControl(controls,voice,label,phrases,onPlay){
+ const message=el('span','speech-status');message.setAttribute('role','status');
+ controls.append(button(label,async()=>{
+  try{const result=await voice.play(...phrases);message.textContent='';if(result.status==='finished')onPlay?.();}
+  catch{message.textContent='Запись недоступна. Откройте подсказку и прочитайте текст вместе.';}
+ }),message);
+}
+function audioControl(item,controls,voice){
+ if(voice){
+  recordedControl(controls,voice,'Послушать инструкцию',[item.instructionText]);
+  return voice.stop;
+ }
  let audio;
- if(item.audioSrc){
+ if(item.audioSrc&&!item.audioIndex){
   audio=new Audio(item.audioSrc);
   audio.preload='none';
   const error=el('span','speech-status');
@@ -35,14 +47,16 @@ function audioControl(item,controls){
 }
 function ease(){return new Promise(resolve=>setTimeout(resolve,reduced()?90:620));}
 
-export function mountScene(host,scene,{next,last,nextLabel}){
+export function mountScene(host,scene,{next,last,nextLabel,voice}){
  const stage=el('div','speech-demo'),ctrl=el('div','lesson-actions');
  const replay=button('Посмотреть ещё раз',()=>void play());
  const forward=button(nextLabel??(last?'Перейти к практике':'Следующая сцена'),next,true);
- const stopAudio=audioControl(scene,ctrl);
+ const stopAudio=voice?voice.stop:audioControl(scene,ctrl);
+ if(voice)recordedControl(ctrl,voice,'Послушать объяснение',[scene.instructionText,...scene.frames.map(f=>f.says).filter(Boolean)],()=>{});
+
  ctrl.append(replay,forward);
  const notes=adultPanel(scene,true);
- if(scene.requiresAdult&&!scene.audioSrc)notes.open=true;
+ if((scene.requiresAdult&&!scene.audioSrc)||(scene.audioIndex&&!voice))notes.open=true;
  const guidance=el('p','speech-grown',scene.requiresAdult&&!scene.audioSrc?'Прочитайте вместе со взрослым.':'');
  const instruction=el('p','speech-instruction',scene.instructionText);
  const line=el('p','speech-model');
@@ -93,16 +107,25 @@ function draggable(item,view,id,drop){
  return ()=>hideClick;
 }
 
-export function mountRound(host,round,next){
+export function mountRound(host,round,next,{voice}={}){
  const wrap=el('section','speech-board'),display=el('div','speech-game'),reply=el('div','speech-feedback');
  const status=el('p','speech-status');status.setAttribute('role','status');
  const controls=el('div','lesson-actions'),mode=round.responseMode;
  let selected=null,picks=[],placed=Array(round.slots?.length??0).fill(null),correct=false,attempts=0,spoken=false;
  let value;
  const notes=adultPanel(round,true);
- notes.open=round.requiresAdult&&!round.audioSrc;
+ notes.open=(round.requiresAdult&&!round.audioSrc)||(round.audioIndex&&!voice);
  const proceed=button('Продолжить',()=>next(value),true);proceed.hidden=true;
- const stopAudio=audioControl(round,controls);
+ const stopAudio=audioControl(round,controls,voice);
+ const playFeedback=text=>{if(voice?.getVolume())void voice.play(text).catch(()=>{});};
+ let listeningReady=!round.samples?.length||!voice;
+ const audition=round.samples?.length&&voice?button('Послушать образцы',async()=>{
+  try{
+   const result=await voice.play(...round.samples);
+   if(result.status==='finished'){listeningReady=true;status.textContent='Теперь выбери картинку.';draw();}
+  }catch{listeningReady=true;notes.open=true;status.textContent='Прочитайте образцы вместе со взрослым.';draw();}
+ }):null;
+ if(audition)controls.append(audition);
  function card(item,click,matching=false){
   const b=button('',click);b.className='speech-card';b.dataset.card=item.id;
   b.setAttribute('aria-label',item.label??caption(item.art));
@@ -123,13 +146,15 @@ export function mountRound(host,round,next){
  function miss(){
   attempts++;
   status.textContent=attempts>=2?'Посмотри на подсветку и попробуй снова.':'Давай попробуем ещё раз.';
+  playFeedback(attempts>=2?feedback.hint:feedback.retry);
   draw();
  }
  function finish(answer){
   if(!accepted(round,answer)){miss();return;}
   correct=true;value=answer;draw();reply.replaceChildren();
-  if(round.result){
-   for(const item of [].concat(round.result))reply.append(graphic(item.art??item,item.label,item.action??'rise'));
+  const result=round.results?.[selected]??round.result;
+  if(result){
+   for(const item of [].concat(result))reply.append(graphic(item.art??item,item.label,item.action??'rise'));
   }
   if(round.animateSelection&&selected!=null){
    const item=round.cards.find(c=>c.id===selected);
@@ -139,6 +164,10 @@ export function mountRound(host,round,next){
   reply.append(el('p','speech-model',model));
   const partner=round.replies?.[selected]??round.partner;
   if(partner)reply.append(el('p','speech-partner',partner));
+  if(voice){
+   recordedControl(reply,voice,'Послушать речевой образец',[model,...(partner?[partner]:[])]);
+   if(voice.getVolume())void voice.play(...(isSpoken(round)?[model]:[feedback.done,model]),...(partner?[partner]:[])).catch(()=>{});
+  }
   status.textContent=isSpoken(round)?'Можно продолжать.':'Игровое действие выполнено. Можно сказать вместе.';
   proceed.hidden=false;
   if(isSpoken(round)&&spoken)proceed.focus({preventScroll:true});
@@ -159,6 +188,7 @@ export function mountRound(host,round,next){
  }
  function draw(){
   display.replaceChildren();
+  if(!listeningReady)return;
   if(round.review&&!isSpoken(round))display.append(button('Показать исходную картинку',()=>{
    const before=graphic(round.review,'Исходная картинка','rise');
    display.querySelector('[data-review]')?.remove();before.dataset.review='';display.prepend(before);
@@ -222,7 +252,7 @@ export function mountRound(host,round,next){
    if(round.chooseVisual&&selected==null){status.textContent='Выбери картинку, чтобы показать свой вариант.';return;}
    spoken=true;cue.hidden=true;finish('continue');
   },true);
-  if(!round.result&&!round.partner&&!round.chooseVisual){
+  if(!voice&&!round.result&&!round.partner&&!round.chooseVisual){
    controls.append(button(mode==='listen'?'Прочитали вместе':'Рассказали вместе',()=>next('continue'),true));
   }else controls.append(cue);
  }else{

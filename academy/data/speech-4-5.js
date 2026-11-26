@@ -1,5 +1,7 @@
 // Порядок записей определяет видимую нумерацию. Идентификаторы постоянны.
-export default [
+import {worlds} from './speech45/metadata.js';
+
+const program=[
   [{ id: 'speech-45-module-1', title: 'Слова вокруг нас' },
     ['speech-45-lesson-1-1', 'Предметы и их назначения'],
     ['speech-45-lesson-1-2', 'Части и детали предметов'],
@@ -81,3 +83,9 @@ export default [
     ['speech-45-lesson-10-6', 'Пересказываем короткую сказку'],
   ],
 ];
+
+export default program.map(([module,...lessons],index)=>{
+ const n=index+1,[place,reward,speechLanternName]=worlds[index];
+ return [{...module,place,reward,speechLanternName,cover:'speech45/media/world-'+n+'.webp',
+  speechMedal:'speech45/media/medal-'+n+'.webp',speechLantern:'speech45/media/feather-'+n+'.webp'},...lessons];
+});

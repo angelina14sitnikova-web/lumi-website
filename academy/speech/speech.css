@@ -85,3 +85,6 @@
  .speech-finale-page>.write-print-preview{display:block!important}
  .speech-finale-page>.write-print-preview img{display:block;width:100%;height:auto}
 }
+.speech-audio-settings{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.6rem .8rem;margin:.55rem auto}
+.speech-audio-settings label{display:grid;gap:.2rem;text-align:center;color:#425a54;font-size:.86rem}
+.speech-audio-settings input{min-height:28px;max-width:35vw}
