@@ -121,3 +121,30 @@ Object.assign(art45,{
  'empty-space':['Свободное место',()=>emptySpot()],
 });
 function emptySpot(){return '<circle cx="90" cy="90" r="62" fill="none" stroke="#9d7196" stroke-width="4" stroke-dasharray="8 9"/>';}
+
+
+Object.assign(art45,{
+ 'factory-sugar':['Сахарница',()=>
+   oval(90,118,48,21,'#dfb0c7')+box(45,86,90,34,'#dfb0c7',12)+path('M46 99q-30-19-28 2 0 14 26 13m91-15q30-19 28 2-2 14-27 13','none','#b57795',6)+
+  path('M44 87q15-33 46-33t46 33z','#bb83a3')+circle(90,50,9,'#b57795')],
+ 'factory-sugar-cubes':['Сахар',()=>[[58,109],[84,83],[111,108]].map(([x,y])=>
+  box(x-14,y-15,29,29,'#f7f3ec',2)+path(`M${x-14} ${y-15}l7-9h29l-7 9z`,'#dfdfeb')+
+  path(`M${x+15} ${y-15}l7-9v28l-7 10z`,'#cecfdc')).join('')],
+ 'factory-breadbox':['Хлебница',()=>box(30,115,120,21,tan,5)+path('M34 117V88q0-39 28-45h57q27 8 27 45v29z','#dfa879',tan,4)+
+  path('M37 81h106m-108 12h110m-111 11h111m-67 5h24','none','#af7858',3)],
+ 'factory-salt':['Солонка',()=>box(63,66,54,75,'#b5d1da',12)+path('M65 69 69 51q21-14 43 0l4 18z',steel)+
+  [78,90,103].map(x=>circle(x,54,2,ink)).join('')+path('M68 97q22-12 44 0v33H68z','#f8f4e3')],
+ 'factory-salt-pile':['Соль',()=>path('M37 123q13-38 30-32 14-22 28-15 13 13 25 14 12 7 26 33-56 19-109 0z','#ede7f3')+
+  [[56,112],[69,104],[115,110],[91,90],[91,125],[76,120],[125,119]].map(([x,y])=>circle(x,y,2.5,'#b9b4c9')).join('')],
+ 'factory-butterdish':['Маслёнка',()=>oval(90,122,60,12,'#a6c1bb')+path('M41 118V85q0-20 25-20h51q20 0 21 20v33z','#d4e3d5',mint,4)+
+  box(77,52,26,14,mint,7)],
+ 'factory-butter':['Сливочное масло',()=>path('M35 88 59 61h87l-23 27z','#f9db86')+
+  path('M35 88h88v45H35z','#eac16e')+path('M123 88l23-27v46l-23 26z','#d7a85a')],
+ 'factory-tea':['Чай',()=>art45['palace-cup'][1](blue)+oval(80,67,40,7,'#b17b53')+
+  path('M66 48q11-11 0-22m22 22q11-11 0-22','none','#d2b6a6',4)],
+ 'factory-open-box':['Открытая коробка',()=>path('M31 91 54 56h78l20 35z','#a97a58')+
+  path('M55 58 41 30h90l5 27z','#dbac82',tan,4)+palaceBox(31,92,121,50)],
+ 'factory-song':['Поёт',()=>path('M71 110V55l62-17v55M71 71l62-17','none','#8b78b6',8)+
+  oval(57,115,18,14,'#8b78b6')+oval(119,100,18,14,'#8b78b6')],
+ 'factory-dance':['Танцует',()=>circle(90,45,15,gold)+path('M90 66 78 119m9-37-35-9m34 9 42-20m-49 56-36 20m36-20 38 27','none',mint,11)],
+});
