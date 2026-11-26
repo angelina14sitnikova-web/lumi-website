@@ -200,7 +200,10 @@ if (lesson && module) {
   title.textContent = number + ' ' + lesson.title;
   document.title = title.textContent + ' — Академия Луми';
 }
-if (lesson?.format === 'literacy34' && practiceIsReady(lesson)) {
+if (lesson?.format === 'logic34' && practiceIsReady(lesson)) {
+  const { startLogic } = await import('./logic/course.js');
+  startLogic({root:content,course,module,lesson});
+} else if (lesson?.format === 'literacy34' && practiceIsReady(lesson)) {
   const { startListeningLesson } = await import('./literacy/lesson.js');
   startListeningLesson({root:content,course,module,lesson});
 } else if (lesson?.format === 'writing34' && practiceIsReady(lesson)) {
@@ -218,7 +221,7 @@ if (lesson?.format === 'literacy34' && practiceIsReady(lesson)) {
 } else if (lesson?.format === 'comparison' && practiceIsReady(lesson)) {
   const { mountComparison } = await import('./activities/comparison.js');
   mountComparison(content, course, module, lesson);
-} else if (canOpen(lesson) && !['comparison', 'sensory', 'memory34', 'writing34', 'literacy34'].includes(lesson.format)) {
+} else if (canOpen(lesson) && !['comparison', 'sensory', 'memory34', 'writing34', 'literacy34', 'logic34'].includes(lesson.format)) {
   showExplanation(false);
 } else {
   const pending = element('div', 'lesson-coming');

@@ -83,12 +83,15 @@ export function arrangement(r,partial=[]){
   return slot<0?null:slot;
  });
  function fill(j,used){
-  if(j===r.slots.length)return [];
+  if(j===r.slots.length)return used.size===Math.min(r.items.length,r.slots.length)?[]:null;
   const candidates=partial[j]!=null?[partial[j]]:r.items.map((_,i)=>i);
   for(const i of candidates){
    if(used.has(i)||!fits(r,i,j))continue;
    const rest=fill(j+1,new Set([...used,i]));
    if(rest)return [i,...rest];
+  }
+  if(r.kind==='match'&&r.items.length<r.slots.length&&partial[j]==null){
+   const rest=fill(j+1,used);if(rest)return [null,...rest];
   }
   return null;
  }
@@ -117,7 +120,9 @@ export function expected(r){
 export function answer(r,a){
  if(placements.has(r.kind)){
   if(r.kind==='group')return same(a,arrangement(r));
-  return Array.isArray(a)&&a.length===r.slots.length&&unique(a)&&a.every((i,j)=>fits(r,i,j));
+  if(!Array.isArray(a)||a.length!==r.slots.length)return false;
+  const used=a.filter(i=>i!=null);
+  return used.length===Math.min(r.items.length,r.slots.length)&&unique(used)&&a.every((i,j)=>i==null?r.kind==='match':fits(r,i,j));
  }
  if(r.kind==='diff')return Array.isArray(a)&&a.length===r.spots.length&&unique(a)&&a.every(id=>r.spots.some(p=>p.id===id));
  if(r.kind==='pair')return Array.isArray(a)&&a.length===r.count*2&&unique(a)&&a.every((i,j)=>object(r.items[i])&&
