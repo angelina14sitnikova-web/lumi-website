@@ -68,7 +68,7 @@ export function solutions(r){
  if(r.kind==='chooseOrder')return r.rows.flatMap((p,i)=>same(p,r.order)?[i]:[]);
  if(r.kind==='select')return r.items.flatMap((item,i)=>(r.sample?matches(item,r.sample,r.rule):trait(item,r.rule)===r.value)?[i]:[]);
  if(r.kind==='event')return r.items.flatMap((id,i)=>id===r.steps[r.step]?[i]:[]);
- if(r.kind==='story')return r.items.flatMap((id,i)=>object(id)?.uses.includes(r.use)?[i]:[]);
+ if(r.kind==='story')return r.items.flatMap((id,i)=>object(id)?.uses.includes(r.use)&&(!r.fit||trait(id,r.fit[0])===r.fit[1])?[i]:[]);
  if(r.kind==='odd'){
   const counts=new Map();
   const keys=r.items.map(id=>trait(id,r.rule));

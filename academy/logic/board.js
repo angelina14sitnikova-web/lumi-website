@@ -60,7 +60,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
  const model=expected(r),choices=solutions(r);
  const slots=r.slots??[];
  let placementsNow=Array(r.kind==='group'?r.items.length:slots.length).fill(null);
- let done=false,tries=0,selected=null,picked=null,story=null,hits=[],value,whole=Boolean(r.support),generation=0;
+ let done=false,tries=0,selected=null,picked=null,story=null,located=false,hits=[],value,whole=Boolean(r.support),generation=0;
  const visual=id=>r.frames?.[id]?image(landscape(r.frames[id])):card(id);
  const label=id=>r.frames?.[id]?.label??name(id);
  const answerTile=(id,art,alt,handler,good=false,active=false)=>{
@@ -122,7 +122,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
    if(r.kind==='pattern')[art,alt]=[s.bad?card(s.bad):icon('part'),s.bad?'Замени элемент':'Пустое место'];
    if(s.object&&!isGroup)[art,alt]=[card(s.object),label(s.object)];
    if(r.kind==='construct')[art,alt]=[card(s.accepts[0]),label(s.accepts[0])];
-   if(taken.length&&!isGroup)art=placeArt(r.items[taken[0]]);
+   if(taken.length&&!isGroup&&r.kind!=='match')art=placeArt(r.items[taken[0]]);
    const target=tile(art,alt,()=>{
     if(selected!=null){place(selected,j);return;}
     if(taken.length){
@@ -131,7 +131,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
      render();
     }
    });
-   if(taken.length&&isGroup){
+   if(taken.length&&(isGroup||r.kind==='match')){
     const chips=el('span','logic-filled');
     chips.append(...taken.map(i=>placeArt(r.items[i])));target.append(chips);
    }
@@ -141,6 +141,21 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
    targets.append(target);
   }
   if(r.preview)stage.append(figure(r.order?multiple(r.order):card(r.preview),'Образец'));
+  if(r.kind==='pattern'&&r.locate&&!located){
+   stage.append(figure(multiple([...r.seed,...r.seed]),'Образец чередования'));
+   const search=field();search.classList.add('logic-pattern');
+   for(const [i,id] of r.row.entries()){
+    const correct=r.slots.some(slot=>slot.position===i);
+    const n=answerTile('search-'+i,card(id),label(id),()=>{
+     if(!correct){miss('Сравни этот элемент с образцом.');return;}
+     located=true;tries=0;render();feedback.textContent='Замени найденный элемент.';
+    },correct);
+    n.dataset.patternPosition=String(i);
+    search.append(n);
+   }
+   stage.append(search);
+   return;
+  }
   if(r.kind==='order'&&r.showOrder){
    const modelRow=field();
    for(const id of r.order)modelRow.append(figure(visual(id),label(id)));
@@ -204,6 +219,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
  function choicesBoard(){
   const row=field();
   if(r.sample)stage.append(figure(card(r.sample),'Образец'));
+  if(r.kind==='select'&&r.value!=null){const [art,alt]=marker(r.rule,r.value);stage.append(figure(art,alt));}
   if(r.kind==='compare')stage.append(figure(multiple(r.items),'Две картинки для сравнения'));
   if(r.kind==='event'&&r.step)stage.append(figure(visual(r.steps[0]),'Начало истории'));
   if(r.kind==='chooseOrder')stage.append(figure(multiple(r.order),'Образец порядка'));
@@ -264,8 +280,19 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
    if(story!=null){
     const installed=figure(card(r.items[story]),label(r.items[story]));
     installed.className='logic-installed';
-    if(done)scene.classList.add('logic-motion');
+    if(r.place){
+     const [x,y,w]=r.place;
+     Object.assign(installed.style,{left:x+'%',top:y+'%',width:w+'%'});
+    }
     scene.append(installed);
+    if(done){
+     if(r.effect==='drive'){
+      const car=figure(card('car'),'Машинка едет по переправе');
+      car.className='logic-drive';scene.append(car);
+     }else if(r.effect==='water'){
+      const drops=el('span','logic-water');drops.setAttribute('aria-hidden','true');scene.append(drops);
+     }else if(r.effect)installed.classList.add('logic-effect-'+r.effect);
+    }
    }
    stage.append(scene);
    if(done)return;
@@ -303,7 +330,7 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
   async play(){
    if(!demo)return;
    const trigger=++generation;
-   done=false;tries=0;picked=null;hits=[];story=null;selected=null;placementsNow.fill(null);render();feedback.textContent='';
+   done=false;tries=0;picked=null;hits=[];story=null;selected=null;located=false;placementsNow.fill(null);render();feedback.textContent='';
    const alive=()=>trigger===generation&&board.isConnected;
    async function highlight(selector){
     stage.querySelector(selector)?.classList.add('logic-focus');
@@ -311,6 +338,10 @@ export function mountBoard(host,r,{next=()=>{},demo=false}={}){
     return alive();
    }
    if(placements.has(r.kind)){
+    if(r.locate){
+     if(!await highlight('[data-pattern-position="'+r.slots[0].position+'"]'))return;
+     located=true;render();
+    }
     const moves=r.kind==='group'?model.map((j,i)=>[i,j]).filter(([,j])=>j!=null):model.map((i,j)=>[i,j]).filter(([i])=>i!=null);
     for(const [i,j] of moves){
      if(!await highlight('[data-option="'+i+'"]'))return;
