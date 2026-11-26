@@ -1,3 +1,10 @@
+import { academy as logicAcademy } from './logic34/academy.js';
+import { railway as logicRailway } from './logic34/railway.js';
+import { castle as logicCastle } from './logic34/castle.js';
+import { detectives as logicDetectives } from './logic34/detectives.js';
+import { garden as logicGarden } from './logic34/garden.js';
+import { factory as logicFactory } from './logic34/factory.js';
+import { museum } from './logic34/museum.js';
 import { comparisonLessons } from './comparison-3-4.js';
 
 import { colorLessons } from './colors-3-4.js';
@@ -78,4 +85,4 @@ const listeningLessons = Object.fromEntries(Object.entries({forest,city,echo:lit
       practice: lesson.practice.map(task => ({ ...task, activity: task.kind, kind: 'literacy34' })) },
   ])));
 
-export const lessonContent = { ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };
+export const lessonContent = { ...logicAcademy, ...logicRailway, ...logicCastle, ...logicDetectives, ...logicGarden, ...logicFactory, ...museum, ...listeningLessons, ...makers, ...garden, ...pencils, ...clouds, ...patterns, ...artists, ...observers, ...castle, ...valley, ...railway, ...town, ...island, ...comparisonLessons, ...colorLessons, ...colorWorldLessons, ...sizeLessons, ...dimensionsLessons, ...shapesLessons, ...shapeWorldLessons, ...quantityLessons, ...finalLessons, ...properties, ...countFive, ...quantityNumber, ...ordinal, ...geometry, ...mosaic, ...magnitude, ...routes, ...calendar, ...journey, ...countTen, ...digitLow, ...digitHigh, ...orderTen, ...comparing, ...unitHouses, ...geometry56, ...measurement, ...spatial56, ...time56, ...numberPortals, ...numberHouses, ...addition, ...subtraction, ...detectives, ...engineering, ...geometry67, ...spatial67, ...time67, ...workshop67 };

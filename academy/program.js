@@ -54,6 +54,14 @@ function updateCatalog() {
       if (stars === module.lessons.length) text.append(element('p', '', module.reward || (colorModule ? 'Радужная медаль Луми' : 'Медаль внимательного исследователя')));
       progress.append(badge, text);
       details.append(summary, progress);
+      if (module.logicMedal && stars === module.lessons.length) {
+        for (const [src,label] of [[module.logicMedal,module.reward],[module.logicKeyArt,module.logicKey]]) {
+          const icon = element('img', 'course-module-cover');
+          icon.src = src;
+          icon.alt = label;
+          details.append(icon);
+        }
+      }
       if (module.literacyMedal && stars === module.lessons.length) {
         const medal = element('img', 'course-module-cover');
         medal.src = module.literacyMedal;
@@ -105,7 +113,7 @@ function updateCatalog() {
         const ready = practiceIsReady(lesson);
         const status = complete ? 'Пройден'
           : !canOpen(lesson) ? 'Скоро'
-            : ready ? (['comparison', 'colors', 'sensory', 'memory34', 'writing34', 'literacy34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
+            : ready ? (['comparison', 'colors', 'sensory', 'memory34', 'writing34', 'literacy34', 'logic34'].includes(lesson.format) ? 'Начать' : 'Доступен') : 'Объяснение доступно';
         row.append(element('span', 'course-status', status));
         const arrow = element('span', 'course-open-arrow', '→');
         arrow.setAttribute('aria-hidden', 'true');
@@ -123,6 +131,11 @@ function updateCatalog() {
     studio.href = 'writing-studio.html';
     catalog.prepend(studio);
   }
+  if (course.id === 'logic-3-4') {
+    const workshop = element('a','academy-button','Мастерская головоломок');
+    workshop.href = 'logic-workshop.html';
+    catalog.prepend(workshop);
+  }
   if (courseCompleted(course)) {
     const celebration = element('a', 'academy-button', course.id === 'writing-3-4' ? 'Открыть выставку' : course.id === 'memory-3-4' ? 'Открыть волшебный альбом' : course.id === 'literacy-3-4' ? 'Открыть праздник звуков' : 'Праздник открытий ✨');
     celebration.href = celebrationUrl(course);
@@ -139,7 +152,7 @@ function openModuleFromHash() {
 }
 
 if (course) {
-  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : ['memory-3-4', 'writing-3-4', 'literacy-3-4'].includes(course.id) ? course.nameForCourse : course.title) + ' ',
+  document.querySelector('#course-title').replaceChildren((course.id === 'math-6-7' ? 'Академия великих математических открытий' : course.id === 'math-5-6' ? 'Лаборатория математических открытий' : course.id === 'math-4-5' ? 'Мир чисел и фигур' : ['memory-3-4', 'writing-3-4', 'literacy-3-4', 'logic-3-4'].includes(course.id) ? course.nameForCourse : course.title) + ' ',
     element('span', 'course-age-label', '· ' + course.age));
   const counts = courseCounts(course);
   const count = document.querySelector('#course-count');
@@ -148,6 +161,10 @@ if (course) {
   const main = document.querySelector('#academy-main');
   main.classList.replace('academy-tone-3-4', course.ageTone);
   main.dataset.courseTheme = course.theme;
+  if (course.id === 'logic-3-4') {
+    main.dataset.logicCourse = '';
+    document.querySelector('#course-room .academy-age-lumi').src = '../images/lumi-transparent.png';
+  }
   const art = document.querySelector('#course-room-art');
   art.alt = course.room.alt;
   art.width = course.room.width;

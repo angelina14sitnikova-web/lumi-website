@@ -386,3 +386,9 @@
   border-radius: 14px;
 }
 .mem-album-page img { object-fit: contain; border-radius: 10px; max-width: 100%; }
+
+@media (max-width: 640px) {
+  [data-logic-course] .course-hero { grid-template-columns: minmax(0, 1fr); }
+  [data-logic-course] .course-room { width: 100%; min-width: 0; }
+  [data-logic-course] #course-title { overflow-wrap: anywhere; }
+}
