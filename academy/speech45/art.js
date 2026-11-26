@@ -91,3 +91,33 @@ Object.assign(art45,{
  'bus-trip':['Поездка на автобусе',()=>box(20,137,141,12,steel)+art45.bus[1]()],
  'bouquet':['Букет',()=>path('M47 84 90 146l43-62z','#d8bca2')+path('M73 103 61 62m28 44V43m9 63 24-44','none',mint,6)+circle(62,61,21,red)+circle(90,46,22,'#ce8fab')+circle(122,61,21,gold)],
 });
+
+const littleChair=(a,b)=>box(a,b,4,35,tan,2)+box(a+4,b+2,15,17,'#cb986f',3)+
+ box(a,b+23,23,4,tan,2)+box(a+18,b+24,4,12,tan,2);
+const palaceBox=(a,b,w,h)=>box(a,b,w,h,'#bb8c65',4)+box(a+3,b+4,w-6,h-8,'#e2bf91',3);
+const palaceWindow=open=>box(32,31,116,113,tan,10)+box(40,39,100,97,'#d4ecf1',5)+
+ (open?path('M63 49 41 39v97l22-19zM116 49l24-10v97l-24-19z','#95c1da',tan,4):
+  path('M90 42v94m-48-48h96','none',tan,5));
+Object.assign(art45,{
+ 'palace-tree':['Дерево',()=>box(82,84,16,61,tan,5)+circle(65,82,29,mint)+circle(96,56,34,'#7eae77')+circle(116,83,26,'#6a9d7c')],
+ 'palace-window':['Закрытое окно',()=>palaceWindow(false)],
+ 'palace-open-window':['Открытое окно',()=>palaceWindow(true)],
+ 'palace-pear':['Груша',()=>produce(mint,path('M90 52q23 0 30 35 30 36 2 55-32 17-66 0-24-18 2-55 8-35 32-35z','#a1be60'))],
+ 'palace-basket':['Корзина',()=>path('M54 99q-3-70 36-70t36 70','none',tan,8)+path('M26 85h128l-17 53H43z','#e1aa6d',tan,4)+
+   path('M39 101h101m-94 14h89m-80-26 11 45m16-45 5 47m20-47-6 47m27-47-11 45','none','#b98052',3)],
+ 'palace-box':['Коробка',()=>path('M32 75 52 52h77l23 23-18 36H43z','#aa7557')+palaceBox(32,76,120,60)],
+ 'palace-cup':['Чашка',f=>path('M121 70q34-11 31 13-2 21-34 22','none',f??blue,9)+
+   path('M34 67h92l-9 47q-33 27-72 1z',f??blue)+oval(80,66,46,10,'#f9eee0')],
+ 'palace-ball':['Мяч',f=>circle(90,92,49,f??red)+path('M54 60q52 9 66 69M51 117q46-4 60-68','none','#fff6dc',7)],
+ 'palace-flower':['Цветок',f=>path('M88 135V80m1 42q14-20 31-18','none',mint,8)+
+   [[90,48],[111,63],[101,85],[78,85],[68,63]].map(([a,b])=>circle(a,b,18,f??red)).join('')+circle(90,68,13,gold)],
+ 'palace-draw':['Рисует',()=>box(30,59,106,84,'#fcf3db',7)+path('M55 113q25-40 54 2','none',mint,4)+
+   path('M72 102l55-70 15 13-53 70-20 9z',gold)+path('M69 124l3-22 17 13z',tan)],
+ 'palace-play':['Играет',()=>circle(102,107,30,red)+path('M81 87q24 11 37 42M74 114q23-2 39-31M29 89l43-23m-40 6 28-16','none',cream,5)],
+ 'palace-room':['Комната с коробкой, двумя стульями, столом и шкафом',()=>box(0,0,180,180,'#fcf1e4',0)+
+   box(0,114,180,66,'#e3b99b',0)+path('M0 146h180M25 146 11 180m61-34-5 34m62-34 10 34','none','#d6a98d',2)+
+   box(140,51,32,66,'#ab7896',6)+path('M156 57v51m-5-25h1m8 0h1','none','#f0d4dc',2)+
+   littleChair(49,92)+littleChair(91,92)+path('M109 151v-45m32 45v-45','none',tan,4)+box(106,104,38,7,'#ac7859',3)+palaceBox(15,96,36,28)],
+ 'empty-space':['Свободное место',()=>emptySpot()],
+});
+function emptySpot(){return '<circle cx="90" cy="90" r="62" fill="none" stroke="#9d7196" stroke-width="4" stroke-dasharray="8 9"/>';}
